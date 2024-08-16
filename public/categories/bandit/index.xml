@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bandit on My messy collection</title>
+    <link>//localhost:1313/categories/bandit/</link>
+    <description>Recent content in Bandit on My messy collection</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language>
+    <copyright>Copyright © 2008–2019</copyright>
+    <lastBuildDate>Sat, 17 Aug 2024 00:23:19 +0300</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/categories/bandit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bandit-Level 0</title>
+      <link>//localhost:1313/post/bandit0/</link>
+      <pubDate>Sat, 17 Aug 2024 00:23:19 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit0/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;The password for the next level is stored in a file called &lt;strong&gt;readme&lt;/strong&gt; located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.&lt;/p&gt;
+&lt;h1 id=&#34;note&#34;&gt;Note!&lt;/h1&gt;
+&lt;p&gt;For all bandit level logins, the default route is using ssh.
+Format:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh bandit(level)@bandit.labs.overthewire.org -p 2220&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit0@bandit.labs.overthewire.org&#34;&gt;bandit0@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;bandit0&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls (1)               - list directory contents
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Use &amp;ldquo;ls&amp;rdquo; to list the files in the current directory and then &amp;ldquo;cat&amp;rdquo; to print the contents of &lt;strong&gt;readme&lt;/strong&gt;.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit0@bandit:~$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;readme
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit0@bandit:~$ cat readme
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The password you are looking for is: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bandit-Level 1</title>
+      <link>//localhost:1313/post/bandit1/</link>
+      <pubDate>Sat, 17 Aug 2024 00:23:19 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit1/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;The password for the next level is stored in a file called &lt;strong&gt;&amp;quot;-&amp;quot;&lt;/strong&gt; located in the home directory&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit1@bandit.labs.overthewire.org&#34;&gt;bandit1@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Using the redirecting operator &lt;strong&gt;&amp;lt;&lt;/strong&gt; when can feed &lt;strong&gt;&amp;quot;-&amp;quot;&lt;/strong&gt; to &lt;strong&gt;cat&lt;/strong&gt; in order to see the contents of the file.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit1@bandit:~$ cat &lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;263JGJPfgU6LtdEvgfWU1XP5yac29mFx&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bandit-Level 2</title>
+      <link>//localhost:1313/post/amodel-bandit2/</link>
+      <pubDate>Sat, 17 Aug 2024 00:23:19 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/amodel-bandit2/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;The password for the next level is stored in a file called spaces in this filename located in the home directory&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit2@bandit.labs.overthewire.org&#34;&gt;bandit2@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;263JGJPfgU6LtdEvgfWU1XP5yac29mFx&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls (1)               - list directory contents
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Simply use &amp;quot; &amp;quot; on the file in order to parse the parameter as a string, then get the result using &lt;strong&gt;cat&lt;/strong&gt;.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;spaces in this filename
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ cat &amp;#34;spaces in this filename&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

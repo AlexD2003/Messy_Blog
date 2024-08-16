@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Series on Hugo Themes</title>
+    <title>Series on My messy collection</title>
     <link>//localhost:1313/series/</link>
-    <description>Recent content in Series on Hugo Themes</description>
+    <description>Recent content in Series on My messy collection</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="//localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Themes Guide</title>
-      <link>//localhost:1313/series/themes-guide/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>//localhost:1313/series/themes-guide/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

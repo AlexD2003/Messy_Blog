@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Hugo Themes</title>
+    <title>Categories on My messy collection</title>
     <link>//localhost:1313/categories/</link>
-    <description>Recent content in Categories on Hugo Themes</description>
+    <description>Recent content in Categories on My messy collection</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Aug 2024 00:23:19 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Syntax</title>
-      <link>//localhost:1313/categories/syntax/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Bandit</title>
+      <link>//localhost:1313/categories/bandit/</link>
+      <pubDate>Sat, 17 Aug 2024 00:23:19 +0300</pubDate>
       
-      <guid>//localhost:1313/categories/syntax/</guid>
+      <guid>//localhost:1313/categories/bandit/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Themes</title>
-      <link>//localhost:1313/categories/themes/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Overthewire</title>
+      <link>//localhost:1313/categories/overthewire/</link>
+      <pubDate>Sat, 17 Aug 2024 00:23:19 +0300</pubDate>
       
-      <guid>//localhost:1313/categories/themes/</guid>
+      <guid>//localhost:1313/categories/overthewire/</guid>
       <description></description>
     </item>
     

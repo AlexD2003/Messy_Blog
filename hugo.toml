@@ -9,7 +9,7 @@ googleAnalytics = "UA-FAKE" ## or "G-xxxxxxxx" in Google Analytics v4, in hugo v
 hasCJKLanguage = true
 languageCode = "cn"
 theme = "hugo-theme-tokiwa"
-title = "Hugo Themes"
+title = "My messy collection"
 
 [markup]
 [markup.highlight]
@@ -21,7 +21,7 @@ unsafe = true
 [params]
 bannerFont = "fonts/exampleFont" 
 description = """
-Tokiwa-iro is the theme color of this site.
+Try using the search bar, the site is indeed cluttered!
 """ 
 env = "production" # for Google Analytics and DISQUS.
 favicon = "img/favicon-32x32.png" 
@@ -58,15 +58,15 @@ category = "categories"
 series = "series"
 tag = "tags"
 [social]
-bilibili = "http://example.com/"
+#bilibili = "http://example.com/"
 github = "https://github.com/"
-gitlab = "https://gitlab.com/"
+#gitlab = "https://gitlab.com/"
 instagram = "http://example.com/"
 mail = "mailto:anon@example.com"
 twitter = "https://twitter.com/"
-weibo = "http://example.com/"
-youtube = "https://youtube.com/"
-zhihu = "http://example.com/"
+#weibo = "http://example.com/"
+#youtube = "https://youtube.com/"
+#zhihu = "http://example.com/"
 # any icon in layouts/partials/svg can be used by the name without the "-line.svg"
 
 [outputs]
