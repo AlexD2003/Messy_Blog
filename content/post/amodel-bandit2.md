@@ -1,11 +1,12 @@
 +++
 author = "Alex Domnit"
 title = "Bandit-Level 2"
-date = 2024-08-17T00:23:19+03:00
+date = 2024-08-13T00:22:19+03:00
 draft = false
 description = "Writeup"
 tags = [
     "CTF",
+    "Completed",
 ]
 categories = [
     "Overthewire",
