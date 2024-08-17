@@ -10,7 +10,7 @@ tags = [
 ]
 categories = [
     "Overthewire",
-    "Bandit",3
+    "Bandit",
 ]
 
 toc = false
