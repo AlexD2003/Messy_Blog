@@ -2,343 +2,96 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Overthewire on My messy collection</title>
-    <link>//localhost:1313/categories/overthewire/</link>
+    <link>//localhost:34907/categories/overthewire/</link>
     <description>Recent content in Overthewire on My messy collection</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
     <lastBuildDate>Sat, 17 Aug 2024 22:42:32 +0300</lastBuildDate>
-    
-	<atom:link href="//localhost:1313/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="//localhost:34907/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bandit-Level 11</title>
-      <link>//localhost:1313/post/bandit11/</link>
+      <link>//localhost:34907/post/bandit11/</link>
       <pubDate>Sat, 17 Aug 2024 22:42:32 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/bandit11/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in the file &lt;strong&gt;data.txt&lt;/strong&gt;, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by &lt;strong&gt;13&lt;/strong&gt; positions.&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit2@bandit.labs.overthewire.org&#34;&gt;bandit2@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;263JGJPfgU6LtdEvgfWU1XP5yac29mFx&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;sources&#34;&gt;Sources&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://mayadevbe.me/posts/overthewire/bandit/level12/&#34;&gt;MayADevBe Blog&lt;/a&gt; &lt;strong&gt;Cheers!&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tr (1)               - translate or delete characters&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;There are a lot of websites that offer ROT13 encryption/decryption, but sadly there is no build-in ROT13 command in Linux. However, I wanted a solution for the terminal, so I used the tr command for substitution.&lt;/p&gt;
-&lt;p&gt;The substitution for ROT13 is A-&amp;gt;N,…,Z-&amp;gt;M. With tr it would be:
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit11@bandit:~$ ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data.txt
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit11@bandit:~$ cat data.txt
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit11@bandit:~$ cat data.txt | tr &amp;#39;A-Za-z&amp;#39; &amp;#39;N-ZA-Mn-za-m&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/bandit11/</guid>
+      <description>Level goal The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions.&#xA;Login ssh bandit2@bandit.labs.overthewire.org -p 2220&#xA;263JGJPfgU6LtdEvgfWU1XP5yac29mFx&#xA;Sources MayADevBe Blog Cheers!&#xA;Doc tr (1) - translate or delete characters Solution There are a lot of websites that offer ROT13 encryption/decryption, but sadly there is no build-in ROT13 command in Linux. However, I wanted a solution for the terminal, so I used the tr command for substitution.</description>
     </item>
-    
     <item>
       <title>Bandit-Level 10</title>
-      <link>//localhost:1313/post/bandit10/</link>
+      <link>//localhost:34907/post/bandit10/</link>
       <pubDate>Sat, 17 Aug 2024 22:35:17 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/bandit10/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in the file &lt;strong&gt;data.txt&lt;/strong&gt;, which contains base64 encoded data.&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit10@bandit.labs.overthewire.org&#34;&gt;bandit10@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;base64 (1)           - base64 encode/decode data and print to standard output
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    -d, --decode          decode data&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;Use the -d flag (decode) on the &lt;strong&gt;data.txt&lt;/strong&gt; file by using the &lt;strong&gt;base64&lt;/strong&gt; command.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit10@bandit:~$ base64 -d data.txt
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/bandit10/</guid>
+      <description>Level goal The password for the next level is stored in the file data.txt, which contains base64 encoded data.&#xA;Login ssh bandit10@bandit.labs.overthewire.org -p 2220&#xA;FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey&#xA;Doc base64 (1) - base64 encode/decode data and print to standard output -d, --decode decode data Solution Use the -d flag (decode) on the data.txt file by using the base64 command. bandit10@bandit:~$ base64 -d data.txt The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr</description>
     </item>
-    
     <item>
       <title>Bandit-Level 9</title>
-      <link>//localhost:1313/post/bandit9/</link>
+      <link>//localhost:34907/post/bandit9/</link>
       <pubDate>Sat, 17 Aug 2024 22:25:00 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/bandit9/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in the file &lt;strong&gt;data.txt&lt;/strong&gt; in one of the few human-readable strings, preceded by several ‘=’ characters.&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit9@bandit.labs.overthewire.org&#34;&gt;bandit9@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;4CKMh1JI91bUIZZPXDqGanal4xvAg0JM&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;strings (1)          - print the sequences of printable characters in files
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;grep (1)             - print lines that match patterns&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;Use &lt;strong&gt;strings&lt;/strong&gt; to only recieve the string values out of the text file, pipe it to &lt;strong&gt;grep&lt;/strong&gt; using &amp;ldquo;=&amp;rdquo; as the pattern you are searching for.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit9@bandit:~$ strings data.txt | grep =
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;=aA&amp;#34;f
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;\a!;========== the
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PWAF=1
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 M),\}=
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2Y6=
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;G&amp;#39;;?e=
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;========== passwordf
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;========== isc
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*=N6
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;m=&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt;/
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E=Bty
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;=sw	
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;#34;M1=
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;========== FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;!&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;amp;&lt;/span&gt;=u&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;amp;&lt;/span&gt;4$
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*XA=&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/bandit9/</guid>
+      <description>Level goal The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.&#xA;Login ssh bandit9@bandit.labs.overthewire.org -p 2220&#xA;4CKMh1JI91bUIZZPXDqGanal4xvAg0JM&#xA;Doc strings (1) - print the sequences of printable characters in files grep (1) - print lines that match patterns Solution Use strings to only recieve the string values out of the text file, pipe it to grep using &amp;ldquo;=&amp;rdquo; as the pattern you are searching for.</description>
     </item>
-    
     <item>
       <title>Bandit-Level 8</title>
-      <link>//localhost:1313/post/bandit8/</link>
+      <link>//localhost:34907/post/bandit8/</link>
       <pubDate>Sat, 17 Aug 2024 21:57:43 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/bandit8/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in the file data.txt and is the only line of text that occurs only &lt;strong&gt;once&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit8@bandit.labs.overthewire.org&#34;&gt;bandit8@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sort (1)             - sort lines of text files
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;uniq (1)             - report or omit repeated lines
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    -c, --count           prefix lines by the number of occurrences
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    -u, --unique          only print unique lines
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| -pipe operator&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;We pipe the ouput of &lt;strong&gt;sort&lt;/strong&gt; (in order to get the identical lines one after the other) and pipe the output to &lt;strong&gt;unique&lt;/strong&gt; using the flags -c (counting just to make sure) and -u(unique)
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit8@bandit:~$ sort data.txt | uniq -cu
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      1 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/bandit8/</guid>
+      <description>Level goal The password for the next level is stored in the file data.txt and is the only line of text that occurs only once.&#xA;Login ssh bandit8@bandit.labs.overthewire.org -p 2220&#xA;dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc&#xA;Doc sort (1) - sort lines of text files uniq (1) - report or omit repeated lines -c, --count prefix lines by the number of occurrences -u, --unique only print unique lines | -pipe operator Solution We pipe the ouput of sort (in order to get the identical lines one after the other) and pipe the output to unique using the flags -c (counting just to make sure) and -u(unique) bandit8@bandit:~$ sort data.</description>
     </item>
-    
     <item>
       <title>Bandit-Level 7</title>
-      <link>//localhost:1313/post/bandit7/</link>
+      <link>//localhost:34907/post/bandit7/</link>
       <pubDate>Sat, 17 Aug 2024 18:16:02 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/bandit7/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in the file &lt;strong&gt;data.txt&lt;/strong&gt; next to the word &lt;strong&gt;millionth&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit7@bandit.labs.overthewire.org&#34;&gt;bandit7@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;grep (1)             - print lines that match patterns&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;We can use &lt;strong&gt;cat&lt;/strong&gt; to get the contents of the file in question, feed it to &lt;strong&gt;grep&lt;/strong&gt; using a pipe &lt;strong&gt;|&lt;/strong&gt; with the argument of &lt;strong&gt;millionth&lt;/strong&gt; in order for it to spit out the line where the pattern matches.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit7@bandit:~$ cat data.txt | grep millionth
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;millionth	dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/bandit7/</guid>
+      <description>Level goal The password for the next level is stored in the file data.txt next to the word millionth&#xA;Login ssh bandit7@bandit.labs.overthewire.org -p 2220&#xA;morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj&#xA;Doc cat (1) - concatenate files and print on the standard output grep (1) - print lines that match patterns Solution We can use cat to get the contents of the file in question, feed it to grep using a pipe | with the argument of millionth in order for it to spit out the line where the pattern matches.</description>
     </item>
-    
     <item>
       <title>Bandit-Level 6</title>
-      <link>//localhost:1313/post/bandit6/</link>
+      <link>//localhost:34907/post/bandit6/</link>
       <pubDate>Fri, 16 Aug 2024 17:07:33 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/bandit6/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored somewhere on the server and has all of the following properties:&lt;br&gt;
--owned by user bandit7&lt;br&gt;
--owned by group bandit6&lt;br&gt;
--33 bytes in size&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit6@bandit.labs.overthewire.org&#34;&gt;bandit6@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;HWasnPhtq9AVKe0dmk45nxy20cvUa6EG&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find (1)             - search for files in a directory hierarchy&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;Firstly, I searched the home directory since its smaller than the root in case the file was hidden there. After seeing that it was not, I used &lt;strong&gt;find&lt;/strong&gt; in root &lt;strong&gt;/&lt;/strong&gt; to see that there exists a file with my defined conditions at &lt;strong&gt;/var/lib/dpkg/info/bandit7.password&lt;/strong&gt;.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit6@bandit:~$ find /home -user bandit7 -group bandit6 -size 33c
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find: ‘/home/drifter8/chroot’: Permission denied
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find: ‘/home/bandit5/inhere’: Permission denied
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find: ‘/home/bandit31-git’: Permission denied
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find: ‘/home/bandit29-git’: Permission denied
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find: ‘/home/ubuntu’: Permission denied
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find: ‘/home/bandit30-git’: Permission denied
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find: ‘/home/bandit28-git’: Permission denied
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find: ‘/home/drifter6/data’: Permission denied
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find: ‘/home/bandit27-git’: Permission denied
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit6@bandit:~$ find / -user bandit7 -group bandit6 -size 33c
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find: ‘/sys/kernel/tracing’: Permission denied
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find: ‘/sys/kernel/debug’: Permission denied
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/var/lib/dpkg/info/bandit7.password
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit6@bandit:~$ cat /var/lib/dpkg/info/bandit7.password
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/bandit6/</guid>
+      <description>Level goal The password for the next level is stored somewhere on the server and has all of the following properties:&#xA;-owned by user bandit7&#xA;-owned by group bandit6&#xA;-33 bytes in size&#xA;Login ssh bandit6@bandit.labs.overthewire.org -p 2220&#xA;HWasnPhtq9AVKe0dmk45nxy20cvUa6EG&#xA;Doc find (1) - search for files in a directory hierarchy Solution Firstly, I searched the home directory since its smaller than the root in case the file was hidden there. After seeing that it was not, I used find in root / to see that there exists a file with my defined conditions at /var/lib/dpkg/info/bandit7.</description>
     </item>
-    
     <item>
       <title>Bandit-Level 5</title>
-      <link>//localhost:1313/post/bandit5/</link>
+      <link>//localhost:34907/post/bandit5/</link>
       <pubDate>Thu, 15 Aug 2024 17:07:30 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/bandit5/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:&lt;br&gt;
--human-readable&lt;br&gt;
--1033 bytes in size&lt;br&gt;
--not executable&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit5@bandit.labs.overthewire.org&#34;&gt;bandit5@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find (1)             - search for files in a directory hierarchy&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;Make use of the &lt;strong&gt;find&lt;/strong&gt; command to search by size and you can see that there`s only 1 file that matches. Even if there were other files, a simple &lt;strong&gt;ls -la&lt;/strong&gt; would check the other conditions.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit5@bandit:~/inhere$ find  -size 1033c
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./maybehere07/.file2
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit5@bandit:~/inhere$ cd ./maybehere07/
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit5@bandit:~/inhere/maybehere07$ cat .file2
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;HWasnPhtq9AVKe0dmk45nxy20cvUa6EG&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/bandit5/</guid>
+      <description>Level goal The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:&#xA;-human-readable&#xA;-1033 bytes in size&#xA;-not executable&#xA;Login ssh bandit5@bandit.labs.overthewire.org -p 2220&#xA;4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw&#xA;Doc find (1) - search for files in a directory hierarchy Solution Make use of the find command to search by size and you can see that there`s only 1 file that matches.</description>
     </item>
-    
     <item>
       <title>Bandit-Level 4</title>
-      <link>//localhost:1313/post/bandit4/</link>
+      <link>//localhost:34907/post/bandit4/</link>
       <pubDate>Wed, 14 Aug 2024 17:07:27 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/bandit4/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit4@bandit.labs.overthewire.org&#34;&gt;bandit4@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Cat&lt;/strong&gt; files using &lt;strong&gt;operator&lt;/strong&gt; until flag is found.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit4@bandit:~/inhere$ cat &lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-file00&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;Yq&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;fL&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;����&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;x4Fbandit4&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;bandit:&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;~/&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;inhere&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;cat&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;-file01&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;N&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;bandit4&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;bandit:&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;~/&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;inhere&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;cat&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;-file02&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;9&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;F&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;p&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;��&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;tk&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;bandit4&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;bandit:&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;~/&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;inhere&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;cat&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;-file03&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;nQy&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;��&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;͍&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;{+&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;R&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;ZkF&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;*&lt;/span&gt;	&lt;span style=&#34;color:#75af00&#34;&gt;bandit4&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;bandit:&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;~/&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;inhere&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;cat&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;-file04&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;l&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�]�&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;߯-&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;gQ&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;÷&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;wzP&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;ybandit4&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;bandit:&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;~/&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;inhere&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;cat&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;-file05&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;ӻT9&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;��&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;3ˤ&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;��&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;՜&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;F&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;bandit4&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;bandit:&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;~/&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;inhere&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;cat&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;-file06&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;QĹM&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;p4-&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;��!#&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;g&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;�[?&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;2004hbandit4&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;bandit:&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;~/&lt;/span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;inhere&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;cat&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;-file07&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/bandit4/</guid>
+      <description>Level goal The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.&#xA;Login ssh bandit4@bandit.labs.overthewire.org -p 2220&#xA;2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ&#xA;Doc cat (1) - concatenate files and print on the standard output Solution Cat files using operator until flag is found. bandit4@bandit:~/inhere$ cat &amp;lt; -file00 ,Yq�fL����x4Fbandit4@bandit:~/inhere$ cat &amp;lt; -file01 N�bandit4@bandit:~/inhere$ cat &amp;lt; -file02 9�F�p��tk%bandit4@bandit:~/inhere$ cat &amp;lt; -file03 nQy��͍{+R�ZkF*&#x9;bandit4@bandit:~/inhere$ cat &amp;lt; -file04 l�]�߯-@gQ÷wzP�ybandit4@bandit:~/inhere$ cat &amp;lt; -file05 �ӻT9��3ˤ�� T՜F�bandit4@bandit:~/inhere$ cat &amp;lt; -file06 �QĹM�p4-��!</description>
     </item>
-    
     <item>
       <title>Bandit-Level 3</title>
-      <link>//localhost:1313/post/bandit3/</link>
+      <link>//localhost:34907/post/bandit3/</link>
       <pubDate>Tue, 13 Aug 2024 00:23:19 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/bandit3/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in a hidden file in the &lt;strong&gt;inhere&lt;/strong&gt; directory.&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit3@bandit.labs.overthewire.org&#34;&gt;bandit3@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;man (1)              - an interface to the system reference manuals
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usefull ls flags:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-a, --all
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              do not ignore entries starting with .
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-A, --almost-all
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              do not list implied . and ..&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;Use &lt;strong&gt;ls -a&lt;/strong&gt; in order to see files precedented by .`s and navigate to the file then cat the file for the flag.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit3@bandit:~$ ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;inhere
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit3@bandit:~$ cd inhere/
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit3@bandit:~/inhere$ ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit3@bandit:~/inhere$ ls -a
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.  ..  ...Hiding-From-You
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit3@bandit:~/inhere$ cat ...Hiding-From-You
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/bandit3/</guid>
+      <description>Level goal The password for the next level is stored in a hidden file in the inhere directory.&#xA;Login ssh bandit3@bandit.labs.overthewire.org -p 2220&#xA;MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx&#xA;Doc man (1) - an interface to the system reference manuals usefull ls flags: -a, --all do not ignore entries starting with . -A, --almost-all do not list implied . and .. Solution Use ls -a in order to see files precedented by .`s and navigate to the file then cat the file for the flag.</description>
     </item>
-    
     <item>
       <title>Bandit-Level 2</title>
-      <link>//localhost:1313/post/amodel-bandit2/</link>
+      <link>//localhost:34907/post/amodel-bandit2/</link>
       <pubDate>Tue, 13 Aug 2024 00:22:19 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/amodel-bandit2/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in a file called spaces in this filename located in the home directory&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit2@bandit.labs.overthewire.org&#34;&gt;bandit2@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;263JGJPfgU6LtdEvgfWU1XP5yac29mFx&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls (1)               - list directory contents
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;Simply use &amp;quot; &amp;quot; on the file in order to parse the parameter as a string, then get the result using &lt;strong&gt;cat&lt;/strong&gt;.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;spaces in this filename
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ cat &amp;#34;spaces in this filename&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/amodel-bandit2/</guid>
+      <description>Level goal The password for the next level is stored in a file called spaces in this filename located in the home directory.&#xA;Login ssh bandit2@bandit.labs.overthewire.org -p 2220&#xA;263JGJPfgU6LtdEvgfWU1XP5yac29mFx&#xA;Doc ls (1) - list directory contents cat (1) - concatenate files and print on the standard output Solution Simply use &amp;quot; &amp;quot; on the file in order to parse the parameter as a string, then get the result using cat. bandit2@bandit:~$ ls spaces in this filename bandit2@bandit:~$ cat &amp;#34;spaces in this filename&amp;#34; MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx</description>
     </item>
-    
     <item>
       <title>Bandit-Level 1</title>
-      <link>//localhost:1313/post/bandit1/</link>
+      <link>//localhost:34907/post/bandit1/</link>
       <pubDate>Mon, 12 Aug 2024 00:23:19 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/bandit1/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in a file called &lt;strong&gt;&amp;quot;-&amp;quot;&lt;/strong&gt; located in the home directory&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit1@bandit.labs.overthewire.org&#34;&gt;bandit1@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;Using the redirecting operator &lt;strong&gt;&amp;lt;&lt;/strong&gt; when can feed &lt;strong&gt;&amp;quot;-&amp;quot;&lt;/strong&gt; to &lt;strong&gt;cat&lt;/strong&gt; in order to see the contents of the file.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit1@bandit:~$ cat &lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75af00&#34;&gt;263JGJPfgU6LtdEvgfWU1XP5yac29mFx&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/bandit1/</guid>
+      <description>Level goal The password for the next level is stored in a file called &amp;quot;-&amp;quot; located in the home directory&#xA;Login ssh bandit1@bandit.labs.overthewire.org -p 2220&#xA;ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If&#xA;Doc cat (1) - concatenate files and print on the standard output Solution Using the redirecting operator &amp;lt; when can feed &amp;quot;-&amp;quot; to cat in order to see the contents of the file. bandit1@bandit:~$ cat &amp;lt; - 263JGJPfgU6LtdEvgfWU1XP5yac29mFx</description>
     </item>
-    
     <item>
       <title>Bandit-Level 0</title>
-      <link>//localhost:1313/post/bandit0/</link>
+      <link>//localhost:34907/post/bandit0/</link>
       <pubDate>Sun, 11 Aug 2024 00:23:19 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/bandit0/</guid>
-      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in a file called &lt;strong&gt;readme&lt;/strong&gt; located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.&lt;/p&gt;
-&lt;h1 id=&#34;note&#34;&gt;Note!&lt;/h1&gt;
-&lt;p&gt;For all bandit level logins, the default route is using ssh.
-Format:
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh bandit(level)@bandit.labs.overthewire.org -p 2220&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit0@bandit.labs.overthewire.org&#34;&gt;bandit0@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;bandit0&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls (1)               - list directory contents
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;Use &amp;ldquo;ls&amp;rdquo; to list the files in the current directory and then &amp;ldquo;cat&amp;rdquo; to print the contents of &lt;strong&gt;readme&lt;/strong&gt;.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit0@bandit:~$ ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;readme
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit0@bandit:~$ cat readme
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The password you are looking for is: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>//localhost:34907/post/bandit0/</guid>
+      <description>Level goal The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.&#xA;Note! For all bandit level logins, the default route is using ssh. Format: ssh bandit(level)@bandit.labs.overthewire.org -p 2220&#xA;Login ssh bandit0@bandit.</description>
     </item>
-    
   </channel>
 </rss>

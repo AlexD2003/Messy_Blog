@@ -2,33 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on My messy collection</title>
-    <link>//localhost:1313/tags/</link>
+    <link>//localhost:34907/tags/</link>
     <description>Recent content in Tags on My messy collection</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
     <lastBuildDate>Sat, 17 Aug 2024 22:42:32 +0300</lastBuildDate>
-    
-	<atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="//localhost:34907/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Completed</title>
-      <link>//localhost:1313/tags/completed/</link>
+      <link>//localhost:34907/tags/completed/</link>
       <pubDate>Sat, 17 Aug 2024 22:42:32 +0300</pubDate>
-      
-      <guid>//localhost:1313/tags/completed/</guid>
+      <guid>//localhost:34907/tags/completed/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>CTF</title>
-      <link>//localhost:1313/tags/ctf/</link>
+      <link>//localhost:34907/tags/ctf/</link>
       <pubDate>Sat, 17 Aug 2024 22:42:32 +0300</pubDate>
-      
-      <guid>//localhost:1313/tags/ctf/</guid>
+      <guid>//localhost:34907/tags/ctf/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>
