@@ -7,10 +7,33 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Sun, 18 Aug 2024 14:22:07 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2024 15:18:52 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/tags/completed/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bandit-Level 13</title>
+      <link>//localhost:1313/post/bandit13/</link>
+      <pubDate>Sun, 18 Aug 2024 15:18:52 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit13/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on.&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit13@bandit.labs.overthewire.org&#34;&gt;bandit13@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls (1)               - list directory contents
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Simply use &amp;quot; &amp;quot; on the file in order to parse the parameter as a string, then get the result using &lt;strong&gt;cat&lt;/strong&gt;.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;spaces in this filename
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ cat &amp;#34;spaces in this filename&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Bandit-Level 12</title>
@@ -19,20 +42,93 @@
       
       <guid>//localhost:1313/post/bandit12/</guid>
       <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!).&lt;/p&gt;
+&lt;p&gt;The password for the next level is stored in the file &lt;strong&gt;data.txt&lt;/strong&gt;, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!).&lt;/p&gt;
 &lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
 &lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit12@bandit.labs.overthewire.org&#34;&gt;bandit12@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls (1)               - list directory contents
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;file (1)             - determine file type
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar (1)              - an archiving utility
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gzip (1)             - compress or expand files
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bzip2 (1)            - a block-sorting file compressor, v1.0.8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;xxd (1)              - make a hex dump or do the reverse.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;The solution for this level is pretty long and tedious. It`s all about understanding how files are compressed, how to see what a random file in memory actually is and how to get the data behind it.&lt;/p&gt;
 &lt;h4 id=&#34;step-1&#34;&gt;Step 1.&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;spaces in this filename
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ cat &amp;#34;spaces in this filename&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using &lt;strong&gt;mktemp -d&lt;/strong&gt; you can create a temporary directory in the &lt;strong&gt;/tmp&lt;/strong&gt; path in order to process certain files or create stuff where you otherwise wouldn`t have permissions to do so. We will move the initial &lt;strong&gt;data.txt&lt;/strong&gt; to our new directory and use &lt;strong&gt;xxd&lt;/strong&gt; since we know from the start it is a hexdump.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:~$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:~$ mktemp -d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/tmp/tmp.esFHBLf5iQ
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:~$ cp data.txt /tmp/tmp.esFHBLf5iQ/data.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:~$ cd /tmp/tmp.esFHBLf5iQ
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ cat data.txt | xxd -r &amp;gt; data&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h4 id=&#34;step-2&#34;&gt;Step 2.&lt;/h4&gt;
+&lt;p&gt;After every decompression, it is important to check what type of data we have on our hands using &lt;strong&gt;file&lt;/strong&gt; and apply the appropriate tools until we get to something human readable.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: gzip compressed data, was &amp;#34;data2.bin&amp;#34;, last modified: Wed Jul 17 15:57:06 2024, max compression, from Unix, original size modulo 2^32 577
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data.gz  data.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ gzip -d data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: bzip2 compressed data, block size = 900k
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.bz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ bzip2 -d data.bz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: gzip compressed data, was &amp;#34;data4.bin&amp;#34;, last modified: Wed Jul 17 15:57:06 2024, max compression, from Unix, original size modulo 2^32 20480
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ gzip -d data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: POSIX tar archive (GNU)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ tar -xf data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data5.bin  data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data5.bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data5.bin: POSIX tar archive (GNU)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data5.bin data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ tar -xf data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data6.bin  data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data6.bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data6.bin: bzip2 compressed data, block size = 900k
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data6.bin data.bz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ bzip2 -d data.bz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: POSIX tar archive (GNU)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ tar -xf data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data8.bin  data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data8.bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data8.bin: gzip compressed data, was &amp;#34;data9.bin&amp;#34;, last modified: Wed Jul 17 15:57:06 2024, max compression, from Unix, original size modulo 2^32 49
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data8.bin data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ gzip -d data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: ASCII text&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;step-3-wrapping-up&#34;&gt;Step 3. Wrapping up&lt;/h4&gt;
+&lt;p&gt;We can see that we`ve hit an ASCII file. Now using &lt;strong&gt;cat&lt;/strong&gt;, the output of the file should be the flag.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ cat data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -7,10 +7,90 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Sun, 18 Aug 2024 14:22:07 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2024 15:18:52 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bandit-Level 13</title>
+      <link>//localhost:1313/post/bandit13/</link>
+      <pubDate>Sun, 18 Aug 2024 15:18:52 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit13/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;The password for the next level is stored in &lt;strong&gt;/etc/bandit_pass/bandit14&lt;/strong&gt; and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on.&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit13@bandit.labs.overthewire.org&#34;&gt;bandit13@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh (1)              - OpenSSH remote login client
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           [-c cipher_spec] [-D [bind_address:]port] [-E log_file]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           [-e escape_char] [-F configfile] [-I pkcs11] [-i identity_file]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           [-J destination] [-L address] [-l login_name] [-m mac_spec]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           [-O ctl_cmd] [-o option] [-P tag] [-p port] [-R address]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           destination [command [argument ...]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       ssh [-Q query_option]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;a-bit-of-backstory&#34;&gt;A bit of backstory&lt;/h4&gt;
+&lt;p&gt;An SSH key is a secure access credential used in the Secure Shell (SSH) protocol. SSH key pairs use public key infrastructure (PKI) technology, the gold standard for digital identity authentication and encryption, to provide a secure and scalable method of authentication.
+&lt;a href=&#34;https://www.sectigo.com/resource-library/what-is-an-ssh-key&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;By using &lt;strong&gt;ls&lt;/strong&gt;, you can see that there`s a file named &lt;strong&gt;sshkey.private&lt;/strong&gt;.
+Since it is stated that only bandit14 has access to the flag stored in &lt;strong&gt;/etc/bandit_pass/bandit14&lt;/strong&gt; our approach should be making our request as &lt;strong&gt;bandit14&lt;/strong&gt;. When &lt;strong&gt;sshing&lt;/strong&gt; you can use a key as your login method instead of the text password we were used to until now by specifing the -i flag.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit13@bandit:~$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sshkey.private&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+Since bandit13, the endpoint we are also on, is hosted on bandit.labs.overthewire.org, we can simply specify localhost as the host and use &lt;strong&gt;ssh&lt;/strong&gt; in pair with the key to connect and then just &lt;strong&gt;cat&lt;/strong&gt; the respective file.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit13@bandit:~$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sshkey.private
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit13@bandit:~$ ssh -i sshkey.private bandit14@localhost -p 2220
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The authenticity of host &amp;#39;[localhost]:2220 ([127.0.0.1]:2220)&amp;#39; can&amp;#39;t be established.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ED25519 key fingerprint is SHA256:C2ihUBV7ihnV1wUXRb4RrEcLfXC5CXlhmAAM/urerLY.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;This key is not known by any other names.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Could not create directory &amp;#39;/home/bandit13/.ssh&amp;#39; (Permission denied).
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Failed to add the host to the list of known hosts (/home/bandit13/.ssh/known_hosts).
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         _                     _ _ _
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        | |__   __ _ _ __   __| (_) |_
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        | &amp;#39;_ \ / _` | &amp;#39;_ \ / _` | | __|
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        | |_) | (_| | | | | (_| | | |_
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      This is an OverTheWire game server.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            More information on http://www.overthewire.org/wargames
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;!!! You are trying to log into this SSH server with a password on port 2220 from localhost.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;!!! Connecting from localhost is blocked to conserve resources.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;!!! Please log out and log in again.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ,----..            ,----,          .---.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     /   /   \         ,/   .`|         /. ./|
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    /   .     :      ,`   .&amp;#39;  :     .--&amp;#39;.  &amp;#39; ;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   .   /   ;.  \   ;    ;     /    /__./ \ : |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  .   ;   /  ` ; .&amp;#39;___,/    ,&amp;#39; .--&amp;#39;.  &amp;#39;   \&amp;#39; .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ;   |  ; \ ; | |    :     | /___/ \ |    &amp;#39; &amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  |   :  | ; | &amp;#39; ;    |.&amp;#39;;  ; ;   \  \;      :
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  .   |  &amp;#39; &amp;#39; &amp;#39; : `----&amp;#39;  |  |  \   ;  `      |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &amp;#39;   ;  \; /  |     &amp;#39;   :  ;   .   \    .\  ;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   \   \  &amp;#39;,  /      |   |  &amp;#39;    \   \   &amp;#39; \ |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ;   :    /       &amp;#39;   :  |     :   &amp;#39;  |--&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     \   \ .&amp;#39;        ;   |.&amp;#39;       \   \ ;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  www. `---` ver     &amp;#39;---&amp;#39; he       &amp;#39;---&amp;#34; ire.org
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Welcome to OverTheWire!
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;....
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Enjoy your stay!
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Bandit-Level 12</title>
@@ -19,20 +99,93 @@
       
       <guid>//localhost:1313/post/bandit12/</guid>
       <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!).&lt;/p&gt;
+&lt;p&gt;The password for the next level is stored in the file &lt;strong&gt;data.txt&lt;/strong&gt;, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!).&lt;/p&gt;
 &lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
 &lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit12@bandit.labs.overthewire.org&#34;&gt;bandit12@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls (1)               - list directory contents
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;file (1)             - determine file type
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar (1)              - an archiving utility
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gzip (1)             - compress or expand files
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bzip2 (1)            - a block-sorting file compressor, v1.0.8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;xxd (1)              - make a hex dump or do the reverse.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;The solution for this level is pretty long and tedious. It`s all about understanding how files are compressed, how to see what a random file in memory actually is and how to get the data behind it.&lt;/p&gt;
 &lt;h4 id=&#34;step-1&#34;&gt;Step 1.&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;spaces in this filename
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ cat &amp;#34;spaces in this filename&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using &lt;strong&gt;mktemp -d&lt;/strong&gt; you can create a temporary directory in the &lt;strong&gt;/tmp&lt;/strong&gt; path in order to process certain files or create stuff where you otherwise wouldn`t have permissions to do so. We will move the initial &lt;strong&gt;data.txt&lt;/strong&gt; to our new directory and use &lt;strong&gt;xxd&lt;/strong&gt; since we know from the start it is a hexdump.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:~$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:~$ mktemp -d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/tmp/tmp.esFHBLf5iQ
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:~$ cp data.txt /tmp/tmp.esFHBLf5iQ/data.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:~$ cd /tmp/tmp.esFHBLf5iQ
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ cat data.txt | xxd -r &amp;gt; data&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h4 id=&#34;step-2&#34;&gt;Step 2.&lt;/h4&gt;
+&lt;p&gt;After every decompression, it is important to check what type of data we have on our hands using &lt;strong&gt;file&lt;/strong&gt; and apply the appropriate tools until we get to something human readable.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: gzip compressed data, was &amp;#34;data2.bin&amp;#34;, last modified: Wed Jul 17 15:57:06 2024, max compression, from Unix, original size modulo 2^32 577
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data.gz  data.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ gzip -d data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: bzip2 compressed data, block size = 900k
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.bz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ bzip2 -d data.bz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: gzip compressed data, was &amp;#34;data4.bin&amp;#34;, last modified: Wed Jul 17 15:57:06 2024, max compression, from Unix, original size modulo 2^32 20480
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ gzip -d data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: POSIX tar archive (GNU)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ tar -xf data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data5.bin  data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data5.bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data5.bin: POSIX tar archive (GNU)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data5.bin data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ tar -xf data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data6.bin  data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data6.bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data6.bin: bzip2 compressed data, block size = 900k
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data6.bin data.bz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ bzip2 -d data.bz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: POSIX tar archive (GNU)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ tar -xf data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data8.bin  data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data8.bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data8.bin: gzip compressed data, was &amp;#34;data9.bin&amp;#34;, last modified: Wed Jul 17 15:57:06 2024, max compression, from Unix, original size modulo 2^32 49
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data8.bin data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ gzip -d data.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data: ASCII text&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;step-3-wrapping-up&#34;&gt;Step 3. Wrapping up&lt;/h4&gt;
+&lt;p&gt;We can see that we`ve hit an ASCII file. Now using &lt;strong&gt;cat&lt;/strong&gt;, the output of the file should be the flag.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ cat data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
 </description>
     </item>
     
