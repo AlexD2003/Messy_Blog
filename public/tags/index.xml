@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Sun, 18 Aug 2024 15:18:52 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2024 16:40:00 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Completed</title>
       <link>//localhost:1313/tags/completed/</link>
-      <pubDate>Sun, 18 Aug 2024 15:18:52 +0300</pubDate>
+      <pubDate>Sun, 18 Aug 2024 16:40:00 +0300</pubDate>
       
       <guid>//localhost:1313/tags/completed/</guid>
       <description></description>
@@ -24,7 +24,7 @@
     <item>
       <title>CTF</title>
       <link>//localhost:1313/tags/ctf/</link>
-      <pubDate>Sun, 18 Aug 2024 15:18:52 +0300</pubDate>
+      <pubDate>Sun, 18 Aug 2024 16:40:00 +0300</pubDate>
       
       <guid>//localhost:1313/tags/ctf/</guid>
       <description></description>
