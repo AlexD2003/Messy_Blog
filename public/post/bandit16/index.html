@@ -22,7 +22,7 @@
 
 	
 	
-<link rel="shortcut icon" href="//localhost:1313/img/favicon-32x32.png" type="image/png" />
+<link rel="shortcut icon" href="https://i.ibb.co/gRC4J2T/favicon-32x32.jpg" type="image/png" />
 
 
 	
@@ -153,11 +153,37 @@ onload='renderMathInElement(document.body);'></script>
 </div>
 <h1 class="pt-2">Bandit-Level 16</h1>
 
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
+
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
-
+	
+	
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/overthewire'>Overthewire</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/bandit'>Bandit</a>
+	
+	
 	
 
+	
+	&nbsp;&nbsp;
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/ctf'>CTF</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/completed'>Completed</a>
+	
+	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
 		datetime="2024-08-18T16:56:29&#43;03:00">2024-8-18</time>
@@ -173,36 +199,81 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><p>+++
-author = &ldquo;Alex Domnit&rdquo;
-title = &ldquo;Bandit-Level 2&rdquo;
-date = 2024-08-13T00:22:19+03:00
-draft = false
-description = &ldquo;Writeup&rdquo;
-tags = [
-&ldquo;CTF&rdquo;,
-&ldquo;Completed&rdquo;,
-]
-categories = [
-&ldquo;Overthewire&rdquo;,
-&ldquo;Bandit&rdquo;,
-]</p>
-<p>toc = false
-+++</p>
-<h1 id="level-goal">Level goal</h1>
-<p>The password for the next level is stored in a file called spaces in this filename located in the home directory.</p>
+		<div class="c-rich-text"><h1 id="level-goal">Level goal</h1>
+<p>The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL/TLS and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
+Helpful note: Getting “DONE”, “RENEGOTIATING” or “KEYUPDATE”? Read the “CONNECTED COMMANDS” section in the manpage.</p>
 <h3 id="login">Login</h3>
-<p><em>ssh <a href="mailto:bandit2@bandit.labs.overthewire.org">bandit2@bandit.labs.overthewire.org</a> -p 2220</em><br>
-<em>263JGJPfgU6LtdEvgfWU1XP5yac29mFx</em></p>
+<p><em>ssh <a href="mailto:bandit16@bandit.labs.overthewire.org">bandit16@bandit.labs.overthewire.org</a> -p 2220</em><br>
+<em>kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx</em></p>
 <h3 id="doc">Doc</h3>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>ls (1)               - list directory contents
-</span></span><span style="display:flex;"><span>cat (1)              - concatenate files and print on the standard output</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>nmap (1)             - Network exploration tool and security / port scanner
+</span></span><span style="display:flex;"><span>SERVICE/VERSION DETECTION:
+</span></span><span style="display:flex;"><span>  -sV: Probe open ports to determine service/version info
+</span></span><span style="display:flex;"><span>  --version-intensity <span style="color:#111">&lt;</span><span style="color:#f92672">level</span><span style="color:#111">&gt;</span>: Set from 0 (light) to 9 (try all probes)
+</span></span><span style="display:flex;"><span>  --version-light: Limit to most likely probes (intensity 2)
+</span></span><span style="display:flex;"><span>  --version-all: Try every single probe (intensity 9)
+</span></span><span style="display:flex;"><span>  --version-trace: Show detailed version scan activity (for debugging)</span></span></code></pre></div>
+<h3 id="what-is-nmap-ull-use-it-again">What is nmap (u`ll use it again)</h3>
+<p>Nmap (&ldquo;Network Mapper&rdquo;) is a free and open source utility for network discovery and security auditing. Many systems and network administrators also find it useful for tasks such as network inventory, managing service upgrade schedules, and monitoring host or service uptime. Nmap uses raw IP packets in novel ways to determine what hosts are available on the network, what services (application name and version) those hosts are offering, what operating systems (and OS versions) they are running, what type of packet filters/firewalls are in use, and dozens of other characteristics. It was designed to rapidly scan large networks, but works fine against single hosts.
+<a href="https://nmap.org">Source</a></p>
 <h3 id="solution">Solution</h3>
-<p>Simply use &quot; &quot; on the file in order to parse the parameter as a string, then get the result using <strong>cat</strong>.
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit2@bandit:~$ ls
-</span></span><span style="display:flex;"><span>spaces in this filename
-</span></span><span style="display:flex;"><span>bandit2@bandit:~$ cat &#34;spaces in this filename&#34;
-</span></span><span style="display:flex;"><span>MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx</span></span></code></pre></div></p>
+<p>We can use <strong>nmap</strong> in order to scan certain aspects of a network w.r.t. our needs. Sice the level goal states that the password is nested on localhost on a port in range <strong>31000-32000</strong> we should scan the range of ports with a flag to sort them based on the service running on each port. (-sV, see doc)</p>
+<h4 id="scan-phase-may-take-a-while">Scan phase (may take a while)</h4>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit16@bandit:~$ nmap -sV localhost -p31000-32000
+</span></span><span style="display:flex;"><span>Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-18 14:05 UTC
+</span></span><span style="display:flex;"><span>Nmap scan report for localhost (127.0.0.1)
+</span></span><span style="display:flex;"><span>Host is up (0.00014s latency).
+</span></span><span style="display:flex;"><span>Not shown: 996 closed tcp ports (conn-refused)
+</span></span><span style="display:flex;"><span>PORT      STATE SERVICE     VERSION
+</span></span><span style="display:flex;"><span>31046/tcp open  echo
+</span></span><span style="display:flex;"><span>31518/tcp open  ssl/echo
+</span></span><span style="display:flex;"><span>31691/tcp open  echo
+</span></span><span style="display:flex;"><span>31790/tcp open  ssl/unknown
+</span></span><span style="display:flex;"><span>31960/tcp open  echo
+</span></span><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>.</span></span></code></pre></div>
+<h4 id="connect">Connect</h4>
+<p>As we could see previously, there are 5 open ports in the range out of which, only 2 use SSL encryption. Now we use <strong>openssl</strong> just like in the previous level for the ports <strong>31518,31790</strong>.<br>
+<strong>Note.</strong> If at the time of you doing this your key starts with k like mine, try using <strong>-quiet</strong> in order to not KEYUPDATE.
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit16@bandit:~$ openssl s_client -connect localhost:31790 -quiet
+</span></span><span style="display:flex;"><span>Can&#39;t use SSL_get_servername
+</span></span><span style="display:flex;"><span>depth=0 CN = SnakeOil
+</span></span><span style="display:flex;"><span>verify error:num=18:self-signed certificate
+</span></span><span style="display:flex;"><span>verify return:1
+</span></span><span style="display:flex;"><span>depth=0 CN = SnakeOil
+</span></span><span style="display:flex;"><span>verify return:1
+</span></span><span style="display:flex;"><span>kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+</span></span><span style="display:flex;"><span>Correct!
+</span></span><span style="display:flex;"><span>-----BEGIN RSA PRIVATE KEY-----
+</span></span><span style="display:flex;"><span>MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+</span></span><span style="display:flex;"><span>imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+</span></span><span style="display:flex;"><span>Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+</span></span><span style="display:flex;"><span>DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+</span></span><span style="display:flex;"><span>JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+</span></span><span style="display:flex;"><span>x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+</span></span><span style="display:flex;"><span>KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+</span></span><span style="display:flex;"><span>J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+</span></span><span style="display:flex;"><span>d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+</span></span><span style="display:flex;"><span>YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+</span></span><span style="display:flex;"><span>vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
+</span></span><span style="display:flex;"><span>+TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+</span></span><span style="display:flex;"><span>8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+</span></span><span style="display:flex;"><span>SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+</span></span><span style="display:flex;"><span>HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+</span></span><span style="display:flex;"><span>SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+</span></span><span style="display:flex;"><span>R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+</span></span><span style="display:flex;"><span>Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+</span></span><span style="display:flex;"><span>R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+</span></span><span style="display:flex;"><span>L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+</span></span><span style="display:flex;"><span>blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+</span></span><span style="display:flex;"><span>YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+</span></span><span style="display:flex;"><span>77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+</span></span><span style="display:flex;"><span>dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+</span></span><span style="display:flex;"><span>vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+</span></span><span style="display:flex;"><span>-----END RSA PRIVATE KEY-----</span></span></code></pre></div></p>
+<h4 id="connect-to-bandit-17">Connect to bandit 17</h4>
+<p>You can see that the ouput after inserting the correct key was a private key. Copy that key into somefile.private and connect to bandit17 as you normally would but also add the flag <strong>-i</strong> in combination with the file where you copied the private key.</p>
 </div>
 	</section>
 
@@ -313,7 +384,7 @@ categories = [
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		117 words in this page.
+		555 words in this page.
 	</div>
 </div>
 
@@ -337,6 +408,43 @@ categories = [
 <div >
 
 
+
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/post/bandit15/">Bandit-Level 15</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit14/">Bandit-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit13/">Bandit-Level 13</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit12/">Bandit-Level 12</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit11/">Bandit-Level 11</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit10/">Bandit-Level 10</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit9/">Bandit-Level 9</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit8/">Bandit-Level 8</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit7/">Bandit-Level 7</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit6/">Bandit-Level 6</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit5/">Bandit-Level 5</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit4/">Bandit-Level 4</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit3/">Bandit-Level 3</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/amodel-bandit2/">Bandit-Level 2</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit1/">Bandit-Level 1</a>
+		
+</span>
+</div>
 
 </div>
 <div class="pb-2">
