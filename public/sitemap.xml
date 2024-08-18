@@ -3,30 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/categories/bandit/</loc>
-    <lastmod>2024-08-18T16:56:29+03:00</lastmod>
+    <lastmod>2024-08-18T18:45:25+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/post/bandit16/</loc>
-    <lastmod>2024-08-18T16:56:29+03:00</lastmod>
+    <loc>//localhost:1313/post/bandit20/</loc>
+    <lastmod>2024-08-18T18:45:25+03:00</lastmod>
   </url><url>
     <loc>//localhost:1313/categories/</loc>
-    <lastmod>2024-08-18T16:56:29+03:00</lastmod>
+    <lastmod>2024-08-18T18:45:25+03:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/completed/</loc>
-    <lastmod>2024-08-18T16:56:29+03:00</lastmod>
+    <lastmod>2024-08-18T18:45:25+03:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/ctf/</loc>
-    <lastmod>2024-08-18T16:56:29+03:00</lastmod>
+    <lastmod>2024-08-18T18:45:25+03:00</lastmod>
   </url><url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2024-08-18T16:56:29+03:00</lastmod>
+    <lastmod>2024-08-18T18:45:25+03:00</lastmod>
   </url><url>
     <loc>//localhost:1313/categories/overthewire/</loc>
-    <lastmod>2024-08-18T16:56:29+03:00</lastmod>
+    <lastmod>2024-08-18T18:45:25+03:00</lastmod>
   </url><url>
     <loc>//localhost:1313/post/</loc>
-    <lastmod>2024-08-18T16:56:29+03:00</lastmod>
+    <lastmod>2024-08-18T18:45:25+03:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/</loc>
+    <lastmod>2024-08-18T18:45:25+03:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/post/bandit19/</loc>
+    <lastmod>2024-08-18T18:41:33+03:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/post/bandit18/</loc>
+    <lastmod>2024-08-18T18:31:40+03:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/post/bandit17/</loc>
+    <lastmod>2024-08-18T18:26:37+03:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/post/bandit16/</loc>
     <lastmod>2024-08-18T16:56:29+03:00</lastmod>
   </url><url>
     <loc>//localhost:1313/post/bandit15/</loc>
