@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Bandit-Level 28</title>
+	<title>My messy collection  | Bandit-Level 29</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.132.2">
 	
@@ -151,7 +151,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Bandit-Level 28</h1>
+<h1 class="pt-2">Bandit-Level 29</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -186,7 +186,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-08-18T21:54:46&#43;03:00">2024-8-18</time>
+		datetime="2024-08-18T22:14:49&#43;03:00">2024-8-18</time>
 </div>
 
 <hr />
@@ -200,90 +200,83 @@ onload='renderMathInElement(document.body);'></script>
 <article>
 	<section class="mx-auto content">
 		<div class="c-rich-text"><h1 id="level-goal">Level goal</h1>
-<p>There is a git repository at ssh://bandit28-git@localhost/home/bandit28-git/repo via the port 2220. The password for the user bandit28-git is the same as for the user bandit28.<br>
+<p>There is a git repository at ssh://bandit29-git@localhost/home/bandit29-git/repo via the port 2220. The password for the user bandit29-git is the same as for the user bandit29.<br>
 Clone the repository and find the password for the next level.</p>
 <h3 id="login">Login</h3>
-<p><em>ssh <a href="mailto:bandit28@bandit.labs.overthewire.org">bandit28@bandit.labs.overthewire.org</a> -p 2220</em><br>
-<em>Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN</em></p>
+<p><em>ssh <a href="mailto:bandit29@bandit.labs.overthewire.org">bandit29@bandit.labs.overthewire.org</a> -p 2220</em><br>
+<em>4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7</em></p>
 <h3 id="doc">Doc</h3>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>git (1)              - the stupid content tracker
 </span></span><span style="display:flex;"><span>    clone     Clone a repository into a new directory
 </span></span><span style="display:flex;"><span>    log       Show commit logs</span></span></code></pre></div>
 <h4 id="git-documentationhttpsgit-scmcomdoc"><a href="https://git-scm.com/doc">GIT DOCUMENTATION</a></h4>
 <h3 id="solution">Solution</h3>
-<p>Here you`ll need to know how to use a version control system in order to get information that was available at one point in time but now isn`t. Firstly, clone the repo to see what we are working with.
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit28@bandit:~$ mktemp -d
-</span></span><span style="display:flex;"><span>/tmp/tmp.1nHId6dQ2k
-</span></span><span style="display:flex;"><span>bandit28@bandit:~$ cd /tmp/tmp.1nHId6dQ2k
-</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k$ git clone ssh://bandit28-git@localhost:2220/home/bandit28-git/repo
-</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k$ ls
+<p>For this level I`ll use the same initial process I`ve used until now.<br>
+Clone-&gt;Check what`s in the repo-&gt;try to find a password.
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit29@bandit:~$ ls
+</span></span><span style="display:flex;"><span>bandit29@bandit:~$ mktemp -d
+</span></span><span style="display:flex;"><span>/tmp/tmp.DhJWSGlZlb
+</span></span><span style="display:flex;"><span>bandit29@bandit:~$ cd /tmp/tmp.DhJWSGlZlb
+</span></span><span style="display:flex;"><span>bandit29@bandit:/tmp/tmp.DhJWSGlZlb$ git clone ssh://bandit29-git@localhost:2220/home/bandit29-git/repo
+</span></span><span style="display:flex;"><span>Cloning into &#39;repo&#39;...
+</span></span><span style="display:flex;"><span>The authenticity of host &#39;[localhost]:2220 ([127.0.0.1]:2220)&#39; can&#39;t be established.
+</span></span><span style="display:flex;"><span>ED25519 key fingerprint is SHA256:C2ihUBV7ihnV1wUXRb4RrEcLfXC5CXlhmAAM/urerLY.
+</span></span><span style="display:flex;"><span>This key is not known by any other names.
+</span></span><span style="display:flex;"><span>Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</span></span><span style="display:flex;"><span>Could not create directory &#39;/home/bandit29/.ssh&#39; (Permission denied).
+</span></span><span style="display:flex;"><span>Failed to add the host to the list of known hosts (/home/bandit29/.ssh/known_hosts).
+</span></span><span style="display:flex;"><span>                         _                     _ _ _
+</span></span><span style="display:flex;"><span>                        | |__   __ _ _ __   __| (_) |_
+</span></span><span style="display:flex;"><span>                        | &#39;_ \ / _` | &#39;_ \ / _` | | __|
+</span></span><span style="display:flex;"><span>                        | |_) | (_| | | | | (_| | | |_
+</span></span><span style="display:flex;"><span>                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                      This is an OverTheWire game server.
+</span></span><span style="display:flex;"><span>            More information on http://www.overthewire.org/wargames
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bandit29-git@localhost&#39;s password:
+</span></span><span style="display:flex;"><span>remote: Enumerating objects: 16, done.
+</span></span><span style="display:flex;"><span>remote: Counting objects: 100% (16/16), done.
+</span></span><span style="display:flex;"><span>remote: Compressing objects: 100% (11/11), done.
+</span></span><span style="display:flex;"><span>Receiving objects: 100% (16/16), 1.43 KiB | 734.00 KiB/s, done.
+</span></span><span style="display:flex;"><span>remote: Total 16 (delta 2), reused 0 (delta 0), pack-reused 0
+</span></span><span style="display:flex;"><span>Resolving deltas: 100% (2/2), done.
+</span></span><span style="display:flex;"><span>bandit29@bandit:/tmp/tmp.DhJWSGlZlb$ ls
 </span></span><span style="display:flex;"><span>repo
-</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k$ cd repo
-</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ ls
+</span></span><span style="display:flex;"><span>bandit29@bandit:/tmp/tmp.DhJWSGlZlb$ cd repo/
+</span></span><span style="display:flex;"><span>bandit29@bandit:/tmp/tmp.DhJWSGlZlb/repo$ ls
 </span></span><span style="display:flex;"><span>README.md
-</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ cat README.md
+</span></span><span style="display:flex;"><span>bandit29@bandit:/tmp/tmp.DhJWSGlZlb/repo$ cat README.md
 </span></span><span style="display:flex;"><span># Bandit Notes
-</span></span><span style="display:flex;"><span>Some notes for level29 of bandit.
+</span></span><span style="display:flex;"><span>Some notes for bandit30 of bandit.
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>## credentials
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>- username: bandit29
-</span></span><span style="display:flex;"><span>- password: xxxxxxxxxx</span></span></code></pre></div></p>
-<p>As you can see the password seems to not be present this time. <code>git status</code> shows you the current start of the project but, while using <code>git log</code>, you can see the logs of the changes made. Each log has associated a hash specific to it which helps you <strong>checkout</strong> a <strong>commit</strong> at a previous time. Doing that, we could get the password from the text file before the point of removal.</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ git status
-</span></span><span style="display:flex;"><span>On branch master
-</span></span><span style="display:flex;"><span>Your branch is up to date with &#39;origin/master&#39;.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>nothing to commit, working tree clean
-</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ git log
-</span></span><span style="display:flex;"><span>commit 8cbd1e08d1879415541ba19ddee3579e80e3f61a (HEAD -&gt; master, origin/master, origin/HEAD)
-</span></span><span style="display:flex;"><span>Author: Morla Porla <span style="color:#111">&lt;</span><span style="color:#f92672">morla</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#75af00">overthewire</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#75af00">org</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span>Date:   Wed Jul 17 15:57:30 2024 +0000
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    fix info leak
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>commit 73f5d0435070c8922da12177dc93f40b2285e22a
-</span></span><span style="display:flex;"><span>Author: Morla Porla <span style="color:#111">&lt;</span><span style="color:#f92672">morla</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#75af00">overthewire</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#75af00">org</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span>Date:   Wed Jul 17 15:57:30 2024 +0000
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    add missing data
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>commit 5f7265568c7b503b276ec20f677b68c92b43b712
+</span></span><span style="display:flex;"><span>- username: bandit30
+</span></span><span style="display:flex;"><span>- password: <span style="color:#111">&lt;</span><span style="color:#f92672">no</span> <span style="color:#75af00">passwords</span> <span style="color:#75af00">in</span> <span style="color:#75af00">production</span><span style="color:#960050;background-color:#1e0010">!</span><span style="color:#111">&gt;</span></span></span></code></pre></div></p>
+<p>As we can see, there`s no password in <strong>production</strong>. <strong>production</strong> refers to a branch of the project. A repo can have multiple branches at the same time. We can find the password for the next level by listing the branches, moving into another branch and checking the state of the <strong>README</strong> there.
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit29@bandit:/tmp/tmp.DhJWSGlZlb/repo$ git branch -r
+</span></span><span style="display:flex;"><span>  origin/HEAD -&gt; origin/master
+</span></span><span style="display:flex;"><span>  origin/dev
+</span></span><span style="display:flex;"><span>  origin/master
+</span></span><span style="display:flex;"><span>  origin/sploits-dev
+</span></span><span style="display:flex;"><span>bandit29@bandit:/tmp/tmp.DhJWSGlZlb/repo$ git checkout dev
+</span></span><span style="display:flex;"><span>Switched to branch &#39;dev&#39;
+</span></span><span style="display:flex;"><span>bandit29@bandit:/tmp/tmp.DhJWSGlZlb/repo$ git log
+</span></span><span style="display:flex;"><span>commit 5a53eb83a43bac1f0b4e223e469b40ef68a4b6e6 (HEAD -&gt; dev)
 </span></span><span style="display:flex;"><span>Author: Ben Dover <span style="color:#111">&lt;</span><span style="color:#f92672">noone</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#75af00">overthewire</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#75af00">org</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span>Date:   Wed Jul 17 15:57:30 2024 +0000
+</span></span><span style="display:flex;"><span>Date:   Wed Jul 17 15:57:31 2024 +0000
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    initial commit of README.md
-</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ checkout 73f5d0435070c8922da12177dc93f40b2285e22a
-</span></span><span style="display:flex;"><span>checkout: command not found
-</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ git checkout 73f5d0435070c8922da12177dc93f40b2285e22a
-</span></span><span style="display:flex;"><span>Note: switching to &#39;73f5d0435070c8922da12177dc93f40b2285e22a&#39;.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>You are in &#39;detached HEAD&#39; state. You can look around, make experimental
-</span></span><span style="display:flex;"><span>changes and commit them, and you can discard any commits you make in this
-</span></span><span style="display:flex;"><span>state without impacting any branches by switching back to a branch.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>If you want to create a new branch to retain commits you create, you may
-</span></span><span style="display:flex;"><span>do so (now or later) by using -c with the switch command. Example:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  git switch -c <span style="color:#111">&lt;</span><span style="color:#f92672">new-branch-name</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Or undo this operation with:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  git switch -
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Turn off this advice by setting config variable advice.detachedHead to false
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>HEAD is now at 73f5d04 add missing data
-</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ ls
-</span></span><span style="display:flex;"><span>README.md
-</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ cat README.md
+</span></span><span style="display:flex;"><span>bandit29@bandit:/tmp/tmp.DhJWSGlZlb/repo$ cat README.md
 </span></span><span style="display:flex;"><span># Bandit Notes
-</span></span><span style="display:flex;"><span>Some notes for level29 of bandit.
+</span></span><span style="display:flex;"><span>Some notes for bandit30 of bandit.
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>## credentials
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>- username: bandit29
-</span></span><span style="display:flex;"><span>- password: 4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>- password: qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL</span></span></code></pre></div></p>
 </div>
 	</section>
 
@@ -394,7 +387,7 @@ Clone the repository and find the password for the next level.</p>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		429 words in this page.
+		398 words in this page.
 	</div>
 </div>
 
@@ -405,17 +398,17 @@ Clone the repository and find the password for the next level.</p>
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/bandit27/">
+    <a class="flex-grow-0" href="/post/bandit28/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Bandit-Level 27
+        Bandit-Level 28
     </a>
     
     
-    <a class="flex-grow-0" href="/post/bandit29/">
-        Bandit-Level 29
+    <a class="flex-grow-0" href="/post/bandit30/">
+        Bandit-Level 30
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
@@ -429,6 +422,8 @@ Clone the repository and find the password for the next level.</p>
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/bandit28/">Bandit-Level 28</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/bandit27/">Bandit-Level 27</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -456,9 +451,7 @@ Clone the repository and find the password for the next level.</p>
 		
 			<a href="/post/bandit15/">Bandit-Level 15</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit14/">Bandit-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/bandit13/">Bandit-Level 13</a>
+			<a href="/post/bandit14/">Bandit-Level 14</a>
 		
 </span>
 </div>
