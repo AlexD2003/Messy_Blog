@@ -202,21 +202,44 @@ onload='renderMathInElement(document.body);'></script>
 		<div class="c-rich-text"><h1 id="level-goal">Level goal</h1>
 <p>The password for the next level is stored in the file <strong>data.txt</strong>, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by <strong>13</strong> positions.</p>
 <h3 id="login">Login</h3>
-<p><em>ssh <a href="mailto:bandit2@bandit.labs.overthewire.org">bandit2@bandit.labs.overthewire.org</a> -p 2220</em><br>
-<em>263JGJPfgU6LtdEvgfWU1XP5yac29mFx</em></p>
+<p><em>ssh bandit11bandit.labs.overthewire.org -p 2220</em><br>
+<em>dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr</em></p>
 <h3 id="sources">Sources</h3>
-<p><a href="https://mayadevbe.me/posts/overthewire/bandit/level12/">MayADevBe Blog</a> <strong>Cheers!</strong></p>
+<p><a href="https://www.ascii-code.com">Ascii code</a></p>
 <h3 id="doc">Doc</h3>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>tr (1)               - translate or delete characters</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>cat (1)              - concatenate files and print on the standard output</span></span></code></pre></div>
 <h3 id="solution">Solution</h3>
-<p>There are a lot of websites that offer ROT13 encryption/decryption, but sadly there is no build-in ROT13 command in Linux. However, I wanted a solution for the terminal, so I used the tr command for substitution.</p>
-<p>The substitution for ROT13 is A-&gt;N,…,Z-&gt;M. With tr it would be:
+<p>By using <strong>cat</strong> we get the contents of the single file present in the directory. We can see that the present data makes up a string. By simply rotating every character in this string ascendingly by the value 13 we could in theory get the correct answer. I`ve copied the output from <strong>data.txt</strong> into my own terminal, made a c++ program that increases each element in a character array by 13 and then print out the answer.
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit11@bandit:~$ ls
 </span></span><span style="display:flex;"><span>data.txt
 </span></span><span style="display:flex;"><span>bandit11@bandit:~$ cat data.txt
-</span></span><span style="display:flex;"><span>Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4
-</span></span><span style="display:flex;"><span>bandit11@bandit:~$ cat data.txt | tr &#39;A-Za-z&#39; &#39;N-ZA-Mn-za-m&#39;
-</span></span><span style="display:flex;"><span>The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4</span></span></code></pre></div></p>
+</span></span><span style="display:flex;"><span>Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4</span></span></code></pre></div></p>
+<h3 id="c-code-and-compilation">C++ code and compilation</h3>
+<pre tabindex="0"><code>#include &lt;iostream&gt;
+using namespace std;
+
+//Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4
+//rot by 13
+
+char v[100] = {&#39;G&#39;, &#39;u&#39;, &#39;r&#39;, &#39; &#39;, &#39;c&#39;, &#39;n&#39;, &#39;f&#39;, &#39;f&#39;, &#39;j&#39;, &#39;b&#39;, &#39;e&#39;, &#39;q&#39;, &#39; &#39;, &#39;v&#39;, &#39;f&#39;, &#39; &#39;, &#39;7&#39;, &#39;k&#39;, &#39;1&#39;, &#39;6&#39;, &#39;J&#39;, &#39;A&#39;, &#39;r&#39;, &#39;U&#39;, &#39;V&#39;, &#39;v&#39;, &#39;5&#39;, &#39;L&#39;, &#39;x&#39;, &#39;V&#39;, &#39;u&#39;, &#39;J&#39;, &#39;f&#39;, &#39;s&#39;, &#39;S&#39;, &#39;V&#39;, &#39;d&#39;, &#39;b&#39;, &#39;b&#39;, &#39;t&#39;, &#39;a&#39;, &#39;H&#39;, &#39;G&#39;, &#39;l&#39;, &#39;w&#39;, &#39;9&#39;, &#39;D&#39;, &#39;4&#39;};
+
+int main() {
+    for (int i = 0; i &lt; 48; i++) {
+        if (v[i] &gt;= &#39;A&#39; &amp;&amp; v[i] &lt;= &#39;Z&#39;) {
+            v[i] = (v[i] - &#39;A&#39; + 13) % 26 + &#39;A&#39;;
+        }
+        else if (v[i] &gt;= &#39;a&#39; &amp;&amp; v[i] &lt;= &#39;z&#39;) {
+            v[i] = (v[i] - &#39;a&#39; + 13) % 26 + &#39;a&#39;;
+        }
+    }
+    for (int i = 0; i &lt; 48; i++) {
+        cout &lt;&lt; v[i];
+    }
+    return 0;
+}
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>02:09:33 archie@Archie c++ → g++ decrypt.cpp  -o out
+</span></span><span style="display:flex;"><span>02:10:29 archie@Archie c++ → ./out
+</span></span><span style="display:flex;"><span>The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4</span></span></code></pre></div>
 </div>
 	</section>
 
@@ -327,7 +350,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		115 words in this page.
+		298 words in this page.
 	</div>
 </div>
 
@@ -346,6 +369,13 @@ onload='renderMathInElement(document.body);'></script>
         Bandit-Level 10
     </a>
     
+    
+    <a class="flex-grow-0" href="/post/bandit12/">
+        Bandit-Level 12
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >

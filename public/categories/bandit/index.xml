@@ -7,10 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Sat, 17 Aug 2024 22:42:32 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2024 14:22:07 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/categories/bandit/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bandit-Level 12</title>
+      <link>//localhost:1313/post/bandit12/</link>
+      <pubDate>Sun, 18 Aug 2024 14:22:07 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit12/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!).&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit12@bandit.labs.overthewire.org&#34;&gt;bandit12@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls (1)               - list directory contents
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;The solution for this level is pretty long and tedious. It`s all about understanding how files are compressed, how to see what a random file in memory actually is and how to get the data behind it.&lt;/p&gt;
+&lt;h4 id=&#34;step-1&#34;&gt;Step 1.&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;spaces in this filename
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ cat &amp;#34;spaces in this filename&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Bandit-Level 11</title>
@@ -21,21 +45,44 @@
       <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
 &lt;p&gt;The password for the next level is stored in the file &lt;strong&gt;data.txt&lt;/strong&gt;, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by &lt;strong&gt;13&lt;/strong&gt; positions.&lt;/p&gt;
 &lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit2@bandit.labs.overthewire.org&#34;&gt;bandit2@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;263JGJPfgU6LtdEvgfWU1XP5yac29mFx&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;ssh bandit11bandit.labs.overthewire.org -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;sources&#34;&gt;Sources&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://mayadevbe.me/posts/overthewire/bandit/level12/&#34;&gt;MayADevBe Blog&lt;/a&gt; &lt;strong&gt;Cheers!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.ascii-code.com&#34;&gt;Ascii code&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tr (1)               - translate or delete characters&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat (1)              - concatenate files and print on the standard output&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;There are a lot of websites that offer ROT13 encryption/decryption, but sadly there is no build-in ROT13 command in Linux. However, I wanted a solution for the terminal, so I used the tr command for substitution.&lt;/p&gt;
-&lt;p&gt;The substitution for ROT13 is A-&amp;gt;N,…,Z-&amp;gt;M. With tr it would be:
+&lt;p&gt;By using &lt;strong&gt;cat&lt;/strong&gt; we get the contents of the single file present in the directory. We can see that the present data makes up a string. By simply rotating every character in this string ascendingly by the value 13 we could in theory get the correct answer. I`ve copied the output from &lt;strong&gt;data.txt&lt;/strong&gt; into my own terminal, made a c++ program that increases each element in a character array by 13 and then print out the answer.
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit11@bandit:~$ ls
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data.txt
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit11@bandit:~$ cat data.txt
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit11@bandit:~$ cat data.txt | tr &amp;#39;A-Za-z&amp;#39; &amp;#39;N-ZA-Mn-za-m&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;c-code-and-compilation&#34;&gt;C++ code and compilation&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+using namespace std;
+
+//Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4
+//rot by 13
+
+char v[100] = {&amp;#39;G&amp;#39;, &amp;#39;u&amp;#39;, &amp;#39;r&amp;#39;, &amp;#39; &amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;n&amp;#39;, &amp;#39;f&amp;#39;, &amp;#39;f&amp;#39;, &amp;#39;j&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;e&amp;#39;, &amp;#39;q&amp;#39;, &amp;#39; &amp;#39;, &amp;#39;v&amp;#39;, &amp;#39;f&amp;#39;, &amp;#39; &amp;#39;, &amp;#39;7&amp;#39;, &amp;#39;k&amp;#39;, &amp;#39;1&amp;#39;, &amp;#39;6&amp;#39;, &amp;#39;J&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;r&amp;#39;, &amp;#39;U&amp;#39;, &amp;#39;V&amp;#39;, &amp;#39;v&amp;#39;, &amp;#39;5&amp;#39;, &amp;#39;L&amp;#39;, &amp;#39;x&amp;#39;, &amp;#39;V&amp;#39;, &amp;#39;u&amp;#39;, &amp;#39;J&amp;#39;, &amp;#39;f&amp;#39;, &amp;#39;s&amp;#39;, &amp;#39;S&amp;#39;, &amp;#39;V&amp;#39;, &amp;#39;d&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;t&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;H&amp;#39;, &amp;#39;G&amp;#39;, &amp;#39;l&amp;#39;, &amp;#39;w&amp;#39;, &amp;#39;9&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;4&amp;#39;};
+
+int main() {
+    for (int i = 0; i &amp;lt; 48; i++) {
+        if (v[i] &amp;gt;= &amp;#39;A&amp;#39; &amp;amp;&amp;amp; v[i] &amp;lt;= &amp;#39;Z&amp;#39;) {
+            v[i] = (v[i] - &amp;#39;A&amp;#39; + 13) % 26 + &amp;#39;A&amp;#39;;
+        }
+        else if (v[i] &amp;gt;= &amp;#39;a&amp;#39; &amp;amp;&amp;amp; v[i] &amp;lt;= &amp;#39;z&amp;#39;) {
+            v[i] = (v[i] - &amp;#39;a&amp;#39; + 13) % 26 + &amp;#39;a&amp;#39;;
+        }
+    }
+    for (int i = 0; i &amp;lt; 48; i++) {
+        cout &amp;lt;&amp;lt; v[i];
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;02:09:33 archie@Archie c++ → g++ decrypt.cpp  -o out
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;02:10:29 archie@Archie c++ → ./out
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 </description>
     </item>
     
