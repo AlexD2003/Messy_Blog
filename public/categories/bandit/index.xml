@@ -7,10 +7,177 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Sun, 18 Aug 2024 19:37:30 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2024 21:44:49 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/categories/bandit/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bandit-Level 27</title>
+      <link>//localhost:1313/post/bandit27/</link>
+      <pubDate>Sun, 18 Aug 2024 21:44:49 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit27/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo via the port 2220. The password for the user bandit27-git is the same as for the user bandit27.&lt;br&gt;
+Clone the repository and find the password for the next level.&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit27@bandit.labs.overthewire.org&#34;&gt;bandit27@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git (1)              - the stupid content tracker
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    clone     Clone a repository into a new directory&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;git-documentationhttpsgit-scmcomdoc&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;This section of bandit focuses souly on teaching you undestanding what a version control system is and how to use. We are gonna clone the repository using the ssh connection listed above. Modify &lt;strong&gt;localhost&lt;/strong&gt; with &lt;strong&gt;localhost:2220&lt;/strong&gt; since you want to make the request on port 2220. When you are prompted for a password simply put the password of bandit27.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit27@bandit:~$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit27@bandit:~$ mktemp -d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/tmp/tmp.EL8vk6woto
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit27@bandit:/tmp/tmp.EL8vk6woto$ git clone ssh://bandit27-git@localhost:2220/home/bandit27-git/repo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Cloning into &amp;#39;repo&amp;#39;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The authenticity of host &amp;#39;[localhost]:2220 ([127.0.0.1]:2220)&amp;#39; can&amp;#39;t be established.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ED25519 key fingerprint is SHA256:C2ihUBV7ihnV1wUXRb4RrEcLfXC5CXlhmAAM/urerLY.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;This key is not known by any other names.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Could not create directory &amp;#39;/home/bandit27/.ssh&amp;#39; (Permission denied).
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Failed to add the host to the list of known hosts (/home/bandit27/.ssh/known_hosts).
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         _                     _ _ _
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        | |__   __ _ _ __   __| (_) |_
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        | &amp;#39;_ \ / _` | &amp;#39;_ \ / _` | | __|
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        | |_) | (_| | | | | (_| | | |_
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      This is an OverTheWire game server.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            More information on http://www.overthewire.org/wargames
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit27-git@localhost&amp;#39;s password:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;remote: Enumerating objects: 3, done.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;remote: Counting objects: 100% (3/3), done.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;remote: Compressing objects: 100% (2/2), done.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Receiving objects: 100% (3/3), done.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;When you use &lt;strong&gt;clone&lt;/strong&gt;, you are gonna get the files of the repository you are trying to clone at a certain state in time. Now watching our directory, there appears to be a new directory, that being the repository we`ve just cloned. &lt;strong&gt;cat&lt;/strong&gt; &lt;strong&gt;README&lt;/strong&gt; for the password of bandit28.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit27@bandit:/tmp/tmp.EL8vk6woto$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;repo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit27@bandit:/tmp/tmp.EL8vk6woto$ cd repo/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit27@bandit:/tmp/tmp.EL8vk6woto/repo$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;README
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit27@bandit:/tmp/tmp.EL8vk6woto/repo$ cat README
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The password to the next level is: Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bandit-Level 26</title>
+      <link>//localhost:1313/post/bandit26/</link>
+      <pubDate>Sun, 18 Aug 2024 21:40:23 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit26/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;Good job getting a shell! Now hurry and grab the password for bandit27!&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;Keep the login connection from bandit25!&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;All you have to do in this level is set the shell as bash from &lt;strong&gt;vi&lt;/strong&gt; and then &lt;strong&gt;cat&lt;/strong&gt; the password for the next level.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:set shell=/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:shell
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit26@bandit:~$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit27-do  text.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit26@bandit:~$ cat text.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  _                     _ _ _   ___   __
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; | |                   | (_) | |__ \ / /
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; | |__   __ _ _ __   __| |_| |_   ) / /_
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; | &amp;#39;_ \ / _` | &amp;#39;_ \ / _` | | __| / / &amp;#39;_ \
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; | |_) | (_| | | | | (_| | | |_ / /| (_) |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit26@bandit:~$ ./bandit27-do cat /etc/bandit_pass/bandit27
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bandit-Level 25</title>
+      <link>//localhost:1313/post/bandit25/</link>
+      <pubDate>Sun, 18 Aug 2024 20:54:51 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit25/</guid>
+      <description>&lt;h3 id=&#34;sollution-idea--mayadevbe-bloghttpsmayadevbemepostsoverthewirebanditlevel26&#34;&gt;Sollution idea : &lt;a href=&#34;https://mayadevbe.me/posts/overthewire/bandit/level26/&#34;&gt;MayADevBe Blog&lt;/a&gt;&lt;/h3&gt;
+&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.
+NOTE: if you’re a Windows user and typically use Powershell to ssh into bandit: Powershell is known to cause issues with the intended solution to this level. You should use command prompt instead.&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit25@bandit.labs.overthewire.org&#34;&gt;bandit25@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;iCi86ttT4KSNe1armKiwbQNmB3YJP3q4&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;what-is-a-shell&#34;&gt;What is a shell?&lt;/h3&gt;
+&lt;p&gt;A shell is a type of computer program called a command-line interpreter that lets Linux and Unix users control their operating systems with command-line interfaces. Shells allow users to communicate efficiently and directly with their operating systems. &lt;br&gt;
+&lt;a href=&#34;https://www.datacamp.com/blog/what-is-shell&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh (1)              - OpenSSH remote login client&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;step-1&#34;&gt;Step 1.&lt;/h4&gt;
+&lt;p&gt;When we try to log into the shell of bandit26 using ssh, we are instantly being kicked out without being able to do anything. Let`s see what type of shell we are working with&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit25@bandit:~$ cat /etc/passwd | grep bandit26
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit25@bandit:~$ cat /usr/bin/show
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit25@bandit:~$ cat /usr/bin/showtext
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#!/bin/sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export TERM=linux
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;exec more ~/text.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;exit 0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The shell present for user bandit26 seems to be showtext. After inspecting it, it seems like all it does is display a text file and then exit right afterwards.
+A sollution to this problem would be minimizing your terminal as much as possible such that the text file could not be fully loaded, giving you the oportunity to go into &lt;strong&gt;vi&lt;/strong&gt; and execute commands. &lt;a href=&#34;https://en.wikipedia.org/wiki/Vi_(text_editor)&#34;&gt;vi&lt;/a&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal1.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
+&lt;th&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal2.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;After you are in &lt;strong&gt;vi&lt;/strong&gt; you can just press &lt;strong&gt;:&lt;/strong&gt;, put &lt;strong&gt;e&lt;/strong&gt; as execute and:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat /etc/bandit_pass/bandit26
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bandit-Level 24</title>
+      <link>//localhost:1313/post/bandit24/</link>
+      <pubDate>Sun, 18 Aug 2024 20:29:04 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit24/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.&lt;br&gt;
+You do not need to create new connections each time.&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit24@bandit.labs.overthewire.org&#34;&gt;bandit24@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nc (1)               - arbitrary TCP and UDP connections and listens&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;articles&#34;&gt;Articles&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/bash-scripting-introduction-to-bash-and-bash-scripting/&#34;&gt;Usefull read if you are new to bash scripting&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.redhat.com/sysadmin/linux-file-permissions-explained&#34;&gt;File permissions&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;We will write a bash script again since we need to repeatedly send request and we wouldn`t want to do that by hand. Create a temp dir &lt;strong&gt;mktemp -d&lt;/strong&gt; and &lt;strong&gt;touch&lt;/strong&gt; a file and give it execute rights.&lt;/p&gt;
+&lt;h4 id=&#34;my-script&#34;&gt;My script:&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;for a  in {0000..9999}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	echo &amp;#34;gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 $a&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;done | nc localhost 30002 &amp;gt; keys.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat keys.txt | grep bandit25&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;script-breakdown&#34;&gt;Script breakdown&lt;/h4&gt;
+&lt;p&gt;For a variable &lt;strong&gt;a&lt;/strong&gt; in the range of 0000 and 9999, we are gonna &lt;strong&gt;echo&lt;/strong&gt; the current password and &lt;strong&gt;$a&lt;/strong&gt;(values of a) and pipe it to the daemon on port 30002 since you can`t open &lt;strong&gt;nc&lt;/strong&gt; before the loop without it waiting for a kill before letting the loop do the parsing.  The ouput of all of this will be ouput into keys.txt. The &lt;strong&gt;grep&lt;/strong&gt; doesn`t matter since the daemon breaks either way when inserting the correct value.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit24@bandit:/tmp/tmp.dxMibZCdBZ$ ./script.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secret pincode on a single line, separated by a space.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The password of user bandit25 is iCi86ttT4KSNe1armKiwbQNmB3YJP3q4&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Bandit-Level 23</title>
@@ -19,14 +186,14 @@
       
       <guid>//localhost:1313/post/bandit23/</guid>
       <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
-&lt;p&gt;A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in &lt;strong&gt;/etc/cron.d/&lt;/strong&gt; for the configuration and see what command is being executed.
-NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!
+&lt;p&gt;A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in &lt;strong&gt;/etc/cron.d/&lt;/strong&gt; for the configuration and see what command is being executed.&lt;br&gt;
+NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!&lt;br&gt;
 NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…&lt;/p&gt;
 &lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
 &lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit23@bandit.labs.overthewire.org&#34;&gt;bandit23@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;0Zf11ioIjMVN551jX3CmStKLYqjk54Ga&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/bash-scripting-introduction-to-bash-and-bash-scripting/&#34;&gt;Usefull read if you are new to bash scripting&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/bash-scripting-introduction-to-bash-and-bash-scripting/&#34;&gt;Usefull read if you are new to bash scripting&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://www.redhat.com/sysadmin/linux-file-permissions-explained&#34;&gt;File permissions&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;With the same approach as until now, let`s see what the script being run does.&lt;/p&gt;
@@ -55,7 +222,7 @@ NOTE 2: Keep in mind that your shell script is removed once executed, so you may
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        rm -f ./$i
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    fi
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;done&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;You can break the script down line by line and get to the conclusion that basically, it runs all the valid scripts in foo, afterwards deletes all the contents of the directory. The interval for this process is 1 minute so we could just make our own script that **cat&lt;code&gt;s** the password for bandit24 and redirects it somewhere we want. We don&lt;/code&gt;t care what happens to the script afterwards. (Chmod +x) makes a bash script executable. (Chmod +r) makes a bash script able to read.&lt;/p&gt;
+&lt;p&gt;You can break the script down line by line and get to the conclusion that basically, it runs all the valid scripts in foo, afterwards deletes all the contents of the directory. The interval for this process is 1 minute so we could just make our own script that &lt;strong&gt;cat`s&lt;/strong&gt; the password for bandit24 and redirects it somewhere we want. We don`t care what happens to the script afterwards. (Chmod +x) makes a bash script executable. (Chmod +r) makes a bash script able to read.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/etc/cron.d$ mktemp -d
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/tmp/tmp.VKKpqs7HyM
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/etc/cron.d$ cd /tmp/tmp.VKKpqs7HyM
@@ -63,11 +230,10 @@ NOTE 2: Keep in mind that your shell script is removed once executed, so you may
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ chmod +x script.sh
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ nano script.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4 id=&#34;script&#34;&gt;Script:&lt;/h4&gt;
-&lt;p&gt;&amp;rsquo;&amp;rsquo;&#39;
-#!/bin/bash&lt;/p&gt;
-&lt;p&gt;cat /etc/bandit_pass/bandit24 &amp;gt; /tmp/tmp.VKKpqs7HyM/key.txt
-&amp;rsquo;&#39;&#39;&lt;/p&gt;
-&lt;p&gt;Now &lt;strong&gt;cat&lt;/strong&gt; the file that came into your directory.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/bash
+
+cat /etc/bandit_pass/bandit24 &amp;gt; /tmp/tmp.VKKpqs7HyM/key.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now &lt;strong&gt;cat&lt;/strong&gt; the file that came into your directory.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ cat key.txt
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 </description>

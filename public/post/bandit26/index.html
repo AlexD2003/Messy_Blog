@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection </title>
+	<title>My messy collection  | Bandit-Level 26</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.132.2">
 	
@@ -27,9 +27,6 @@
 
 	
 
-	
-	<link rel="alternate" href="/series/index.xml" type="application/rss+xml" title="My messy collection">
-	<link rel="feed" href="/series/index.xml" type="application/rss+xml" title="My messy collection">
 	
 	
 	
@@ -148,16 +145,98 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-					<div class="pb-4">
-		<h1 >
-			<a href="//localhost:1313/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
-		</h1>
-	</div>
+				
+<div>
+	<h2>
+		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
+	</h2>
+</div>
+<h1 class="pt-2">Bandit-Level 26</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+	
+	
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/overthewire'>Overthewire</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/bandit'>Bandit</a>
+	
+	
+	
+
+	
+	&nbsp;&nbsp;
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/ctf'>CTF</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/completed'>Completed</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2024-08-18T21:40:23&#43;03:00">2024-8-18</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h1 id="level-goal">Level goal</h1>
+<p>Good job getting a shell! Now hurry and grab the password for bandit27!</p>
+<h3 id="login">Login</h3>
+<p>Keep the login connection from bandit25!</p>
+<h3 id="solution">Solution</h3>
+<p>All you have to do in this level is set the shell as bash from <strong>vi</strong> and then <strong>cat</strong> the password for the next level.
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>:set shell=/bin/bash
+</span></span><span style="display:flex;"><span>:shell
+</span></span><span style="display:flex;"><span>bandit26@bandit:~$ ls
+</span></span><span style="display:flex;"><span>bandit27-do  text.txt
+</span></span><span style="display:flex;"><span>bandit26@bandit:~$ cat text.txt
+</span></span><span style="display:flex;"><span>  _                     _ _ _   ___   __
+</span></span><span style="display:flex;"><span> | |                   | (_) | |__ \ / /
+</span></span><span style="display:flex;"><span> | |__   __ _ _ __   __| |_| |_   ) / /_
+</span></span><span style="display:flex;"><span> | &#39;_ \ / _` | &#39;_ \ / _` | | __| / / &#39;_ \
+</span></span><span style="display:flex;"><span> | |_) | (_| | | | | (_| | | |_ / /| (_) |
+</span></span><span style="display:flex;"><span> |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/
+</span></span><span style="display:flex;"><span>bandit26@bandit:~$ ./bandit27-do cat /etc/bandit_pass/bandit27
+</span></span><span style="display:flex;"><span>upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB</span></span></code></pre></div></p>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
 	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Posts page" >
+		<a href="/post/" title="Posts page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Posts
 		</a>
 	</li>
@@ -183,7 +262,6 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 	
-	
 	<div id="fastSearch" class="m-0">
 		<input id="searchInput" type="text" size=10 
 			class="bg-gray-100 focus:outline-none border-b border-gray-100 focus:border-eucalyptus-300 md:text-right
@@ -194,105 +272,6 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-
-
-<article>
-	<div>
-		
-	</div>
-</article>
-<div>
-	<section>
-		
-	</section>
-</div>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
@@ -346,16 +325,83 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="a-gray text-sm text-gray-500 leading-tight">
+	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
-			37 pages, 5663 words in total.
+		<br />
+		126 words in this page.
 	</div>
 </div>
+
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
-			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/bandit25/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Bandit-Level 25
+    </a>
+    
+    
+    <a class="flex-grow-0" href="/post/bandit27/">
+        Bandit-Level 27
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
+    
+</div>
+<div >
+
+
+
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/post/bandit25/">Bandit-Level 25</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit24/">Bandit-Level 24</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit23/">Bandit-Level 23</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit22/">Bandit-Level 22</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit21/">Bandit-Level 21</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit20/">Bandit-Level 20</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit19/">Bandit-Level 19</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit18/">Bandit-Level 18</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit17/">Bandit-Level 17</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit16/">Bandit-Level 16</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit15/">Bandit-Level 15</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit14/">Bandit-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit13/">Bandit-Level 13</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit12/">Bandit-Level 12</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit11/">Bandit-Level 11</a>
+		
+</span>
+</div>
+
+</div>
+<div class="pb-2">
+    
+</div>
+
 		</footer>
 		
 

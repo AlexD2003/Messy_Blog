@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Bandit-Level 23</title>
+	<title>My messy collection  | Bandit-Level 28</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.132.2">
 	
@@ -151,7 +151,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Bandit-Level 23</h1>
+<h1 class="pt-2">Bandit-Level 28</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -186,7 +186,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-08-18T19:37:30&#43;03:00">2024-8-18</time>
+		datetime="2024-08-18T21:54:46&#43;03:00">2024-8-18</time>
 </div>
 
 <hr />
@@ -200,56 +200,90 @@ onload='renderMathInElement(document.body);'></script>
 <article>
 	<section class="mx-auto content">
 		<div class="c-rich-text"><h1 id="level-goal">Level goal</h1>
-<p>A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in <strong>/etc/cron.d/</strong> for the configuration and see what command is being executed.<br>
-NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!<br>
-NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…</p>
+<p>There is a git repository at ssh://bandit28-git@localhost/home/bandit28-git/repo via the port 2220. The password for the user bandit28-git is the same as for the user bandit28.<br>
+Clone the repository and find the password for the next level.</p>
 <h3 id="login">Login</h3>
-<p><em>ssh <a href="mailto:bandit23@bandit.labs.overthewire.org">bandit23@bandit.labs.overthewire.org</a> -p 2220</em><br>
-<em>0Zf11ioIjMVN551jX3CmStKLYqjk54Ga</em></p>
+<p><em>ssh <a href="mailto:bandit28@bandit.labs.overthewire.org">bandit28@bandit.labs.overthewire.org</a> -p 2220</em><br>
+<em>Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN</em></p>
 <h3 id="doc">Doc</h3>
-<p><a href="https://www.geeksforgeeks.org/bash-scripting-introduction-to-bash-and-bash-scripting/">Usefull read if you are new to bash scripting</a><br>
-<a href="https://www.redhat.com/sysadmin/linux-file-permissions-explained">File permissions</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>git (1)              - the stupid content tracker
+</span></span><span style="display:flex;"><span>    clone     Clone a repository into a new directory
+</span></span><span style="display:flex;"><span>    log       Show commit logs</span></span></code></pre></div>
+<h4 id="git-documentationhttpsgit-scmcomdoc"><a href="https://git-scm.com/doc">GIT DOCUMENTATION</a></h4>
 <h3 id="solution">Solution</h3>
-<p>With the same approach as until now, let`s see what the script being run does.</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit23@bandit:~$ cd /etc/cron.d
-</span></span><span style="display:flex;"><span>bandit23@bandit:/etc/cron.d$ ls
-</span></span><span style="display:flex;"><span>cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  e2scrub_all  otw-tmp-dir	sysstat
-</span></span><span style="display:flex;"><span>bandit23@bandit:/etc/cron.d$ cat cronjob_bandit24
-</span></span><span style="display:flex;"><span>@reboot bandit24 /usr/bin/cronjob_bandit24.sh <span style="color:#960050;background-color:#1e0010">&amp;</span>&gt; /dev/null
-</span></span><span style="display:flex;"><span>* * * * * bandit24 /usr/bin/cronjob_bandit24.sh <span style="color:#960050;background-color:#1e0010">&amp;</span>&gt; /dev/null
-</span></span><span style="display:flex;"><span>bandit23@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit24.sh
-</span></span><span style="display:flex;"><span>#!/bin/bash
+<p>Here you`ll need to know how to use a version control system in order to get information that was available at one point in time but now isn`t. Firstly, clone the repo to see what we are working with.
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit28@bandit:~$ mktemp -d
+</span></span><span style="display:flex;"><span>/tmp/tmp.1nHId6dQ2k
+</span></span><span style="display:flex;"><span>bandit28@bandit:~$ cd /tmp/tmp.1nHId6dQ2k
+</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k$ git clone ssh://bandit28-git@localhost:2220/home/bandit28-git/repo
+</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k$ ls
+</span></span><span style="display:flex;"><span>repo
+</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k$ cd repo
+</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ ls
+</span></span><span style="display:flex;"><span>README.md
+</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ cat README.md
+</span></span><span style="display:flex;"><span># Bandit Notes
+</span></span><span style="display:flex;"><span>Some notes for level29 of bandit.
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>myname=$(whoami)
+</span></span><span style="display:flex;"><span>## credentials
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>cd /var/spool/$myname/foo
-</span></span><span style="display:flex;"><span>echo &#34;Executing and deleting all scripts in /var/spool/$myname/foo:&#34;
-</span></span><span style="display:flex;"><span>for i in * .*;
-</span></span><span style="display:flex;"><span>do
-</span></span><span style="display:flex;"><span>    if [ &#34;$i&#34; != &#34;.&#34; -a &#34;$i&#34; != &#34;..&#34; ];
-</span></span><span style="display:flex;"><span>    then
-</span></span><span style="display:flex;"><span>        echo &#34;Handling $i&#34;
-</span></span><span style="display:flex;"><span>        owner=&#34;$(stat --format &#34;%U&#34; ./$i)&#34;
-</span></span><span style="display:flex;"><span>        if [ &#34;${owner}&#34; = &#34;bandit23&#34; ]; then
-</span></span><span style="display:flex;"><span>            timeout -s 9 60 ./$i
-</span></span><span style="display:flex;"><span>        fi
-</span></span><span style="display:flex;"><span>        rm -f ./$i
-</span></span><span style="display:flex;"><span>    fi
-</span></span><span style="display:flex;"><span>done</span></span></code></pre></div>
-<p>You can break the script down line by line and get to the conclusion that basically, it runs all the valid scripts in foo, afterwards deletes all the contents of the directory. The interval for this process is 1 minute so we could just make our own script that <strong>cat`s</strong> the password for bandit24 and redirects it somewhere we want. We don`t care what happens to the script afterwards. (Chmod +x) makes a bash script executable. (Chmod +r) makes a bash script able to read.</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit23@bandit:/etc/cron.d$ mktemp -d
-</span></span><span style="display:flex;"><span>/tmp/tmp.VKKpqs7HyM
-</span></span><span style="display:flex;"><span>bandit23@bandit:/etc/cron.d$ cd /tmp/tmp.VKKpqs7HyM
-</span></span><span style="display:flex;"><span>bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ touch script.sh
-</span></span><span style="display:flex;"><span>bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ chmod +x script.sh
-</span></span><span style="display:flex;"><span>bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ nano script.sh</span></span></code></pre></div>
-<h4 id="script">Script:</h4>
-<pre tabindex="0"><code>#!/bin/bash
-
-cat /etc/bandit_pass/bandit24 &gt; /tmp/tmp.VKKpqs7HyM/key.txt
-</code></pre><p>Now <strong>cat</strong> the file that came into your directory.</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ cat key.txt
-</span></span><span style="display:flex;"><span>gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>- username: bandit29
+</span></span><span style="display:flex;"><span>- password: xxxxxxxxxx</span></span></code></pre></div></p>
+<p>As you can see the password seems to not be present this time. <code>git status</code> shows you the current start of the project but, while using <code>git log</code>, you can see the logs of the changes made. Each log has associated a hash specific to it which helps you <strong>checkout</strong> a <strong>commit</strong> at a previous time. Doing that, we could get the password from the text file before the point of removal.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ git status
+</span></span><span style="display:flex;"><span>On branch master
+</span></span><span style="display:flex;"><span>Your branch is up to date with &#39;origin/master&#39;.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>nothing to commit, working tree clean
+</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ git log
+</span></span><span style="display:flex;"><span>commit 8cbd1e08d1879415541ba19ddee3579e80e3f61a (HEAD -&gt; master, origin/master, origin/HEAD)
+</span></span><span style="display:flex;"><span>Author: Morla Porla <span style="color:#111">&lt;</span><span style="color:#f92672">morla</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#75af00">overthewire</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#75af00">org</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>Date:   Wed Jul 17 15:57:30 2024 +0000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fix info leak
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>commit 73f5d0435070c8922da12177dc93f40b2285e22a
+</span></span><span style="display:flex;"><span>Author: Morla Porla <span style="color:#111">&lt;</span><span style="color:#f92672">morla</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#75af00">overthewire</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#75af00">org</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>Date:   Wed Jul 17 15:57:30 2024 +0000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    add missing data
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>commit 5f7265568c7b503b276ec20f677b68c92b43b712
+</span></span><span style="display:flex;"><span>Author: Ben Dover <span style="color:#111">&lt;</span><span style="color:#f92672">noone</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#75af00">overthewire</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#75af00">org</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>Date:   Wed Jul 17 15:57:30 2024 +0000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    initial commit of README.md
+</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ checkout 73f5d0435070c8922da12177dc93f40b2285e22a
+</span></span><span style="display:flex;"><span>checkout: command not found
+</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ git checkout 73f5d0435070c8922da12177dc93f40b2285e22a
+</span></span><span style="display:flex;"><span>Note: switching to &#39;73f5d0435070c8922da12177dc93f40b2285e22a&#39;.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+</span></span><span style="display:flex;"><span>changes and commit them, and you can discard any commits you make in this
+</span></span><span style="display:flex;"><span>state without impacting any branches by switching back to a branch.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>If you want to create a new branch to retain commits you create, you may
+</span></span><span style="display:flex;"><span>do so (now or later) by using -c with the switch command. Example:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  git switch -c <span style="color:#111">&lt;</span><span style="color:#f92672">new-branch-name</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Or undo this operation with:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  git switch -
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Turn off this advice by setting config variable advice.detachedHead to false
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>HEAD is now at 73f5d04 add missing data
+</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ ls
+</span></span><span style="display:flex;"><span>README.md
+</span></span><span style="display:flex;"><span>bandit28@bandit:/tmp/tmp.1nHId6dQ2k/repo$ cat README.md
+</span></span><span style="display:flex;"><span># Bandit Notes
+</span></span><span style="display:flex;"><span>Some notes for level29 of bandit.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>## credentials
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- username: bandit29
+</span></span><span style="display:flex;"><span>- password: 4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ</span></span></code></pre></div>
 </div>
 	</section>
 
@@ -360,7 +394,7 @@ cat /etc/bandit_pass/bandit24 &gt; /tmp/tmp.VKKpqs7HyM/key.txt
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		320 words in this page.
+		429 words in this page.
 	</div>
 </div>
 
@@ -371,21 +405,14 @@ cat /etc/bandit_pass/bandit24 &gt; /tmp/tmp.VKKpqs7HyM/key.txt
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/bandit22/">
+    <a class="flex-grow-0" href="/post/bandit27/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Bandit-Level 22
+        Bandit-Level 27
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/bandit24/">
-        Bandit-Level 24
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -395,6 +422,16 @@ cat /etc/bandit_pass/bandit24 &gt; /tmp/tmp.VKKpqs7HyM/key.txt
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/bandit27/">Bandit-Level 27</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit26/">Bandit-Level 26</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit25/">Bandit-Level 25</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit24/">Bandit-Level 24</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit23/">Bandit-Level 23</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/bandit22/">Bandit-Level 22</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -414,17 +451,7 @@ cat /etc/bandit_pass/bandit24 &gt; /tmp/tmp.VKKpqs7HyM/key.txt
 		
 			<a href="/post/bandit14/">Bandit-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit13/">Bandit-Level 13</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/bandit12/">Bandit-Level 12</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/bandit11/">Bandit-Level 11</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/bandit10/">Bandit-Level 10</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/bandit9/">Bandit-Level 9</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/bandit8/">Bandit-Level 8</a>
+			<a href="/post/bandit13/">Bandit-Level 13</a>
 		
 </span>
 </div>
