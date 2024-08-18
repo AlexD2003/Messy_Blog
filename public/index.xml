@@ -7,10 +7,145 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Sun, 18 Aug 2024 18:45:25 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2024 19:37:30 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bandit-Level 23</title>
+      <link>//localhost:1313/post/bandit23/</link>
+      <pubDate>Sun, 18 Aug 2024 19:37:30 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit23/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in &lt;strong&gt;/etc/cron.d/&lt;/strong&gt; for the configuration and see what command is being executed.&lt;br&gt;
+NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!&lt;br&gt;
+NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit23@bandit.labs.overthewire.org&#34;&gt;bandit23@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;0Zf11ioIjMVN551jX3CmStKLYqjk54Ga&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/bash-scripting-introduction-to-bash-and-bash-scripting/&#34;&gt;Usefull read if you are new to bash scripting&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.redhat.com/sysadmin/linux-file-permissions-explained&#34;&gt;File permissions&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;With the same approach as until now, let`s see what the script being run does.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:~$ cd /etc/cron.d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/etc/cron.d$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  e2scrub_all  otw-tmp-dir	sysstat
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/etc/cron.d$ cat cronjob_bandit24
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@reboot bandit24 /usr/bin/cronjob_bandit24.sh &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;amp;&lt;/span&gt;&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;amp;&lt;/span&gt;&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit24.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;myname=$(whoami)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd /var/spool/$myname/foo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &amp;#34;Executing and deleting all scripts in /var/spool/$myname/foo:&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;for i in * .*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;do
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    if [ &amp;#34;$i&amp;#34; != &amp;#34;.&amp;#34; -a &amp;#34;$i&amp;#34; != &amp;#34;..&amp;#34; ];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    then
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        echo &amp;#34;Handling $i&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        owner=&amp;#34;$(stat --format &amp;#34;%U&amp;#34; ./$i)&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        if [ &amp;#34;${owner}&amp;#34; = &amp;#34;bandit23&amp;#34; ]; then
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            timeout -s 9 60 ./$i
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        fi
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        rm -f ./$i
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    fi
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;done&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can break the script down line by line and get to the conclusion that basically, it runs all the valid scripts in foo, afterwards deletes all the contents of the directory. The interval for this process is 1 minute so we could just make our own script that &lt;strong&gt;cat`s&lt;/strong&gt; the password for bandit24 and redirects it somewhere we want. We don`t care what happens to the script afterwards. (Chmod +x) makes a bash script executable. (Chmod +r) makes a bash script able to read.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/etc/cron.d$ mktemp -d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/tmp/tmp.VKKpqs7HyM
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/etc/cron.d$ cd /tmp/tmp.VKKpqs7HyM
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ touch script.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ chmod +x script.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ nano script.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;script&#34;&gt;Script:&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/bash
+
+cat /etc/bandit_pass/bandit24 &amp;gt; /tmp/tmp.VKKpqs7HyM/key.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now &lt;strong&gt;cat&lt;/strong&gt; the file that came into your directory.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ cat key.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bandit-Level 22</title>
+      <link>//localhost:1313/post/bandit22/</link>
+      <pubDate>Sun, 18 Aug 2024 19:24:13 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit22/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.&lt;/p&gt;
+&lt;p&gt;NOTE: Looking at shell scripts written by other people is a very useful skill. The script for this level is intentionally made easy to read. If you are having problems understanding what it does, try executing it to see the debug information it prints.&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit22@bandit.labs.overthewire.org&#34;&gt;bandit22@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/bash-scripting-introduction-to-bash-and-bash-scripting/&#34;&gt;Usefull read if you are new to bash scripting&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Same cron setup as in level 21, let`s follow the trace.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit22@bandit:~$ cd /etc/cron.d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit22@bandit:/etc/cron.d$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  e2scrub_all  otw-tmp-dir	sysstat
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit22@bandit:/etc/cron.d$ cat cronjob_bandit23
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;amp;&lt;/span&gt;&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;amp;&lt;/span&gt;&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit22@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit23.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;myname=$(whoami)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mytarget=$(echo I am user $myname | md5sum | cut -d &amp;#39; &amp;#39; -f 1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &amp;#34;Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat /etc/bandit_pass/$myname &amp;gt; /tmp/$mytarget&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;This time the script does basically the same thing by copying the password to the level to &lt;strong&gt;/tmp&lt;/strong&gt; and then echoing it to the screen. The difference this time is that it utilizes variables, &lt;strong&gt;&amp;amp;&lt;/strong&gt;. If we would run the script as it is, it should print out the current password.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit22@bandit:/usr/bin$ ./cronjob_bandit23.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Copying passwordfile /etc/bandit_pass/bandit22 to /tmp/8169b67bd894ddbb4412f91573b38db3&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now, you have the option of setting the environment variable &lt;strong&gt;myname&lt;/strong&gt; as bandit23 and run the commands from the script to get the password for level 23.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit22@bandit:/usr/bin$ myname=bandit23
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit22@bandit:/usr/bin$ echo I am user $myname | md5sum | cut -d &amp;#39; &amp;#39; -f 1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;8ca319486bfbbc3663ea0fbe81326349
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit22@bandit:/usr/bin$ cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0Zf11ioIjMVN551jX3CmStKLYqjk54Ga&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bandit-Level 21</title>
+      <link>//localhost:1313/post/bandit21/</link>
+      <pubDate>Sun, 18 Aug 2024 19:13:40 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit21/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit21@bandit.labs.overthewire.org&#34;&gt;bandit21@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;EeoULMCra2q0dSkYj561DX7s1CpBuOBt&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/bash-scripting-introduction-to-bash-and-bash-scripting/&#34;&gt;Usefull read if you are new to bash scripting&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Let`s inspect the cronjob associated with the next level in &lt;strong&gt;/etc/crond.d&lt;/strong&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit21@bandit:~$ cd /etc/cron.d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit21@bandit:/etc/cron.d$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  e2scrub_all  otw-tmp-dir	sysstat
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@reboot bandit22 /usr/bin/cronjob_bandit22.sh &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;amp;&lt;/span&gt;&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;amp;&lt;/span&gt;&amp;gt; /dev/null&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;After using &lt;strong&gt;cat&lt;/strong&gt; on &lt;strong&gt;cronjob_bandit22&lt;/strong&gt; we can see that a shell script is being run at reboot. Navigate to it and find out it`s contents.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat /etc/bandit_pass/bandit22 &amp;gt; /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Basically, all it is doing is redirecting the content of the password for &lt;strong&gt;bandit22&lt;/strong&gt; into a file in the temp registry. Check the file and there`s the flag!
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit21@bandit:/etc/cron.d$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Bandit-Level 20</title>

