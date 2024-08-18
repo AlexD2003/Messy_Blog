@@ -200,20 +200,93 @@ onload='renderMathInElement(document.body);'></script>
 <article>
 	<section class="mx-auto content">
 		<div class="c-rich-text"><h1 id="level-goal">Level goal</h1>
-<p>The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!).</p>
+<p>The password for the next level is stored in the file <strong>data.txt</strong>, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!).</p>
 <h3 id="login">Login</h3>
 <p><em>ssh <a href="mailto:bandit12@bandit.labs.overthewire.org">bandit12@bandit.labs.overthewire.org</a> -p 2220</em><br>
 <em>7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4</em></p>
 <h3 id="doc">Doc</h3>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>ls (1)               - list directory contents
-</span></span><span style="display:flex;"><span>cat (1)              - concatenate files and print on the standard output</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>file (1)             - determine file type
+</span></span><span style="display:flex;"><span>tar (1)              - an archiving utility
+</span></span><span style="display:flex;"><span>gzip (1)             - compress or expand files
+</span></span><span style="display:flex;"><span>bzip2 (1)            - a block-sorting file compressor, v1.0.8
+</span></span><span style="display:flex;"><span>xxd (1)              - make a hex dump or do the reverse.</span></span></code></pre></div>
 <h3 id="solution">Solution</h3>
 <p>The solution for this level is pretty long and tedious. It`s all about understanding how files are compressed, how to see what a random file in memory actually is and how to get the data behind it.</p>
 <h4 id="step-1">Step 1.</h4>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit2@bandit:~$ ls
-</span></span><span style="display:flex;"><span>spaces in this filename
-</span></span><span style="display:flex;"><span>bandit2@bandit:~$ cat &#34;spaces in this filename&#34;
-</span></span><span style="display:flex;"><span>MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx</span></span></code></pre></div>
+<p>Using <strong>mktemp -d</strong> you can create a temporary directory in the <strong>/tmp</strong> path in order to process certain files or create stuff where you otherwise wouldn`t have permissions to do so. We will move the initial <strong>data.txt</strong> to our new directory and use <strong>xxd</strong> since we know from the start it is a hexdump.
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit12@bandit:~$ ls
+</span></span><span style="display:flex;"><span>data.txt
+</span></span><span style="display:flex;"><span>bandit12@bandit:~$ mktemp -d
+</span></span><span style="display:flex;"><span>/tmp/tmp.esFHBLf5iQ
+</span></span><span style="display:flex;"><span>bandit12@bandit:~$ cp data.txt /tmp/tmp.esFHBLf5iQ/data.txt
+</span></span><span style="display:flex;"><span>bandit12@bandit:~$ cd /tmp/tmp.esFHBLf5iQ
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ cat data.txt | xxd -r &gt; data</span></span></code></pre></div></p>
+<h4 id="step-2">Step 2.</h4>
+<p>After every decompression, it is important to check what type of data we have on our hands using <strong>file</strong> and apply the appropriate tools until we get to something human readable.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+</span></span><span style="display:flex;"><span>data: gzip compressed data, was &#34;data2.bin&#34;, last modified: Wed Jul 17 15:57:06 2024, max compression, from Unix, original size modulo 2^32 577
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.gz
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+</span></span><span style="display:flex;"><span>data.gz  data.txt
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.txt
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ gzip -d data.gz
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+</span></span><span style="display:flex;"><span>data
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+</span></span><span style="display:flex;"><span>data: bzip2 compressed data, block size = 900k
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.bz
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ bzip2 -d data.bz
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+</span></span><span style="display:flex;"><span>data
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+</span></span><span style="display:flex;"><span>data: gzip compressed data, was &#34;data4.bin&#34;, last modified: Wed Jul 17 15:57:06 2024, max compression, from Unix, original size modulo 2^32 20480
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.gz
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ gzip -d data.gz
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+</span></span><span style="display:flex;"><span>data
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+</span></span><span style="display:flex;"><span>data: POSIX tar archive (GNU)
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ tar -xf data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+</span></span><span style="display:flex;"><span>data5.bin  data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data5.bin
+</span></span><span style="display:flex;"><span>data5.bin: POSIX tar archive (GNU)
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data5.bin data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+</span></span><span style="display:flex;"><span>data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ tar -xf data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+</span></span><span style="display:flex;"><span>data6.bin  data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data6.bin
+</span></span><span style="display:flex;"><span>data6.bin: bzip2 compressed data, block size = 900k
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data6.bin data.bz
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ bzip2 -d data.bz
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+</span></span><span style="display:flex;"><span>data
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+</span></span><span style="display:flex;"><span>data: POSIX tar archive (GNU)
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ tar -xf data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+</span></span><span style="display:flex;"><span>data8.bin  data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ rm data.tar
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data8.bin
+</span></span><span style="display:flex;"><span>data8.bin: gzip compressed data, was &#34;data9.bin&#34;, last modified: Wed Jul 17 15:57:06 2024, max compression, from Unix, original size modulo 2^32 49
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ mv data8.bin data.gz
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+</span></span><span style="display:flex;"><span>data.gz
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ gzip -d data.gz
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ ls
+</span></span><span style="display:flex;"><span>data
+</span></span><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ file data
+</span></span><span style="display:flex;"><span>data: ASCII text</span></span></code></pre></div>
+<h4 id="step-3-wrapping-up">Step 3. Wrapping up</h4>
+<p>We can see that we`ve hit an ASCII file. Now using <strong>cat</strong>, the output of the file should be the flag.
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>bandit12@bandit:/tmp/tmp.esFHBLf5iQ$ cat data
+</span></span><span style="display:flex;"><span>The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn</span></span></code></pre></div></p>
 </div>
 	</section>
 
@@ -324,7 +397,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		151 words in this page.
+		540 words in this page.
 	</div>
 </div>
 
