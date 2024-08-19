@@ -49,8 +49,8 @@ weight = 2
 [[menu.main]]
 identifier = "about"
 name = "About me"
-url = "/about/"
-weight = 3
+url = "/about/aboutme/"
+weight = 312
 
 [taxonomies]
 category = "categories"
