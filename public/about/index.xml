@@ -7,18 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Mon, 19 Aug 2024 18:09:41 +0300</lastBuildDate>
+    <lastBuildDate>Mon, 02 Jun 2003 18:09:41 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Aboutme</title>
+      <title>About me</title>
       <link>//localhost:1313/about/aboutme/</link>
-      <pubDate>Mon, 19 Aug 2024 18:09:41 +0300</pubDate>
+      <pubDate>Mon, 02 Jun 2003 18:09:41 +0300</pubDate>
       
       <guid>//localhost:1313/about/aboutme/</guid>
-      <description>&lt;p&gt;aaaaaaa&lt;/p&gt;
+      <description>&lt;h1 id=&#34;in-construction&#34;&gt;In construction&lt;/h1&gt;
 </description>
     </item>
     

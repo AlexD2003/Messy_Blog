@@ -7,10 +7,42 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Sun, 18 Aug 2024 22:49:34 +0300</lastBuildDate>
+    <lastBuildDate>Mon, 19 Aug 2024 22:46:42 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/tags/completed/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas-Level 0</title>
+      <link>//localhost:1313/post/natas1/</link>
+      <pubDate>Mon, 19 Aug 2024 22:46:42 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas1/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;This is the introduction level for the &amp;ldquo;Natas&amp;rdquo; wargame hosted by &lt;a href=&#34;https://overthewire.org/wargames/natas/&#34;&gt;Overthewire&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;what-is-natas&#34;&gt;What is Natas?&lt;/h3&gt;
+&lt;p&gt;Natas teaches the basics of serverside web-security.&lt;/p&gt;
+&lt;p&gt;Each level of natas consists of its own website located at &lt;a href=&#34;http://natasX.natas.labs.overthewire.org&#34;&gt;http://natasX.natas.labs.overthewire.org&lt;/a&gt;, where X is the level number. There is no SSH login. To access a level, enter the username for that level (e.g. natas0 for level 0) and its password.&lt;/p&gt;
+&lt;p&gt;Each level has access to the password of the next level. Your job is to somehow obtain that next password and level up. All passwords are also stored in /etc/natas_webpass/. E.g. the password for natas5 is stored in the file /etc/natas_webpass/natas5 and only readable by natas4 and natas5.
+&lt;a href=&#34;https://overthewire.org/wargames/natas/&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;There will be no level goals for this wargame, just get in and mess around.&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas0&lt;/em&gt;/
+&lt;em&gt;Password: natas0&lt;/em&gt;/
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas0.natas.labs.overthewire.org&#34;&gt;http://natas0.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.hubspot.com/website/how-to-inspect#:~:text=What%20does%20%E2%80%9Cinspect%20element%E2%80%9D%20mean,live%20inside%20the%20browser%20window.&#34;&gt;What is inspect element?&lt;/a&gt;&lt;br&gt;
+Inspect element is a feature of modern web browsers that enables anyone to view and edit a website’s source code, including its HTML, CSS, JavaScript, and media files. When the source code is modified with the inspect tool, the changes are shown live inside the browser window.&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Let`s connect to the provided URL with the given credentials. Immediatly we are hit with a prompt saying that the password for the next level is located in this webpage.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/img/natas/natas0-1.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The first thing you want to do when you don`t know what to do in order to progress further is to inspect the webpage you suspect could have a clue and sniff around the guts of the page to see what you can find. In this case, because this is the first level, the password is just there and that`s it! Use it for natas1.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+    &lt;img src=&#34;//localhost:1313/img/natas/natas0-2.png&#34; alt=&#34;image&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;Congrats!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Bandit-Level 32</title>
