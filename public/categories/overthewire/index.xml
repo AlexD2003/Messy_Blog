@@ -7,10 +7,36 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Sun, 18 Aug 2024 22:40:19 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2024 22:49:34 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bandit-Level 32</title>
+      <link>//localhost:1313/post/bandit32/</link>
+      <pubDate>Sun, 18 Aug 2024 22:49:34 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/bandit32/</guid>
+      <description>&lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
+&lt;p&gt;After all this git stuff, it’s time for another escape. Good luck!&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ssh &lt;a href=&#34;mailto:bandit32@bandit.labs.overthewire.org&#34;&gt;bandit32@bandit.labs.overthewire.org&lt;/a&gt; -p 2220&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Since running any command shows $1, which means we could get into another shell. After that, we can see that our associated user is bandit33 wich means we can &lt;strong&gt;cat&lt;/strong&gt; the password for the next level.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;WELCOME TO THE UPPERCASE SHELL
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt;&amp;gt; $0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ whoami
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit33
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cat /etc/bandit_pass/bandit33
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;At this moment, there are no more levels to play in this game. However, we are constantly working
+on new levels and will most likely expand this game with more levels soon.
+Keep an eye out for an announcement on our usual communication channels!
+In the meantime, you could play some of our other wargames.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Bandit-Level 31</title>
