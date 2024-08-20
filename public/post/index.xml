@@ -7,10 +7,36 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Tue, 20 Aug 2024 14:14:57 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 20 Aug 2024 15:10:38 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas-Level 7</title>
+      <link>//localhost:1313/post/natas7/</link>
+      <pubDate>Tue, 20 Aug 2024 15:10:38 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas7/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas7&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: bmg8SvU1LizuWjx3y7xkNERkHxGre0GS&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas7.natas.labs.overthewire.org&#34;&gt;http://natas7.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.w3schools.com/c/c_intro.php&#34;&gt;What is php&lt;/a&gt;&lt;br&gt;
+PHP is a general-purpose scripting language geared towards web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1993 and released in 1995. The PHP reference implementation is now produced by the PHP Group.&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;At the first look, there is nothing on this page exept 2 hyperlinks that both point to a page named Home, About respectivly.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas7-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+&lt;p&gt;Let`s inspect the page and see what lies behind.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas7-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+&lt;p&gt;It seems like the argument after page gets passed to the &lt;strong&gt;index.php&lt;/strong&gt; script in order to display the contents of the page which is a big vulnerability since that means that we can run pretty much anything we please. There`s also a hint that the password we are after is stored in &lt;strong&gt;/etc/natas_webpass/natas8&lt;/strong&gt;, same format as in the Bandit wargame if you have followed that. Alltogether, putting the adress of the file in which the password is stored should spit out it`s contents and grant us access to the next level.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas7-3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+</description>
+    </item>
     
     <item>
       <title>Natas-Level 6</title>
