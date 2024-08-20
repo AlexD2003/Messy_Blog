@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Natas-Level 4</title>
+	<title>My messy collection  | Natas-Level 6</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.132.2">
 	
@@ -151,7 +151,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Natas-Level 4</h1>
+<h1 class="pt-2">Natas-Level 6</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -186,7 +186,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-08-20T12:52:52&#43;03:00">2024-8-20</time>
+		datetime="2024-08-20T14:14:57&#43;03:00">2024-8-20</time>
 </div>
 
 <hr />
@@ -200,35 +200,60 @@ onload='renderMathInElement(document.body);'></script>
 <article>
 	<section class="mx-auto content">
 		<div class="c-rich-text"><h3 id="login">Login</h3>
-<p><em>Username: natas4</em><br>
-<em>Password: QryZXc2e0zahULdHrtHxzyYkj59kUxLQ</em><br>
-<em>URL:      <a href="http://natas4.natas.labs.overthewire.org">http://natas4.natas.labs.overthewire.org</a></em></p>
-<h3 id="tools">Tools</h3>
-<p>From here on out, simply inspecting the page won`t be sufficient in order to solve these level. We will need to make use of some networking tools in order to perform certain actions and exploit vulnerabilities. The primary tool I will be using will be <a href="https://portswigger.net/burp">Burp suite</a>. If you are on linux, install the package correspondent to your distribution. Otherwise follow the download and install page on <strong>portswigger</strong>. As always, and this is valid for any tool, feel free to use whatever software you want or can get your hands onto as long as it has the necessary abilities to complete the task at hand, however, the documentation and solution will be provided in accordance to the tools I use.</p>
+<p><em>Username: natas6</em><br>
+<em>Password: 0RoJwHdSKWFTYR5WuiAewauSuNaBXned</em><br>
+<em>URL:      <a href="http://natas6.natas.labs.overthewire.org">http://natas6.natas.labs.overthewire.org</a></em></p>
 <h3 id="doc">Doc</h3>
-<p>Burp Suite is a proprietary software tool for security assessment and penetration testing of web applications. It software was initially developed in 2003-2006 by Dafydd Stuttard to automate his own security testing needs, after realizing the capabilities of automatable web tools like Selenium.<br>
-<a href="https://en.wikipedia.org/wiki/Burp_Suite">Source.</a><br>
-Burp Suite tutorial and usefull guides:<br>
-<a href="https://portswigger.net/burp/documentation/desktop/getting-started">Port Swigger.</a><br>
-What is a proxy server?<br>
-A proxy server is a system or router that provides a gateway between users and the internet. Therefore, it helps prevent cyber attackers from entering a private network. It is a server, referred to as an “intermediary” because it goes between end-users and the web pages they visit online.<br>
-When a computer connects to the internet, it uses an IP address. This is similar to your home’s street address, telling incoming data where to go and marking outgoing data with a return address for other devices to authenticate. A proxy server is essentially a computer on the internet that has an IP address of its own.<br>
-<a href="https://www.fortinet.com/resources/cyberglossary/proxy-server">Source.</a></p>
+<p><a href="https://www.w3schools.com/c/c_intro.php">What is C?</a><br>
+C is a general-purpose programming language created by Dennis Ritchie at the Bell Laboratories in 1972.<br>
+It is a very popular language, despite being old. The main reason for its popularity is because it is a fundamental language in the field of computer science.<br>
+C is strongly associated with UNIX, as it was developed to write the UNIX operating system.</p>
 <h3 id="solution">Solution</h3>
-<p>After connecting to the webpage with the credentials gained from <strong>natas3</strong>, we are prompted with a display that states that our access request is prohibeted and that the site only accepts requests from the address <strong><a href="http://natas5.natas.labs.overthewire.org">http://natas5.natas.labs.overthewire.org</a></strong>.</p>
-<img src="/img/natas/natas4-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>This time, there`s no need for looking at the website`s guts or packets, there is already a button there that brings you the source of what happens behind and a field that is asking for a secret in order to progress to the next level.</p>
+<img src="/img/natas/natas6-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <br>
-Altough this seems like a monumental impediment, the only thing stopping us from getting access to the service is modifying our request to be made from the provided adress. Firstly, let`s open the proxy tab and intercept the messages when hitting refresh.
-<img src="/img/natas/natas4-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>The source:
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- This stuff in the header has nothing to do with the level --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">link</span> <span style="color:#75af00">rel</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;stylesheet&#34;</span> <span style="color:#75af00">type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;text/css&#34;</span> <span style="color:#75af00">href</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/css/level.css&#34;</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">link</span> <span style="color:#75af00">rel</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;stylesheet&#34;</span> <span style="color:#75af00">href</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/css/jquery-ui.css&#34;</span> <span style="color:#111">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">link</span> <span style="color:#75af00">rel</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;stylesheet&#34;</span> <span style="color:#75af00">href</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/css/wechall.css&#34;</span> <span style="color:#111">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-ui.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">http://natas.labs.overthewire.org/js/wechall-data.js</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/wechall.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span><span style="color:#00a8c8">var</span> <span style="color:#75af00">wechallinfo</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span> <span style="color:#d88200">&#34;level&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;natas6&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;pass&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&lt;censored&gt;&#34;</span> <span style="color:#111">};&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>natas6<span style="color:#111">&lt;/</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">div</span> <span style="color:#75af00">id</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;content&#34;</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">include &#34;includes/secret.inc&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(array_key_exists(&#34;submit&#34;, $_POST)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        if($secret == $_POST[&#39;secret&#39;]) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        print &#34;Access granted. The password for natas7 is &lt;censored&gt;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        print &#34;Wrong secret&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">form</span> <span style="color:#75af00">method</span><span style="color:#f92672">=</span><span style="color:#d88200">post</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>Input secret: <span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">secret</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">type</span><span style="color:#f92672">=</span><span style="color:#d88200">submit</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">submit</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">form</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">div</span> <span style="color:#75af00">id</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;viewsource&#34;</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">a</span> <span style="color:#75af00">href</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;index-source.html&#34;</span><span style="color:#111">&gt;</span>View sourcecode<span style="color:#111">&lt;/</span><span style="color:#f92672">a</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">div</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">div</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span></span></span></code></pre></div></p>
+<p>The <strong>include</strong> argument in C includes libraries and files in order for them to be used in the current context. Looking at the second half part of the source document, we can see that it includes a file at <strong>includes/secret.inc</strong>. Let`s follow the trace to it in order to see what we can find.</p>
+<img src="/img/natas/natas6-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <br>
-<p>Now, we`ve gotta modify the <strong>Referer</strong> on the <strong>HTTP Request</strong> in order for it to have the source of <strong><a href="http://natas5.natas.labs.overthewire.org">http://natas5.natas.labs.overthewire.org</a></strong>.</p>
-<img src="/img/natas/natas4-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br>
-<strong>After modification:</strong>
-<img src="/img/natas/natas4-4.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br>
-Now, pressing <strong>Forward</strong> will redirect the package back to the page as if it was coming from <strong>http://natas5.natas.labs.overthewire.org</strong>, giving us access to the page.
-<img src="/img/natas/natas4-5.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+It seems like that file explicitly contains the secret that is being compared against your input in the code snippet. Inputing it into the field at the index of <strong>natas6</strong> should give us access further.
+<img src="/img/natas/natas6-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <br></div>
 	</section>
 
@@ -339,7 +364,7 @@ Now, pressing <strong>Forward</strong> will redirect the package back to the pag
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		418 words in this page.
+		301 words in this page.
 	</div>
 </div>
 
@@ -350,21 +375,14 @@ Now, pressing <strong>Forward</strong> will redirect the package back to the pag
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/natas3/">
+    <a class="flex-grow-0" href="/post/natas5/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Natas-Level 3
+        Natas-Level 5
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/natas5/">
-        Natas-Level 5
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -374,6 +392,10 @@ Now, pressing <strong>Forward</strong> will redirect the package back to the pag
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/natas5/">Natas-Level 5</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas4/">Natas-Level 4</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/natas3/">Natas-Level 3</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -399,11 +421,7 @@ Now, pressing <strong>Forward</strong> will redirect the package back to the pag
 		
 			<a href="/post/bandit25/">Bandit-Level 25</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit24/">Bandit-Level 24</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/bandit23/">Bandit-Level 23</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/bandit22/">Bandit-Level 22</a>
+			<a href="/post/bandit24/">Bandit-Level 24</a>
 		
 </span>
 </div>

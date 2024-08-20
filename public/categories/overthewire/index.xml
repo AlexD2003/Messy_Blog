@@ -7,10 +7,49 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Tue, 20 Aug 2024 12:15:26 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 20 Aug 2024 12:52:52 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas-Level 4</title>
+      <link>//localhost:1313/post/natas4/</link>
+      <pubDate>Tue, 20 Aug 2024 12:52:52 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas4/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas4&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: QryZXc2e0zahULdHrtHxzyYkj59kUxLQ&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas4.natas.labs.overthewire.org&#34;&gt;http://natas4.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;tools&#34;&gt;Tools&lt;/h3&gt;
+&lt;p&gt;From here on out, simply inspecting the page won`t be sufficient in order to solve these level. We will need to make use of some networking tools in order to perform certain actions and exploit vulnerabilities. The primary tool I will be using will be &lt;a href=&#34;https://portswigger.net/burp&#34;&gt;Burp suite&lt;/a&gt;. If you are on linux, install the package correspondent to your distribution. Otherwise follow the download and install page on &lt;strong&gt;portswigger&lt;/strong&gt;. As always, and this is valid for any tool, feel free to use whatever software you want or can get your hands onto as long as it has the necessary abilities to complete the task at hand, however, the documentation and solution will be provided in accordance to the tools I use.&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;Burp Suite is a proprietary software tool for security assessment and penetration testing of web applications. It software was initially developed in 2003-2006 by Dafydd Stuttard to automate his own security testing needs, after realizing the capabilities of automatable web tools like Selenium.&lt;br&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Burp_Suite&#34;&gt;Source.&lt;/a&gt;&lt;br&gt;
+Burp Suite tutorial and usefull guides:&lt;br&gt;
+&lt;a href=&#34;https://portswigger.net/burp/documentation/desktop/getting-started&#34;&gt;Port Swigger.&lt;/a&gt;&lt;br&gt;
+What is a proxy server?&lt;br&gt;
+A proxy server is a system or router that provides a gateway between users and the internet. Therefore, it helps prevent cyber attackers from entering a private network. It is a server, referred to as an “intermediary” because it goes between end-users and the web pages they visit online.&lt;br&gt;
+When a computer connects to the internet, it uses an IP address. This is similar to your home’s street address, telling incoming data where to go and marking outgoing data with a return address for other devices to authenticate. A proxy server is essentially a computer on the internet that has an IP address of its own.&lt;br&gt;
+&lt;a href=&#34;https://www.fortinet.com/resources/cyberglossary/proxy-server&#34;&gt;Source.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;After connecting to the webpage with the credentials gained from &lt;strong&gt;natas3&lt;/strong&gt;, we are prompted with a display that states that our access request is prohibeted and that the site only accepts requests from the address &lt;strong&gt;&lt;a href=&#34;http://natas5.natas.labs.overthewire.org&#34;&gt;http://natas5.natas.labs.overthewire.org&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas4-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+Altough this seems like a monumental impediment, the only thing stopping us from getting access to the service is modifying our request to be made from the provided adress. Firstly, let`s open the proxy tab and intercept the messages when hitting refresh.
+&lt;img src=&#34;//localhost:1313/img/natas/natas4-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+&lt;p&gt;Now, we`ve gotta modify the &lt;strong&gt;Referer&lt;/strong&gt; on the &lt;strong&gt;HTTP Request&lt;/strong&gt; in order for it to have the source of &lt;strong&gt;&lt;a href=&#34;http://natas5.natas.labs.overthewire.org&#34;&gt;http://natas5.natas.labs.overthewire.org&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas4-3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+&lt;strong&gt;After modification:&lt;/strong&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas4-4.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+Now, pressing &lt;strong&gt;Forward&lt;/strong&gt; will redirect the package back to the page as if it was coming from &lt;strong&gt;http://natas5.natas.labs.overthewire.org&lt;/strong&gt;, giving us access to the page.
+&lt;img src=&#34;//localhost:1313/img/natas/natas4-5.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;</description>
+    </item>
     
     <item>
       <title>Natas-Level 3</title>
@@ -35,7 +74,7 @@ Inspect element is a feature of modern web browsers that enables anyone to view 
 Robots.txt directory:
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;User-agent: *
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Disallow: /s3cr3t/&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-After that, by navigating to the s3cr3t tab, the information for &lt;strong&gt;natas4&lt;/strong&gt; should be present there.
+After that, by navigating to the s3cr3t tab, the information for &lt;strong&gt;natas4&lt;/strong&gt; should be present there.&lt;br&gt;
 /s3cr3t/users.txt:
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;natas4:QryZXc2e0zahULdHrtHxzyYkj59kUxLQ&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
 </description>
