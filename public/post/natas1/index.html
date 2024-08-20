@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Natas-Level 0</title>
+	<title>My messy collection  | Natas-Level 1</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.132.2">
 	
@@ -151,7 +151,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Natas-Level 0</h1>
+<h1 class="pt-2">Natas-Level 1</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -186,7 +186,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-08-19T22:46:42&#43;03:00">2024-8-19</time>
+		datetime="2024-08-20T10:17:35&#43;03:00">2024-8-20</time>
 </div>
 
 <hr />
@@ -199,29 +199,17 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><h1 id="introduction">Introduction</h1>
-<p>This is the introductory level for the &ldquo;Natas&rdquo; wargame hosted by <a href="https://overthewire.org/wargames/natas/">Overthewire</a></p>
-<h3 id="what-is-natas">What is Natas?</h3>
-<p>Natas teaches the basics of serverside web-security.</p>
-<p>Each level of natas consists of its own website located at <a href="http://natasX.natas.labs.overthewire.org">http://natasX.natas.labs.overthewire.org</a>, where X is the level number. There is no SSH login. To access a level, enter the username for that level (e.g. natas0 for level 0) and its password.</p>
-<p>Each level has access to the password of the next level. Your job is to somehow obtain that next password and level up. All passwords are also stored in /etc/natas_webpass/. E.g. the password for natas5 is stored in the file /etc/natas_webpass/natas5 and only readable by natas4 and natas5.
-<a href="https://overthewire.org/wargames/natas/">Source</a></p>
-<p>There will be no level goals for this wargame, just get in and mess around.</p>
-<h3 id="login">Login</h3>
-<p><em>Username: natas0</em>/
-<em>Password: natas0</em>/
-<em>URL:      <a href="http://natas0.natas.labs.overthewire.org">http://natas0.natas.labs.overthewire.org</a></em></p>
+		<div class="c-rich-text"><h3 id="login">Login</h3>
+<p><em>Username: natas1</em>/
+<em>Password: 0nzCigAq7t2iALyvU9xcHlYN4MlkIwlq</em>/
+<em>URL:      <a href="http://natas1.natas.labs.overthewire.org">http://natas1.natas.labs.overthewire.org</a></em></p>
 <h3 id="doc">Doc</h3>
 <p><a href="https://blog.hubspot.com/website/how-to-inspect#:~:text=What%20does%20%E2%80%9Cinspect%20element%E2%80%9D%20mean,live%20inside%20the%20browser%20window.">What is inspect element?</a><br>
 Inspect element is a feature of modern web browsers that enables anyone to view and edit a website’s source code, including its HTML, CSS, JavaScript, and media files. When the source code is modified with the inspect tool, the changes are shown live inside the browser window.</p>
 <h3 id="solution">Solution</h3>
-<p>Let`s connect to the provided URL with the given credentials. Immediatly we are hit with a prompt saying that the password for the next level is located in this webpage.</p>
-<p><img src="/img/natas/natas0-1.png" alt="image"></p>
-<p>The first thing you want to do when you don`t know what to do in order to progress further is to inspect the webpage you suspect could have a clue and sniff around the guts of the page to see what you can find. In this case, because this is the first level, the password is just there and that`s it! Use it for natas1.</p>
-<div style="text-align: center;">
-    <img src="/img/natas/natas0-2.png" alt="image">
-</div>
-<p>Congrats!</p>
+<p>As per the previous level, this is gonna be an incredibly simple sollution. You are prompted with the text that just like before, the password is hidden in the webpage. The difference now is that you cannot right click on the page in order to inspect it. You can still use <strong>Ctrl+Shift+i</strong> or whatever bind you would have on your browser to enter inspect mode and that`s about it.</p>
+<p><img src="/img/natas/natas1-1.png" alt="image">
+<br></p>
 </div>
 	</section>
 
@@ -332,7 +320,7 @@ Inspect element is a feature of modern web browsers that enables anyone to view 
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		284 words in this page.
+		129 words in this page.
 	</div>
 </div>
 
@@ -343,12 +331,12 @@ Inspect element is a feature of modern web browsers that enables anyone to view 
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/bandit32/">
+    <a class="flex-grow-0" href="/post/natas0/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Bandit-Level 32
+        Natas-Level 0
     </a>
     
     
@@ -360,6 +348,8 @@ Inspect element is a feature of modern web browsers that enables anyone to view 
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/natas0/">Natas-Level 0</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/bandit32/">Bandit-Level 32</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -387,9 +377,7 @@ Inspect element is a feature of modern web browsers that enables anyone to view 
 		
 			<a href="/post/bandit20/">Bandit-Level 20</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit19/">Bandit-Level 19</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/bandit18/">Bandit-Level 18</a>
+			<a href="/post/bandit19/">Bandit-Level 19</a>
 		
 </span>
 </div>

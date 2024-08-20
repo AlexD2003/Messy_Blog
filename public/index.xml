@@ -7,17 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Mon, 19 Aug 2024 22:46:42 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 20 Aug 2024 10:17:35 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Natas-Level 0</title>
+      <title>Natas-Level 1</title>
       <link>//localhost:1313/post/natas1/</link>
-      <pubDate>Mon, 19 Aug 2024 22:46:42 +0300</pubDate>
+      <pubDate>Tue, 20 Aug 2024 10:17:35 +0300</pubDate>
       
       <guid>//localhost:1313/post/natas1/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas1&lt;/em&gt;/
+&lt;em&gt;Password: 0nzCigAq7t2iALyvU9xcHlYN4MlkIwlq&lt;/em&gt;/
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas1.natas.labs.overthewire.org&#34;&gt;http://natas1.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.hubspot.com/website/how-to-inspect#:~:text=What%20does%20%E2%80%9Cinspect%20element%E2%80%9D%20mean,live%20inside%20the%20browser%20window.&#34;&gt;What is inspect element?&lt;/a&gt;&lt;br&gt;
+Inspect element is a feature of modern web browsers that enables anyone to view and edit a website’s source code, including its HTML, CSS, JavaScript, and media files. When the source code is modified with the inspect tool, the changes are shown live inside the browser window.&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;As per the previous level, this is gonna be an incredibly simple sollution. You are prompted with the text that just like before, the password is hidden in the webpage. The difference now is that you cannot right click on the page in order to inspect it. You can still use &lt;strong&gt;Ctrl+Shift+i&lt;/strong&gt; or whatever bind you would have on your browser to enter inspect mode and that`s about it.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/img/natas/natas1-1.png&#34; alt=&#34;image&#34;&gt;
+&lt;br&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Natas-Level 0</title>
+      <link>//localhost:1313/post/natas0/</link>
+      <pubDate>Mon, 19 Aug 2024 22:46:42 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas0/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;This is the introductory level for the &amp;ldquo;Natas&amp;rdquo; wargame hosted by &lt;a href=&#34;https://overthewire.org/wargames/natas/&#34;&gt;Overthewire&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;what-is-natas&#34;&gt;What is Natas?&lt;/h3&gt;
@@ -37,11 +57,8 @@ Inspect element is a feature of modern web browsers that enables anyone to view 
 &lt;p&gt;Let`s connect to the provided URL with the given credentials. Immediatly we are hit with a prompt saying that the password for the next level is located in this webpage.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;//localhost:1313/img/natas/natas0-1.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The first thing you want to do when you don`t know what to do in order to progress further is to inspect the webpage you suspect could have a clue and sniff around the guts of the page to see what you can find. In this case, because this is the first level, the password is just there and that`s it! Use it for natas1.&lt;/p&gt;
-&lt;div style=&#34;text-align: center;&#34;&gt;
-    &lt;img src=&#34;//localhost:1313/img/natas/natas0-2.png&#34; alt=&#34;image&#34;&gt;
-&lt;/div&gt;
-&lt;p&gt;Congrats!&lt;/p&gt;
-</description>
+&lt;img src=&#34;//localhost:1313/img/natas/natas0-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;</description>
     </item>
     
     <item>
@@ -1497,8 +1514,10 @@ Format:
       <pubDate>Mon, 02 Jun 2003 18:09:41 +0300</pubDate>
       
       <guid>//localhost:1313/about/aboutme/</guid>
-      <description>&lt;h1 id=&#34;in-construction&#34;&gt;In construction&lt;/h1&gt;
-</description>
+      <description>&lt;h1 id=&#34;who-am-i&#34;&gt;Who am I?&lt;/h1&gt;
+&lt;p&gt;My name is Alex Domnit, I am a third year student at Babeș-Bolyai University of Cluj-Napoca undergoing an English Mathematics and Computer Science Bachelor&amp;rsquo;s degree. I am a passionate cybersecurity enthusiast with a deep love for problem-solving and all things related to information security. Pretty much, the entire collection of my academic and personal projects including any contests or hackatons I have been a part of can be found on my &lt;a href=&#34;https://github.com/AlexD2003&#34;&gt;Github&lt;/a&gt;. If you want to keep up with my current journey and anything im working on in betweeen, you can find it in the &lt;a href=&#34;https://alexdomnit.com&#34;&gt;Posts section&lt;/a&gt; with the tag of ongoing.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/gnar.gif&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;</description>
     </item>
     
   </channel>
