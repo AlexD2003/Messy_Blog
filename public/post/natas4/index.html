@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection </title>
+	<title>My messy collection  | Natas-Level 4</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.132.2">
 	
@@ -27,9 +27,6 @@
 
 	
 
-	
-	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="My messy collection">
-	<link rel="feed" href="/index.xml" type="application/rss+xml" title="My messy collection">
 	
 	
 	
@@ -148,16 +145,109 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-				<div class="pb-4">
-    <h1 >
-        <a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
-    </h1>
+				
+<div>
+	<h2>
+		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
+	</h2>
 </div>
-<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+<h1 class="pt-2">Natas-Level 4</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+	
+	
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/overthewire'>Overthewire</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/natas'>Natas</a>
+	
+	
+	
+
+	
+	&nbsp;&nbsp;
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/ctf'>CTF</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/completed'>Completed</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2024-08-20T12:52:52&#43;03:00">2024-8-20</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h3 id="login">Login</h3>
+<p><em>Username: natas4</em><br>
+<em>Password: QryZXc2e0zahULdHrtHxzyYkj59kUxLQ</em><br>
+<em>URL:      <a href="http://natas4.natas.labs.overthewire.org">http://natas4.natas.labs.overthewire.org</a></em></p>
+<h3 id="tools">Tools</h3>
+<p>From here on out, simply inspecting the page won`t be sufficient in order to solve these level. We will need to make use of some networking tools in order to perform certain actions and exploit vulnerabilities. The primary tool I will be using will be <a href="https://portswigger.net/burp">Burp suite</a>. If you are on linux, install the package correspondent to your distribution. Otherwise follow the download and install page on <strong>portswigger</strong>. As always, and this is valid for any tool, feel free to use whatever software you want or can get your hands onto as long as it has the necessary abilities to complete the task at hand, however, the documentation and solution will be provided in accordance to the tools I use.</p>
+<h3 id="doc">Doc</h3>
+<p>Burp Suite is a proprietary software tool for security assessment and penetration testing of web applications. It software was initially developed in 2003-2006 by Dafydd Stuttard to automate his own security testing needs, after realizing the capabilities of automatable web tools like Selenium.<br>
+<a href="https://en.wikipedia.org/wiki/Burp_Suite">Source.</a><br>
+Burp Suite tutorial and usefull guides:<br>
+<a href="https://portswigger.net/burp/documentation/desktop/getting-started">Port Swigger.</a><br>
+What is a proxy server?<br>
+A proxy server is a system or router that provides a gateway between users and the internet. Therefore, it helps prevent cyber attackers from entering a private network. It is a server, referred to as an “intermediary” because it goes between end-users and the web pages they visit online.<br>
+When a computer connects to the internet, it uses an IP address. This is similar to your home’s street address, telling incoming data where to go and marking outgoing data with a return address for other devices to authenticate. A proxy server is essentially a computer on the internet that has an IP address of its own.<br>
+<a href="https://www.fortinet.com/resources/cyberglossary/proxy-server">Source.</a></p>
+<h3 id="solution">Solution</h3>
+<p>After connecting to the webpage with the credentials gained from <strong>natas3</strong>, we are prompted with a display that states that our access request is prohibeted and that the site only accepts requests from the address <strong><a href="http://natas5.natas.labs.overthewire.org">http://natas5.natas.labs.overthewire.org</a></strong>.</p>
+<img src="/img/natas/natas4-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+Altough this seems like a monumental impediment, the only thing stopping us from getting access to the service is modifying our request to be made from the provided adress. Firstly, let`s open the proxy tab and intercept the messages when hitting refresh.
+<img src="/img/natas/natas4-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+<p>Now, we`ve gotta modify the <strong>Referer</strong> on the <strong>HTTP Request</strong> in order for it to have the source of <strong><a href="http://natas5.natas.labs.overthewire.org">http://natas5.natas.labs.overthewire.org</a></strong>.</p>
+<img src="/img/natas/natas4-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+<strong>After modification:</strong>
+<img src="/img/natas/natas4-4.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+Now, pressing <strong>Forward</strong> will redirect the package back to the page as if it was coming from <strong>http://natas5.natas.labs.overthewire.org</strong>, giving us access to the page.
+<img src="/img/natas/natas4-5.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br></div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Posts page" >
+		<a href="/post/" title="Posts page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Posts
 		</a>
 	</li>
@@ -183,7 +273,6 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 	
-	
 	<div id="fastSearch" class="m-0">
 		<input id="searchInput" type="text" size=10 
 			class="bg-gray-100 focus:outline-none border-b border-gray-100 focus:border-eucalyptus-300 md:text-right
@@ -194,234 +283,6 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-
-<div class="font-serif text-medium-red-violet-400 pt-3">
-	Try using the search bar, the site is indeed cluttered!
-</div>
-<hr  class="pt-2"/>
-
-
-<div>
-	<section>
-		
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="//localhost:1313/post/bandit1/">
-			Bandit-Level 1
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		Writeup</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-	
-	
-	
-	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
-		href='/categories/overthewire'>Overthewire</a>&nbsp;&#47;
-	
-	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
-		href='/categories/bandit'>Bandit</a>
-	
-	
-	
-
-	
-	&nbsp;&nbsp;
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/ctf'>CTF</a>&nbsp;&#47;
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/completed'>Completed</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2024-08-12T00:23:19&#43;03:00">2024-8-12</time>
-	</div>
-</div>
-
-		</div>
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="//localhost:1313/post/bandit0/">
-			Bandit-Level 0
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		Writeup</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-	
-	
-	
-	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
-		href='/categories/overthewire'>Overthewire</a>&nbsp;&#47;
-	
-	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
-		href='/categories/bandit'>Bandit</a>
-	
-	
-	
-
-	
-	&nbsp;&nbsp;
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/ctf'>CTF</a>&nbsp;&#47;
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/completed'>Completed</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2024-08-11T00:23:19&#43;03:00">2024-8-11</time>
-	</div>
-</div>
-
-		</div>
-		
-	</section>
-</div>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
@@ -475,155 +336,75 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="a-gray text-sm text-gray-500 leading-tight">
+	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
-			50 pages, 8677 words in total.
+		<br />
+		418 words in this page.
 	</div>
 </div>
+
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/natas3/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Natas-Level 3
+    </a>
+    
+    
+</div>
+<div >
 
 
 
-<hr />
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/post/natas3/">Natas-Level 3</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas2/">Natas-Level 2</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas1/">Natas-Level 1</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas0/">Natas-Level 0</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit32/">Bandit-Level 32</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit31/">Bandit-Level 31</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit30/">Bandit-Level 30</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit29/">Bandit-Level 29</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit28/">Bandit-Level 28</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit27/">Bandit-Level 27</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit26/">Bandit-Level 26</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit25/">Bandit-Level 25</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit24/">Bandit-Level 24</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit23/">Bandit-Level 23</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit22/">Bandit-Level 22</a>
+		
+</span>
+</div>
 
-
-<ul class="flex justify-between">
+</div>
+<div class="pb-2">
     
-    <li class="page-item">
-        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevrons-left h-4 w-4 relative -bottom-1">
-                    <polyline points="11 17 6 12 11 7"></polyline>
-                    <polyline points="18 17 13 12 18 7"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/6/"  class="page-link" aria-label="Previous"><span
-                aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevron-left h-4 w-4 relative -bottom-1">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    <div class="flex-grow-3"></div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item"><a class="page-link" href="/">1</a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/2/">2</a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/3/">3</a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/6/">6</a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item active"><a class="page-link" href="/page/7/">7</a>
-    </li>
-    
-    
-    <div class="flex-grow-3"></div>
-    <li class="page-item disabled">
-        <a  class="page-link" aria-label="Next"><span
-                aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevron-right h-4 w-4 relative -bottom-1">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/7/" class="page-link" aria-label="Last"><span aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevrons-right h-4 w-4 relative -bottom-1">
-                    <polyline points="13 17 18 12 13 7"></polyline>
-                    <polyline points="6 17 11 12 6 7"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    
-</ul>
-
-
-
+</div>
 
 		</footer>
 		
