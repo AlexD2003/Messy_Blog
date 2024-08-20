@@ -30,8 +30,8 @@ Each level has access to the password of the next level. Your job is to somehow 
 There will be no level goals for this wargame, just get in and mess around.
 
 ### Login
-*Username: natas0*/
-*Password: natas0*/
+*Username: natas0*\
+*Password: natas0*\
 *URL:      http://natas0.natas.labs.overthewire.org*
 
 ### Doc

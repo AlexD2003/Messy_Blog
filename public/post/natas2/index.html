@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | About me</title>
+	<title>My messy collection  | Natas-Level 2</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.132.2">
 	
@@ -151,16 +151,42 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">About me</h1>
+<h1 class="pt-2">Natas-Level 2</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
-
+	
+	
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/overthewire'>Overthewire</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/natas'>Natas</a>
+	
+	
 	
 
+	
+	&nbsp;&nbsp;
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/ctf'>CTF</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/completed'>Completed</a>
+	
+	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2003-06-02T18:09:41&#43;03:00">2003-6-2</time>
+		datetime="2024-08-20T11:34:10&#43;03:00">2024-8-20</time>
 </div>
 
 <hr />
@@ -173,11 +199,29 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><h1 id="who-am-i">Who am I?</h1>
-<p>My name is Alex Domnit, I am a third year student at Babeș-Bolyai University of Cluj-Napoca undergoing an English Mathematics and Computer Science Bachelor&rsquo;s degree. I am a passionate cybersecurity enthusiast with a deep love for problem-solving and all things related to information security.<br>
-Pretty much, the entire collection of my academic and personal projects including any contests or hackatons I have been a part of can be found on my <a href="https://github.com/AlexD2003">Github</a>. If you want to keep up with my current journey and anything im working on in betweeen, you can find it in the <a href="https://alexdomnit.com">Posts section</a> with the tag of ongoing.</p>
-<img src="/img/gnar.gif" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br></div>
+		<div class="c-rich-text"><h3 id="login">Login</h3>
+<p><em>Username: natas2</em><br>
+<em>Password: TguMNxKo1DSa1tujBLuZJnDUlCcUAPlI</em><br>
+<em>URL:      <a href="http://natas2.natas.labs.overthewire.org">http://natas2.natas.labs.overthewire.org</a></em></p>
+<h3 id="doc">Doc</h3>
+<p><a href="https://blog.hubspot.com/website/how-to-inspect#:~:text=What%20does%20%E2%80%9Cinspect%20element%E2%80%9D%20mean,live%20inside%20the%20browser%20window.">What is inspect element?</a><br>
+Inspect element is a feature of modern web browsers that enables anyone to view and edit a website’s source code, including its HTML, CSS, JavaScript, and media files. When the source code is modified with the inspect tool, the changes are shown live inside the browser window.<br>
+<a href="https://slickplan.com/blog/types-of-website-structure#:~:text=The%20website's%20structure%20refers%20to,%2C%20sequential%2C%20matrix%20and%20database.">How is a webpage structured?</a></p>
+<h3 id="solution">Solution</h3>
+<p>At the first entry on the page, we are prompted with the text &ldquo;There is nothing on this page&rdquo;. Surprisingly, this time that is actually correct. After a quick inspection we can see that the dot at the end of the sentance is actually an image. This wouldn`t be very uselfull usually but in the img tag, we can see that the image is locally hosted and we are prompted with the actual location of the image. If you understand how a webpage is structured, you can see that it is possible to navigate the contents if you know what you are looking for.</p>
+<img src="/img/natas/natas2-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+There seems to be a file index at <strong>/files</strong>. After navigating to that directory, there seems to be a <strong>users.txt</strong> file present that contains the credentials for <strong>natas3</strong>.
+<img src="/img/natas/natas2-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+users.txt:
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span># username:password
+</span></span><span style="display:flex;"><span>alice:BYNdCesZqW
+</span></span><span style="display:flex;"><span>bob:jw2ueICLvT
+</span></span><span style="display:flex;"><span>charlie:G5vCxkVV3m
+</span></span><span style="display:flex;"><span>natas3:3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH
+</span></span><span style="display:flex;"><span>eve:zo4mJWyNj2
+</span></span><span style="display:flex;"><span>mallory:9urtcpzBmH</span></span></code></pre></div></div>
 	</section>
 
 
@@ -194,7 +238,8 @@ Pretty much, the entire collection of my academic and personal projects includin
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Posts page" >
+		<a href="/post/" title="Posts page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Posts
 		</a>
 	</li>
@@ -212,8 +257,7 @@ Pretty much, the entire collection of my academic and personal projects includin
 	</li>
 	
 	<li class="px-1 md:px-0">
-		<a href="/about/aboutme/" title="About me page" 
-			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+		<a href="/about/aboutme/" title="About me page" >
 			About me
 		</a>
 	</li>
@@ -287,7 +331,7 @@ Pretty much, the entire collection of my academic and personal projects includin
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		105 words in this page.
+		206 words in this page.
 	</div>
 </div>
 
@@ -298,9 +342,17 @@ Pretty much, the entire collection of my academic and personal projects includin
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
+    <a class="flex-grow-0" href="/post/natas1/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Natas-Level 1
+    </a>
     
-    <a class="flex-grow-0" href="/post/bandit0/">
-        Bandit-Level 0
+    
+    <a class="flex-grow-0" href="/post/natas3/">
+        Natas-Level 3
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
@@ -310,6 +362,43 @@ Pretty much, the entire collection of my academic and personal projects includin
 <div >
 
 
+
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/post/natas1/">Natas-Level 1</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas0/">Natas-Level 0</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit32/">Bandit-Level 32</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit31/">Bandit-Level 31</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit30/">Bandit-Level 30</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit29/">Bandit-Level 29</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit28/">Bandit-Level 28</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit27/">Bandit-Level 27</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit26/">Bandit-Level 26</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit25/">Bandit-Level 25</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit24/">Bandit-Level 24</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit23/">Bandit-Level 23</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit22/">Bandit-Level 22</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit21/">Bandit-Level 21</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/bandit20/">Bandit-Level 20</a>
+		
+</span>
+</div>
 
 </div>
 <div class="pb-2">

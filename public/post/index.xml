@@ -7,10 +7,70 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Tue, 20 Aug 2024 10:17:35 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 20 Aug 2024 12:15:26 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas-Level 3</title>
+      <link>//localhost:1313/post/natas3/</link>
+      <pubDate>Tue, 20 Aug 2024 12:15:26 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas3/</guid>
+      <description>&lt;h1 id=&#34;solution-idea&#34;&gt;Solution idea&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://mcpa.github.io/natas/wargame/web/overthewire/2015/09/28/natas03/&#34;&gt;Hammer of thor&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas3&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: 3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas3.natas.labs.overthewire.org&#34;&gt;http://natas3.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.hubspot.com/website/how-to-inspect#:~:text=What%20does%20%E2%80%9Cinspect%20element%E2%80%9D%20mean,live%20inside%20the%20browser%20window.&#34;&gt;What is inspect element?&lt;/a&gt;&lt;br&gt;
+Inspect element is a feature of modern web browsers that enables anyone to view and edit a website’s source code, including its HTML, CSS, JavaScript, and media files. When the source code is modified with the inspect tool, the changes are shown live inside the browser window.&lt;br&gt;
+&lt;a href=&#34;https://slickplan.com/blog/types-of-website-structure#:~:text=The%20website&#39;s%20structure%20refers%20to,%2C%20sequential%2C%20matrix%20and%20database.&#34;&gt;How is a webpage structured?&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;By inspecting the page, you can see a text snippet that says :
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- No more information leaks!! Not even Google will find it this time... --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;So that makes me start thinking about search engines. In a nutshell the robots.txt file on a webpage tells search engines which directories not to enter.&lt;br&gt;
+Robots.txt directory:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;User-agent: *
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Disallow: /s3cr3t/&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+After that, by navigating to the s3cr3t tab, the information for &lt;strong&gt;natas4&lt;/strong&gt; should be present there.
+/s3cr3t/users.txt:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;natas4:QryZXc2e0zahULdHrtHxzyYkj59kUxLQ&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Natas-Level 2</title>
+      <link>//localhost:1313/post/natas2/</link>
+      <pubDate>Tue, 20 Aug 2024 11:34:10 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas2/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas2&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: TguMNxKo1DSa1tujBLuZJnDUlCcUAPlI&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas2.natas.labs.overthewire.org&#34;&gt;http://natas2.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.hubspot.com/website/how-to-inspect#:~:text=What%20does%20%E2%80%9Cinspect%20element%E2%80%9D%20mean,live%20inside%20the%20browser%20window.&#34;&gt;What is inspect element?&lt;/a&gt;&lt;br&gt;
+Inspect element is a feature of modern web browsers that enables anyone to view and edit a website’s source code, including its HTML, CSS, JavaScript, and media files. When the source code is modified with the inspect tool, the changes are shown live inside the browser window.&lt;br&gt;
+&lt;a href=&#34;https://slickplan.com/blog/types-of-website-structure#:~:text=The%20website&#39;s%20structure%20refers%20to,%2C%20sequential%2C%20matrix%20and%20database.&#34;&gt;How is a webpage structured?&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;At the first entry on the page, we are prompted with the text &amp;ldquo;There is nothing on this page&amp;rdquo;. Surprisingly, this time that is actually correct. After a quick inspection we can see that the dot at the end of the sentance is actually an image. This wouldn`t be very uselfull usually but in the img tag, we can see that the image is locally hosted and we are prompted with the actual location of the image. If you understand how a webpage is structured, you can see that it is possible to navigate the contents if you know what you are looking for.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas2-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+There seems to be a file index at &lt;strong&gt;/files&lt;/strong&gt;. After navigating to that directory, there seems to be a &lt;strong&gt;users.txt&lt;/strong&gt; file present that contains the credentials for &lt;strong&gt;natas3&lt;/strong&gt;.
+&lt;img src=&#34;//localhost:1313/img/natas/natas2-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+users.txt:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# username:password
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;alice:BYNdCesZqW
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bob:jw2ueICLvT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;charlie:G5vCxkVV3m
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;natas3:3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;eve:zo4mJWyNj2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mallory:9urtcpzBmH&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Natas-Level 1</title>
@@ -19,8 +79,8 @@
       
       <guid>//localhost:1313/post/natas1/</guid>
       <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;Username: natas1&lt;/em&gt;/
-&lt;em&gt;Password: 0nzCigAq7t2iALyvU9xcHlYN4MlkIwlq&lt;/em&gt;/
+&lt;p&gt;&lt;em&gt;Username: natas1&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: 0nzCigAq7t2iALyvU9xcHlYN4MlkIwlq&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;URL:      &lt;a href=&#34;http://natas1.natas.labs.overthewire.org&#34;&gt;http://natas1.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.hubspot.com/website/how-to-inspect#:~:text=What%20does%20%E2%80%9Cinspect%20element%E2%80%9D%20mean,live%20inside%20the%20browser%20window.&#34;&gt;What is inspect element?&lt;/a&gt;&lt;br&gt;
@@ -47,8 +107,8 @@ Inspect element is a feature of modern web browsers that enables anyone to view 
 &lt;a href=&#34;https://overthewire.org/wargames/natas/&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;There will be no level goals for this wargame, just get in and mess around.&lt;/p&gt;
 &lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;Username: natas0&lt;/em&gt;/
-&lt;em&gt;Password: natas0&lt;/em&gt;/
+&lt;p&gt;&lt;em&gt;Username: natas0&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: natas0&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;URL:      &lt;a href=&#34;http://natas0.natas.labs.overthewire.org&#34;&gt;http://natas0.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.hubspot.com/website/how-to-inspect#:~:text=What%20does%20%E2%80%9Cinspect%20element%E2%80%9D%20mean,live%20inside%20the%20browser%20window.&#34;&gt;What is inspect element?&lt;/a&gt;&lt;br&gt;
