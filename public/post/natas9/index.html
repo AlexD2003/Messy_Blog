@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Natas-Level 8</title>
+	<title>My messy collection  | Natas-Level 9</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.132.2">
 	
@@ -151,7 +151,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Natas-Level 8</h1>
+<h1 class="pt-2">Natas-Level 9</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -186,7 +186,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-08-20T15:26:33&#43;03:00">2024-8-20</time>
+		datetime="2024-08-20T16:29:39&#43;03:00">2024-8-20</time>
 </div>
 
 <hr />
@@ -200,24 +200,18 @@ onload='renderMathInElement(document.body);'></script>
 <article>
 	<section class="mx-auto content">
 		<div class="c-rich-text"><h3 id="login">Login</h3>
-<p><em>Username: natas8</em><br>
-<em>Password: xcoXLmzMkoIP9D7hlgPlh9XD7OgLAe5Q</em><br>
-<em>URL:      <a href="http://natas8.natas.labs.overthewire.org">http://natas8.natas.labs.overthewire.org</a></em></p>
+<p><em>Username: natas9</em><br>
+<em>Password: ZE1ck82lmdGIoErlhQgWND6j2Wzz6b6t</em><br>
+<em>URL:      <a href="http://natas9.natas.labs.overthewire.org">http://natas9.natas.labs.overthewire.org</a></em></p>
 <h3 id="doc">Doc</h3>
-<p><a href="https://en.wikipedia.org/wiki/Binary_number">What is Binary?</a><br>
-A binary number is a number expressed in the base-2 numeral system or binary numeral system, a method for representing numbers that uses only two symbols for the natural numbers: typically &ldquo;0&rdquo; and &ldquo;1&rdquo;.<br>
-<a href="https://he3app.com/blogs/understanding-hex-encode-a-guide-for-developers#:~:text=Hex%20Encoding%20is%20a%20popular%20method%20for%20encoding%20data%20that,networks%20or%20stored%20in%20databases.">What is Hex?</a><br>
-Hex Encoding is a popular method for encoding data that is widely used by developers to improve data security. This encoding method helps to make data more secure by converting binary data into ASCII or Unicode text that can be transmitted over networks or stored in databases.<br>
-<a href="https://www.geeksforgeeks.org/strrev-function-in-c/">Strrev</a><br>
-The strrev() function is a built-in function in C and is defined in string.h header file. The strrev() function is used to reverse the given string.<br>
-<a href="https://en.wikipedia.org/wiki/Base64">What is base64?</a><br>
-In computer programming, Base64 is a group of binary-to-text encoding schemes that transforms binary data into a sequence of printable characters, limited to a set of 64 unique characters. More specifically, the source binary data is taken 6 bits at a time, then this group of 6 bits is mapped to one of 64 unique characters.</p>
+<p><a href="https://owasp.org/www-community/attacks/Command_Injection">What is command injection?</a><br>
+Command injection is an attack in which the goal is execution of arbitrary commands on the host operating system via a vulnerable application. Command injection attacks are possible when an application passes unsafe user supplied data (forms, cookies, HTTP headers etc.) to a system shell. In this attack, the attacker-supplied operating system commands are usually executed with the privileges of the vulnerable application. Command injection attacks are possible largely due to insufficient input validation.<br>
+This attack differs from Code Injection, in that code injection allows the attacker to add their own code that is then executed by the application. In Command Injection, the attacker extends the default functionality of the application, which execute system commands, without the necessity of injecting code.</p>
 <h3 id="solution">Solution</h3>
-<p>At the first sight, this level seems identical to <strong>natas6</strong> in the fact that there`s a secret field and a source link.</p>
-<img src="/img/natas/natas8-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>Again we are prompted with a text field, a submit and the source code. This time the program does something different tho. Instead of asking for a password, it works more like a function in the sense that is searches for something somewhere.</p>
+<img src="/img/natas/natas9-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <br>
-This time tough, there are no inclusions to other files.
-The source:
+<p>Let`s inspect the source code:
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- This stuff in the header has nothing to do with the level --&gt;</span>
@@ -227,50 +221,44 @@ The source:
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-ui.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">http://natas.labs.overthewire.org/js/wechall-data.js</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/wechall.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span><span style="color:#00a8c8">var</span> <span style="color:#75af00">wechallinfo</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span> <span style="color:#d88200">&#34;level&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;natas8&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;pass&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&lt;censored&gt;&#34;</span> <span style="color:#111">};&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span><span style="color:#00a8c8">var</span> <span style="color:#75af00">wechallinfo</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span> <span style="color:#d88200">&#34;level&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;natas9&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;pass&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&lt;censored&gt;&#34;</span> <span style="color:#111">};&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>natas8<span style="color:#111">&lt;/</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>natas9<span style="color:#111">&lt;/</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">div</span> <span style="color:#75af00">id</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;content&#34;</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">form</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>Find words containing: <span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">needle</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">type</span><span style="color:#f92672">=</span><span style="color:#d88200">submit</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">submit</span> <span style="color:#75af00">value</span><span style="color:#f92672">=</span><span style="color:#d88200">Search</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">form</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Output:
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">pre</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">$key = &#34;&#34;;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">$encodedSecret = &#34;3d3d516343746d4d6d6c315669563362&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function encodeSecret($secret) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return bin2hex(strrev(base64_encode($secret)));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if(array_key_exists(&#34;needle&#34;, $_REQUEST)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $key = $_REQUEST[&#34;needle&#34;];
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if(array_key_exists(&#34;submit&#34;, $_POST)) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(encodeSecret($_POST[&#39;secret&#39;]) == $encodedSecret) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;Access granted. The password for natas9 is &lt;censored&gt;&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;Wrong secret&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if($key != &#34;&#34;) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    passthru(&#34;grep -i $key dictionary.txt&#34;);
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">form</span> <span style="color:#75af00">method</span><span style="color:#f92672">=</span><span style="color:#d88200">post</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span>Input secret: <span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">secret</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">type</span><span style="color:#f92672">=</span><span style="color:#d88200">submit</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">submit</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">form</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">pre</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">div</span> <span style="color:#75af00">id</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;viewsource&#34;</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">a</span> <span style="color:#75af00">href</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;index-source.html&#34;</span><span style="color:#111">&gt;</span>View sourcecode<span style="color:#111">&lt;/</span><span style="color:#f92672">a</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">div</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">div</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span></span></span></code></pre></div>
-<p>Even though the solution is pretty straight forward, it requires a small bit of C knowledge and how a programming language operates. In the source file, you can see that there is a variable present named <strong>encodedSecret</strong> and following the if statement, the website processes your answer through the <strong>encodeSecrete</strong> function and then compares the outcume with the <strong>encodedSecret</strong> given.<br>
-The encryption process is pretty straight forward. It takes your input, puts it in base 64, reverses the string and then converts the binary code into hex code. By utilizing some free online tools, it is pretty easy to reverse the process starting from the given secret and get the expect output for the code to pass.</p>
-<h4 id="step-1--bin2hex">Step 1 : bin2hex</h4>
-<img src="/img/natas/natas8-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br>
-<h4 id="step-2--reverse-the-string">Step 2 : Reverse the string</h4>
-<img src="/img/natas/natas8-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br>
-<h4 id="step-3--base64-decode">Step 3 : Base64 decode</h4>
-<img src="/img/natas/natas8-4.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br>
-<p>After all this steps are completed, you can insert the resulted string into the secret field in order to obtain the flag.</p>
-<img src="/img/natas/natas8-5.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span></span></span></code></pre></div></p>
+<p>The logic behind this whole ordeal goes like this :<br>
+-You insert a key<br>
+-The program checks if there is actually a key in the field<br>
+-If it is, the key parameter takes the value of your input<br>
+-Your value get`s passed to <strong>passthru(&ldquo;grep -i $key dictionary.txt&rdquo;);</strong></p>
+<p>That last part was very important and it is gonna be the key to all of this. Because it passes your key as an argument in a grep command that is being run, you can perform something called command injection. It means you are executing commands through a way you are not supposed to. If we use a <strong>;</strong>, we can delimitate commands and make them abe to be run from the same line.<br>
+This all basically adds up to &ldquo;I will give it a random input, sepparate with ; and then run whatever I want&rdquo;. In this case, it is gonna be the same <strong>cat</strong> of the password file.
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>a ; cat /etc/natas_webpass/natas10</span></span></code></pre></div></p>
+<p>Executing this command will solve <strong>natas9</strong>.</p>
+<img src="/img/natas/natas9-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <br>
 </div>
 	</section>
@@ -382,7 +370,7 @@ The encryption process is pretty straight forward. It takes your input, puts it 
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		470 words in this page.
+		438 words in this page.
 	</div>
 </div>
 
@@ -393,17 +381,17 @@ The encryption process is pretty straight forward. It takes your input, puts it 
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/natas7/">
+    <a class="flex-grow-0" href="/post/natas8/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Natas-Level 7
+        Natas-Level 8
     </a>
     
     
-    <a class="flex-grow-0" href="/post/natas9/">
-        Natas-Level 9
+    <a class="flex-grow-0" href="/post/natas10/">
+        Natas-Level 10
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
@@ -417,6 +405,8 @@ The encryption process is pretty straight forward. It takes your input, puts it 
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/natas8/">Natas-Level 8</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/natas7/">Natas-Level 7</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -444,9 +434,7 @@ The encryption process is pretty straight forward. It takes your input, puts it 
 		
 			<a href="/post/bandit28/">Bandit-Level 28</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit27/">Bandit-Level 27</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/bandit26/">Bandit-Level 26</a>
+			<a href="/post/bandit27/">Bandit-Level 27</a>
 		
 </span>
 </div>
