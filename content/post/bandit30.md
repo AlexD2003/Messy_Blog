@@ -31,6 +31,7 @@ git (1)              - the stupid content tracker
 
 #### [GIT DOCUMENTATION](https://git-scm.com/doc)
 
+
 ### Solution
 For this level I\`ll use the same initial process I\`ve used until now.\
 Clone->Check what`s in the repo->try to find a password.

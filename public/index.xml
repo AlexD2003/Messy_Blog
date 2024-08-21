@@ -7,10 +7,186 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Tue, 20 Aug 2024 17:01:43 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 21 Aug 2024 11:56:21 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas-Level 11</title>
+      <link>//localhost:1313/post/natas11/</link>
+      <pubDate>Wed, 21 Aug 2024 11:56:21 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas11/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas11&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: UJdqkK1pTu6VLt9UHWAgRZz6sVUZ3lEk&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas11.natas.labs.overthewire.org&#34;&gt;http://natas11.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution-ideahttpswwwyoutubecomchrisdale&#34;&gt;&lt;a href=&#34;https://www.youtube.com/@ChrisDale&#34;&gt;Solution Idea&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;tools&#34;&gt;Tools&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://gchq.github.io/CyberChef/&#34;&gt;CyberChef&lt;/a&gt;&lt;br&gt;
+Very usefull site for encrypting and decrypting information.&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.oracle.com/cd/E19047-01/sunscreen151/806-5397/i996724/index.html&#34;&gt;What is encryption and decryption?&lt;/a&gt;&lt;br&gt;
+Encryption is the process by which a readable message is converted to an unreadable form to prevent unauthorized parties from reading it. Decryption is the process of converting an encrypted message back to its original (readable) format. The original message is called the plaintext message. The encrypted message is called the ciphertext message.&lt;br&gt;
+Digital encryption algorithms work by manipulating the digital content of a plaintext message mathematically, using an encryption algorithm and a digital key to produce a ciphertext version of the message. The sender and recipient can communicate securely if the sender and recipient are the only ones who know the key.&lt;br&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/XOR_cipher&#34;&gt;What is XOR encryption?&lt;/a&gt;&lt;br&gt;
+The XOR operator is extremely common as a component in more complex ciphers. By itself, using a constant repeating key, a simple XOR cipher can trivially be broken using frequency analysis. If the content of any message can be guessed or otherwise known then the key can be revealed. Its primary merit is that it is simple to implement, and that the XOR operation is computationally inexpensive. A simple repeating XOR (i.e. using the same key for xor operation on the whole data) cipher is therefore sometimes used for hiding information in cases where no particular security is required. The XOR cipher is often used in computer malware to make reverse engineering more difficult.&lt;br&gt;
+&lt;a href=&#34;https://policies.google.com/technologies/cookies?hl=en-US#:~:text=Cookies%20are%20small%20pieces%20of,site%20more%20useful%20to%20you.&#34;&gt;What are cookies?🍪&lt;/a&gt;&lt;br&gt;
+Cookies are small pieces of text sent to your browser by a website you visit. They help that website remember information about your visit, which can both make it easier to visit the site again and make the site more useful to you.
+&lt;strong&gt;My bad drawing skills expressed on a whiteboard:&lt;/strong&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas11-nustiusadesenez.jpeg&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Let`s begin by taking a close look at the first page. We are promted with a display that reads : &lt;strong&gt;Cookies are protected with XOR encryption&lt;/strong&gt; and a prompt to that allows us to set the color of the webpage background (See the cookie doc if you have not yet). In order for the user to not lose his changes to the color of the page, the site uses cookies to store that information. It is clearly stated that the cookie data is encrypted using XOR encryption.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas11-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+If you were to set the background color to any value including the default and take a look at what your browser stores about the page (&lt;strong&gt;Use inspect element&lt;/strong&gt;) you will see something like this:
+&lt;img src=&#34;//localhost:1313/img/natas/natas11-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+Same stuff again, we have the source code listed in the right of the prompt. Let`s take a look at what happens behind the courtain and try to understand the code.
+&lt;strong&gt;Code in question:&lt;/strong&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;link&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;rel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;text/css&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/css/level.css&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;link&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;rel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/css/jquery-ui.css&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;link&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;rel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/css/wechall.css&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/js/jquery-ui.js&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;http://natas.labs.overthewire.org/js/wechall-data.js&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/js/wechall.js&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#00a8c8&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;wechallinfo&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;natas11&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;pass&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;&amp;lt;censored&amp;gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;};&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;?
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;$defaultdata = array( &amp;#34;showpassword&amp;#34;=&amp;gt;&amp;#34;no&amp;#34;, &amp;#34;bgcolor&amp;#34;=&amp;gt;&amp;#34;#ffffff&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;function xor_encrypt($in) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    $key = &amp;#39;&amp;lt;censored&amp;gt;&amp;#39;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    $text = $in;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    $outText = &amp;#39;&amp;#39;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    // Iterate through each character
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    for($i=0;$i&amp;lt;strlen($text);$i++) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    $outText .= $text[$i] ^ $key[$i % strlen($key)];
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    return $outText;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;function loadData($def) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    global $_COOKIE;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    $mydata = $def;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    if(array_key_exists(&amp;#34;data&amp;#34;, $_COOKIE)) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    $tempdata = json_decode(xor_encrypt(base64_decode($_COOKIE[&amp;#34;data&amp;#34;])), true);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    if(is_array($tempdata) &amp;amp;&amp;amp; array_key_exists(&amp;#34;showpassword&amp;#34;, $tempdata) &amp;amp;&amp;amp; array_key_exists(&amp;#34;bgcolor&amp;#34;, $tempdata)) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        if (preg_match(&amp;#39;/^#(?:[a-f\d]{6})$/i&amp;#39;, $tempdata[&amp;#39;bgcolor&amp;#39;])) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        $mydata[&amp;#39;showpassword&amp;#39;] = $tempdata[&amp;#39;showpassword&amp;#39;];
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        $mydata[&amp;#39;bgcolor&amp;#39;] = $tempdata[&amp;#39;bgcolor&amp;#39;];
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    return $mydata;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;function saveData($d) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    setcookie(&amp;#34;data&amp;#34;, base64_encode(xor_encrypt(json_encode($d))));
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;$data = loadData($defaultdata);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;if(array_key_exists(&amp;#34;bgcolor&amp;#34;,$_REQUEST)) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    if (preg_match(&amp;#39;/^#(?:[a-f\d]{6})$/i&amp;#39;, $_REQUEST[&amp;#39;bgcolor&amp;#39;])) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        $data[&amp;#39;bgcolor&amp;#39;] = $_REQUEST[&amp;#39;bgcolor&amp;#39;];
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;saveData($data);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;natas11&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;background: &amp;lt;?=$data[&amp;#39;bgcolor&amp;#39;]?&amp;gt;;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Cookies are protected with XOR encryption&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;?
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;if($data[&amp;#34;showpassword&amp;#34;] == &amp;#34;yes&amp;#34;) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    print &amp;#34;The password for natas12 is &amp;lt;censored&amp;gt;&amp;lt;br&amp;gt;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Background color: &lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;bgcolor&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;&amp;lt;?=$data[&amp;#39;bgcolor&amp;#39;]?&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;submit&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;Set color&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;viewsource&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;index-source.html&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;View sourcecode&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Since this time, the code is pretty convoluted and not intuitive, we will brake it down in segments.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$defaultdata = array(&amp;#34;showpassword&amp;#34; =&amp;gt; &amp;#34;no&amp;#34;, &amp;#34;bgcolor&amp;#34; =&amp;gt; &amp;#34;#ffffff&amp;#34;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It begins by defining a default array, &lt;strong&gt;$defaultdata&lt;/strong&gt;, including 2 key pairs &lt;strong&gt;showpassword&lt;/strong&gt;, &lt;strong&gt;bgcolor&lt;/strong&gt; with values &lt;strong&gt;no&lt;/strong&gt; and &lt;strong&gt;#ffffff&lt;/strong&gt; respectively.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;function xor_encrypt($in) {
+    $key = &amp;#39;&amp;lt;censored&amp;gt;&amp;#39;;
+    $text = $in;
+    $outText = &amp;#39;&amp;#39;;
+
+    // Iterate through each character
+    for($i=0; $i&amp;lt;strlen($text); $i++) {
+        $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+
+    return $outText;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This is where the magic happens, it is the function that outputs the result after the application of &lt;strong&gt;XOR encryption&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;function loadData($def) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    global $_COOKIE;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    $mydata = $def;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    if(array_key_exists(&amp;#34;data&amp;#34;, $_COOKIE)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        $tempdata = json_decode(xor_encrypt(base64_decode($_COOKIE[&amp;#34;data&amp;#34;])), true);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        if(is_array($tempdata) &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; array_key_exists(&amp;#34;showpassword&amp;#34;, $tempdata) &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; array_key_exists(&amp;#34;bgcolor&amp;#34;, $tempdata)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            if (preg_match(&amp;#39;/^#(?:[a-f\d]{6})$/i&amp;#39;, $tempdata[&amp;#39;bgcolor&amp;#39;])) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                $mydata[&amp;#39;showpassword&amp;#39;] = $tempdata[&amp;#39;showpassword&amp;#39;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                $mydata[&amp;#39;bgcolor&amp;#39;] = $tempdata[&amp;#39;bgcolor&amp;#39;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    return $mydata;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The loadData function firstly initializes the variable &lt;strong&gt;$myData&lt;/strong&gt; with default values and checks if the cookie exists. Afterwards, the script decodes the information from Base64, decrypts it using the &lt;strong&gt;xor_encrypt&lt;/strong&gt; function and then decodes the resulting json. Remember this process, it will be usefull. The rest of the code is basic data and function validation.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;function saveData($d) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    setcookie(&amp;#34;data&amp;#34;, base64_encode(xor_encrypt(json_encode($d))));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This function stores the given array into a cookie🍪.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$data = loadData($defaultdata);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Basic populating function.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;if(array_key_exists(&amp;#34;bgcolor&amp;#34;, $_REQUEST)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    if (preg_match(&amp;#39;/^#(?:[a-f\d]{6})$/i&amp;#39;, $_REQUEST[&amp;#39;bgcolor&amp;#39;])) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        $data[&amp;#39;bgcolor&amp;#39;] = $_REQUEST[&amp;#39;bgcolor&amp;#39;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And finally, this is the background color handling function.&lt;br&gt;
+Enough with analizing what happens, let`s try to solve this level.&lt;br&gt;
+Firstly, I will run the json encoding function on the default data in a php compiler in order to see what the initial array looks like in json.&lt;br&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas11-3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+The output of the function is the array : &lt;strong&gt;{&amp;ldquo;showpassword&amp;rdquo;:&amp;ldquo;no&amp;rdquo;,&amp;ldquo;bgcolor&amp;rdquo;:&amp;quot;#ffffff&amp;quot;}&lt;/strong&gt;.
+Remember the cookie from earlier? This is the step where it comes in. Using the &lt;strong&gt;CyberChef&lt;/strong&gt; website, I will firstly apply URL decoding on the cookie value (to convert URL specific values to their numeric values) and then apply the steps present in the code in reverse order.&lt;br&gt;
+Now that we have the decoded cookie and we have the output (the json format array) we could find the key since in XOR decryption, knowing 2 values out of the {initial,key,result} gives you access to finding the 3rd unknown value (look at my drawing).&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas11-5.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+Now all there`s left to do since we found a repeating key is get a new cookie coming from the array that has the &lt;strong&gt;no&lt;/strong&gt; value changed to &lt;strong&gt;yes&lt;/strong&gt;.
+&lt;img src=&#34;//localhost:1313/img/natas/natas11-6.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+By changing the cookie value with the value we got after this process should pass to the program the modified string and grant us access to the next level.
+&lt;img src=&#34;//localhost:1313/img/natas/natas11-7.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+</description>
+    </item>
     
     <item>
       <title>Natas-Level 10</title>
@@ -1975,7 +2151,7 @@ Format:
       <guid>//localhost:1313/about/aboutme/</guid>
       <description>&lt;h1 id=&#34;who-am-i&#34;&gt;Who am I?&lt;/h1&gt;
 &lt;p&gt;My name is Alex Domnit, I am a third year student at Babeș-Bolyai University of Cluj-Napoca undergoing an English Mathematics and Computer Science Bachelor&amp;rsquo;s degree. I am a passionate cybersecurity enthusiast with a deep love for problem-solving and all things related to information security.&lt;br&gt;
-Pretty much, the entire collection of my academic and personal projects including any contests or hackatons I have been a part of can be found on my &lt;a href=&#34;https://github.com/AlexD2003&#34;&gt;Github&lt;/a&gt;. If you want to keep up with my current journey and anything im working on in betweeen, you can find it in the &lt;a href=&#34;https://alexdomnit.com&#34;&gt;Posts section&lt;/a&gt; with the tag of ongoing.&lt;/p&gt;
+Pretty much, the entire collection of my academic and personal projects including any contests or hackatons I have been a part of can be found on my &lt;a href=&#34;https://github.com/AlexD2003&#34;&gt;Github&lt;/a&gt;. If you want to keep up with my current journey and anything I`m working on in betweeen, you can find it in the &lt;a href=&#34;https://alexdomnit.com&#34;&gt;Posts section&lt;/a&gt; with the tag of ongoing.&lt;/p&gt;
 &lt;img src=&#34;//localhost:1313/img/gnar.gif&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
 &lt;br&gt;</description>
     </item>
