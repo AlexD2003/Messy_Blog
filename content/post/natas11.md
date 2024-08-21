@@ -219,4 +219,5 @@ Now all there`s left to do since we found a repeating key is get a new cookie co
 By changing the cookie value with the value we got after this process should pass to the program the modified string and grant us access to the next level.
 <img src="/img/natas/natas11-7.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <br>
+Of course, a way simpler sollution would be reversing the encryption script in your own php file and running it to use the array values of your choice and it will spit out the correct cookie, but where`s the fun in that? :)
 
