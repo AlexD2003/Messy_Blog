@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Natas-Level 12</title>
+	<title>My messy collection  | Natas-Level 13</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.133.0">
 	
@@ -151,7 +151,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Natas-Level 12</h1>
+<h1 class="pt-2">Natas-Level 13</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -186,7 +186,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-08-21T15:19:34&#43;03:00">2024-8-21</time>
+		datetime="2024-08-21T16:17:53&#43;03:00">2024-8-21</time>
 </div>
 
 <hr />
@@ -200,9 +200,9 @@ onload='renderMathInElement(document.body);'></script>
 <article>
 	<section class="mx-auto content">
 		<div class="c-rich-text"><h3 id="login">Login</h3>
-<p><em>Username: natas12</em><br>
-<em>Password: yZdkjAYZRd3R7tq7T5kXMjMJlOIkzDeB</em><br>
-<em>URL:      <a href="http://natas12.natas.labs.overthewire.org">http://natas12.natas.labs.overthewire.org</a></em></p>
+<p><em>Username: natas13</em><br>
+<em>Password: trbs5pCjCrkuSknBBKHhaBxq6Wm1j3LC</em><br>
+<em>URL:      <a href="http://natas13.natas.labs.overthewire.org">http://natas13.natas.labs.overthewire.org</a></em></p>
 <h3 id="doc">Doc</h3>
 <p>Burp Suite is a proprietary software tool for security assessment and penetration testing of web applications. It software was initially developed in 2003-2006 by Dafydd Stuttard to automate his own security testing needs, after realizing the capabilities of automatable web tools like Selenium.<br>
 <a href="https://en.wikipedia.org/wiki/Burp_Suite">Source.</a><br>
@@ -211,8 +211,8 @@ Burp Suite tutorial and usefull guides:<br>
 <a href="https://owasp.org/www-community/vulnerabilities/PHP_Object_Injection">What is PHP injection?</a><br>
 PHP Object Injection is an application level vulnerability that could allow an attacker to perform different kinds of malicious attacks, such as Code Injection, SQL Injection, Path Traversal and Application Denial of Service, depending on the context. The vulnerability occurs when user-supplied input is not properly sanitized before being passed to the unserialize() PHP function. Since PHP allows object serialization, attackers could pass ad-hoc serialized strings to a vulnerable unserialize() call, resulting in an arbitrary PHP object(s) injection into the application scope.</p>
 <h3 id="solution">Solution</h3>
-<p>For the first time, the index page is asking us to upload a file to the service.
-<img src="/img/natas/natas12-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>So far, this seems like a 1 to 1 copy of <strong>natas12</strong>. The only noticeable difference being that this time, there is a line saying : <strong>For security reasons, we now only accept image files!</strong>.
+<img src="/img/natas/natas13-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <br>
 We can again take a look at the source code.<br>
 <strong>Source code:</strong></p>
@@ -225,10 +225,12 @@ We can again take a look at the source code.<br>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-ui.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">http://natas.labs.overthewire.org/js/wechall-data.js</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/wechall.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span><span style="color:#00a8c8">var</span> <span style="color:#75af00">wechallinfo</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span> <span style="color:#d88200">&#34;level&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;natas12&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;pass&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&lt;censored&gt;&#34;</span> <span style="color:#111">};&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span><span style="color:#00a8c8">var</span> <span style="color:#75af00">wechallinfo</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span> <span style="color:#d88200">&#34;level&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;natas13&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;pass&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&lt;censored&gt;&#34;</span> <span style="color:#111">};&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>natas12<span style="color:#111">&lt;/</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>natas13<span style="color:#111">&lt;/</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">div</span> <span style="color:#75af00">id</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;content&#34;</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>For security reasons, we now only accept image files!<span style="color:#111">&lt;</span><span style="color:#f92672">br</span><span style="color:#111">/&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">/&gt;</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?php
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">function genRandomString() {
@@ -258,9 +260,17 @@ We can again take a look at the source code.<br>
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">if(array_key_exists(&#34;filename&#34;, $_POST)) {
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $target_path = makeRandomPathFromFilename(&#34;upload&#34;, $_POST[&#34;filename&#34;]);
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        if(filesize($_FILES[&#39;uploadedfile&#39;][&#39;tmp_name&#39;]) &gt; 1000) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $err=$_FILES[&#39;uploadedfile&#39;][&#39;error&#39;];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if($err){
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        if($err === 2){
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            echo &#34;The uploaded file exceeds MAX_FILE_SIZE&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        } else{
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            echo &#34;Something went wrong :/&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else if(filesize($_FILES[&#39;uploadedfile&#39;][&#39;tmp_name&#39;]) &gt; 1000) {
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">        echo &#34;File is too big&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else if (! exif_imagetype($_FILES[&#39;uploadedfile&#39;][&#39;tmp_name&#39;])) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        echo &#34;File is not an image&#34;;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else {
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">        if(move_uploaded_file($_FILES[&#39;uploadedfile&#39;][&#39;tmp_name&#39;], $target_path)) {
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">            echo &#34;The file &lt;a href=\&#34;$target_path\&#34;&gt;$target_path&lt;/a&gt; has been uploaded&#34;;
@@ -283,25 +293,33 @@ We can again take a look at the source code.<br>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">div</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span></span></span></code></pre></div>
-<h4 id="quick-summary-of-the-code">Quick summary of the code</h4>
-<p>The PHP code allows users to upload files by generating a unique file path for each upload, based on a random filename with the .jpg extension. It checks that the file size does not exceed 1KB and provides feedback if the file is too large or if the upload fails. If the file meets the criteria, it is moved to the designated path, and a link to the uploaded file is displayed.</p>
+<h4 id="what-is-the-difference">What is the difference?</h4>
+<p>This script performs additional checks on the uploaded files. It ensures the file is an image by using <strong>exif_imagetype()</strong>.</p>
 <h4 id="what-can-we-do">What can we do?</h4>
-<p>As we did in the 5th level, we could use <strong>Burp Suite</strong> in order to intercept the package being sent before it reaches the host and make modifications to that package such that we could <strong>inject</strong> code that is not supposed to be run in normal conditions. Since the service uses PHP, the code we will inject and the file itself will be of php type.<br>
-The simplest solution that comes to mind is once again, to execute the <strong>cat</strong> command on the host with the target of <strong>/etc/natas_webpass/natas13</strong>.</p>
+<p>exif_imagetype() reads the first bytes of an image and checks its signature.<a href="https://www.php.net/manual/en/function.exif-imagetype.php">Source.</a><br>
+JPEG files (compressed images) start with an image marker which always contains the marker code hex values FF D8 FF. It does not have a length of the file embedded, thus we need to find JPEG trailer, which is FF D9.<a href="https://www.file-recovery.com/jpg-signature-format.htm#:~:text=JPEG%20files%20(compressed%20images)%20start,trailer%2C%20which%20is%20FF%20D9.&amp;text=..%20we%20can%20define%20size%20of,file%20which%20is%201342%20bytes.">Source.</a><br>
+Armed with this at hand we can conclude that the solution is identical to the previous one, the only difference being that we should begin our payload with the signature bytes of a jpeg image. You can find the structure on the source hlink listed above.</p>
 <h4 id="what-should-the-content-be">What should the content be?</h4>
 <p><a href="https://www.php.net/manual/en/function.passthru.php">What is passthru?</a><br>
 Utilizing the passthru function in php we should be able to run the target command on the machine and the only thing that remains to do is spit out the result with <strong>echo</strong>.<br>
 Also we should create a jpeg file that is less than 1kb to have it initially pass through.</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>03:35:53 archie@Archie ~ → touch whatever.jpeg</span></span></code></pre></div>
-<p>Now we need to modify the package and insert the php code we`ve talked about earlier.</p>
-<img src="/img/natas/natas12-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>03:35:53 archie@Archie ~ → touch whatever.jpg</span></span></code></pre></div>
+<p>Now we need to modify the package and insert the php code we`ve talked about earlier.<br>
+Magic numbers are the first bits of a file which uniquely identify the type of file. This makes programming easier because complicated file structures need not be searched in order to identify the file type.
+For example, a jpeg file starts with ffd8 ffe0 0010 4a46 4946 0001 0101 0047 &hellip;&hellip;JFIF&hellip;..G ffd8 shows that it&rsquo;s a JPEG file, and ffe0 identify a JFIF type structure. There is an ascii encoding of &ldquo;JFIF&rdquo; which comes after a length code, but that is not necessary in order to identify the file. The first 4 bytes do that uniquely.<br>
+<a href="https://gist.github.com/leommoore/f9e57ba2aa4bf197ebc5">Source.</a><br>
+We will basically insert the signature of the file into a new file and then append to it the php payload.
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>01:24:24 archie@Archie tmp → echo &#34;GIF87a&#34; &gt;&gt; whatever.jpg</span></span></code></pre></div>
+Now all there`s left to do is to modify the package in order for the server to percieve it as jpg even tho it is php and then upload it.
+<img src="/img/natas/natas13-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <br>
-After all of this,we can see that the file has been succesfully uploaded with the <strong>php</strong> extension.
-<img src="/img/natas/natas12-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<img src="/img/natas/natas13-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <br>
-Trying to open this file should execute the payload from passthru and get us in.
-<img src="/img/natas/natas12-4.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br></div>
+We can see that the file has been uploaded, now opening it should get us to the source of the file and execute the php payload on the machine.
+<img src="/img/natas/natas13-4.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+Do not take into account the gif part as it is part of the signature of the file left as residual. The content after the space is the flag for <strong>natas14</strong>.</p>
+</div>
 	</section>
 
 
@@ -411,7 +429,7 @@ Trying to open this file should execute the payload from passthru and get us in.
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		657 words in this page.
+		857 words in this page.
 	</div>
 </div>
 
@@ -422,21 +440,14 @@ Trying to open this file should execute the payload from passthru and get us in.
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/natas11/">
+    <a class="flex-grow-0" href="/post/natas12/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Natas-Level 11
+        Natas-Level 12
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/natas13/">
-        Natas-Level 13
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -446,6 +457,8 @@ Trying to open this file should execute the payload from passthru and get us in.
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/natas12/">Natas-Level 12</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/natas11/">Natas-Level 11</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -473,9 +486,7 @@ Trying to open this file should execute the payload from passthru and get us in.
 		
 			<a href="/post/bandit32/">Bandit-Level 32</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit31/">Bandit-Level 31</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/bandit30/">Bandit-Level 30</a>
+			<a href="/post/bandit31/">Bandit-Level 31</a>
 		
 </span>
 </div>
