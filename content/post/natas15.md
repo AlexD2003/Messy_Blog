@@ -1,8 +1,8 @@
 +++
 author = "Alex Domnit"
-title = 'Natas-Level 14'
-date = 2024-08-22T14:17:44+03:00
-draft = false
+title = 'Natas-Level 15'
+date = 2024-08-22T15:52:52+03:00
+draft = true
 description = "Writeup"
 tags = [
     "CTF",
@@ -17,13 +17,13 @@ toc = false
 +++
 
 ### Login
-*Username: natas14*\
-*Password: z3UYcr4v4uBpeX8f7EZbMHlzK4UR2XtQ*\
-*URL:      http://natas14.natas.labs.overthewire.org*
+*Username: natas15*\
+*Password: SdqIqBsFcz3yotlNYErZSZwblkm0lrvx*\
+*URL:      http://natas15.natas.labs.overthewire.org*
 
 ### Doc
 [What is SQL?](https://en.wikipedia.org/wiki/SQL)\
-Structured Query Language is a domain-specific language used to manage data, especially in a relational database management system. It is particularly useful in handling structured data, i.e., data incorporating relations among entities and variables.\
+Structured Query Language is a domain-specific language used to manage data, especially in a relational database management system. It is particularly useful in handling structured data, i.e., data incorporating relations among entities and variables. 
 [What is SQL injection?](https://en.wikipedia.org/wiki/SQL_injection)\
 In computing, SQL injection is a code injection technique used to attack data-driven applications, in which malicious SQL statements are inserted into an entry field for execution.
 

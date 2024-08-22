@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Thu, 22 Aug 2024 14:17:44 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 22 Aug 2024 15:52:52 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,11 +20,11 @@
       <guid>//localhost:1313/post/natas14/</guid>
       <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
 &lt;p&gt;&lt;em&gt;Username: natas14&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;Password: SdqIqBsFcz3yotlNYErZSZwblkm0lrvx&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: z3UYcr4v4uBpeX8f7EZbMHlzK4UR2XtQ&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;URL:      &lt;a href=&#34;http://natas14.natas.labs.overthewire.org&#34;&gt;http://natas14.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/SQL&#34;&gt;What is SQL?&lt;/a&gt;&lt;br&gt;
-Structured Query Language is a domain-specific language used to manage data, especially in a relational database management system. It is particularly useful in handling structured data, i.e., data incorporating relations among entities and variables.
+Structured Query Language is a domain-specific language used to manage data, especially in a relational database management system. It is particularly useful in handling structured data, i.e., data incorporating relations among entities and variables.&lt;br&gt;
 &lt;a href=&#34;https://en.wikipedia.org/wiki/SQL_injection&#34;&gt;What is SQL injection?&lt;/a&gt;&lt;br&gt;
 In computing, SQL injection is a code injection technique used to attack data-driven applications, in which malicious SQL statements are inserted into an entry field for execution.&lt;/p&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
