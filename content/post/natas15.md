@@ -1,7 +1,7 @@
 +++
 author = "Alex Domnit"
 title = 'Natas-Level 15'
-date = 2024-08-22T15:52:52+03:00
+date = 2024-08-23T15:10:52+03:00
 draft = false
 description = "Writeup"
 tags = [
