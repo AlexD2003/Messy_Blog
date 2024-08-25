@@ -180,7 +180,7 @@ Possible so far: 346cefhijkmostuvDEGKLMPQVWXY
 ----end of search----
 Possible characters: 346cefhijkmostuvDEGKLMPQVWXY
 ```
-As you can see, we confirmed that the password is composed out of these characters : <strong>346cefhijkmostuvDEGKLMPQVWXY</strong>\
+As you can see, we confirmed that the password is composed out of these characters : <strong>346cefhijkmostuvDEGKLMPQVWXY</strong>
 #### What`s next?
 Okay, so we have our string of present characters in the password but that is not the passkey for the next level. The approach will now be, for character in string, if password is like characterinstring% append to characterinstring and continue until the password reaches the length of 32 (<strong>all the password\`s lenghts so far</strong>) and then break.\
 For that I will make a function that takes the output of the last script and does what I\`ve described ealier for each letter in the input.\

