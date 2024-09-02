@@ -55,10 +55,82 @@ dataset is expected to grow in time (hint: e.g. partition the data)?
 (Answer with text descriptions or diagrams)&lt;/p&gt;
 &lt;h4 id=&#34;task-1-solution&#34;&gt;Task 1 solution&lt;/h4&gt;
 &lt;p&gt;Firstly, I will begin by looking at the data set given in the premise in order to get a feeling for what I am working with.&lt;br&gt;
-The data set is presented in &lt;strong&gt;csv format and has a size of around 13MB (important for later)&lt;/strong&gt;. It seems to be a &lt;strong&gt;retail transaction data set&lt;/strong&gt;, basically oferring you a peak at common consumer purchase patterns with the present collumns being : &lt;strong&gt;CustomerId, ProductId, Quantity, Price, TransactionDate, PaymentMethod, StoreLocation, ProductCategory, AppliedDiscount and TotalAmount&lt;/strong&gt;.&lt;br&gt;
+The data set is presented in &lt;strong&gt;csv format and has a size of around 13MB (important for later)&lt;/strong&gt;. It seems to be a &lt;strong&gt;retail transaction data set&lt;/strong&gt;, basically oferring you a peek at common consumer purchase patterns with the present collumns being : &lt;strong&gt;CustomerId, ProductId, Quantity, Price, TransactionDate, PaymentMethod, StoreLocation, ProductCategory, AppliedDiscount and TotalAmount&lt;/strong&gt;.&lt;br&gt;
 Since the data set is given in csv format which is compatible with the import feature of &lt;strong&gt;Microsoft Fabric&lt;/strong&gt; and the size is not significant, the import should be pretty straight forward. We should plan for further expansion tho.&lt;br&gt;
-&lt;strong&gt;Okay, how how do I import it?&lt;/strong&gt; Firstly, in what? A quick look around google later, the most obvious choice was between a &lt;strong&gt;Data Lake or a Data Warehouse&lt;/strong&gt;. I would go with a &lt;strong&gt;Data Warehouse&lt;/strong&gt; since it is meant for already structured data (exactly like my data set) while a &lt;strong&gt;Data Lake&lt;/strong&gt; is more inclined towards raw data meant for analysis and further implications in various projects. &lt;a href=&#34;https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake#:~:text=risks%20more%20efficiently.-,What&#39;s%20the%20difference%20between%20a%20data%20lake%20and%20a%20data,as%20specific%20BI%20use%20cases.&#34;&gt;Source.&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;strong&gt;Okay, how how do I import it?&lt;/strong&gt; Firstly, in what? A quick look around google later, the most obvious choice was between a &lt;strong&gt;Data Lake or a Data Warehouse&lt;/strong&gt;. I would go with a &lt;strong&gt;Data Warehouse&lt;/strong&gt; since it is meant for already structured data (exactly like my data set) while a &lt;strong&gt;Data Lake&lt;/strong&gt; is more inclined towards raw data meant for analysis and further implications in various projects. &lt;a href=&#34;https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake#:~:text=risks%20more%20efficiently.-,What&#39;s%20the%20difference%20between%20a%20data%20lake%20and%20a%20data,as%20specific%20BI%20use%20cases.&#34;&gt;Source.&lt;/a&gt;&lt;br&gt;
+In order to import this data into Microsoft Fabric we could setup a pipeline. &lt;strong&gt;Pipeline setup:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Configure an automated data pipeline within Microsoft Fabric.&lt;/li&gt;
+&lt;li&gt;Source : We should point the pipeline towards the source location of the &lt;strong&gt;csv file&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Transformation : We should always think about transforming data when we are doing an import in order to further suit our needs, for example remove unnecessary collumns or filter just what we need.&lt;/li&gt;
+&lt;li&gt;Destination : Finally, we set the pipeline to store the ingested data into our Data Warehouse, as explained earlier.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;sourcehttpswwwyoutubecomwatchvloescjpru8w&#34;&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=LoESCJpru8w&#34;&gt;Source.&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;What can you do related to storage in order to improve the performance of the future data queries if the size of the dataset is expected to grow in time (hint: e.g. partition the data)?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Since the ingested data is stored in a &lt;strong&gt;Data Warehouse&lt;/strong&gt;, it is prone to efficient querying. In order to further improve the performance, from my work experience, I would suggest partitioning the data by &lt;strong&gt;TransactionDate&lt;/strong&gt; and possibly by &lt;strong&gt;ProductId&lt;/strong&gt;. Additionally, converting the data into Parquet format will improve storage efficiency. &lt;a href=&#34;https://www.macrometa.com/articles/what-is-data-partitioning&#34;&gt;Source.&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;data-flow-diagram-&#34;&gt;Data flow diagram :&lt;/h4&gt;
+&lt;img src=&#34;//localhost:1313/img/dataingdiagram.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;task-2-premise&#34;&gt;Task 2 premise&lt;/h4&gt;
+&lt;p&gt;Question: Like most of the datasets you&amp;rsquo;ll find in your practice, this dataset has some data issues that
+should be corrected. You need to find a way within Microsoft Fabric to perform the following
+transformations:&lt;br&gt;
+Separate TransactionDate column in 2 distinct columns for Date and Time.&lt;br&gt;
+Aggregate the TotalAmount spent by each customer per month.&lt;br&gt;
+Replace the &amp;ldquo;Home Decor&amp;rdquo; values from the ProductCategory column with &amp;ldquo;Home Products&amp;rdquo;.&lt;br&gt;
+Create a new column HighValueCustomer that is a boolean column that assigns True or False based on
+your own rule. Think about a rule with a logic that makes sense in the context.&lt;br&gt;
+Load the transformed data into a new table in your Data Lake.&lt;br&gt;
+How do you envision solving this based on your research on Microsoft Fabric? No implementation is
+needed.&lt;br&gt;
+(Answer with text descriptions, images or diagrams).&lt;/p&gt;
+&lt;h4 id=&#34;task-2-solution&#34;&gt;Task 2 solution&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Separate TransactionDate into 2 columns.&lt;/strong&gt; As I explained previously, before sending the ingested data to the Data Warehouse we should parse it through a Data Transformation step. In order to achieve what is asked, there are Microsoft data pipeline capabilities that could get the expected result. Data pipelines in Fabric are designed to allow for complex data manipulations and transformations as part of the data flow. Withing the pipeline, we could add a transformation step for the received data. Fabric allows for transformations through both low-code/no-code interfaces and SQL-based transformations and for this task, I think that a simple SQL snippet should suffice. &lt;a href=&#34;https://learn.microsoft.com/en-us/fabric/data-factory/transform-data&#34;&gt;Source.&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;sql-snippet-&#34;&gt;SQL snippet :&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SELECT 
+    CustomerID,
+    ProductID,
+    Quantity,
+    Price,
+    CAST(TransactionDate AS DATE) AS Date,
+    CAST(TransactionDate AS TIME) AS Time,
+    etc.
+FROM 
+    RetailTransactions
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Explanation :&lt;/strong&gt; Casting the datetime variable as DATE and TIME respectively, we will only get the DATE and TIME part of the initial value.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aggregate the TotalAmount spent by each customer per month.&lt;/strong&gt; The first step would be separating the &lt;strong&gt;Year&lt;/strong&gt; and the &lt;strong&gt;Month&lt;/strong&gt; values from &lt;strong&gt;TransactionDate&lt;/strong&gt; in order to diferentiate between the entries. We should use a transformation step in the pipepline to create new entries just like we did last time.&lt;/p&gt;
+&lt;h4 id=&#34;sql-snippet--1&#34;&gt;SQL snippet :&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SELECT 
+    CustomerId,
+    YEAR(TransactionDate) AS Year,
+    MONTH(TransactionDate) AS Month,
+    TotalAmount
+FROM 
+    RetailTransactions
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now that we have extracted the relevant information, we could agregate the TotalAmount for each customer on a monthly basis.&lt;br&gt;
+Step 1 : Add an aggregation component to the pipeline.&lt;br&gt;
+Step 2 : Configure the aggregation component.&lt;/p&gt;
+&lt;h4 id=&#34;sql-snippet--2&#34;&gt;SQL snippet :&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SELECT 
+    CustomerId,
+    YEAR(TransactionDate) AS Year,
+    MONTH(TransactionDate) AS Month,
+    SUM(TotalAmount) AS TotalSpent
+FROM 
+    RetailTransactions
+GROUP BY 
+    CustomerId, 
+    YEAR(TransactionDate),
+    MONTH(TransactionDate);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This basically just sums the TotalAmount based on each month.&lt;br&gt;
+As always, after getting the result we should do some data validation in order to make sure that we have consistancy.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Replace the &amp;ldquo;Home Decor&amp;rdquo; values from the ProductCategory column with &amp;ldquo;Home Products&amp;rdquo;.&lt;/strong&gt; This will be pretty straight forward since we could just use a case when statement. We should insert a transformation component in the pipeline with the directive of changing the values in ProductCategory just when the case is met.&lt;/p&gt;
+&lt;h4 id=&#34;sql-snippet--3&#34;&gt;SQL snippet :&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;CASE 
+    WHEN ProductCategory = &amp;#39;Home Decor&amp;#39; THEN &amp;#39;Home Products&amp;#39;
+    ELSE ProductCategory
+END AS ProductCategory
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
   </channel>

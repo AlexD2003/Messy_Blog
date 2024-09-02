@@ -305,6 +305,209 @@ As always, after getting the result we should do some data validation in order t
     WHEN ProductCategory = &#39;Home Decor&#39; THEN &#39;Home Products&#39;
     ELSE ProductCategory
 END AS ProductCategory
+</code></pre><p><strong>Create a new column HighValueCustomer that is a boolean column that assigns True or False based on your own rule. Think about a rule with a logic that makes sense in the context.</strong> The goal for this task is to create a HighValueCustomer collumn in my database. A simple rule I would personally think of would be that a customer who has spent more than 10k should be moved to the <strong>High Value Customer</strong> status. Using a data pipeline we could add a data transformation step in order to filter our customers based on our new created rule.</p>
+<h4 id="sql-snippet--4">SQL snippet :</h4>
+<pre tabindex="0"><code>SELECT 
+    CustomerId,
+    SUM(TotalAmount) AS TotalSpent
+FROM 
+    RetailTransactions
+GROUP BY 
+    CustomerId;
+</code></pre><p>And in order to actually sort the data and filter for the sum greater than 10k we could do something like this :</p>
+<h4 id="sql-snippet--5">SQL snippet :</h4>
+<pre tabindex="0"><code>CASE 
+    WHEN TotalSpent &gt; 10000 THEN &#39;True&#39;
+    ELSE &#39;False&#39;
+END AS HighValueCustomer
+</code></pre><p><strong>Load the transformed data into a new table in your Data Lake.</strong> As I explained earlier, I would use a Data Warehouse but the process of transforming the data into a new table should be identical. Firstly, defining the table is cruacial. The table should have the same fields i.e. CustomerId, Year and so on and if we are using a pipeline, the pipeline can include a step that automatically creates the table based on the schema defined by my transformed data.</p>
+<h4 id="task-3-solution">Task 3 solution</h4>
+<p><strong>Question: How will you use Microsoft Fabric to create a simple dashboard?</strong>
+After doing a little bit of research, the most obvious first step in creating this sort of dashboard should be sanitizing and validanting the data. After you are sure that the data you are woking with is indeed accurate we should exploit the fact that Microsoft Fabric integrates with Power BI. We could navigate to the Power BI section in Microsoft Fabric and simply choose <strong>Create</strong> and then <strong>Report</strong>. The next obvious step would be connecting this Report to the prepared dataset stored in our Data Warehouse. The final step is just using the <strong>Get Data</strong> feature in Power BI in order to ingest the stored data. Now all that is left to do is design an intuitive layout in order to display your findings. I also created a mock dashboard implementation.</p>
+<p><strong>A chart for total monthly sales by product category &amp; a chart showing the number of
+HighValueCustomers over time.</strong></p>
+<img src="/img/dashboard.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+<h1 id="section-2">Section 2</h1>
+<h4 id="task-1">Task 1</h4>
+<p><strong>Load the data you created into a Pandas DataFrame. Create new features such as the total amount spent
+in the last 3 months, the average transaction amount, and the number of distinct product categories
+purchased, etc.
+Create a target variable IsHighValueNextMonth which is True if the customer becomes a
+HighValueCustomer in the next month, otherwise False. Clean the dataset if needed.</strong></p>
+<h4 id="solution-">Solution :</h4>
+<p>Let`s start by loading the csv data into a dataframe in order to see if it picks it up.</p>
+<h4 id="code-">Code :</h4>
+<pre tabindex="0"><code>import pandas as pd
+
+# Load phase
+df = pd.read_csv(&#39;Retail_Transaction_Dataset.csv&#39;)
+
+# Convert TransactionDate to datetime
+df[&#39;TransactionDate&#39;] = pd.to_datetime(df[&#39;TransactionDate&#39;])
+
+# Simple sort
+df.sort_values(by=[&#39;CustomerID&#39;, &#39;TransactionDate&#39;], inplace=True)
+
+# Print check
+print(df.head())
+</code></pre><h4 id="code-run-">Code run :</h4>
+<pre tabindex="0"><code>06:03:38 archie@Archie randomPy → python3 ai.py
+       CustomerID ProductID  Quantity      Price     TransactionDate PaymentMethod                             StoreLocation ProductCategory  DiscountApplied(%)  TotalAmount
+81519          14         A         5  60.649721 2023-08-06 06:45:00   Credit Card          Unit 3258 Box 4585\nDPO AE 23889           Books           15.504050   256.232791
+80034          42         B         7  88.861581 2023-05-19 21:52:00        PayPal  565 Ashlee Lock\nStephaniefort, CA 33648      Home Decor           19.191090   502.656523
+24358          49         A         1  25.152676 2023-06-05 13:10:00    Debit Card               USCGC Anthony\nFPO AP 93458     Electronics           14.923377    21.399047
+57189          59         B         4  37.424038 2023-08-19 03:50:00    Debit Card             USCGC Carpenter\nFPO AE 70852        Clothing            6.736390   139.612036
+86585          59         D         8  14.867200 2024-04-01 01:06:00    Debit Card     1854 Bailey Dam\nWest April, NC 97920      Home Decor            7.614866   109.880660
+</code></pre><p>The next step should be implementing the new features. Since they are simple interogations and sorts it shouldn`t be very difficult.</p>
+<h4 id="total-spent-in-the-last-3-months-">Total spent in the last 3 months :</h4>
+<pre tabindex="0"><code>df[&#39;TotalSpentLast3Months&#39;] = df.groupby(&#39;CustomerID&#39;).apply(
+    lambda x: x.set_index(&#39;TransactionDate&#39;).rolling(&#39;90D&#39;)[&#39;TotalAmount&#39;].sum()
+).reset_index(level=0, drop=True)
+</code></pre><h4 id="average-transaction-amount-">Average transaction amount :</h4>
+<pre tabindex="0"><code>df[&#39;AvgTransactionAmount&#39;] = df.groupby(&#39;CustomerID&#39;)[&#39;TotalAmount&#39;].expanding().mean().reset_index(level=0, drop=True)
+</code></pre><h4 id="number-of-distinct-categories-">Number of distinct categories :</h4>
+<pre tabindex="0"><code>distinct_categories = []
+categories_set = set()
+
+for category in df[&#39;ProductCategory&#39;]:
+    categories_set.add(category)
+    distinct_categories.append(len(categories_set))
+
+df[&#39;DistinctCategories&#39;] = distinct_categories
+</code></pre><p>Now, we should create a target variable <strong>IsHighValueNextMonth</strong> which is true if the customer will become high value in the next month.<br>
+Firstly, let`s create the <strong>IsHighValueNextMonth</strong> column based on the threshold :</p>
+<pre tabindex="0"><code>high_value_threshold = 10000
+monthly_spending[&#39;IsHighValueCustomer&#39;] = monthly_spending[&#39;TotalAmount&#39;] &gt; high_value_threshold
+</code></pre><p>We need to shift the column in order to create the target variable :</p>
+<pre tabindex="0"><code>monthly_spending[&#39;IsHighValueNextMonth&#39;] = monthly_spending.groupby(&#39;CustomerID&#39;)[&#39;IsHighValueCustomer&#39;].shift(-1)
+</code></pre><p>Now all that is left to do is merge back into the original dataframe, sanitize the data and check our code for errors.</p>
+<pre tabindex="0"><code>df = pd.merge(df, monthly_spending[[&#39;CustomerID&#39;, &#39;YearMonth&#39;, &#39;IsHighValueNextMonth&#39;]], 
+              how=&#39;left&#39;, on=[&#39;CustomerID&#39;, &#39;YearMonth&#39;])
+df[&#39;IsHighValueNextMonth&#39;] = df[&#39;IsHighValueNextMonth&#39;].fillna(False)
+df.dropna(inplace=True)
+</code></pre><h4 id="code-run--1">Code run :</h4>
+<pre tabindex="0"><code>   CustomerID     TransactionDate  TotalAmount  IsHighValueNextMonth
+0          14 2023-08-06 06:45:00   256.232791                 False
+1          42 2023-05-19 21:52:00   502.656523                 False
+2          49 2023-06-05 13:10:00    21.399047                 False
+3          59 2023-08-19 03:50:00   139.612036                 False
+4          59 2024-04-01 01:06:00   109.880660                 False
+5          65 2023-06-18 10:29:00   548.006625                 False
+6          87 2023-08-21 15:23:00    41.515905                 False
+7          96 2024-04-06 12:35:00   194.356816                 False
+8          98 2023-12-20 11:49:00   166.934647                 False
+9         100 2023-05-13 17:17:00   710.062576                 False
+</code></pre><h4 id="task-2">Task 2</h4>
+<p><strong>Split the data into training and testing sets.
+Train a simple model of your choice (e.g., Logistic Regression or Decision Tree) to predict
+IsHighValueNextMonth.
+Evaluate the model using appropriate metrics such as accuracy, precision, and recall.</strong><br>
+Let`s break down the implementation step by step. Firstly I loaded the data and only used a small batch since otherwise the process would be killed for intense operations.</p>
+<pre tabindex="0"><code>df = pd.read_csv(&#39;Retail_Transaction_Dataset.csv&#39;)
+df = df.sample(frac=0.1, random_state=42)  # Use 10%
+</code></pre><p>Then, I applied a datetime conversion in order to facilitate date-based operations.</p>
+<pre tabindex="0"><code>df[&#39;TransactionDate&#39;] = pd.to_datetime(df[&#39;TransactionDate&#39;])
+</code></pre><p>After the previous implementation of high value sort, we should prepare the data for modeling.</p>
+<pre tabindex="0"><code>X = df.drop(columns=[&#39;IsHighValueNextMonth&#39;, &#39;CustomerID&#39;, &#39;TransactionDate&#39;, &#39;YearMonth&#39;])
+y = df[&#39;IsHighValueNextMonth&#39;]
+encoder = OneHotEncoder(sparse_output=True, drop=&#39;first&#39;)
+X_sparse = encoder.fit_transform(X)
+</code></pre><p>The dataset is split into training and testing sets, with 70% of the data used for training and 30% for testing.</p>
+<pre tabindex="0"><code>X_train, X_test, y_train, y_test = train_test_split(X_sparse, y, test_size=0.3, random_state=42)
+</code></pre><p>A logistic regression model is initialized and trained using the training data.</p>
+<pre tabindex="0"><code>model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+</code></pre><p>Predictions are made on the testing set (X_test) using the trained logistic regression model.</p>
+<pre tabindex="0"><code>y_pred = model.predict(X_test)
+</code></pre><p>Then, the model is evaluated using accuracy, precision, and recall metrics, which are standard for classification tasks.</p>
+<pre tabindex="0"><code>accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+
+print(f&#39;Accuracy: {accuracy:.2f}&#39;)
+print(f&#39;Precision: {precision:.2f}&#39;)
+print(f&#39;Recall: {recall:.2f}&#39;)
+
+conf_matrix = confusion_matrix(y_test, y_pred)
+class_report = classification_report(y_test, y_pred)
+
+print(&#34;\nConfusion Matrix:&#34;)
+print(conf_matrix)
+print(&#34;\nClassification Report:&#34;)
+print(class_report)
+</code></pre><h4 id="task-3">Task 3</h4>
+<p><strong>Propose at least one creative feature that could improve the model&rsquo;s performance. Implement this
+feature and re-evaluate the model.</strong><br>
+To improve the model&rsquo;s performance, we can introduce a new feature that provides additional information about the customers&rsquo; behavior. One such creative feature could be the <strong>Change in Spending Behavior</strong> over the past few months. This feature could capture whether a customer&rsquo;s spending has increased, decreased, or remained stable, which might be a strong indicator of whether they will become a high-value customer in the next month.<br>
+In order to implement this, we should just calculate the change in spending behavior and then merge the data back into the original dataframe.</p>
+<h4 id="code--1">Code :</h4>
+<pre tabindex="0"><code># Calculation
+monthly_spending[&#39;PrevMonthSpending&#39;] = monthly_spending.groupby(&#39;CustomerID&#39;)[&#39;TotalAmount&#39;].shift(1)
+monthly_spending[&#39;SpendingChange&#39;] = (monthly_spending[&#39;TotalAmount&#39;] - monthly_spending[&#39;PrevMonthSpending&#39;]) / monthly_spending[&#39;PrevMonthSpending&#39;]
+monthly_spending[&#39;SpendingChange&#39;].fillna(0, inplace=True)  # Replace NaN values with 0 (e.g., for the first month)
+
+# Merge
+df = pd.merge(df, monthly_spending[[&#39;CustomerID&#39;, &#39;YearMonth&#39;, &#39;IsHighValueNextMonth&#39;, &#39;SpendingChange&#39;]], 
+              how=&#39;left&#39;, on=[&#39;CustomerID&#39;, &#39;YearMonth&#39;])
+</code></pre><p><strong>Suggest a potential business use case for the predictive model in a retail environment.</strong><br>
+The predictive model can be used to identify customers who are likely to become high-value in the next month, allowing retailers to target these customers with personalized promotions and product recommendations. This strategy can boost customer engagement, increase sales, and improve overall customer retention.</p>
+<h4 id="full-code-for-this-section-">Full code for this section :</h4>
+<pre tabindex="0"><code>import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix, classification_report
+from sklearn.preprocessing import OneHotEncoder
+from scipy.sparse import csr_matrix
+
+df = pd.read_csv(&#39;Retail_Transaction_Dataset.csv&#39;)
+df = df.sample(frac=0.1, random_state=42)
+df[&#39;TransactionDate&#39;] = pd.to_datetime(df[&#39;TransactionDate&#39;])
+df.sort_values(by=[&#39;CustomerID&#39;, &#39;TransactionDate&#39;], inplace=True)
+df[&#39;YearMonth&#39;] = df[&#39;TransactionDate&#39;].dt.to_period(&#39;M&#39;)
+
+monthly_spending = df.groupby([&#39;CustomerID&#39;, &#39;YearMonth&#39;])[&#39;TotalAmount&#39;].sum().reset_index()
+high_value_threshold = 100
+monthly_spending[&#39;IsHighValueCustomer&#39;] = monthly_spending[&#39;TotalAmount&#39;] &gt; high_value_threshold
+monthly_spending[&#39;IsHighValueNextMonth&#39;] = monthly_spending.groupby(&#39;CustomerID&#39;)[&#39;IsHighValueCustomer&#39;].shift(-1)
+monthly_spending[&#39;IsHighValueNextMonth&#39;] = monthly_spending[&#39;IsHighValueNextMonth&#39;].fillna(False)
+
+monthly_spending[&#39;PrevMonthSpending&#39;] = monthly_spending.groupby(&#39;CustomerID&#39;)[&#39;TotalAmount&#39;].shift(1)
+monthly_spending[&#39;SpendingChange&#39;] = (monthly_spending[&#39;TotalAmount&#39;] - monthly_spending[&#39;PrevMonthSpending&#39;]) / monthly_spending[&#39;PrevMonthSpending&#39;]
+monthly_spending[&#39;SpendingChange&#39;].fillna(0, inplace=True)
+
+df = pd.merge(df, monthly_spending[[&#39;CustomerID&#39;, &#39;YearMonth&#39;, &#39;IsHighValueNextMonth&#39;, &#39;SpendingChange&#39;]], 
+              how=&#39;left&#39;, on=[&#39;CustomerID&#39;, &#39;YearMonth&#39;])
+df.dropna(inplace=True)
+
+X = df.drop(columns=[&#39;IsHighValueNextMonth&#39;, &#39;CustomerID&#39;, &#39;TransactionDate&#39;, &#39;YearMonth&#39;])
+y = df[&#39;IsHighValueNextMonth&#39;]
+
+encoder = OneHotEncoder(sparse_output=True, drop=&#39;first&#39;)
+X_sparse = encoder.fit_transform(X)
+
+X_train, X_test, y_train, y_test = train_test_split(X_sparse, y, test_size=0.3, random_state=42)
+
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+
+print(f&#39;Accuracy: {accuracy:.2f}&#39;)
+print(f&#39;Precision: {precision:.2f}&#39;)
+print(f&#39;Recall: {recall:.2f}&#39;)
+
+conf_matrix = confusion_matrix(y_test, y_pred)
+class_report = classification_report(y_test, y_pred)
+
+print(&#34;\nConfusion Matrix:&#34;)
+print(conf_matrix)
+print(&#34;\nClassification Report:&#34;)
+print(class_report)
 </code></pre></div>
 	</section>
 
@@ -415,7 +618,7 @@ END AS ProductCategory
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		1324 words in this page.
+		2769 words in this page.
 	</div>
 </div>
 
