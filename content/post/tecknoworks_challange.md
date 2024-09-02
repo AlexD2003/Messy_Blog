@@ -59,13 +59,13 @@ dataset is expected to grow in time (hint: e.g. partition the data)?
 #### Task 1 solution
 
 Firstly, I will begin by looking at the data set given in the premise in order to get a feeling for what I am working with.\
-The data set is presented in **csv format and has a size of around 13MB (important for later)**. It seems to be a **retail transaction data set**, basically oferring you a peek at common consumer purchase patterns with the present collumns being : **CustomerId, ProductId, Quantity, Price, TransactionDate, PaymentMethod, StoreLocation, ProductCategory, AppliedDiscount and TotalAmount**.\
+The data set is presented in **csv format and has a size of around 13MB (important for later)**. It seems to be a **retail transaction data set**, basically offering you a peek at common consumer purchase patterns with the present columns being : **CustomerId, ProductId, Quantity, Price, TransactionDate, PaymentMethod, StoreLocation, ProductCategory, AppliedDiscount and TotalAmount**.\
 Since the data set is given in csv format which is compatible with the import feature of **Microsoft Fabric** and the size is not significant, the import should be pretty straight forward. We should plan for further expansion tho.\
 **Okay, how how do I import it?** Firstly, in what? A quick look around google later, the most obvious choice was between a **Data Lake or a Data Warehouse**. I would go with a **Data Warehouse** since it is meant for already structured data (exactly like my data set) while a **Data Lake** is more inclined towards raw data meant for analysis and further implications in various projects. [Source.](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake#:~:text=risks%20more%20efficiently.-,What's%20the%20difference%20between%20a%20data%20lake%20and%20a%20data,as%20specific%20BI%20use%20cases.)\
 In order to import this data into Microsoft Fabric we could setup a pipeline. **Pipeline setup:**
 1. Configure an automated data pipeline within Microsoft Fabric.
 2. Source : We should point the pipeline towards the source location of the **csv file**.
-3. Transformation : We should always think about transforming data when we are doing an import in order to further suit our needs, for example remove unnecessary collumns or filter just what we need.
+3. Transformation : We should always think about transforming data when we are doing an import in order to further suit our needs, for example remove unnecessary columns or filter just what we need.
 4. Destination : Finally, we set the pipeline to store the ingested data into our Data Warehouse, as explained earlier.
 #### [Source.](https://www.youtube.com/watch?v=LoESCJpru8w)
 
@@ -95,7 +95,7 @@ needed.\
 
 #### Task 2 solution
 
-**Separate TransactionDate into 2 columns.** As I explained previously, before sending the ingested data to the Data Warehouse we should parse it through a Data Transformation step. In order to achieve what is asked, there are Microsoft data pipeline capabilities that could get the expected result. Data pipelines in Fabric are designed to allow for complex data manipulations and transformations as part of the data flow. Withing the pipeline, we could add a transformation step for the received data. Fabric allows for transformations through both low-code/no-code interfaces and SQL-based transformations and for this task, I think that a simple SQL snippet should suffice. [Source.](https://learn.microsoft.com/en-us/fabric/data-factory/transform-data)
+**Separate TransactionDate into 2 columns.** As I explained previously, before sending the ingested data to the Data Warehouse we should parse it through a Data Transformation step. In order to achieve what is asked, there are Microsoft data pipeline capabilities that could get the expected result. Data pipelines in Fabric are designed to allow for complex data manipulations and transformations as part of the data flow. Within the pipeline, we could add a transformation step for the received data. Fabric allows for transformations through both low-code/no-code interfaces and SQL-based transformations and for this task, I think that a simple SQL snippet should suffice. [Source.](https://learn.microsoft.com/en-us/fabric/data-factory/transform-data)
 
 #### SQL snippet :
 
@@ -113,7 +113,7 @@ FROM
 ```
 **Explanation :** Casting the datetime variable as DATE and TIME respectively, we will only get the DATE and TIME part of the initial value.
 
-**Aggregate the TotalAmount spent by each customer per month.** The first step would be separating the **Year** and the **Month** values from **TransactionDate** in order to diferentiate between the entries. We should use a transformation step in the pipepline to create new entries just like we did last time.
+**Aggregate the TotalAmount spent by each customer per month.** The first step would be separating the **Year** and the **Month** values from **TransactionDate** in order to differentiate between the entries. We should use a transformation step in the pipepline to create new entries just like we did last time.
 
 #### SQL snippet :
 
@@ -147,7 +147,7 @@ GROUP BY
     MONTH(TransactionDate);
 ```
 This basically just sums the TotalAmount based on each month.\
-As always, after getting the result we should do some data validation in order to make sure that we have consistancy.
+As always, after getting the result we should do some data validation in order to make sure that we have consistency.
 
 **Replace the "Home Decor" values from the ProductCategory column with "Home Products".** This will be pretty straight forward since we could just use a case when statement. We should insert a transformation component in the pipeline with the directive of changing the values in ProductCategory just when the case is met.
 
@@ -160,7 +160,7 @@ CASE
 END AS ProductCategory
 ```
 
-<strong>Create a new column HighValueCustomer that is a boolean column that assigns True or False based on your own rule. Think about a rule with a logic that makes sense in the context.</strong> The goal for this task is to create a HighValueCustomer collumn in my database. A simple rule I would personally think of would be that a customer who has spent more than 10k should be moved to the <strong>High Value Customer</strong> status. Using a data pipeline we could add a data transformation step in order to filter our customers based on our new created rule.
+<strong>Create a new column HighValueCustomer that is a boolean column that assigns True or False based on your own rule. Think about a rule with a logic that makes sense in the context.</strong> The goal for this task is to create a HighValueCustomer column in my database. A simple rule I would personally think of would be that a customer who has spent more than 10k should be moved to the <strong>High Value Customer</strong> status. Using a data pipeline we could add a data transformation step in order to filter our customers based on our new created rule.
 
 #### SQL snippet :
 
@@ -185,12 +185,12 @@ CASE
 END AS HighValueCustomer
 ```
 
-<strong>Load the transformed data into a new table in your Data Lake.</strong> As I explained earlier, I would use a Data Warehouse but the process of transforming the data into a new table should be identical. Firstly, defining the table is cruacial. The table should have the same fields i.e. CustomerId, Year and so on and if we are using a pipeline, the pipeline can include a step that automatically creates the table based on the schema defined by my transformed data.
+<strong>Load the transformed data into a new table in your Data Lake.</strong> As I explained earlier, I would use a Data Warehouse but the process of transforming the data into a new table should be identical. Firstly, defining the table is crucial. The table should have the same fields i.e. CustomerId, Year and so on and if we are using a pipeline, the pipeline can include a step that automatically creates the table based on the schema defined by my transformed data.
 
 #### Task 3 solution
 
 <strong>Question: How will you use Microsoft Fabric to create a simple dashboard?</strong>
-After doing a little bit of research, the most obvious first step in creating this sort of dashboard should be sanitizing and validanting the data. After you are sure that the data you are woking with is indeed accurate we should exploit the fact that Microsoft Fabric integrates with Power BI. We could navigate to the Power BI section in Microsoft Fabric and simply choose <strong>Create</strong> and then <strong>Report</strong>. The next obvious step would be connecting this Report to the prepared dataset stored in our Data Warehouse. The final step is just using the <strong>Get Data</strong> feature in Power BI in order to ingest the stored data. Now all that is left to do is design an intuitive layout in order to display your findings. I also created a mock dashboard implementation. 
+After doing a little bit of research, the most obvious first step in creating this sort of dashboard should be sanitizing and validating the data. After you are sure that the data you are working with is indeed accurate we should exploit the fact that Microsoft Fabric integrates with Power BI. We could navigate to the Power BI section in Microsoft Fabric and simply choose <strong>Create</strong> and then <strong>Report</strong>. The next obvious step would be connecting this Report to the prepared dataset stored in our Data Warehouse. The final step is just using the <strong>Get Data</strong> feature in Power BI in order to ingest the stored data. Now all that is left to do is design an intuitive layout in order to display your findings. I also created a mock dashboard implementation. 
 
 <strong>A chart for total monthly sales by product category & a chart showing the number of
 HighValueCustomers over time.</strong>
