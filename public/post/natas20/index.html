@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Bandit-Level 18</title>
+	<title>My messy collection  | Natas-Level 20</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.134.1">
 	
@@ -144,7 +144,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Bandit-Level 18</h1>
+<h1 class="pt-2">Natas-Level 20</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -157,7 +157,7 @@ onload='renderMathInElement(document.body);'></script>
 		href='/categories/overthewire'>Overthewire</a>&nbsp;&#47;
 	
 	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
-		href='/categories/bandit'>Bandit</a>
+		href='/categories/natas'>Natas</a>
 	
 	
 	
@@ -179,7 +179,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-08-18T18:31:40&#43;03:00">2024-8-18</time>
+		datetime="2024-09-10T11:59:40&#43;03:00">2024-9-10</time>
 </div>
 
 <hr />
@@ -192,30 +192,19 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><h1 id="level-goal">Level goal</h1>
-<p>The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.</p>
-<h3 id="login">Login</h3>
-<p><em>ssh <a href="mailto:bandit18@bandit.labs.overthewire.org">bandit18@bandit.labs.overthewire.org</a> -p 2220</em><br>
-<em>x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO</em></p>
+		<div class="c-rich-text"><h3 id="login">Login</h3>
+<p><em>Username: natas20</em><br>
+<em>Password: p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw</em><br>
+<em>URL:      <a href="http://natas20.natas.labs.overthewire.org">http://natas20.natas.labs.overthewire.org</a></em></p>
 <h3 id="doc">Doc</h3>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>ssh (1)              - OpenSSH remote login client</span></span></code></pre></div>
+<p>Burp Suite is a proprietary software tool for security assessment and penetration testing of web applications. It software was initially developed in 2003-2006 by Dafydd Stuttard to automate his own security testing needs, after realizing the capabilities of automatable web tools like Selenium.
+<a href="https://en.wikipedia.org/wiki/Burp_Suite">Source.</a><br>
+Burp Suite tutorial and usefull guides:<br>
+<a href="https://portswigger.net/burp/documentation/desktop/getting-started">Port Swigger.</a></p>
 <h3 id="solution">Solution</h3>
-<p>This is a very easy sollution just like the one from the previous level. Since you get logged out right after logging in you can`t really do much since you can`t run any commands right? Well you could just pass the output of <strong>echo &ldquo;cat readme&rdquo;</strong> into the ssh login and it will cat the required file <strong>readme</strong> right at the start, therefore you don`t need to actually do anything in the terminal yourself.
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>06:32:06 archie@Archie tmp.sZImFQt5fw → echo &#34;cat readme&#34; | ssh bandit18@bandit.labs.overthewire.org -p 2220
-</span></span><span style="display:flex;"><span>Pseudo-terminal will not be allocated because stdin is not a terminal.
-</span></span><span style="display:flex;"><span>                         _                     _ _ _
-</span></span><span style="display:flex;"><span>                        | |__   __ _ _ __   __| (_) |_
-</span></span><span style="display:flex;"><span>                        | &#39;_ \ / _` | &#39;_ \ / _` | | __|
-</span></span><span style="display:flex;"><span>                        | |_) | (_| | | | | (_| | | |_
-</span></span><span style="display:flex;"><span>                        |_.__/ \__,_|_| |_|\__,_|_|\__|
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                      This is an OverTheWire game server.
-</span></span><span style="display:flex;"><span>            More information on http://www.overthewire.org/wargames
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>bandit18@bandit.labs.overthewire.org&#39;s password:
-</span></span><span style="display:flex;"><span>cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8</span></span></code></pre></div></p>
-</div>
+<p>The index page of <strong>natas 20</strong> gives a quick prompt of <strong>You are logged in as a regular user. Login as an admin to retrieve credentials for natas21</strong>. It is the same premise as for <strong>natas 19</strong>.</p>
+<img src="/img/natas/natas20-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br></div>
 	</section>
 
 
@@ -325,7 +314,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		198 words in this page.
+		98 words in this page.
 	</div>
 </div>
 
@@ -336,21 +325,14 @@ onload='renderMathInElement(document.body);'></script>
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/bandit17/">
+    <a class="flex-grow-0" href="/post/tecknoworks_challange/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Bandit-Level 17
+        Tecknoworks-Intenship challange
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/bandit19/">
-        Bandit-Level 19
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -361,35 +343,35 @@ onload='renderMathInElement(document.body);'></script>
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
 		
-			<a href="/post/bandit17/">Bandit-Level 17</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas19/">Natas-Level 19</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit16/">Bandit-Level 16</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas18/">Natas-Level 18</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit15/">Bandit-Level 15</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas17/">Natas-Level 17</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit14/">Bandit-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas16/">Natas-Level 16</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit13/">Bandit-Level 13</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas15/">Natas-Level 15</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit12/">Bandit-Level 12</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas14/">Natas-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit11/">Bandit-Level 11</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas13/">Natas-Level 13</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit10/">Bandit-Level 10</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas12/">Natas-Level 12</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit9/">Bandit-Level 9</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas11/">Natas-Level 11</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit8/">Bandit-Level 8</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas10/">Natas-Level 10</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit7/">Bandit-Level 7</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas9/">Natas-Level 9</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit6/">Bandit-Level 6</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas8/">Natas-Level 8</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit5/">Bandit-Level 5</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas7/">Natas-Level 7</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit4/">Bandit-Level 4</a>&nbsp;&nbsp;&#47;&nbsp;
+			<a href="/post/natas6/">Natas-Level 6</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/bandit3/">Bandit-Level 3</a>
+			<a href="/post/natas5/">Natas-Level 5</a>
 		
 </span>
 </div>

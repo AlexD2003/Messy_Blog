@@ -7,7 +7,7 @@
 	
 	<title>My messy collection  | Tecknoworks-Intenship challange</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
-	<meta name="generator" content="Hugo 0.133.0">
+	<meta name="generator" content="Hugo 0.134.1">
 	
 	
 	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -30,13 +30,6 @@
 	
 	
 	
-  
-    
-      
-    
-  
-
-
 	
 	
 	
@@ -230,14 +223,14 @@ dataset is expected to grow in time (hint: e.g. partition the data)?
 (Answer with text descriptions or diagrams)</p>
 <h4 id="task-1-solution">Task 1 solution</h4>
 <p>Firstly, I will begin by looking at the data set given in the premise in order to get a feeling for what I am working with.<br>
-The data set is presented in <strong>csv format and has a size of around 13MB (important for later)</strong>. It seems to be a <strong>retail transaction data set</strong>, basically oferring you a peek at common consumer purchase patterns with the present collumns being : <strong>CustomerId, ProductId, Quantity, Price, TransactionDate, PaymentMethod, StoreLocation, ProductCategory, AppliedDiscount and TotalAmount</strong>.<br>
+The data set is presented in <strong>csv format and has a size of around 13MB (important for later)</strong>. It seems to be a <strong>retail transaction data set</strong>, basically offering you a peek at common consumer purchase patterns with the present columns being : <strong>CustomerId, ProductId, Quantity, Price, TransactionDate, PaymentMethod, StoreLocation, ProductCategory, AppliedDiscount and TotalAmount</strong>.<br>
 Since the data set is given in csv format which is compatible with the import feature of <strong>Microsoft Fabric</strong> and the size is not significant, the import should be pretty straight forward. We should plan for further expansion tho.<br>
 <strong>Okay, how how do I import it?</strong> Firstly, in what? A quick look around google later, the most obvious choice was between a <strong>Data Lake or a Data Warehouse</strong>. I would go with a <strong>Data Warehouse</strong> since it is meant for already structured data (exactly like my data set) while a <strong>Data Lake</strong> is more inclined towards raw data meant for analysis and further implications in various projects. <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake#:~:text=risks%20more%20efficiently.-,What's%20the%20difference%20between%20a%20data%20lake%20and%20a%20data,as%20specific%20BI%20use%20cases.">Source.</a><br>
 In order to import this data into Microsoft Fabric we could setup a pipeline. <strong>Pipeline setup:</strong></p>
 <ol>
 <li>Configure an automated data pipeline within Microsoft Fabric.</li>
 <li>Source : We should point the pipeline towards the source location of the <strong>csv file</strong>.</li>
-<li>Transformation : We should always think about transforming data when we are doing an import in order to further suit our needs, for example remove unnecessary collumns or filter just what we need.</li>
+<li>Transformation : We should always think about transforming data when we are doing an import in order to further suit our needs, for example remove unnecessary columns or filter just what we need.</li>
 <li>Destination : Finally, we set the pipeline to store the ingested data into our Data Warehouse, as explained earlier.</li>
 </ol>
 <h4 id="sourcehttpswwwyoutubecomwatchvloescjpru8w"><a href="https://www.youtube.com/watch?v=LoESCJpru8w">Source.</a></h4>
@@ -260,7 +253,7 @@ How do you envision solving this based on your research on Microsoft Fabric? No 
 needed.<br>
 (Answer with text descriptions, images or diagrams).</p>
 <h4 id="task-2-solution">Task 2 solution</h4>
-<p><strong>Separate TransactionDate into 2 columns.</strong> As I explained previously, before sending the ingested data to the Data Warehouse we should parse it through a Data Transformation step. In order to achieve what is asked, there are Microsoft data pipeline capabilities that could get the expected result. Data pipelines in Fabric are designed to allow for complex data manipulations and transformations as part of the data flow. Withing the pipeline, we could add a transformation step for the received data. Fabric allows for transformations through both low-code/no-code interfaces and SQL-based transformations and for this task, I think that a simple SQL snippet should suffice. <a href="https://learn.microsoft.com/en-us/fabric/data-factory/transform-data">Source.</a></p>
+<p><strong>Separate TransactionDate into 2 columns.</strong> As I explained previously, before sending the ingested data to the Data Warehouse we should parse it through a Data Transformation step. In order to achieve what is asked, there are Microsoft data pipeline capabilities that could get the expected result. Data pipelines in Fabric are designed to allow for complex data manipulations and transformations as part of the data flow. Within the pipeline, we could add a transformation step for the received data. Fabric allows for transformations through both low-code/no-code interfaces and SQL-based transformations and for this task, I think that a simple SQL snippet should suffice. <a href="https://learn.microsoft.com/en-us/fabric/data-factory/transform-data">Source.</a></p>
 <h4 id="sql-snippet-">SQL snippet :</h4>
 <pre tabindex="0"><code>SELECT 
     CustomerID,
@@ -273,7 +266,7 @@ needed.<br>
 FROM 
     RetailTransactions
 </code></pre><p><strong>Explanation :</strong> Casting the datetime variable as DATE and TIME respectively, we will only get the DATE and TIME part of the initial value.</p>
-<p><strong>Aggregate the TotalAmount spent by each customer per month.</strong> The first step would be separating the <strong>Year</strong> and the <strong>Month</strong> values from <strong>TransactionDate</strong> in order to diferentiate between the entries. We should use a transformation step in the pipepline to create new entries just like we did last time.</p>
+<p><strong>Aggregate the TotalAmount spent by each customer per month.</strong> The first step would be separating the <strong>Year</strong> and the <strong>Month</strong> values from <strong>TransactionDate</strong> in order to differentiate between the entries. We should use a transformation step in the pipepline to create new entries just like we did last time.</p>
 <h4 id="sql-snippet--1">SQL snippet :</h4>
 <pre tabindex="0"><code>SELECT 
     CustomerId,
@@ -298,14 +291,14 @@ GROUP BY
     YEAR(TransactionDate),
     MONTH(TransactionDate);
 </code></pre><p>This basically just sums the TotalAmount based on each month.<br>
-As always, after getting the result we should do some data validation in order to make sure that we have consistancy.</p>
+As always, after getting the result we should do some data validation in order to make sure that we have consistency.</p>
 <p><strong>Replace the &ldquo;Home Decor&rdquo; values from the ProductCategory column with &ldquo;Home Products&rdquo;.</strong> This will be pretty straight forward since we could just use a case when statement. We should insert a transformation component in the pipeline with the directive of changing the values in ProductCategory just when the case is met.</p>
 <h4 id="sql-snippet--3">SQL snippet :</h4>
 <pre tabindex="0"><code>CASE 
     WHEN ProductCategory = &#39;Home Decor&#39; THEN &#39;Home Products&#39;
     ELSE ProductCategory
 END AS ProductCategory
-</code></pre><p><strong>Create a new column HighValueCustomer that is a boolean column that assigns True or False based on your own rule. Think about a rule with a logic that makes sense in the context.</strong> The goal for this task is to create a HighValueCustomer collumn in my database. A simple rule I would personally think of would be that a customer who has spent more than 10k should be moved to the <strong>High Value Customer</strong> status. Using a data pipeline we could add a data transformation step in order to filter our customers based on our new created rule.</p>
+</code></pre><p><strong>Create a new column HighValueCustomer that is a boolean column that assigns True or False based on your own rule. Think about a rule with a logic that makes sense in the context.</strong> The goal for this task is to create a HighValueCustomer column in my database. A simple rule I would personally think of would be that a customer who has spent more than 10k should be moved to the <strong>High Value Customer</strong> status. Using a data pipeline we could add a data transformation step in order to filter our customers based on our new created rule.</p>
 <h4 id="sql-snippet--4">SQL snippet :</h4>
 <pre tabindex="0"><code>SELECT 
     CustomerId,
@@ -320,10 +313,10 @@ GROUP BY
     WHEN TotalSpent &gt; 10000 THEN &#39;True&#39;
     ELSE &#39;False&#39;
 END AS HighValueCustomer
-</code></pre><p><strong>Load the transformed data into a new table in your Data Lake.</strong> As I explained earlier, I would use a Data Warehouse but the process of transforming the data into a new table should be identical. Firstly, defining the table is cruacial. The table should have the same fields i.e. CustomerId, Year and so on and if we are using a pipeline, the pipeline can include a step that automatically creates the table based on the schema defined by my transformed data.</p>
+</code></pre><p><strong>Load the transformed data into a new table in your Data Lake.</strong> As I explained earlier, I would use a Data Warehouse but the process of transforming the data into a new table should be identical. Firstly, defining the table is crucial. The table should have the same fields i.e. CustomerId, Year and so on and if we are using a pipeline, the pipeline can include a step that automatically creates the table based on the schema defined by my transformed data.</p>
 <h4 id="task-3-solution">Task 3 solution</h4>
 <p><strong>Question: How will you use Microsoft Fabric to create a simple dashboard?</strong>
-After doing a little bit of research, the most obvious first step in creating this sort of dashboard should be sanitizing and validanting the data. After you are sure that the data you are woking with is indeed accurate we should exploit the fact that Microsoft Fabric integrates with Power BI. We could navigate to the Power BI section in Microsoft Fabric and simply choose <strong>Create</strong> and then <strong>Report</strong>. The next obvious step would be connecting this Report to the prepared dataset stored in our Data Warehouse. The final step is just using the <strong>Get Data</strong> feature in Power BI in order to ingest the stored data. Now all that is left to do is design an intuitive layout in order to display your findings. I also created a mock dashboard implementation.</p>
+After doing a little bit of research, the most obvious first step in creating this sort of dashboard should be sanitizing and validating the data. After you are sure that the data you are working with is indeed accurate we should exploit the fact that Microsoft Fabric integrates with Power BI. We could navigate to the Power BI section in Microsoft Fabric and simply choose <strong>Create</strong> and then <strong>Report</strong>. The next obvious step would be connecting this Report to the prepared dataset stored in our Data Warehouse. The final step is just using the <strong>Get Data</strong> feature in Power BI in order to ingest the stored data. Now all that is left to do is design an intuitive layout in order to display your findings. I also created a mock dashboard implementation.</p>
 <p><strong>A chart for total monthly sales by product category &amp; a chart showing the number of
 HighValueCustomers over time.</strong></p>
 <img src="/img/dashboard.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
@@ -661,6 +654,8 @@ print(class_report)
 		
 			<a href="/post/natas13/">Natas-Level 13</a>&nbsp;&nbsp;&#47;&nbsp;
 		
+			<a href="/post/natas20/">Natas-Level 13</a>&nbsp;&nbsp;&#47;&nbsp;
+		
 			<a href="/post/natas12/">Natas-Level 12</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/natas11/">Natas-Level 11</a>&nbsp;&nbsp;&#47;&nbsp;
@@ -673,9 +668,7 @@ print(class_report)
 		
 			<a href="/post/natas7/">Natas-Level 7</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/natas6/">Natas-Level 6</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/natas5/">Natas-Level 5</a>
+			<a href="/post/natas6/">Natas-Level 6</a>
 		
 </span>
 </div>

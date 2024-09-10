@@ -7,7 +7,7 @@
 	
 	<title>My messy collection  | Bandit-Level 25</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
-	<meta name="generator" content="Hugo 0.133.0">
+	<meta name="generator" content="Hugo 0.134.1">
 	
 	
 	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -30,13 +30,6 @@
 	
 	
 	
-  
-    
-      
-    
-  
-
-
 	
 	
 	
@@ -226,12 +219,14 @@ NOTE: if you’re a Windows user and typically use Powershell to ssh into bandit
 <p>The shell present for user bandit26 seems to be showtext. After inspecting it, it seems like all it does is display a text file and then exit right afterwards.
 A sollution to this problem would be minimizing your terminal as much as possible such that the text file could not be fully loaded, giving you the oportunity to go into <strong>vi</strong> and execute commands. <a href="https://en.wikipedia.org/wiki/Vi_(text_editor)">vi</a></p>
 <table>
-<thead>
-<tr>
-<th><img src="/img/bandit26-terminal1.jpg" alt="image"></th>
-<th><img src="/img/bandit26-terminal2.jpg" alt="image"></th>
-</tr>
-</thead>
+  <thead>
+      <tr>
+          <th style="text-align: left"><img src="/img/bandit26-terminal1.jpg" alt="image"></th>
+          <th style="text-align: left"><img src="/img/bandit26-terminal2.jpg" alt="image"></th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
 </table>
 <p>After you are in <strong>vi</strong> you can just press <strong>:</strong>, put <strong>e</strong> as execute and:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>cat /etc/bandit_pass/bandit26

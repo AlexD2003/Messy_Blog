@@ -497,12 +497,14 @@ NOTE: if you’re a Windows user and typically use Powershell to ssh into bandit
 &lt;p&gt;The shell present for user bandit26 seems to be showtext. After inspecting it, it seems like all it does is display a text file and then exit right afterwards.
 A sollution to this problem would be minimizing your terminal as much as possible such that the text file could not be fully loaded, giving you the oportunity to go into &lt;strong&gt;vi&lt;/strong&gt; and execute commands. &lt;a href=&#34;https://en.wikipedia.org/wiki/Vi_(text_editor)&#34;&gt;vi&lt;/a&gt;&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal1.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
-&lt;th&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal2.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal1.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal2.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;After you are in &lt;strong&gt;vi&lt;/strong&gt; you can just press &lt;strong&gt;:&lt;/strong&gt;, put &lt;strong&gt;e&lt;/strong&gt; as execute and:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat /etc/bandit_pass/bandit26
