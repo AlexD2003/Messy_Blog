@@ -263,4 +263,4 @@ Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr</pre><div id="viewsource"><a href="in
 </html>
 ```
 
-As you can see, **the correct session id was 119** and sending a packet with that id select as your cookie grants us access to **natas19**.11
+As you can see, **the correct session id was 119** and sending a packet with that id select as your cookie grants us access to **natas19**.
