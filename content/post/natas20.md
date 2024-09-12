@@ -2,7 +2,7 @@
 author = "Alex Domnit"
 title = 'Natas-Level 20'
 date = 2024-09-10T11:59:40+03:00
-draft = false
+draft = true
 description = "Writeup"
 tags = [
     "CTF",
@@ -32,3 +32,8 @@ The index page of **natas 20** gives a quick prompt of **You are logged in as a 
 
 <img src="/img/natas/natas20-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <br>
+
+Let`s look at the source code :
+
+
+{{< /highlight >}}
