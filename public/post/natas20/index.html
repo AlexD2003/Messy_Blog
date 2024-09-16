@@ -204,7 +204,177 @@ Burp Suite tutorial and usefull guides:<br>
 <h3 id="solution">Solution</h3>
 <p>The index page of <strong>natas 20</strong> gives a quick prompt of <strong>You are logged in as a regular user. Login as an admin to retrieve credentials for natas21</strong>. It is the same premise as for <strong>natas 19</strong>.</p>
 <img src="/img/natas/natas20-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<br></div>
+<br>
+<p>Let`s look at the source code :</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- This stuff in the header has nothing to do with the level --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">link</span> <span style="color:#75af00">rel</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;stylesheet&#34;</span> <span style="color:#75af00">type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;text/css&#34;</span> <span style="color:#75af00">href</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/css/level.css&#34;</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">link</span> <span style="color:#75af00">rel</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;stylesheet&#34;</span> <span style="color:#75af00">href</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/css/jquery-ui.css&#34;</span> <span style="color:#111">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">link</span> <span style="color:#75af00">rel</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;stylesheet&#34;</span> <span style="color:#75af00">href</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/css/wechall.css&#34;</span> <span style="color:#111">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/jquery-ui.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">http://natas.labs.overthewire.org/js/wechall-data.js</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">script</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;http://natas.labs.overthewire.org/js/wechall.js&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">script</span><span style="color:#111">&gt;</span><span style="color:#00a8c8">var</span> <span style="color:#75af00">wechallinfo</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span> <span style="color:#d88200">&#34;level&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;natas20&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;pass&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&lt;censored&gt;&#34;</span> <span style="color:#111">};&lt;/</span><span style="color:#f92672">script</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>natas20<span style="color:#111">&lt;/</span><span style="color:#f92672">h1</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">div</span> <span style="color:#75af00">id</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;content&#34;</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?php
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function debug($msg) { /* {{{ */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(array_key_exists(&#34;debug&#34;, $_GET)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        print &#34;DEBUG: $msg&lt;br&gt;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* }}} */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function print_credentials() { /* {{{ */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if($_SESSION and array_key_exists(&#34;admin&#34;, $_SESSION) and $_SESSION[&#34;admin&#34;] == 1) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;You are an admin. The credentials for the next level are:&lt;br&gt;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;&lt;pre&gt;Username: natas21\n&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;Password: &lt;censored&gt;&lt;/pre&gt;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    } else {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;You are logged in as a regular user. Login as an admin to retrieve credentials for natas21.&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* }}} */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* we don&#39;t need this */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function myopen($path, $name) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    //debug(&#34;MYOPEN $path $name&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return true;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* we don&#39;t need this */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function myclose() {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    //debug(&#34;MYCLOSE&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return true;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function myread($sid) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    debug(&#34;MYREAD $sid&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(strspn($sid, &#34;1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM-&#34;) != strlen($sid)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    debug(&#34;Invalid SID&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        return &#34;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $filename = session_save_path() . &#34;/&#34; . &#34;mysess_&#34; . $sid;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(!file_exists($filename)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        debug(&#34;Session file doesn&#39;t exist&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        return &#34;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    debug(&#34;Reading from &#34;. $filename);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $data = file_get_contents($filename);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $_SESSION = array();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    foreach(explode(&#34;\n&#34;, $data) as $line) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        debug(&#34;Read [$line]&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $parts = explode(&#34; &#34;, $line, 2);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if($parts[0] != &#34;&#34;) $_SESSION[$parts[0]] = $parts[1];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return session_encode() ?: &#34;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function mywrite($sid, $data) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // $data contains the serialized version of $_SESSION
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // but our encoding is better
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    debug(&#34;MYWRITE $sid $data&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // make sure the sid is alnum only!!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(strspn($sid, &#34;1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM-&#34;) != strlen($sid)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    debug(&#34;Invalid SID&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        return;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $filename = session_save_path() . &#34;/&#34; . &#34;mysess_&#34; . $sid;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $data = &#34;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    debug(&#34;Saving in &#34;. $filename);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    ksort($_SESSION);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    foreach($_SESSION as $key =&gt; $value) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        debug(&#34;$key =&gt; $value&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        $data .= &#34;$key $value\n&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    file_put_contents($filename, $data);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    chmod($filename, 0600);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return true;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* we don&#39;t need this */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function mydestroy($sid) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    //debug(&#34;MYDESTROY $sid&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return true;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">/* we don&#39;t need this */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function mygarbage($t) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    //debug(&#34;MYGARBAGE $t&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return true;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">session_set_save_handler(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;myopen&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;myclose&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;myread&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;mywrite&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;mydestroy&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    &#34;mygarbage&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">session_start();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if(array_key_exists(&#34;name&#34;, $_REQUEST)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $_SESSION[&#34;name&#34;] = $_REQUEST[&#34;name&#34;];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    debug(&#34;Name set to &#34; . $_REQUEST[&#34;name&#34;]);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">print_credentials();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">$name = &#34;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if(array_key_exists(&#34;name&#34;, $_SESSION)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $name = $_SESSION[&#34;name&#34;];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">form</span> <span style="color:#75af00">action</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;index.php&#34;</span> <span style="color:#75af00">method</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;POST&#34;</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span>Your name: <span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;name&#34;</span> <span style="color:#75af00">value</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;&lt;?=$name?&gt;&#34;</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;submit&#34;</span> <span style="color:#75af00">value</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;Change name&#34;</span> <span style="color:#111">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">form</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;</span><span style="color:#f92672">div</span> <span style="color:#75af00">id</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;viewsource&#34;</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">a</span> <span style="color:#75af00">href</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;index-source.html&#34;</span><span style="color:#111">&gt;</span>View sourcecode<span style="color:#111">&lt;/</span><span style="color:#f92672">a</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">div</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">div</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">&lt;/</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span></span></span></code></pre></div>
+<h4 id="code-breakdown-into-sections">Code breakdown into sections</h4>
+<p><strong>The debug function</strong> checks the URL for a debug parameter. It is usually used to aid in development. This will come in handy.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>function debug($msg) {
+</span></span><span style="display:flex;"><span>    if(array_key_exists(&#34;debug&#34;, $_GET)) {
+</span></span><span style="display:flex;"><span>        print &#34;DEBUG: $msg<span style="color:#111">&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>&#34;;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<p><strong>The print credentials function</strong> checks the <strong>$_SESSION</strong> array in order to see if the admin flag of the session is set to 1.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>function print_credentials() {
+</span></span><span style="display:flex;"><span>    if($_SESSION and array_key_exists(&#34;admin&#34;, $_SESSION) and $_SESSION[&#34;admin&#34;] == 1) {
+</span></span><span style="display:flex;"><span>        print &#34;You are an admin. The credentials for the next level are:<span style="color:#111">&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>&#34;;
+</span></span><span style="display:flex;"><span>        print &#34;<span style="color:#111">&lt;</span><span style="color:#f92672">pre</span><span style="color:#111">&gt;</span>Username: natas21\n&#34;;
+</span></span><span style="display:flex;"><span>        print &#34;Password: <span style="color:#111">&lt;</span><span style="color:#f92672">censored</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">pre</span><span style="color:#111">&gt;</span>&#34;;
+</span></span><span style="display:flex;"><span>    } else {
+</span></span><span style="display:flex;"><span>        print &#34;You are logged in as a regular user. Login as an admin to retrieve credentials for natas21.&#34;;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<p>This is really all of the code that can be considered of interest in our vulnerability purpose. The easiest way to exploit this would be session tampering.</p>
+<img src="/img/natas/natas20-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+Using the debug parameter in the url as mentioned previously, you can can see that the session file it tries to load doesn`t exist even tho this page actually reads. This seems to be the debug session for the default session. As done previously, we can intercept the packet we want to send in order to alter it`s contents.
+<img src="/img/natas/natas20-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+<h4 id="burp-">Burp :</h4>
+<img src="/img/natas/natas20-4.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+<p>Press <strong>Ctrl+R</strong> to redirect the packet into the repeater in order to be able to modify the contents of the header and keep sending the modified packet at the same time as you are getting a http response for analysis.<br>
+The header data should be <strong>%0Aadmin 1</strong> which is the URL encoded version of <strong>admin \n 1</strong>. This solution has been used before.</p>
+<img src="/img/natas/natas20-5.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+<p>Now just try sending the modified header and watch the response.</p>
+<img src="/img/natas/natas20-6.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+<p>That solved it.<br>
+<strong>Password : </strong>BPhv63cKE1lkQl04cE5CuFTzXe15NfiH<br>
+Now letting the proxy through, you can also see the respons on the webpage.</p>
+<img src="/img/natas/natas20-7.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<br>
+</div>
 	</section>
 
 
@@ -314,7 +484,7 @@ Burp Suite tutorial and usefull guides:<br>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		98 words in this page.
+		781 words in this page.
 	</div>
 </div>
 

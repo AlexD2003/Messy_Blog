@@ -30,7 +30,9 @@ Burp Suite tutorial and usefull guides:&lt;br&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;The index page of &lt;strong&gt;natas 20&lt;/strong&gt; gives a quick prompt of &lt;strong&gt;You are logged in as a regular user. Login as an admin to retrieve credentials for natas21&lt;/strong&gt;. It is the same premise as for &lt;strong&gt;natas 19&lt;/strong&gt;.&lt;/p&gt;
 &lt;img src=&#34;//localhost:1313/img/natas/natas20-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
-&lt;br&gt;</description>
+&lt;br&gt;
+&lt;p&gt;Let`s look at the source code :&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -707,7 +709,7 @@ Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr&amp;lt;/pre&amp;gt;&amp;lt;div id=&am
 &amp;lt;/div&amp;gt;
 &amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you can see, &lt;strong&gt;the correct session id was 119&lt;/strong&gt; and sending a packet with that id select as your cookie grants us access to &lt;strong&gt;natas19&lt;/strong&gt;.11&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you can see, &lt;strong&gt;the correct session id was 119&lt;/strong&gt; and sending a packet with that id select as your cookie grants us access to &lt;strong&gt;natas19&lt;/strong&gt;.&lt;/p&gt;
 </description>
     </item>
     

@@ -7,10 +7,33 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Tue, 27 Aug 2024 12:53:35 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 10 Sep 2024 11:59:40 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas-Level 20</title>
+      <link>//localhost:1313/post/natas20/</link>
+      <pubDate>Tue, 10 Sep 2024 11:59:40 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas20/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas20&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas20.natas.labs.overthewire.org&#34;&gt;http://natas20.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;Burp Suite is a proprietary software tool for security assessment and penetration testing of web applications. It software was initially developed in 2003-2006 by Dafydd Stuttard to automate his own security testing needs, after realizing the capabilities of automatable web tools like Selenium.
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Burp_Suite&#34;&gt;Source.&lt;/a&gt;&lt;br&gt;
+Burp Suite tutorial and usefull guides:&lt;br&gt;
+&lt;a href=&#34;https://portswigger.net/burp/documentation/desktop/getting-started&#34;&gt;Port Swigger.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;The index page of &lt;strong&gt;natas 20&lt;/strong&gt; gives a quick prompt of &lt;strong&gt;You are logged in as a regular user. Login as an admin to retrieve credentials for natas21&lt;/strong&gt;. It is the same premise as for &lt;strong&gt;natas 19&lt;/strong&gt;.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas20-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;br&gt;
+&lt;p&gt;Let`s look at the source code :&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Natas-Level 19</title>
@@ -362,7 +385,7 @@ Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr&amp;lt;/pre&amp;gt;&amp;lt;div id=&am
 &amp;lt;/div&amp;gt;
 &amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you can see, &lt;strong&gt;the correct session id was 119&lt;/strong&gt; and sending a packet with that id select as your cookie grants us access to &lt;strong&gt;natas19&lt;/strong&gt;.11&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you can see, &lt;strong&gt;the correct session id was 119&lt;/strong&gt; and sending a packet with that id select as your cookie grants us access to &lt;strong&gt;natas19&lt;/strong&gt;.&lt;/p&gt;
 </description>
     </item>
     
@@ -1135,22 +1158,6 @@ We can see that the file has been uploaded, now opening it should get us to the 
 &lt;img src=&#34;//localhost:1313/img/natas/natas13-4.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
 &lt;br&gt;
 Do not take into account the gif part as it is part of the signature of the file left as residual. The content after the space is the flag for &lt;strong&gt;natas14&lt;/strong&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Natas-Level 13</title>
-      <link>//localhost:1313/post/natas20/</link>
-      <pubDate>Wed, 21 Aug 2024 16:17:53 +0300</pubDate>
-      
-      <guid>//localhost:1313/post/natas20/</guid>
-      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;Username: natas20&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;Password: p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw&lt;/em&gt;&lt;br&gt;
-&lt;em&gt;URL:      &lt;a href=&#34;http://natas20.natas.labs.overthewire.org&#34;&gt;http://natas20.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
-&lt;p&gt;Burp Suite is a proprietary software tool for security assessment and penetration testing of web applications. It software was initially developed in 2003-2006 by Dafydd Stuttard to automate his own security testing needs, after realizing the capabilities of automatable web tools like Selenium.&lt;br&gt;
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Burp_Suite&#34;&gt;Source.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
