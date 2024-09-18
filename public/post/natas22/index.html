@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Natas-Level 21</title>
+	<title>My messy collection  | Natas-Level 22</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.134.2">
 	
@@ -144,7 +144,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Natas-Level 21</h1>
+<h1 class="pt-2">Natas-Level 22</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -179,7 +179,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-09-18T12:48:00&#43;03:00">2024-9-18</time>
+		datetime="2024-09-18T15:12:32&#43;03:00">2024-9-18</time>
 </div>
 
 <hr />
@@ -193,71 +193,44 @@ onload='renderMathInElement(document.body);'></script>
 <article>
 	<section class="mx-auto content">
 		<div class="c-rich-text"><h3 id="login">Login</h3>
-<p><em>Username: natas21</em><br>
-<em>Password: BPhv63cKE1lkQl04cE5CuFTzXe15NfiH</em><br>
-<em>URL:      <a href="http://natas21.natas.labs.overthewire.org">http://natas21.natas.labs.overthewire.org</a></em></p>
+<p><em>Username: natas22</em><br>
+<em>Password: d8rwGBl0Xslg3b76uh3fEbSlnOUBlozz</em><br>
+<em>URL:      <a href="http://natas22.natas.labs.overthewire.org">http://natas22.natas.labs.overthewire.org</a></em></p>
 <h3 id="doc">Doc</h3>
 <p>Burp Suite is a proprietary software tool for security assessment and penetration testing of web applications. It software was initially developed in 2003-2006 by Dafydd Stuttard to automate his own security testing needs, after realizing the capabilities of automatable web tools like Selenium.
 <a href="https://en.wikipedia.org/wiki/Burp_Suite">Source.</a><br>
 Burp Suite tutorial and usefull guides:<br>
-<a href="https://portswigger.net/burp/documentation/desktop/getting-started">Port Swigger.</a></p>
+<a href="https://portswigger.net/burp/documentation/desktop/getting-started">Port Swigger.</a><br>
+URL manipulation is one of the easiest attacks to perform. It can be performed by users who are innocently curious or by hackers who are probing for vulnerabilities.
+URLs are not just addresses for browsers and servers to use as users go from page to page using links. They are requests from the browser to the server which act as a low-level form of programming. When the browser requests X from the server, the server responds with Y. There is nothing to keep users from entering other &ldquo;commands&rdquo; into the browser bar to see what the server will give them back.<br>
+<a href="https://guides.codepath.com/websecurity/URL-Manipulation">Source.</a></p>
 <h3 id="solution">Solution</h3>
-<p>The index is pretty short, mainly communicating that this website is colocated with another adress and the text <strong>You are logged in as a regular user. Login as an admin to retrieve credentials for natas22</strong>.</p>
-<img src="/img/natas/natas21-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<p>This is the same idea as some other levels before where there is a cookie present that retains the <strong>true</strong> value of you being an admin and the goal of the level is to modify that cookie in order to gain access to the next level.<br>
-Cookie:</p>
-<img src="/img/natas/natas21-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<p>The code snippet where this comes from can be found in the <strong>View sourcecode</strong> section.<br>
-<strong>Code :</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>function print_credentials() { /* {{{ */
-</span></span><span style="display:flex;"><span>    if($_SESSION and array_key_exists(&#34;admin&#34;, $_SESSION) and $_SESSION[&#34;admin&#34;] == 1) {
-</span></span><span style="display:flex;"><span>    print &#34;You are an admin. The credentials for the next level are:<span style="color:#111">&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>&#34;;
-</span></span><span style="display:flex;"><span>    print &#34;<span style="color:#111">&lt;</span><span style="color:#f92672">pre</span><span style="color:#111">&gt;</span>Username: natas22\n&#34;;
-</span></span><span style="display:flex;"><span>    print &#34;Password: <span style="color:#111">&lt;</span><span style="color:#f92672">censored</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">pre</span><span style="color:#111">&gt;</span>&#34;;
-</span></span><span style="display:flex;"><span>    } else {
-</span></span><span style="display:flex;"><span>    print &#34;You are logged in as a regular user. Login as an admin to retrieve credentials for natas22.&#34;;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
-<p>Now navigate to the cohost location and login with the same credentials in order to investigate further.</p>
-<img src="/img/natas/natas21-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<p>This seems to be a simple CSS experiment tool. Taking a look at the source code, you can see that this website store each request parameter as a <strong>session key</strong> which means we could store the positive admin value and bring it over to the original website.<br>
-<strong>Source :</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>if(array_key_exists(&#34;submit&#34;, $_REQUEST)) {
-</span></span><span style="display:flex;"><span>    foreach($_REQUEST as $key =&gt; $val) {
-</span></span><span style="display:flex;"><span>    $_SESSION[$key] = $val;
+<p>For the first time, the index page is actually empty.</p>
+<img src="/img/natas/natas22-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>Let`s take a look at the source code in order to see what happens behind.<br>
+<strong>Relevant code :</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>if(array_key_exists(&#34;revelio&#34;, $_GET)) {
+</span></span><span style="display:flex;"><span>    // only admins can reveal the password
+</span></span><span style="display:flex;"><span>    if(!($_SESSION and array_key_exists(&#34;admin&#34;, $_SESSION) and $_SESSION[&#34;admin&#34;] == 1)) {
+</span></span><span style="display:flex;"><span>    header(&#34;Location: /&#34;);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>if(array_key_exists(&#34;debug&#34;, $_GET)) {
-</span></span><span style="display:flex;"><span>    print &#34;[DEBUG] Session contents:<span style="color:#111">&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>&#34;;
-</span></span><span style="display:flex;"><span>    print_r($_SESSION);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>// only allow these keys
-</span></span><span style="display:flex;"><span>$validkeys = array(&#34;align&#34; =&gt; &#34;center&#34;, &#34;fontsize&#34; =&gt; &#34;100%&#34;, &#34;bgcolor&#34; =&gt; &#34;yellow&#34;);
-</span></span><span style="display:flex;"><span>$form = &#34;&#34;;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$form .= &#39;<span style="color:#111">&lt;</span><span style="color:#f92672">form</span> <span style="color:#75af00">action</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;index.php&#34;</span> <span style="color:#75af00">method</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;POST&#34;</span><span style="color:#111">&gt;</span>&#39;;
-</span></span><span style="display:flex;"><span>foreach($validkeys as $key =&gt; $defval) {
-</span></span><span style="display:flex;"><span>    $val = $defval;
-</span></span><span style="display:flex;"><span>    if(array_key_exists($key, $_SESSION)) {
-</span></span><span style="display:flex;"><span>    $val = $_SESSION[$key];
-</span></span><span style="display:flex;"><span>    } else {
-</span></span><span style="display:flex;"><span>    $_SESSION[$key] = $val;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    $form .= &#34;$key: <span style="color:#111">&lt;</span><span style="color:#f92672">input</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;$key&#39;</span> <span style="color:#75af00">value</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;$val&#39;</span> <span style="color:#111">/&gt;&lt;</span><span style="color:#f92672">br</span><span style="color:#111">&gt;</span>&#34;;
-</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
-<p>There doesn`t seem to be an imposed limit on the arguments given so we could add more than the default 3. Open Burp Suite and capture the request, adding an <strong>admin true</strong> parameter.</p>
-<img src="/img/natas/natas21-4.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<p>We can also use the <strong>?debug</strong> parameter as did before in order to confirm the fact that the admin value is now true.</p>
-<img src="/img/natas/natas21-5.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<p>The next logical step is to <strong>Ctrl+Shift+i</strong> in order to lookup the current cookie value and import it into the base index.</p>
-<img src="/img/natas/natas21-6.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<p>Now after moving the cookie, the level should be solved.</p>
-<img src="/img/natas/natas21-7.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<p><strong>Credentials found :</strong><br>
-Username: natas22<br>
-Password: d8rwGBl0Xslg3b76uh3fEbSlnOUBlozz</p>
+</span></span><span style="display:flex;"><span>?&gt;</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;?php
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if(array_key_exists(&#34;revelio&#34;, $_GET)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;You are an admin. The credentials for the next level are:&lt;br&gt;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;&lt;pre&gt;Username: natas23\n&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    print &#34;Password: &lt;censored&gt;&lt;/pre&gt;&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span></span></span></code></pre></div>
+<p>This will basically spit out the contents present in the second function if there is a parameter revelio present. There is no need for session variable injection since you can just pass the parameter in the URL. Our value should be <strong>?revelio</strong> since <strong>?</strong> marks the beggining of the query string.</p>
+<img src="/img/natas/natas22-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>Even tho I added the parameter, there doesn`t seem to be any response. The next logical step would be to pass it through <strong>Burp</strong> in order to be able to view the http response. I`ll send the captured packet in the repeater.</p>
+<img src="/img/natas/natas22-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>That seems to be enough.<br>
+<strong>Found credentials :</strong><br>
+Username: natas23<br>
+Password: dIUQcI3uSus1JEOSSWRAEXBG8KbR8tRs</p>
 </div>
 	</section>
 
@@ -368,7 +341,7 @@ Password: d8rwGBl0Xslg3b76uh3fEbSlnOUBlozz</p>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		454 words in this page.
+		344 words in this page.
 	</div>
 </div>
 
@@ -379,21 +352,14 @@ Password: d8rwGBl0Xslg3b76uh3fEbSlnOUBlozz</p>
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/natas20/">
+    <a class="flex-grow-0" href="/post/natas21/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Natas-Level 20
+        Natas-Level 21
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/natas22/">
-        Natas-Level 22
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -403,6 +369,8 @@ Password: d8rwGBl0Xslg3b76uh3fEbSlnOUBlozz</p>
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/natas21/">Natas-Level 21</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/natas20/">Natas-Level 20</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -430,9 +398,7 @@ Password: d8rwGBl0Xslg3b76uh3fEbSlnOUBlozz</p>
 		
 			<a href="/post/natas8/">Natas-Level 8</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/natas7/">Natas-Level 7</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/natas6/">Natas-Level 6</a>
+			<a href="/post/natas7/">Natas-Level 7</a>
 		
 </span>
 </div>
