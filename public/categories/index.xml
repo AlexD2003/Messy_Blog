@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Wed, 18 Sep 2024 15:12:32 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 18 Sep 2024 15:52:06 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Natas</title>
       <link>//localhost:1313/categories/natas/</link>
-      <pubDate>Wed, 18 Sep 2024 15:12:32 +0300</pubDate>
+      <pubDate>Wed, 18 Sep 2024 15:52:06 +0300</pubDate>
       
       <guid>//localhost:1313/categories/natas/</guid>
       <description></description>
@@ -24,7 +24,7 @@
     <item>
       <title>Overthewire</title>
       <link>//localhost:1313/categories/overthewire/</link>
-      <pubDate>Wed, 18 Sep 2024 15:12:32 +0300</pubDate>
+      <pubDate>Wed, 18 Sep 2024 15:52:06 +0300</pubDate>
       
       <guid>//localhost:1313/categories/overthewire/</guid>
       <description></description>

@@ -7,10 +7,51 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Wed, 18 Sep 2024 15:12:32 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 18 Sep 2024 15:52:06 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/categories/natas/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas-Level 23</title>
+      <link>//localhost:1313/post/natas23/</link>
+      <pubDate>Wed, 18 Sep 2024 15:52:06 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas23/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas23&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: dIUQcI3uSus1JEOSSWRAEXBG8KbR8tRs&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas23.natas.labs.overthewire.org&#34;&gt;http://natas23.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://cplusplus.com/reference/cstring/strstr/&#34;&gt;strstr&lt;/a&gt;&lt;br&gt;
+A pointer to the first occurrence in str1 of the entire sequence of characters specified in str2, or a null pointer if the sequence is not present in str1.&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;This is another quick solution, the index page seems to take in the input as password and that is about it.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas23-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;Let`s take a look at the code section.&lt;br&gt;
+&lt;strong&gt;Relevant snippet :&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    if(array_key_exists(&amp;#34;passwd&amp;#34;,$_REQUEST)){
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        if(strstr($_REQUEST[&amp;#34;passwd&amp;#34;],&amp;#34;iloveyou&amp;#34;) &amp;amp;&amp;amp; ($_REQUEST[&amp;#34;passwd&amp;#34;] &amp;gt; 10 )){
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;            echo &amp;#34;&amp;lt;br&amp;gt;The credentials for the next level are:&amp;lt;br&amp;gt;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;            echo &amp;#34;&amp;lt;pre&amp;gt;Username: natas24 Password: &amp;lt;censored&amp;gt;&amp;lt;/pre&amp;gt;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        else{
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;            echo &amp;#34;&amp;lt;br&amp;gt;Wrong!&amp;lt;br&amp;gt;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    // morla / 10111
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;?&amp;gt;&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The first entry in the &amp;amp;&amp;amp; condition puts on the requirement that the given password should contain &lt;strong&gt;iloveyou&lt;/strong&gt;. In php value comparison operations, php tries to take the numerical value in front of the string for example and execute the comparation against the found value. This means that in order for the &lt;strong&gt;&amp;amp;&amp;amp;&lt;/strong&gt; operation to return true, we will need to pass a string that :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Contains &lt;strong&gt;iloveyou&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Starts with a number grater than 10&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;I.e.&lt;/strong&gt; 9999iloveyou&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas23-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;/br&gt;
+</description>
+    </item>
     
     <item>
       <title>Natas-Level 22</title>
@@ -27,66 +68,36 @@
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Burp_Suite&#34;&gt;Source.&lt;/a&gt;&lt;br&gt;
 Burp Suite tutorial and usefull guides:&lt;br&gt;
 &lt;a href=&#34;https://portswigger.net/burp/documentation/desktop/getting-started&#34;&gt;Port Swigger.&lt;/a&gt;&lt;br&gt;
-URL manipulation is one of the easiest attacks to perform. It can be performed by users who are innocently curious or by hackers who are probing for vulnerabilities.&lt;/p&gt;
-&lt;p&gt;URLs are not just addresses for browsers and servers to use as users go from page to page using links. They are requests from the browser to the server which act as a low-level form of programming. When the browser requests X from the server, the server responds with Y. There is nothing to keep users from entering other &amp;ldquo;commands&amp;rdquo; into the browser bar to see what the server will give them back.&lt;br&gt;
+URL manipulation is one of the easiest attacks to perform. It can be performed by users who are innocently curious or by hackers who are probing for vulnerabilities.
+URLs are not just addresses for browsers and servers to use as users go from page to page using links. They are requests from the browser to the server which act as a low-level form of programming. When the browser requests X from the server, the server responds with Y. There is nothing to keep users from entering other &amp;ldquo;commands&amp;rdquo; into the browser bar to see what the server will give them back.&lt;br&gt;
 &lt;a href=&#34;https://guides.codepath.com/websecurity/URL-Manipulation&#34;&gt;Source.&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;The index is pretty short, mainly communicating that this website is colocated with another adress and the text &lt;strong&gt;You are logged in as a regular user. Login as an admin to retrieve credentials for natas22&lt;/strong&gt;.&lt;/p&gt;
-&lt;img src=&#34;//localhost:1313/img/natas/natas21-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
-&lt;p&gt;This is the same idea as some other levels before where there is a cookie present that retains the &lt;strong&gt;true&lt;/strong&gt; value of you being an admin and the goal of the level is to modify that cookie in order to gain access to the next level.&lt;br&gt;
-Cookie:&lt;/p&gt;
-&lt;img src=&#34;//localhost:1313/img/natas/natas21-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
-&lt;p&gt;The code snippet where this comes from can be found in the &lt;strong&gt;View sourcecode&lt;/strong&gt; section.&lt;br&gt;
-&lt;strong&gt;Code :&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;function print_credentials() { /* {{{ */
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    if($_SESSION and array_key_exists(&amp;#34;admin&amp;#34;, $_SESSION) and $_SESSION[&amp;#34;admin&amp;#34;] == 1) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print &amp;#34;You are an admin. The credentials for the next level are:&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print &amp;#34;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;pre&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;Username: natas22\n&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print &amp;#34;Password: &lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;censored&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;pre&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } else {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print &amp;#34;You are logged in as a regular user. Login as an admin to retrieve credentials for natas22.&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now navigate to the cohost location and login with the same credentials in order to investigate further.&lt;/p&gt;
-&lt;img src=&#34;//localhost:1313/img/natas/natas21-3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
-&lt;p&gt;This seems to be a simple CSS experiment tool. Taking a look at the source code, you can see that this website store each request parameter as a &lt;strong&gt;session key&lt;/strong&gt; which means we could store the positive admin value and bring it over to the original website.&lt;br&gt;
-&lt;strong&gt;Source :&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;if(array_key_exists(&amp;#34;submit&amp;#34;, $_REQUEST)) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    foreach($_REQUEST as $key =&amp;gt; $val) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    $_SESSION[$key] = $val;
+&lt;p&gt;For the first time, the index page is actually empty.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas22-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;Let`s take a look at the source code in order to see what happens behind.&lt;br&gt;
+&lt;strong&gt;Relevant code :&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;if(array_key_exists(&amp;#34;revelio&amp;#34;, $_GET)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    // only admins can reveal the password
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    if(!($_SESSION and array_key_exists(&amp;#34;admin&amp;#34;, $_SESSION) and $_SESSION[&amp;#34;admin&amp;#34;] == 1)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    header(&amp;#34;Location: /&amp;#34;);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;if(array_key_exists(&amp;#34;debug&amp;#34;, $_GET)) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print &amp;#34;[DEBUG] Session contents:&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print_r($_SESSION);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;// only allow these keys
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$validkeys = array(&amp;#34;align&amp;#34; =&amp;gt; &amp;#34;center&amp;#34;, &amp;#34;fontsize&amp;#34; =&amp;gt; &amp;#34;100%&amp;#34;, &amp;#34;bgcolor&amp;#34; =&amp;gt; &amp;#34;yellow&amp;#34;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$form = &amp;#34;&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$form .= &amp;#39;&lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;index.php&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#34;POST&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&amp;#39;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;foreach($validkeys as $key =&amp;gt; $defval) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    $val = $defval;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    if(array_key_exists($key, $_SESSION)) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    $val = $_SESSION[$key];
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } else {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    $_SESSION[$key] = $val;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    $form .= &amp;#34;$key: &lt;span style=&#34;color:#111&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#39;$key&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#75af00&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#d88200&#34;&gt;&amp;#39;$val&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#111&#34;&gt;/&amp;gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;br&lt;/span&gt;&lt;span style=&#34;color:#111&#34;&gt;&amp;gt;&lt;/span&gt;&amp;#34;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;There doesn`t seem to be an imposed limit on the arguments given so we could add more than the default 3. Open Burp Suite and capture the request, adding an &lt;strong&gt;admin true&lt;/strong&gt; parameter.&lt;/p&gt;
-&lt;img src=&#34;//localhost:1313/img/natas/natas21-4.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
-&lt;p&gt;We can also use the &lt;strong&gt;?debug&lt;/strong&gt; parameter as did before in order to confirm the fact that the admin value is now true.&lt;/p&gt;
-&lt;img src=&#34;//localhost:1313/img/natas/natas21-5.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
-&lt;p&gt;The next logical step is to &lt;strong&gt;Ctrl+Shift+i&lt;/strong&gt; in order to lookup the current cookie value and import it into the base index.&lt;/p&gt;
-&lt;img src=&#34;//localhost:1313/img/natas/natas21-6.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
-&lt;p&gt;Now after moving the cookie, the level should be solved.&lt;/p&gt;
-&lt;img src=&#34;//localhost:1313/img/natas/natas21-7.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
-&lt;p&gt;&lt;strong&gt;Credentials found :&lt;/strong&gt;&lt;br&gt;
-Username: natas22&lt;br&gt;
-Password: d8rwGBl0Xslg3b76uh3fEbSlnOUBlozz&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    if(array_key_exists(&amp;#34;revelio&amp;#34;, $_GET)) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    print &amp;#34;You are an admin. The credentials for the next level are:&amp;lt;br&amp;gt;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    print &amp;#34;&amp;lt;pre&amp;gt;Username: natas23\n&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    print &amp;#34;Password: &amp;lt;censored&amp;gt;&amp;lt;/pre&amp;gt;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will basically spit out the contents present in the second function if there is a parameter revelio present. There is no need for session variable injection since you can just pass the parameter in the URL. Our value should be &lt;strong&gt;?revelio&lt;/strong&gt; since &lt;strong&gt;?&lt;/strong&gt; marks the beggining of the query string.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas22-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;Even tho I added the parameter, there doesn`t seem to be any response. The next logical step would be to pass it through &lt;strong&gt;Burp&lt;/strong&gt; in order to be able to view the http response. I`ll send the captured packet in the repeater.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas22-3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;That seems to be enough.&lt;br&gt;
+&lt;strong&gt;Found credentials :&lt;/strong&gt;&lt;br&gt;
+Username: natas23&lt;br&gt;
+Password: dIUQcI3uSus1JEOSSWRAEXBG8KbR8tRs&lt;/p&gt;
 </description>
     </item>
     
