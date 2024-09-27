@@ -7,10 +7,51 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Wed, 18 Sep 2024 15:52:06 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 27 Sep 2024 16:24:57 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/tags/completed/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas-Level 24</title>
+      <link>//localhost:1313/post/natas24/</link>
+      <pubDate>Fri, 27 Sep 2024 16:24:57 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/natas24/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas24&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: MeuqmfJ8DDKuTr5pcvzFKSwlxedZYEWd&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas24.natas.labs.overthewire.org&#34;&gt;http://natas24.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.programiz.com/c-programming/library-function/string.h/strcmp&#34;&gt;strcmp&lt;/a&gt;&lt;br&gt;
+The strcmp() function compares two strings character by character. If the strings are equal, the function returns 0.&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;This is another quick solution, the index page seems to take in the input as password and that is about it.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas23-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;Let`s take a look at the code section.&lt;br&gt;
+&lt;strong&gt;Relevant snippet :&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    if(array_key_exists(&amp;#34;passwd&amp;#34;,$_REQUEST)){
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        if(strstr($_REQUEST[&amp;#34;passwd&amp;#34;],&amp;#34;iloveyou&amp;#34;) &amp;amp;&amp;amp; ($_REQUEST[&amp;#34;passwd&amp;#34;] &amp;gt; 10 )){
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;            echo &amp;#34;&amp;lt;br&amp;gt;The credentials for the next level are:&amp;lt;br&amp;gt;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;            echo &amp;#34;&amp;lt;pre&amp;gt;Username: natas24 Password: &amp;lt;censored&amp;gt;&amp;lt;/pre&amp;gt;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        else{
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;            echo &amp;#34;&amp;lt;br&amp;gt;Wrong!&amp;lt;br&amp;gt;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    // morla / 10111
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;?&amp;gt;&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The first entry in the &amp;amp;&amp;amp; condition puts on the requirement that the given password should contain &lt;strong&gt;iloveyou&lt;/strong&gt;. In php value comparison operations, php tries to take the numerical value in front of the string for example and execute the comparation against the found value. This means that in order for the &lt;strong&gt;&amp;amp;&amp;amp;&lt;/strong&gt; operation to return true, we will need to pass a string that :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Contains &lt;strong&gt;iloveyou&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Starts with a number grater than 10&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;I.e.&lt;/strong&gt; 9999iloveyou&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas23-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;/br&gt;
+</description>
+    </item>
     
     <item>
       <title>Natas-Level 23</title>
