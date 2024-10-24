@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cryptography on My messy collection</title>
+    <link>//localhost:1313/categories/cryptography/</link>
+    <description>Recent content in Cryptography on My messy collection</description>
+    <generator>Hugo</generator>
+    <language>cn</language>
+    <copyright>Copyright © 2008–2019</copyright>
+    <lastBuildDate>Thu, 24 Oct 2024 10:51:20 +0300</lastBuildDate>
+    <atom:link href="//localhost:1313/categories/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Custom Encryption</title>
+      <link>//localhost:1313/post/picoctf1/</link>
+      <pubDate>Thu, 24 Oct 2024 10:51:20 +0300</pubDate>
+      <guid>//localhost:1313/post/picoctf1/</guid>
+      <description>&lt;h3 id=&#34;level-description&#34;&gt;Level Description&lt;/h3&gt;&#xA;&lt;p&gt;Can you get sense of this code file and write the function that will decode the given encrypted file content. Find the encrypted file here flag_info and code file might be good to analyze and get the flag.&lt;/p&gt;&#xA;&lt;h3 id=&#34;given-data&#34;&gt;Given Data&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;enc_flag :&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;a = 94&#xA;b = 21&#xA;cipher is: [131553, 993956, 964722, 1359381, 43851, 1169360, 950105, 321574, 1081658, 613914, 0, 1213211, 306957, 73085, 993956, 0, 321574, 1257062, 14617, 906254, 350808, 394659, 87702, 87702, 248489, 87702, 380042, 745467, 467744, 716233, 380042, 102319, 175404, 248489]&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;custom_encryption.py :&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,9 +1,4 @@
 +++
-title = 'Picoctf1'
-date = 2024-10-24T12:15:29+03:00
-draft = true
-+++
-+++
 author = "Alex Domnit"
 title = 'Custom Encryption'
 date = 2024-10-24T10:51:20+03:00
