@@ -4,17 +4,172 @@
     <title>Cryptography on My messy collection</title>
     <link>//localhost:1313/categories/cryptography/</link>
     <description>Recent content in Cryptography on My messy collection</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
     <lastBuildDate>Thu, 24 Oct 2024 10:51:20 +0300</lastBuildDate>
-    <atom:link href="//localhost:1313/categories/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="//localhost:1313/categories/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Custom Encryption</title>
       <link>//localhost:1313/post/picoctf1/</link>
       <pubDate>Thu, 24 Oct 2024 10:51:20 +0300</pubDate>
+      
       <guid>//localhost:1313/post/picoctf1/</guid>
-      <description>&lt;h3 id=&#34;level-description&#34;&gt;Level Description&lt;/h3&gt;&#xA;&lt;p&gt;Can you get sense of this code file and write the function that will decode the given encrypted file content. Find the encrypted file here flag_info and code file might be good to analyze and get the flag.&lt;/p&gt;&#xA;&lt;h3 id=&#34;given-data&#34;&gt;Given Data&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;enc_flag :&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;a = 94&#xA;b = 21&#xA;cipher is: [131553, 993956, 964722, 1359381, 43851, 1169360, 950105, 321574, 1081658, 613914, 0, 1213211, 306957, 73085, 993956, 0, 321574, 1257062, 14617, 906254, 350808, 394659, 87702, 87702, 248489, 87702, 380042, 745467, 467744, 716233, 380042, 102319, 175404, 248489]&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;custom_encryption.py :&lt;/strong&gt;&lt;/p&gt;</description>
+      <description>&lt;h3 id=&#34;level-description&#34;&gt;Level Description&lt;/h3&gt;
+&lt;p&gt;Can you get sense of this code file and write the function that will decode the given encrypted file content. Find the encrypted file here flag_info and code file might be good to analyze and get the flag.&lt;/p&gt;
+&lt;h3 id=&#34;given-data&#34;&gt;Given Data&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;enc_flag :&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;a = 94
+b = 21
+cipher is: [131553, 993956, 964722, 1359381, 43851, 1169360, 950105, 321574, 1081658, 613914, 0, 1213211, 306957, 73085, 993956, 0, 321574, 1257062, 14617, 906254, 350808, 394659, 87702, 87702, 248489, 87702, 380042, 745467, 467744, 716233, 380042, 102319, 175404, 248489]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;custom_encryption.py :&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;from random import randint
+import sys
+
+
+def generator(g, x, p):
+    return pow(g, x) % p
+
+
+def encrypt(plaintext, key):
+    cipher = []
+    for char in plaintext:
+        cipher.append(((ord(char) * key*311)))
+    return cipher
+
+
+def is_prime(p):
+    v = 0
+    for i in range(2, p + 1):
+        if p % i == 0:
+            v = v + 1
+    if v &amp;gt; 1:
+        return False
+    else:
+        return True
+
+
+def dynamic_xor_encrypt(plaintext, text_key):
+    cipher_text = &amp;#34;&amp;#34;
+    key_length = len(text_key)
+    for i, char in enumerate(plaintext[::-1]):
+        key_char = text_key[i % key_length]
+        encrypted_char = chr(ord(char) ^ ord(key_char))
+        cipher_text += encrypted_char
+    return cipher_text
+
+
+def test(plain_text, text_key):
+    p = 97
+    g = 31
+    if not is_prime(p) and not is_prime(g):
+        print(&amp;#34;Enter prime numbers&amp;#34;)
+        return
+    a = randint(p-10, p)
+    b = randint(g-10, g)
+    print(f&amp;#34;a = {a}&amp;#34;)
+    print(f&amp;#34;b = {b}&amp;#34;)
+    u = generator(g, a, p)
+    v = generator(g, b, p)
+    key = generator(v, a, p)
+    b_key = generator(u, b, p)
+    shared_key = None
+    if key == b_key:
+        shared_key = key
+    else:
+        print(&amp;#34;Invalid key&amp;#34;)
+        return
+    semi_cipher = dynamic_xor_encrypt(plain_text, text_key)
+    cipher = encrypt(semi_cipher, shared_key)
+    print(f&amp;#39;cipher is: {cipher}&amp;#39;)
+
+
+if __name__ == &amp;#34;__main__&amp;#34;:
+    message = sys.argv[1]
+    test(message, &amp;#34;trudeau&amp;#34;)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;solution-&#34;&gt;Solution :&lt;/h3&gt;
+&lt;p&gt;After looking for way to long at the code and worrying about the fact that some of the values were randomly generated and didn`t know how I could reverse engineer that, I &lt;strong&gt;catted&lt;/strong&gt; enc_flag and saw that I have the actual values used for the specific given encryption. The process from now on is pretty straight forward, we just need to define what we know, reverse each function and call the sequence for the given output.&lt;/p&gt;
+&lt;h4 id=&#34;what-do-we-know&#34;&gt;What do we know?&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# given cipher
+cipher = [131553, 993956, 964722, 1359381, 43851, 1169360, 950105, 321574, 1081658, 613914, 0, 1213211, 306957, 73085, 993956, 0, 321574, 1257062, 14617, 906254, 350808, 394659, 87702, 87702, 248489, 87702, 380042, 745467, 467744, 716233, 380042, 102319, 175404, 248489]
+# values
+p = 97
+g = 31
+a = 94
+b = 21
+#generator function which we can reuse cause it doesn`t really matter the logic all that much
+def generator(g, x, p):
+    return pow(g, x) % p
+#text_key
+text_key=&amp;#34;trudeau&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Encrypt function :&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;def encrypt(plaintext, key):
+    cipher = []
+    for char in plaintext:
+        cipher.append(((ord(char) * key*311)))
+    return cipher
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Decrypt function :&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;def decrypt(given_str, key):
+    plaintext = &amp;#34;&amp;#34;
+    for val in given_str:
+        val = val // (key * 311)
+        plaintext += chr(decrypted_value)  # just the reverse of ord(char)*key*311
+    return plaintext
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Dynamic XOR encrypt :&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;def dynamic_xor_encrypt(plaintext, text_key):
+    cipher_text = &amp;#34;&amp;#34;
+    key_length = len(text_key)
+    for i, char in enumerate(plaintext[::-1]):
+        key_char = text_key[i % key_length]
+        encrypted_char = chr(ord(char) ^ ord(key_char))
+        cipher_text += encrypted_char
+    return cipher_text
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Dynamic XOR decrypt :&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;def dynamic_xor_decrypt(plaintext, text_key):
+    # Initialize an empty string to hold the cipher text after each round of XOR
+    cipher_text = &amp;#34;&amp;#34;
+    # Calculate the length of the key to loop through it in a cyclical manner
+    key_length = len(text_key)
+
+    # First round of XOR decryption (reverse the string and XOR each character with the corresponding key character)
+    for i, char in enumerate(plaintext[::-1]):  # Enumerate over the reversed plaintext
+        key_char = text_key[i % key_length]     # Cycle through the key using modulus
+        encrypted_char = chr(ord(char) ^ ord(key_char))  # XOR the ASCII values of the current char and key char
+        cipher_text += encrypted_char           # Append the decrypted character to the result
+
+    # Update plaintext to be the newly decrypted text from the first round
+    plaintext = cipher_text
+    # Reset cipher_text for the next round of decryption
+    cipher_text = &amp;#34;&amp;#34;
+
+    # Second round of XOR decryption (same process, but using the result from the first round)
+    for i, char in enumerate(plaintext[::-1]):  # Reversing the text again
+        key_char = text_key[i % key_length]     # Cycle through the key again
+        encrypted_char = chr(ord(char) ^ ord(key_char))  # Perform XOR decryption again
+        cipher_text += encrypted_char           # Append the decrypted character
+
+    # Update plaintext to be the newly decrypted text from the second round
+    plaintext = cipher_text
+    # Reset cipher_text for the third and final round
+    cipher_text = &amp;#34;&amp;#34;
+
+    # Third round of XOR decryption (repeat the same process)
+    for i, char in enumerate(plaintext[::-1]):  # Reverse again
+        key_char = text_key[i % key_length]     # Cycle through the key
+        encrypted_char = chr(ord(char) ^ ord(key_char))  # XOR decryption
+        cipher_text += encrypted_char           # Append the decrypted character
+
+    # Return the final decrypted result after three rounds of XOR decryption
+    return cipher_text
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now all there`s left to do is calling the test function with the reversed functions and given values and watch the output.&lt;/p&gt;
+&lt;h3 id=&#34;result&#34;&gt;Result&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;11:16:49 archie@Archie pico → python3 decrypt.py
+picoCTF{custom_d2cr0pt6d_8b41f976}
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
+    
   </channel>
 </rss>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>My messy collection  | Picker IV</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<meta name="generator" content="Hugo 0.135.0">
+	
+	
+	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+	
+
+	
+	
+	<link href="/dist/app.css" rel="stylesheet">
+	
+
+	
+
+	
+	
+<link rel="shortcut icon" href="https://i.ibb.co/gRC4J2T/favicon-32x32.jpg" type="image/png" />
+
+
+	
+
+	
+	
+	
+	
+	
+	
+
+
+
+<link rel="stylesheet" href='//localhost:1313/lib/katex.min.css' crossorigin="anonymous">
+
+
+<script defer src='//localhost:1313/lib/katex.min.js' crossorigin="anonymous"></script>
+
+
+<script defer src='//localhost:1313/lib/contrib/auto-render.min.js'
+crossorigin="anonymous"
+onload='renderMathInElement(document.body);'></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
+	
+	
+	
+	<script>
+		(function (u, c) {
+			var d = document,
+				t = 'script',
+				o = d.createElement(t),
+				s = d.getElementsByTagName(t)[0];
+			o.src = u;
+			if (c) {
+				o.addEventListener('load', function (e) {
+					c(e);
+				});
+			}
+			s.parentNode.insertBefore(o, s);
+		})('\/\/localhost:1313\/lib\/pangu.min.js', function () {
+			pangu.spacingPage();
+		});
+	</script>
+	
+	
+	
+	<style type="text/css" media="screen, print">
+		@font-face {
+			font-family: "FancyTitleFont";
+			font-style: normal;
+			font-display: swap;
+			src: url('//localhost:1313/fonts/exampleFont.woff2') format('woff2'),
+				url('//localhost:1313/fonts/exampleFont.woff') format('woff');
+		}
+		 
+		  
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 300;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Light'), local('NotoSerifCJK-Light'),
+				url('//localhost:1313/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff2') format('woff2'),
+				 
+				url('//localhost:1313/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Noto Serif CJK SC'), local('NotoSerifCJK-Regular'),
+				url('//localhost:1313/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff2') format('woff2'),
+				 
+				url('//localhost:1313/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 500;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Medium'), local('NotoSerifCJK-Medium'),
+				url('//localhost:1313/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff2') format('woff2'),
+				 
+				url('//localhost:1313/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff') format('woff');
+			 
+		}
+	</style>
+	
+</head>
+
+<body class="bg-gray-100 text-gray-700 font-sans">
+	<div class="p-6 sm:p-10 md:p-16 flex flex-wrap">
+		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
+			<div
+				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
+				
+<div>
+	<h2>
+		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
+	</h2>
+</div>
+<h1 class="pt-2">Picker IV</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+	
+	
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/picoctf'>PicoCTF</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
+		href='/categories/binary-exploitation'>Binary Exploitation</a>
+	
+	
+	
+
+	
+	&nbsp;&nbsp;
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/ctf'>CTF</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/completed'>Completed</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2024-10-24T12:52:41&#43;03:00">2024-10-24</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h3 id="level-description">Level Description</h3>
+<p>Can you figure out how this program works to get the flag? Connect to the program with netcat: $ nc saturn.picoctf.net 58238<br>
+The program&rsquo;s source code can be downloaded <strong>here</strong>. The binary can be downloaded <strong>here</strong>.</p>
+<h3 id="doc">Doc</h3>
+<p><a href="https://primer.picoctf.org/">Primer</a><br>
+A very usefull tool for solving Pico challanges is the primer where you can find docs for basically all the chapters explored on the site.<br>
+<a href="https://www.sourceware.org/gdb/">What is GDB?</a><br>
+GDB, the GNU Project debugger, allows you to see what is going on `inside&rsquo; another program while it executes &ndash; or what another program was doing at the moment it crashed.</p>
+<p>GDB can do four main kinds of things (plus other things in support of these) to help you catch bugs in the act:</p>
+<ol>
+<li>Start your program, specifying anything that might affect its behavior.</li>
+<li>Make your program stop on specified conditions.</li>
+<li>Examine what has happened, when your program has stopped.</li>
+<li>Change things in your program, so you can experiment with correcting the effects of one bug and go on to learn about another.</li>
+</ol>
+<h3 id="solution">Solution</h3>
+<p>There is given a c source code and a binary.</p>
+<p><strong>Source :</strong></p>
+<pre tabindex="0"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;unistd.h&gt;
+
+
+void print_segf_message(){
+  printf(&#34;Segfault triggered! Exiting.\n&#34;);
+  sleep(15);
+  exit(SIGSEGV);
+}
+
+int win() {
+  FILE *fptr;
+  char c;
+
+  printf(&#34;You won!\n&#34;);
+  // Open file
+  fptr = fopen(&#34;flag.txt&#34;, &#34;r&#34;);
+  if (fptr == NULL)
+  {
+      printf(&#34;Cannot open file.\n&#34;);
+      exit(0);
+  }
+
+  // Read contents from file
+  c = fgetc(fptr);
+  while (c != EOF)
+  {
+      printf (&#34;%c&#34;, c);
+      c = fgetc(fptr);
+  }
+
+  printf(&#34;\n&#34;);
+  fclose(fptr);
+}
+
+int main() {
+  signal(SIGSEGV, print_segf_message);
+  setvbuf(stdout, NULL, _IONBF, 0); // _IONBF = Unbuffered
+
+  unsigned int val;
+  printf(&#34;Enter the address in hex to jump to, excluding &#39;0x&#39;: &#34;);
+  scanf(&#34;%x&#34;, &amp;val);
+  printf(&#34;You input 0x%x\n&#34;, val);
+
+  void (*foo)(void) = (void (*)())val;
+  foo();
+}
+</code></pre><p><strong>netcat</strong> into the instance in order to see what we can input.</p>
+<p><strong>nc :</strong></p>
+<pre tabindex="0"><code>01:03:13 archie@Archie ~ →  nc saturn.picoctf.net 56876
+Enter the address in hex to jump to, excluding &#39;0x&#39;: 1
+You input 0x1
+Segfault triggered! Exiting.
+</code></pre><p>The goal seems to be inputting the adress of the function <strong>win</strong> in order for it to spit out the solution. Even tho gbd is installed on pico instances by default, you have access to the binary so further analysis can be done locally.<br>
+We use <strong>info functions</strong> on the binary in gbdto see the attached adresses to the functions.</p>
+<pre tabindex="0"><code>01:05:00 archie@Archie ~ → gdb Downloads/picker-IV
+GNU gdb (GDB) 15.2
+Copyright (C) 2024 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type &#34;show copying&#34; and &#34;show warranty&#34; for details.
+This GDB was configured as &#34;x86_64-pc-linux-gnu&#34;.
+Type &#34;show configuration&#34; for configuration details.
+For bug reporting instructions, please see:
+&lt;https://www.gnu.org/software/gdb/bugs/&gt;.
+Find the GDB manual and other documentation resources online at:
+    &lt;http://www.gnu.org/software/gdb/documentation/&gt;.
+
+For help, type &#34;help&#34;.
+Type &#34;apropos word&#34; to search for commands related to &#34;word&#34;...
+Reading symbols from Downloads/picker-IV...
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  &lt;https://debuginfod.archlinux.org&gt;
+Enable debuginfod for this session? (y or [n]) y
+Debuginfod has been enabled.
+To make this setting permanent, add &#39;set debuginfod enabled on&#39; to .gdbinit.
+(No debugging symbols found in Downloads/picker-IV)
+(gdb) info functions
+All defined functions:
+
+Non-debugging symbols:
+0x0000000000401000  _init
+0x00000000004010e0  putchar@plt
+0x00000000004010f0  puts@plt
+0x0000000000401100  fclose@plt
+0x0000000000401110  printf@plt
+0x0000000000401120  fgetc@plt
+0x0000000000401130  signal@plt
+0x0000000000401140  setvbuf@plt
+0x0000000000401150  fopen@plt
+0x0000000000401160  __isoc99_scanf@plt
+0x0000000000401170  exit@plt
+0x0000000000401180  sleep@plt
+0x0000000000401190  _start
+0x00000000004011c0  _dl_relocate_static_pie
+0x00000000004011d0  deregister_tm_clones
+0x0000000000401200  register_tm_clones
+0x0000000000401240  __do_global_dtors_aux
+0x0000000000401270  frame_dummy
+0x0000000000401276  print_segf_message
+0x000000000040129e  win
+0x0000000000401334  main
+0x00000000004013d0  __libc_csu_init
+0x0000000000401440  __libc_csu_fini
+0x0000000000401448  _fini
+</code></pre><p>Now simply put that adress into netcat and get the flag.</p>
+<pre tabindex="0"><code>01:10:14 archie@Archie ~ → nc saturn.picoctf.net 62038
+Enter the address in hex to jump to, excluding &#39;0x&#39;: 000000000040129e
+You input 0x40129e
+You won!
+picoCTF{n3v3r_jump_t0_u53r_5uppl13d_4ddr35535_b8de1af4}
+</code></pre></div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+	
+	
+	<li class="px-1 md:px-0">
+		<a href="/post/" title="Posts page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			Posts
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/categories/" title="Categories page" >
+			Categories
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/tags/" title="Tags page" >
+			Tags
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/about/aboutme/" title="About me page" >
+			About me
+		</a>
+	</li>
+	
+	
+	
+	
+	<div id="fastSearch" class="m-0">
+		<input id="searchInput" type="text" size=10 
+			class="bg-gray-100 focus:outline-none border-b border-gray-100 focus:border-eucalyptus-300 md:text-right
+			placeholder-java-500 min-w-0 max-w-xxxs"
+			placeholder="search" />
+		<ul id="searchResults" class="bg-gray-200 px-2 divide-y divide-gray-400">
+		</ul>
+	</div>
+	
+</ul>
+	
+
+<div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
+	
+	
+	<a href='https://github.com/AlexD2003' target="_blank" class="github icon pl-1 text-eucalyptus-400 hover:text-java-400" title="github link" rel="noopener"
+		aria-label="follow on github——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+	
+	
+	<a href='https://www.instagram.com/alex_domnit/' target="_blank" class="instagram icon pl-1 text-eucalyptus-400 hover:text-java-400" title="instagram link" rel="noopener"
+		aria-label="follow on instagram——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0-2a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.25a1.25 1.25 0 0 1-2.5 0 1.25 1.25 0 0 1 2.5 0zM12 4c-2.474 0-2.878.007-4.029.058-.784.037-1.31.142-1.798.332-.434.168-.747.369-1.08.703a2.89 2.89 0 0 0-.704 1.08c-.19.49-.295 1.015-.331 1.798C4.006 9.075 4 9.461 4 12c0 2.474.007 2.878.058 4.029.037.783.142 1.31.331 1.797.17.435.37.748.702 1.08.337.336.65.537 1.08.703.494.191 1.02.297 1.8.333C9.075 19.994 9.461 20 12 20c2.474 0 2.878-.007 4.029-.058.782-.037 1.309-.142 1.797-.331.433-.169.748-.37 1.08-.702.337-.337.538-.65.704-1.08.19-.493.296-1.02.332-1.8.052-1.104.058-1.49.058-4.029 0-2.474-.007-2.878-.058-4.029-.037-.782-.142-1.31-.332-1.798a2.911 2.911 0 0 0-.703-1.08 2.884 2.884 0 0 0-1.08-.704c-.49-.19-1.016-.295-1.798-.331C14.925 4.006 14.539 4 12 4zm0-2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+	
+	
+	<a href='mailto:alexandru.domnit@stud.ubbcluj.ro' target="_blank" class="mail icon pl-1 text-eucalyptus-400 hover:text-java-400" title="mail link" rel="noopener"
+		aria-label="follow on mail——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z"/>
+    </g>
+</svg>
+		</div>
+	</a>
+	
+	
+</div>
+
+	<div class="text-sm text-gray-500 leading-tight a-gray">
+		
+		<br />
+		623 words in this page.
+	</div>
+</div>
+
+			</div>
+		</aside>
+		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
+			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/picoctf1/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Custom Encryption
+    </a>
+    
+    
+</div>
+<div >
+
+
+
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/post/picoctf1/">Custom Encryption</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas24/">Natas-Level 24</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas23/">Natas-Level 23</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas22/">Natas-Level 22</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas21/">Natas-Level 21</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas20/">Natas-Level 20</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas19/">Natas-Level 19</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas18/">Natas-Level 18</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas17/">Natas-Level 17</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas16/">Natas-Level 16</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas15/">Natas-Level 15</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas14/">Natas-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas13/">Natas-Level 13</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas12/">Natas-Level 12</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/natas11/">Natas-Level 11</a>
+		
+</span>
+</div>
+
+</div>
+<div class="pb-2">
+    
+</div>
+
+		</footer>
+		
+
+<script src="/dist/app.js"></script>
+
+
+<script src="/lib/fuse.min.js"></script> 
+<script src="/lib/fastsearch.js"></script>
+
+	</div>
+</body>
+
+</html>

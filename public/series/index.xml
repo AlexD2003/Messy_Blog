@@ -4,9 +4,12 @@
     <title>Series on My messy collection</title>
     <link>//localhost:1313/series/</link>
     <description>Recent content in Series on My messy collection</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <atom:link href="//localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="//localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
+    
+    
   </channel>
 </rss>
