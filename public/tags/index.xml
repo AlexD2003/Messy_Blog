@@ -4,31 +4,24 @@
     <title>Tags on My messy collection</title>
     <link>//localhost:1313/tags/</link>
     <description>Recent content in Tags on My messy collection</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
     <lastBuildDate>Fri, 27 Sep 2024 16:24:57 +0300</lastBuildDate>
-    
-	<atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Completed</title>
       <link>//localhost:1313/tags/completed/</link>
       <pubDate>Fri, 27 Sep 2024 16:24:57 +0300</pubDate>
-      
       <guid>//localhost:1313/tags/completed/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>CTF</title>
       <link>//localhost:1313/tags/ctf/</link>
       <pubDate>Fri, 27 Sep 2024 16:24:57 +0300</pubDate>
-      
       <guid>//localhost:1313/tags/ctf/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>
