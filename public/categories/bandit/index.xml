@@ -499,8 +499,8 @@ A sollution to this problem would be minimizing your terminal as much as possibl
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal1.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal2.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal1.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;img src=&#34;//localhost:1313/img/bandit26-terminal2.jpg&#34; alt=&#34;image&#34;&gt;&lt;/th&gt;
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;

@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Thu, 24 Oct 2024 12:52:41 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 24 Oct 2024 15:32:01 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>General Skills</title>
+      <link>//localhost:1313/categories/general-skills/</link>
+      <pubDate>Thu, 24 Oct 2024 15:32:01 +0300</pubDate>
+      
+      <guid>//localhost:1313/categories/general-skills/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PicoCTF</title>
+      <link>//localhost:1313/categories/picoctf/</link>
+      <pubDate>Thu, 24 Oct 2024 15:32:01 +0300</pubDate>
+      
+      <guid>//localhost:1313/categories/picoctf/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Binary Exploitation</title>
@@ -18,15 +36,6 @@
       <pubDate>Thu, 24 Oct 2024 12:52:41 +0300</pubDate>
       
       <guid>//localhost:1313/categories/binary-exploitation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PicoCTF</title>
-      <link>//localhost:1313/categories/picoctf/</link>
-      <pubDate>Thu, 24 Oct 2024 12:52:41 +0300</pubDate>
-      
-      <guid>//localhost:1313/categories/picoctf/</guid>
       <description></description>
     </item>
     
