@@ -7,10 +7,240 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Thu, 24 Oct 2024 15:32:01 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 19 Nov 2024 14:23:43 +0200</lastBuildDate>
     
 	<atom:link href="//localhost:1313/tags/completed/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Socket</title>
+      <link>//localhost:1313/post/socket/</link>
+      <pubDate>Tue, 19 Nov 2024 14:23:43 +0200</pubDate>
+      
+      <guid>//localhost:1313/post/socket/</guid>
+      <description>&lt;h3 id=&#34;hw-domnit-alexandru&#34;&gt;HW Domnit Alexandru&lt;/h3&gt;
+&lt;h3 id=&#34;requirements&#34;&gt;Requirements&lt;/h3&gt;
+&lt;p&gt;Bidirectional client+server, UDP and TCP.&lt;br&gt;
+More than one programming language.&lt;br&gt;
+Working on multiple OS`s.&lt;br&gt;
+Concurency.&lt;br&gt;
+GUI implementation.&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.spiceworks.com/tech/networking/articles/tcp-vs-udp/&#34;&gt;TCP vs UDP&lt;/a&gt;&lt;br&gt;
+TCP is connection-oriented while UDP is connectionless The connection is established via a three-way handshake. The client sends a synchronization request, the server sends back an acknowledgment, and the client returns a synchronization acknowledgment in response. Comparatively, UDP is a connectionless protocol.&lt;br&gt;
+&lt;a href=&#34;https://www.geeksforgeeks.org/socket-in-computer-network/&#34;&gt;What is a socket?&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.geeksforgeeks.org/python-tkinter-tutorial/&#34;&gt;TK tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;h4 id=&#34;tcp-implementation&#34;&gt;TCP implementation&lt;/h4&gt;
+&lt;p&gt;Since a later requirement is utilizing multiple programming languages, I`ll start off by making the client and server in 2 different programmign languages.&lt;br&gt;
+Firstly, let`s implement the &lt;strong&gt;server.py&lt;/strong&gt; functionality since it is the simpler of the 2. The logic behind it is that the python server listens for incoming connections, receives data from the designated client and then spits out a response.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;server.py :&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import socket
+
+HOST = &amp;#39;0.0.0.0&amp;#39;  
+PORT = 65432
+
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.bind((HOST, PORT))
+    s.listen()
+    print(f&amp;#34;Server listening on {HOST}:{PORT}...&amp;#34;)
+    conn, addr = s.accept()
+    with conn:
+        print(f&amp;#34;Connected by {addr}&amp;#34;)
+        data = conn.recv(1024)
+        print(f&amp;#34;Received: {data.decode()}&amp;#34;)
+        conn.sendall(b&amp;#34;Server default message.&amp;#34;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;A simple breakdown:&lt;br&gt;
+&lt;strong&gt;socket.AF_INET&lt;/strong&gt; tells the server that it will use &lt;strong&gt;IPV4&lt;/strong&gt; as a means of comunication.&lt;br&gt;
+&lt;strong&gt;socket.SOCK_STREAM&lt;/strong&gt; specifies that the communication protocol will be &lt;strong&gt;TCP&lt;/strong&gt;.&lt;br&gt;
+&lt;strong&gt;bind&lt;/strong&gt; is used in order to bind a specific &lt;strong&gt;IP address&lt;/strong&gt; and &lt;strong&gt;port&lt;/strong&gt; which in this case is 0.0.0.0 on port 65432.&lt;br&gt;
+&lt;strong&gt;listen&lt;/strong&gt; listens for connections.&lt;br&gt;
+&lt;strong&gt;accept&lt;/strong&gt; accepts the connection when one is trying to be established with the server and then the data is being decoded from bytes into a string.&lt;br&gt;
+&lt;strong&gt;sendall&lt;/strong&gt; is utilized for the response to the client.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;client.cpp:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;cstring&amp;gt;
+#include &amp;lt;sys/socket.h&amp;gt;
+#include &amp;lt;arpa/inet.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+
+int main() {
+    int sock = 0;
+    struct sockaddr_in serv_addr;
+    char buffer[1024] = {0};
+
+    if ((sock = socket(AF_INET, SOCK_STREAM, 0)) &amp;lt; 0) {
+        std::cerr &amp;lt;&amp;lt; &amp;#34;Socket creation error\n&amp;#34;;
+        return -1;
+    }
+
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(65432); 
+
+    if (inet_pton(AF_INET, &amp;#34;0.0.0.0&amp;#34;, &amp;amp;serv_addr.sin_addr) &amp;lt;= 0) {
+        std::cerr &amp;lt;&amp;lt; &amp;#34;Invalid address\n&amp;#34;;
+        return -1;
+    }
+
+    if (connect(sock, (struct sockaddr *)&amp;amp;serv_addr, sizeof(serv_addr)) &amp;lt; 0) {
+        std::cerr &amp;lt;&amp;lt; &amp;#34;Connection failed\n&amp;#34;;
+        return -1;
+    }
+
+    std::string message = &amp;#34;Client message!&amp;#34;;
+    send(sock, message.c_str(), message.size(), 0);
+    std::cout &amp;lt;&amp;lt; &amp;#34;Message sent\n&amp;#34;;
+
+    int valread = read(sock, buffer, 1024); 
+    std::cout &amp;lt;&amp;lt; &amp;#34;Server reply: &amp;#34; &amp;lt;&amp;lt; buffer &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;;
+
+    close(sock);
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Client breakdown:&lt;br&gt;
+&lt;strong&gt;socket(AF_INET, SOCK_STREAM, 0)&lt;/strong&gt; creates a &lt;strong&gt;TCP socket&lt;/strong&gt; with the required specifications.&lt;br&gt;
+Then, whe setup the IP and port we want to achieve the connection through.&lt;br&gt;
+&lt;strong&gt;connect&lt;/strong&gt; tries to establish a connection between the client and the server.&lt;br&gt;
+&lt;strong&gt;send&lt;/strong&gt; is used in order to send the message.&lt;br&gt;
+&lt;strong&gt;read&lt;/strong&gt; receives data from the server.&lt;br&gt;
+&lt;strong&gt;close&lt;/strong&gt; in order to close the connection afterwards.&lt;/p&gt;
+&lt;h4 id=&#34;running&#34;&gt;Running&lt;/h4&gt;
+&lt;p&gt;By opening up 2 terminals and running the the TCP server and client, we can see that both connections are established locally and the messages get through each other.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Terminal 1:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;03:15:34 archie@Archie Socket → python3 server.py
+Server listening on 0.0.0.0:65432...
+Connected by (&amp;#39;127.0.0.1&amp;#39;, 45098)
+Received: Client message!
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Terminal 2:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;03:15:08 archie@Archie Socket → g++ -o client client.cpp
+03:15:11 archie@Archie Socket → ./client
+Message sent
+Server reply: Server message!
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In order to test the compliance between different OS`s, I`ve booted up the &lt;strong&gt;server.py&lt;/strong&gt; on my windows machine, and got a response by modifying the IPV4 adress with the adress of the windows machine on my local network.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/socket_1.jpg&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;img src=&#34;//localhost:1313/img/socket_2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;h4 id=&#34;tcp-to-udp&#34;&gt;TCP to UDP&lt;/h4&gt;
+&lt;p&gt;The transition is pretty straight forward, firstly we need to change the socket type from &lt;strong&gt;SOCK_STREAM&lt;/strong&gt; to &lt;strong&gt;SOCK_DGRAM&lt;/strong&gt; and since UPD is conectionless, we no longer need &lt;strong&gt;connect&lt;/strong&gt; and &lt;strong&gt;accept&lt;/strong&gt;. Since UDP doesn`t guarantee connection, we need to establish a connection. We simply need to use &lt;strong&gt;sendto&lt;/strong&gt; and &lt;strong&gt;recfrom&lt;/strong&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;multithreading-and-tcpudp-duality&#34;&gt;Multithreading and TCP/UDP duality&lt;/h4&gt;
+&lt;p&gt;Now, it`s time to update the code in order to work with both UDP or TCP based on our desired choice and for the IP adress to be an argument, not a defined value. After that, in order to implement multithreading, we are gonna use a &lt;strong&gt;handle_client&lt;/strong&gt; function in order for us to run a new thread for each client connection.&lt;/p&gt;
+&lt;h4 id=&#34;updated-code&#34;&gt;Updated code&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;client.cpp:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;cstring&amp;gt;
+#include &amp;lt;sys/socket.h&amp;gt;
+#include &amp;lt;arpa/inet.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;thread&amp;gt;
+
+void send_message(int sock) {
+    std::string message = &amp;#34;Client message!&amp;#34;;
+    send(sock, message.c_str(), message.size(), 0);
+    std::cout &amp;lt;&amp;lt; &amp;#34;Message sent\n&amp;#34;;
+}
+
+void receive_message(int sock) {
+    char buffer[1024] = {0};
+    int valread = read(sock, buffer, 1024); 
+    if (valread &amp;gt; 0) {
+        std::cout &amp;lt;&amp;lt; &amp;#34;Server reply: &amp;#34; &amp;lt;&amp;lt; buffer &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;;
+    }
+}
+
+int main(int argc, char *argv[]) {
+    int sock = 0;
+    struct sockaddr_in serv_addr;
+
+    std::string server_ip = &amp;#34;127.0.0.1&amp;#34;;
+    int protocol = SOCK_STREAM; 
+    if (argc &amp;gt; 1 &amp;amp;&amp;amp; std::string(argv[1]) == &amp;#34;UDP&amp;#34;) {
+        protocol = SOCK_DGRAM; 
+    }
+    if (argc &amp;gt; 2) {
+        server_ip = argv[2]; 
+    }
+
+    sock = socket(AF_INET, protocol, 0);
+    if (sock &amp;lt; 0) {
+        std::cerr &amp;lt;&amp;lt; &amp;#34;Socket creation error\n&amp;#34;;
+        return -1;
+    }
+
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(65432);
+
+    if (inet_pton(AF_INET, server_ip.c_str(), &amp;amp;serv_addr.sin_addr) &amp;lt;= 0) {
+        std::cerr &amp;lt;&amp;lt; &amp;#34;Invalid address\n&amp;#34;;
+        return -1;
+    }
+
+    if (protocol == SOCK_STREAM) {
+        if (connect(sock, (struct sockaddr *)&amp;amp;serv_addr, sizeof(serv_addr)) &amp;lt; 0) {
+            std::cerr &amp;lt;&amp;lt; &amp;#34;Connection failed\n&amp;#34;;
+            return -1;
+        }
+    }
+
+    std::thread send_thread(send_message, sock);
+    std::thread receive_thread(receive_message, sock);
+
+    send_thread.join();
+    receive_thread.join();
+
+    close(sock);
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;server.py:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import socket
+import sys
+import threading
+
+def handle_client(conn, addr):
+    print(f&amp;#34;Connected by {addr}&amp;#34;)
+    data = conn.recv(1024)
+    if data:
+        print(f&amp;#34;Received: {data.decode()}&amp;#34;)
+        conn.sendall(b&amp;#34;Server message!&amp;#34;)
+    conn.close()
+
+def start_server(host, port, protocol):
+    with socket.socket(socket.AF_INET, protocol) as s:
+        s.bind((host, port))
+        if protocol == socket.SOCK_STREAM:
+            s.listen()
+            print(f&amp;#34;Server listening on {host}:{port} (TCP)...&amp;#34;)
+            while True:
+                conn, addr = s.accept()
+                # Create a new thread for each client connection
+                client_thread = threading.Thread(target=handle_client, args=(conn, addr))
+                client_thread.start()
+        else:  # UDP
+            print(f&amp;#34;Server listening on {host}:{port} (UDP)...&amp;#34;)
+            while True:
+                data, addr = s.recvfrom(1024)
+                print(f&amp;#34;Received: {data.decode()} from {addr}&amp;#34;)
+                s.sendto(b&amp;#34;Server message!&amp;#34;, addr)
+
+HOST = &amp;#39;0.0.0.0&amp;#39;
+PORT = 65432
+protocol = socket.SOCK_STREAM  
+
+if len(sys.argv) &amp;gt; 1 and sys.argv[1] == &amp;#39;UDP&amp;#39;:
+    protocol = socket.SOCK_DGRAM
+if len(sys.argv) &amp;gt; 2:
+    HOST = sys.argv[2] 
+
+start_server(HOST, PORT, protocol)
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;new-code-running&#34;&gt;New code running&lt;/h4&gt;
+&lt;img src=&#34;//localhost:1313/img/socket_3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;img src=&#34;//localhost:1313/img/socket_4.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;h4 id=&#34;gui&#34;&gt;GUI&lt;/h4&gt;
+&lt;p&gt;I`ve created a very simple GUI utilizing tkinter where u have 2 radials in order to choose between &lt;strong&gt;TCP&lt;/strong&gt; and &lt;strong&gt;UDP&lt;/strong&gt;, an IP field, a message field and a connect to server button.&lt;/p&gt;
+&lt;h4 id=&#34;images&#34;&gt;Images:&lt;/h4&gt;
+&lt;img src=&#34;//localhost:1313/img/socket_5.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;img src=&#34;//localhost:1313/img/socket_6.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;All the code can also be found on my github at &lt;a href=&#34;https://github.com/AlexD2003/SocketUBB&#34;&gt;Socket&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>dont-you-love-banners</title>

