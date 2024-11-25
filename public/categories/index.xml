@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Tue, 19 Nov 2024 14:23:43 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 Nov 2024 16:14:33 +0200</lastBuildDate>
     
 	<atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas</title>
+      <link>//localhost:1313/categories/natas/</link>
+      <pubDate>Mon, 25 Nov 2024 16:14:33 +0200</pubDate>
+      
+      <guid>//localhost:1313/categories/natas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Overthewire</title>
+      <link>//localhost:1313/categories/overthewire/</link>
+      <pubDate>Mon, 25 Nov 2024 16:14:33 +0200</pubDate>
+      
+      <guid>//localhost:1313/categories/overthewire/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>UBB</title>
@@ -54,24 +72,6 @@
       <pubDate>Thu, 24 Oct 2024 10:51:20 +0300</pubDate>
       
       <guid>//localhost:1313/categories/cryptography/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Natas</title>
-      <link>//localhost:1313/categories/natas/</link>
-      <pubDate>Fri, 27 Sep 2024 16:24:57 +0300</pubDate>
-      
-      <guid>//localhost:1313/categories/natas/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Overthewire</title>
-      <link>//localhost:1313/categories/overthewire/</link>
-      <pubDate>Fri, 27 Sep 2024 16:24:57 +0300</pubDate>
-      
-      <guid>//localhost:1313/categories/overthewire/</guid>
       <description></description>
     </item>
     

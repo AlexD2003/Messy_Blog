@@ -3,28 +3,40 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/categories/</loc>
-    <lastmod>2024-11-19T14:23:43+02:00</lastmod>
+    <lastmod>2024-11-25T16:14:33+02:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/completed/</loc>
-    <lastmod>2024-11-19T14:23:43+02:00</lastmod>
+    <lastmod>2024-11-25T16:14:33+02:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/ctf/</loc>
+    <lastmod>2024-11-25T16:14:33+02:00</lastmod>
   </url><url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2024-11-19T14:23:43+02:00</lastmod>
+    <lastmod>2024-11-25T16:14:33+02:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/categories/natas/</loc>
+    <lastmod>2024-11-25T16:14:33+02:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/post/natas27/</loc>
+    <lastmod>2024-11-25T16:14:33+02:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/categories/overthewire/</loc>
+    <lastmod>2024-11-25T16:14:33+02:00</lastmod>
   </url><url>
     <loc>//localhost:1313/post/</loc>
-    <lastmod>2024-11-19T14:23:43+02:00</lastmod>
+    <lastmod>2024-11-25T16:14:33+02:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2024-11-25T16:14:33+02:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/post/natas26/</loc>
+    <lastmod>2024-11-23T13:12:26+02:00</lastmod>
   </url><url>
     <loc>//localhost:1313/post/socket/</loc>
     <lastmod>2024-11-19T14:23:43+02:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
-    <lastmod>2024-11-19T14:23:43+02:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/categories/ubb/</loc>
     <lastmod>2024-11-19T14:23:43+02:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/ctf/</loc>
-    <lastmod>2024-10-24T15:32:01+03:00</lastmod>
   </url><url>
     <loc>//localhost:1313/post/picoctf3/</loc>
     <lastmod>2024-10-24T15:32:01+03:00</lastmod>
@@ -47,13 +59,7 @@
     <loc>//localhost:1313/post/picoctf1/</loc>
     <lastmod>2024-10-24T10:51:20+03:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/natas/</loc>
-    <lastmod>2024-09-27T16:24:57+03:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/post/natas24/</loc>
-    <lastmod>2024-09-27T16:24:57+03:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/categories/overthewire/</loc>
     <lastmod>2024-09-27T16:24:57+03:00</lastmod>
   </url><url>
     <loc>//localhost:1313/post/natas23/</loc>

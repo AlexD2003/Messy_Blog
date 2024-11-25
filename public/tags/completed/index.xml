@@ -7,10 +7,206 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Tue, 19 Nov 2024 14:23:43 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 Nov 2024 16:14:33 +0200</lastBuildDate>
     
 	<atom:link href="//localhost:1313/tags/completed/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas-Level 27</title>
+      <link>//localhost:1313/post/natas27/</link>
+      <pubDate>Mon, 25 Nov 2024 16:14:33 +0200</pubDate>
+      
+      <guid>//localhost:1313/post/natas27/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas27&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: u3RRffXjysjgwFU6b9xa23i6prmUsYne&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas27.natas.labs.overthewire.org&#34;&gt;http://natas27.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.w3schools.com/sql/&#34;&gt;SQL tutorial.&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://stackoverflow.com/questions/8731229/sql-server-string-getting-truncated&#34;&gt;SQL string truncation.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;The index page has only two fields for the username and password, just like some previous levels.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas27-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+1</description>
+    </item>
+    
+    <item>
+      <title>Natas-Level 26</title>
+      <link>//localhost:1313/post/natas26/</link>
+      <pubDate>Sat, 23 Nov 2024 13:12:26 +0200</pubDate>
+      
+      <guid>//localhost:1313/post/natas26/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas26&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: cVXXwxMS3Y26n5UZU89QgpGmWCelaQlE&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas26.natas.labs.overthewire.org&#34;&gt;http://natas26.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;Burp Suite is a proprietary software tool for security assessment and penetration testing of web applications. It software was initially developed in 2003-2006 by Dafydd Stuttard to automate his own security testing needs, after realizing the capabilities of automatable web tools like Selenium.
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Burp_Suite&#34;&gt;Source.&lt;/a&gt;&lt;br&gt;
+Burp Suite tutorial and usefull guides:&lt;br&gt;
+&lt;a href=&#34;https://portswigger.net/burp/documentation/desktop/getting-started&#34;&gt;Port Swigger.&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.w3schools.com/php/&#34;&gt;PHP tutorial.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;The index page presents itself with 4 fields of X`s and Y`s that draw 2 lines from the respective coordinates.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas26-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Source code:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;?php
+    // sry, this is ugly as hell.
+    // cheers kaliman ;)
+    // - morla
+
+    class Logger{
+        private $logFile;
+        private $initMsg;
+        private $exitMsg;
+
+        function __construct($file){
+            // initialise variables
+            $this-&amp;gt;initMsg=&amp;#34;#--session started--#\n&amp;#34;;
+            $this-&amp;gt;exitMsg=&amp;#34;#--session end--#\n&amp;#34;;
+            $this-&amp;gt;logFile = &amp;#34;/tmp/natas26_&amp;#34; . $file . &amp;#34;.log&amp;#34;;
+
+            // write initial message
+            $fd=fopen($this-&amp;gt;logFile,&amp;#34;a+&amp;#34;);
+            fwrite($fd,$this-&amp;gt;initMsg);
+            fclose($fd);
+        }
+
+        function log($msg){
+            $fd=fopen($this-&amp;gt;logFile,&amp;#34;a+&amp;#34;);
+            fwrite($fd,$msg.&amp;#34;\n&amp;#34;);
+            fclose($fd);
+        }
+
+        function __destruct(){
+            // write exit message
+            $fd=fopen($this-&amp;gt;logFile,&amp;#34;a+&amp;#34;);
+            fwrite($fd,$this-&amp;gt;exitMsg);
+            fclose($fd);
+        }
+    }
+
+    function showImage($filename){
+        if(file_exists($filename))
+            echo &amp;#34;&amp;lt;img src=\&amp;#34;$filename\&amp;#34;&amp;gt;&amp;#34;;
+    }
+
+    function drawImage($filename){
+        $img=imagecreatetruecolor(400,300);
+        drawFromUserdata($img);
+        imagepng($img,$filename);
+        imagedestroy($img);
+    }
+
+    function drawFromUserdata($img){
+        if( array_key_exists(&amp;#34;x1&amp;#34;, $_GET) &amp;amp;&amp;amp; array_key_exists(&amp;#34;y1&amp;#34;, $_GET) &amp;amp;&amp;amp;
+            array_key_exists(&amp;#34;x2&amp;#34;, $_GET) &amp;amp;&amp;amp; array_key_exists(&amp;#34;y2&amp;#34;, $_GET)){
+
+            $color=imagecolorallocate($img,0xff,0x12,0x1c);
+            imageline($img,$_GET[&amp;#34;x1&amp;#34;], $_GET[&amp;#34;y1&amp;#34;],
+                            $_GET[&amp;#34;x2&amp;#34;], $_GET[&amp;#34;y2&amp;#34;], $color);
+        }
+
+        if (array_key_exists(&amp;#34;drawing&amp;#34;, $_COOKIE)){
+            $drawing=unserialize(base64_decode($_COOKIE[&amp;#34;drawing&amp;#34;]));
+            if($drawing)
+                foreach($drawing as $object)
+                    if( array_key_exists(&amp;#34;x1&amp;#34;, $object) &amp;amp;&amp;amp;
+                        array_key_exists(&amp;#34;y1&amp;#34;, $object) &amp;amp;&amp;amp;
+                        array_key_exists(&amp;#34;x2&amp;#34;, $object) &amp;amp;&amp;amp;
+                        array_key_exists(&amp;#34;y2&amp;#34;, $object)){
+
+                        $color=imagecolorallocate($img,0xff,0x12,0x1c);
+                        imageline($img,$object[&amp;#34;x1&amp;#34;],$object[&amp;#34;y1&amp;#34;],
+                                $object[&amp;#34;x2&amp;#34;] ,$object[&amp;#34;y2&amp;#34;] ,$color);
+
+                    }
+        }
+    }
+
+    function storeData(){
+        $new_object=array();
+
+        if(array_key_exists(&amp;#34;x1&amp;#34;, $_GET) &amp;amp;&amp;amp; array_key_exists(&amp;#34;y1&amp;#34;, $_GET) &amp;amp;&amp;amp;
+            array_key_exists(&amp;#34;x2&amp;#34;, $_GET) &amp;amp;&amp;amp; array_key_exists(&amp;#34;y2&amp;#34;, $_GET)){
+            $new_object[&amp;#34;x1&amp;#34;]=$_GET[&amp;#34;x1&amp;#34;];
+            $new_object[&amp;#34;y1&amp;#34;]=$_GET[&amp;#34;y1&amp;#34;];
+            $new_object[&amp;#34;x2&amp;#34;]=$_GET[&amp;#34;x2&amp;#34;];
+            $new_object[&amp;#34;y2&amp;#34;]=$_GET[&amp;#34;y2&amp;#34;];
+        }
+
+        if (array_key_exists(&amp;#34;drawing&amp;#34;, $_COOKIE)){
+            $drawing=unserialize(base64_decode($_COOKIE[&amp;#34;drawing&amp;#34;]));
+        }
+        else{
+            // create new array
+            $drawing=array();
+        }
+
+        $drawing[]=$new_object;
+        setcookie(&amp;#34;drawing&amp;#34;,base64_encode(serialize($drawing)));
+    }
+?&amp;gt;
+
+&amp;lt;h1&amp;gt;natas26&amp;lt;/h1&amp;gt;
+&amp;lt;div id=&amp;#34;content&amp;#34;&amp;gt;
+
+Draw a line:&amp;lt;br&amp;gt;
+&amp;lt;form name=&amp;#34;input&amp;#34; method=&amp;#34;get&amp;#34;&amp;gt;
+X1&amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;x1&amp;#34; size=2&amp;gt;
+Y1&amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;y1&amp;#34; size=2&amp;gt;
+X2&amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;x2&amp;#34; size=2&amp;gt;
+Y2&amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;y2&amp;#34; size=2&amp;gt;
+&amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;DRAW!&amp;#34;&amp;gt;
+&amp;lt;/form&amp;gt;
+
+&amp;lt;?php
+    session_start();
+
+    if (array_key_exists(&amp;#34;drawing&amp;#34;, $_COOKIE) ||
+        (   array_key_exists(&amp;#34;x1&amp;#34;, $_GET) &amp;amp;&amp;amp; array_key_exists(&amp;#34;y1&amp;#34;, $_GET) &amp;amp;&amp;amp;
+            array_key_exists(&amp;#34;x2&amp;#34;, $_GET) &amp;amp;&amp;amp; array_key_exists(&amp;#34;y2&amp;#34;, $_GET))){
+        $imgfile=&amp;#34;img/natas26_&amp;#34; . session_id() .&amp;#34;.png&amp;#34;;
+        drawImage($imgfile);
+        showImage($imgfile);
+        storeData();
+    }
+
+?&amp;gt;
+
+&amp;lt;div id=&amp;#34;viewsource&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;index-source.html&amp;#34;&amp;gt;View sourcecode&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Important takeaway:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;These are some function that we are gonna utilize in the exploit. The application utilizes a &lt;strong&gt;Logger&lt;/strong&gt; class but it is not utilized in any way whatsoever.&lt;br&gt;
+We can see that the drawing cookie is being set by base64 encoding the serialization of the img.&lt;br&gt;
+&lt;strong&gt;setcookie(&amp;ldquo;drawing&amp;rdquo;,base64_encode(serialize($drawing)));&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;what-is-serialization-in-php&#34;&gt;What is serialization in PHP?&lt;/h4&gt;
+&lt;p&gt;Generates a storable representation of a value.&lt;br&gt;
+This is useful for storing or passing PHP values around without losing their type and structure.&lt;br&gt;
+To make the serialized string into a PHP value again, use unserialize().&lt;br&gt;
+&lt;a href=&#34;https://www.php.net/manual/en/function.serialize.php&#34;&gt;Source.&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;what-now&#34;&gt;What now?&lt;/h4&gt;
+&lt;p&gt;We can test this by parsing our default cookie through Cyberchef in reverse order and we should get something tangible.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas26-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;As seen, we get the array representation of the inputed coordinates so in theory, we could reverse the process with whatever value we want for the respective cookie and get a valid running.&lt;br&gt;
+As done before, we can use &lt;strong&gt;&lt;? passthru(&#39;cat /etc/natas_webpass/natas27&#39;); ?&gt;&lt;/strong&gt; in a PHP file and then run it by accessing it in the tree at the point where we want to save it.&lt;br&gt;
+So, we are gonna create a PHP file that encodes and serializez a PHP snippet, save it as the cookie and then access the password for the next level.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Payload code:&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas26-3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Run with PHP:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;02:46:35 archie@Archie pico → php some.php
+Tzo2OiJMb2dnZXIiOjM6e3M6MTU6IgBMb2dnZXIAbG9nRmlsZSI7czoxMToiaW1nL3B3bi5waHAiO3M6MTU6IgBMb2dnZXIAaW5pdE1zZyI7czoxMDoic29tZXRoaW5nCiI7czoxNToiAExvZ2dlcgBleGl0TXNnIjtzOjYxOiI8P3BocCBlY2hvIGZpbGVfZ2V0X2NvbnRlbnRzKCcvZXRjL25hdGFzX3dlYnBhc3MvbmF0YXMyNycpOz8+Ijt9
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;wrapping-up&#34;&gt;Wrapping up&lt;/h4&gt;
+&lt;p&gt;Now that we`ve got the needed cookie, we can launch burp, modify the current cookie with the modified one in the request and then access the generated php file under the /img directory.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas26-4.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;After this, let`s check if the PHP file was created.&lt;br&gt;
+Going to /img/pwn2.php in my case reveals the password after running the PHP code.&lt;br&gt;
+&lt;strong&gt;Password for next level:&lt;/strong&gt; u3RRffXjysjgwFU6b9xa23i6prmUsYne&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Socket</title>

@@ -7,10 +7,181 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Sat, 23 Nov 2024 13:12:26 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 Nov 2024 16:14:33 +0200</lastBuildDate>
     
 	<atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Natas-Level 27</title>
+      <link>//localhost:1313/post/natas27/</link>
+      <pubDate>Mon, 25 Nov 2024 16:14:33 +0200</pubDate>
+      
+      <guid>//localhost:1313/post/natas27/</guid>
+      <description>&lt;h3 id=&#34;login&#34;&gt;Login&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Username: natas27&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Password: u3RRffXjysjgwFU6b9xa23i6prmUsYne&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;URL:      &lt;a href=&#34;http://natas27.natas.labs.overthewire.org&#34;&gt;http://natas27.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.w3schools.com/sql/&#34;&gt;SQL tutorial.&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://stackoverflow.com/questions/8731229/sql-server-string-getting-truncated&#34;&gt;SQL string truncation.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;The index page has only two fields for the username and password, just like some previous levels.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas27-1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Source code:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;?php
+
+// morla / 10111
+// database gets cleared every 5 min
+
+
+/*
+CREATE TABLE `users` (
+  `username` varchar(64) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL
+);
+*/
+
+
+function checkCredentials($link,$usr,$pass){
+
+    $user=mysqli_real_escape_string($link, $usr);
+    $password=mysqli_real_escape_string($link, $pass);
+
+    $query = &amp;#34;SELECT username from users where username=&amp;#39;$user&amp;#39; and password=&amp;#39;$password&amp;#39; &amp;#34;;
+    $res = mysqli_query($link, $query);
+    if(mysqli_num_rows($res) &amp;gt; 0){
+        return True;
+    }
+    return False;
+}
+
+
+function validUser($link,$usr){
+
+    $user=mysqli_real_escape_string($link, $usr);
+
+    $query = &amp;#34;SELECT * from users where username=&amp;#39;$user&amp;#39;&amp;#34;;
+    $res = mysqli_query($link, $query);
+    if($res) {
+        if(mysqli_num_rows($res) &amp;gt; 0) {
+            return True;
+        }
+    }
+    return False;
+}
+
+
+function dumpData($link,$usr){
+
+    $user=mysqli_real_escape_string($link, trim($usr));
+
+    $query = &amp;#34;SELECT * from users where username=&amp;#39;$user&amp;#39;&amp;#34;;
+    $res = mysqli_query($link, $query);
+    if($res) {
+        if(mysqli_num_rows($res) &amp;gt; 0) {
+            while ($row = mysqli_fetch_assoc($res)) {
+                // thanks to Gobo for reporting this bug!
+                //return print_r($row);
+                return print_r($row,true);
+            }
+        }
+    }
+    return False;
+}
+
+
+function createUser($link, $usr, $pass){
+
+    if($usr != trim($usr)) {
+        echo &amp;#34;Go away hacker&amp;#34;;
+        return False;
+    }
+    $user=mysqli_real_escape_string($link, substr($usr, 0, 64));
+    $password=mysqli_real_escape_string($link, substr($pass, 0, 64));
+
+    $query = &amp;#34;INSERT INTO users (username,password) values (&amp;#39;$user&amp;#39;,&amp;#39;$password&amp;#39;)&amp;#34;;
+    $res = mysqli_query($link, $query);
+    if(mysqli_affected_rows($link) &amp;gt; 0){
+        return True;
+    }
+    return False;
+}
+
+
+if(array_key_exists(&amp;#34;username&amp;#34;, $_REQUEST) and array_key_exists(&amp;#34;password&amp;#34;, $_REQUEST)) {
+    $link = mysqli_connect(&amp;#39;localhost&amp;#39;, &amp;#39;natas27&amp;#39;, &amp;#39;&amp;lt;censored&amp;gt;&amp;#39;);
+    mysqli_select_db($link, &amp;#39;natas27&amp;#39;);
+
+
+    if(validUser($link,$_REQUEST[&amp;#34;username&amp;#34;])) {
+        //user exists, check creds
+        if(checkCredentials($link,$_REQUEST[&amp;#34;username&amp;#34;],$_REQUEST[&amp;#34;password&amp;#34;])){
+            echo &amp;#34;Welcome &amp;#34; . htmlentities($_REQUEST[&amp;#34;username&amp;#34;]) . &amp;#34;!&amp;lt;br&amp;gt;&amp;#34;;
+            echo &amp;#34;Here is your data:&amp;lt;br&amp;gt;&amp;#34;;
+            $data=dumpData($link,$_REQUEST[&amp;#34;username&amp;#34;]);
+            print htmlentities($data);
+        }
+        else{
+            echo &amp;#34;Wrong password for user: &amp;#34; . htmlentities($_REQUEST[&amp;#34;username&amp;#34;]) . &amp;#34;&amp;lt;br&amp;gt;&amp;#34;;
+        }
+    }
+    else {
+        //user doesn&amp;#39;t exist
+        if(createUser($link,$_REQUEST[&amp;#34;username&amp;#34;],$_REQUEST[&amp;#34;password&amp;#34;])){
+            echo &amp;#34;User &amp;#34; . htmlentities($_REQUEST[&amp;#34;username&amp;#34;]) . &amp;#34; was created!&amp;#34;;
+        }
+    }
+
+    mysqli_close($link);
+} else {
+?&amp;gt;
+
+&amp;lt;form action=&amp;#34;index.php&amp;#34; method=&amp;#34;POST&amp;#34;&amp;gt;
+Username: &amp;lt;input name=&amp;#34;username&amp;#34;&amp;gt;&amp;lt;br&amp;gt;
+Password: &amp;lt;input name=&amp;#34;password&amp;#34; type=&amp;#34;password&amp;#34;&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;login&amp;#34; /&amp;gt;
+&amp;lt;/form&amp;gt;
+&amp;lt;?php } ?&amp;gt;
+&amp;lt;div id=&amp;#34;viewsource&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;index-source.html&amp;#34;&amp;gt;View sourcecode&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This time, the code is not really that interesting and there are no evident exploits. All it does is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a table with a username and password&lt;/li&gt;
+&lt;li&gt;It is stated that the database get`s cleared every 5 mins (not really that relevant)&lt;/li&gt;
+&lt;li&gt;The defined fields are of type &lt;strong&gt;VARCHAR 64&lt;/strong&gt; (!!! Very important for later)&lt;/li&gt;
+&lt;li&gt;If there is a username equivalent with the one you state, you are logging into that user with the password you provide (ofc, only if the password matches with what is stored in the DB)&lt;/li&gt;
+&lt;li&gt;Otherwise, the user get`s created into the database with your provided password&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Our goal would logically be to login into &lt;strong&gt;Natas28&lt;/strong&gt; in order to get the flag for the next level.&lt;br&gt;
+In order to explore the account creation feature, I`ve created a &amp;ldquo;testuser&amp;rdquo; account with password &amp;ldquo;a&amp;rdquo; and afterwards logged into it in order to see if my query went through succesfully.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas27-2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas27-3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;Everything worked as expected.&lt;br&gt;
+Even tho the code doesn`t expose any evident flaws, there is an interesting function that holds a clue.&lt;br&gt;
+To be exact :&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if($usr != trim($usr)) {
+        echo &amp;#34;Go away hacker&amp;#34;;
+        return False;
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;trim&lt;/strong&gt; — Strip whitespace (or other characters) from the beginning and end of a string. &lt;a href=&#34;https://www.php.net/manual/en/function.trim.php&#34;&gt;Source.&lt;/a&gt;&lt;br&gt;
+Why is this important? As seen in the doc section, in SQL, if u exceed the given parameter length, your input get`s truncated.&lt;br&gt;
+For example: if I were to input a string of 64 a`s followed by however many b`s, in the database, the stored value for the username would be 64 a`s.&lt;br&gt;
+Because there is the &lt;strong&gt;Go away hacker&lt;/strong&gt; function, we can`t just put a &lt;strong&gt;Natas28&lt;/strong&gt; username followed by some whitespaces in order to override the actual &lt;strong&gt;Natas28&lt;/strong&gt; credentials, the caviat here being the fact that we can put an exactly 64 characters long &lt;strong&gt;Natas28&lt;/strong&gt; username, whitespaces counted too, and follow it up by whatever string we want and the input will be truncated to &lt;strong&gt;Natas28&lt;/strong&gt; without triggering the go away function.
+&lt;strong&gt;Python code:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;username=&amp;#34;natas28&amp;#34; + &amp;#34; &amp;#34;*57+&amp;#34;a&amp;#34;
+with open(&amp;#39;/home/archie/pico/username.txt&amp;#39;, &amp;#39;w&amp;#39;) as file:
+    file.write(username)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This is a simple python snippet that writes to a file a natas28 username followed by 57 whitespaces and an a. I`m goin to use this output as the input for the username on the website and put a password of value &amp;ldquo;test&amp;rdquo;.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas27-4.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;As you can see, the user creation goes through successfully. Now, all there`s left to do is login with the &lt;strong&gt;natas28&lt;/strong&gt; username, &lt;strong&gt;still followed by the 57 whitespaces&lt;/strong&gt; and with the chosen password which should override the credentials and grant us the flag.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/natas/natas27-5.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;And that`s about it.&lt;br&gt;
+&lt;strong&gt;Password for next level:&lt;/strong&gt; 1JNwQM1Oi6J6j1k49Xyw7ZN6pXMQInVj&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Natas-Level 26</title>
