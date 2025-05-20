@@ -7,36 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Tue, 20 May 2025 18:42:38 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 20 May 2025 18:51:25 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Mihai</title>
+      <title>Mihaii</title>
       <link>//localhost:1313/post/mihai/</link>
-      <pubDate>Tue, 20 May 2025 18:42:38 +0300</pubDate>
+      <pubDate>Tue, 20 May 2025 18:51:25 +0300</pubDate>
       
       <guid>//localhost:1313/post/mihai/</guid>
-      <description>&lt;p&gt;pkgname=libxml2-so.2-compat
-pkgver=2.13.8
-pkgrel=1
-pkgdesc=&amp;ldquo;Legacy libxml2.so.2.13.8 symlinked as libxml2.so.2 for Unity compatibility&amp;rdquo;
-arch=(&amp;lsquo;x86_64&amp;rsquo;)
-url=
-license=(&amp;lsquo;MIT&amp;rsquo;)
-provides=(&amp;rsquo;libxml2.so.2&amp;rsquo;)
-conflicts=()
-options=(!strip)
-source=(&amp;ldquo;&lt;a href=&#34;https://archive.archlinux.org/packages/l/libxml2/libxml2-$%7Bpkgver%7D-1-x86_64.pkg.tar.zst%22&#34;&gt;https://archive.archlinux.org/packages/l/libxml2/libxml2-${pkgver}-1-x86_64.pkg.tar.zst&amp;quot;&lt;/a&gt;)
-noextract=(&amp;ldquo;libxml2-${pkgver}-1-x86_64.pkg.tar.zst&amp;rdquo;)
-sha256sums=(&amp;lsquo;SKIP&amp;rsquo;)&lt;/p&gt;
-&lt;p&gt;package() {
-mkdir -p &amp;ldquo;$pkgdir/usr/lib&amp;rdquo;
-bsdtar -xf &amp;ldquo;${srcdir}/libxml2-${pkgver}-1-x86_64.pkg.tar.zst&amp;rdquo; -C &amp;ldquo;${srcdir}&amp;rdquo; $&amp;ldquo;usr/lib/libxml2.so.${pkgver}&amp;rdquo;
-install -m 755 &amp;ldquo;${srcdir}/usr/lib/libxml2.so.${pkgver}&amp;rdquo; &amp;ldquo;$pkgdir/usr/lib/libxml2.so.${pkgver}&amp;rdquo;
-ln -sf $&amp;ldquo;libxml2.so.${pkgver}&amp;rdquo; &amp;ldquo;$pkgdir/usr/lib/libxml2.so.2&amp;rdquo;
-}&lt;/p&gt;
+      <description>&lt;p&gt;asddasdasdasdasasdaadssad&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;//localhost:1313/files/mihai.txt&#34;&gt;text&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
