@@ -7,10 +7,38 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2008–2019</copyright>
-    <lastBuildDate>Fri, 03 Jan 2025 19:08:59 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 20 May 2025 18:42:38 +0300</lastBuildDate>
     
 	<atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mihai</title>
+      <link>//localhost:1313/post/mihai/</link>
+      <pubDate>Tue, 20 May 2025 18:42:38 +0300</pubDate>
+      
+      <guid>//localhost:1313/post/mihai/</guid>
+      <description>&lt;p&gt;pkgname=libxml2-so.2-compat
+pkgver=2.13.8
+pkgrel=1
+pkgdesc=&amp;ldquo;Legacy libxml2.so.2.13.8 symlinked as libxml2.so.2 for Unity compatibility&amp;rdquo;
+arch=(&amp;lsquo;x86_64&amp;rsquo;)
+url=
+license=(&amp;lsquo;MIT&amp;rsquo;)
+provides=(&amp;rsquo;libxml2.so.2&amp;rsquo;)
+conflicts=()
+options=(!strip)
+source=(&amp;ldquo;&lt;a href=&#34;https://archive.archlinux.org/packages/l/libxml2/libxml2-$%7Bpkgver%7D-1-x86_64.pkg.tar.zst%22&#34;&gt;https://archive.archlinux.org/packages/l/libxml2/libxml2-${pkgver}-1-x86_64.pkg.tar.zst&amp;quot;&lt;/a&gt;)
+noextract=(&amp;ldquo;libxml2-${pkgver}-1-x86_64.pkg.tar.zst&amp;rdquo;)
+sha256sums=(&amp;lsquo;SKIP&amp;rsquo;)&lt;/p&gt;
+&lt;p&gt;package() {
+mkdir -p &amp;ldquo;$pkgdir/usr/lib&amp;rdquo;
+bsdtar -xf &amp;ldquo;${srcdir}/libxml2-${pkgver}-1-x86_64.pkg.tar.zst&amp;rdquo; -C &amp;ldquo;${srcdir}&amp;rdquo; $&amp;ldquo;usr/lib/libxml2.so.${pkgver}&amp;rdquo;
+install -m 755 &amp;ldquo;${srcdir}/usr/lib/libxml2.so.${pkgver}&amp;rdquo; &amp;ldquo;$pkgdir/usr/lib/libxml2.so.${pkgver}&amp;rdquo;
+ln -sf $&amp;ldquo;libxml2.so.${pkgver}&amp;rdquo; &amp;ldquo;$pkgdir/usr/lib/libxml2.so.2&amp;rdquo;
+}&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Packet tracer project</title>
@@ -1675,7 +1703,7 @@ In order to import this data into Microsoft Fabric we could setup a pipeline. &l
 &lt;li&gt;Transformation : We should always think about transforming data when we are doing an import in order to further suit our needs, for example remove unnecessary columns or filter just what we need.&lt;/li&gt;
 &lt;li&gt;Destination : Finally, we set the pipeline to store the ingested data into our Data Warehouse, as explained earlier.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;sourcehttpswwwyoutubecomwatchvloescjpru8w&#34;&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=LoESCJpru8w&#34;&gt;Source.&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;source&#34;&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=LoESCJpru8w&#34;&gt;Source.&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;What can you do related to storage in order to improve the performance of the future data queries if the size of the dataset is expected to grow in time (hint: e.g. partition the data)?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Since the ingested data is stored in a &lt;strong&gt;Data Warehouse&lt;/strong&gt;, it is prone to efficient querying. In order to further improve the performance, from my work experience, I would suggest partitioning the data by &lt;strong&gt;TransactionDate&lt;/strong&gt; and possibly by &lt;strong&gt;ProductId&lt;/strong&gt;. Additionally, converting the data into Parquet format will improve storage efficiency. &lt;a href=&#34;https://www.macrometa.com/articles/what-is-data-partitioning&#34;&gt;Source.&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&#34;data-flow-diagram-&#34;&gt;Data flow diagram :&lt;/h4&gt;
@@ -2310,7 +2338,7 @@ Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr&amp;lt;/pre&amp;gt;&amp;lt;div id=&am
 &lt;p&gt;&lt;em&gt;Username: natas17&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;Password: EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;URL:      &lt;a href=&#34;http://natas17.natas.labs.overthewire.org&#34;&gt;http://natas17.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;h4 id=&#34;solution-ideahttpsmediumcomsamarthkokil64overthewire-updated-natas-walkthrough-level-17-00dd519c7689&#34;&gt;&lt;a href=&#34;https://medium.com/@samarthkokil64/overthewire-updated-natas-walkthrough-level-17-00dd519c7689&#34;&gt;Solution idea&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;solution-idea&#34;&gt;&lt;a href=&#34;https://medium.com/@samarthkokil64/overthewire-updated-natas-walkthrough-level-17-00dd519c7689&#34;&gt;Solution idea&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Brute-force_attack&#34;&gt;What is brute-forcing?&lt;/a&gt;&lt;br&gt;
 In cryptography, a brute-force attack consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly. The attacker systematically checks all possible passwords and passphrases until the correct one is found.&lt;br&gt;
@@ -3193,7 +3221,7 @@ Trying to open this file should execute the payload from passthru and get us in.
 &lt;p&gt;&lt;em&gt;Username: natas11&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;Password: UJdqkK1pTu6VLt9UHWAgRZz6sVUZ3lEk&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;URL:      &lt;a href=&#34;http://natas11.natas.labs.overthewire.org&#34;&gt;http://natas11.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;solution-ideahttpswwwyoutubecomchrisdale&#34;&gt;&lt;a href=&#34;https://www.youtube.com/@ChrisDale&#34;&gt;Solution Idea&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;solution-idea&#34;&gt;&lt;a href=&#34;https://www.youtube.com/@ChrisDale&#34;&gt;Solution Idea&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&#34;tools&#34;&gt;Tools&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://gchq.github.io/CyberChef/&#34;&gt;CyberChef&lt;/a&gt;&lt;br&gt;
 Very usefull site for encrypting and decrypting information.&lt;/p&gt;
@@ -3908,7 +3936,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
 &lt;em&gt;qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git (1)              - the stupid content tracker&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;git-documentationhttpsgit-scmcomdoc&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;git-documentation&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;For this level I`ll use the same initial process I`ve used until now.&lt;br&gt;
 Clone-&amp;gt;Check what`s in the repo-&amp;gt;try to find a password.
@@ -4010,7 +4038,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
 &lt;em&gt;qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git (1)              - the stupid content tracker&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;git-documentationhttpsgit-scmcomdoc&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;git-documentation&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;For this level I`ll use the same initial process I`ve used until now.&lt;br&gt;
 Clone-&amp;gt;Check what`s in the repo-&amp;gt;try to find a password.
@@ -4071,7 +4099,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git (1)              - the stupid content tracker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    clone     Clone a repository into a new directory
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    log       Show commit logs&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;git-documentationhttpsgit-scmcomdoc&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;git-documentation&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;For this level I`ll use the same initial process I`ve used until now.&lt;br&gt;
 Clone-&amp;gt;Check what`s in the repo-&amp;gt;try to find a password.
@@ -4158,7 +4186,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git (1)              - the stupid content tracker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    clone     Clone a repository into a new directory
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    log       Show commit logs&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;git-documentationhttpsgit-scmcomdoc&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;git-documentation&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;Here you`ll need to know how to use a version control system in order to get information that was available at one point in time but now isn`t. Firstly, clone the repo to see what we are working with.
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit28@bandit:~$ mktemp -d
@@ -4251,7 +4279,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git (1)              - the stupid content tracker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    clone     Clone a repository into a new directory&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;git-documentationhttpsgit-scmcomdoc&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;git-documentation&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;This section of bandit focuses souly on teaching you undestanding what a version control system is and how to use it. We are gonna clone the repository using the ssh connection listed above. Modify &lt;strong&gt;localhost&lt;/strong&gt; with &lt;strong&gt;localhost:2220&lt;/strong&gt; since you want to make the request on port 2220. When you are prompted for a password simply put the password of bandit27.
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit27@bandit:~$ ls
@@ -4326,7 +4354,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
       <pubDate>Sun, 18 Aug 2024 20:54:51 +0300</pubDate>
       
       <guid>//localhost:1313/post/bandit25/</guid>
-      <description>&lt;h3 id=&#34;sollution-idea--mayadevbe-bloghttpsmayadevbemepostsoverthewirebanditlevel26&#34;&gt;Sollution idea : &lt;a href=&#34;https://mayadevbe.me/posts/overthewire/bandit/level26/&#34;&gt;MayADevBe Blog&lt;/a&gt;&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;sollution-idea--mayadevbe-blog&#34;&gt;Sollution idea : &lt;a href=&#34;https://mayadevbe.me/posts/overthewire/bandit/level26/&#34;&gt;MayADevBe Blog&lt;/a&gt;&lt;/h3&gt;
 &lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
 &lt;p&gt;Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.
 NOTE: if you’re a Windows user and typically use Powershell to ssh into bandit: Powershell is known to cause issues with the intended solution to this level. You should use command prompt instead.&lt;/p&gt;

@@ -207,6 +207,33 @@ N1=64 + N2=32 + N4=32 + N3=16 + N5=8 + 4 + 4 + 4 + 4 + 4&lt;/p&gt;
 &lt;/table&gt;
 &lt;h4 id=&#34;implementation&#34;&gt;Implementation&lt;/h4&gt;
 &lt;p&gt;I`ve implemented the reuqired network plan into PacketTracer by firstly creating each subnet and then linking them all together. All the router and server settings are done according to the enumeration above.&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/packet_2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;h4 id=&#34;photos-of-the-setup&#34;&gt;Photos of the setup&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Router 1:&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/router_1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Router 2:&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/router_2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Router 3:&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/router_3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Router 4:&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/router_4.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Router 5:&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/router_5.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Router 5 wireless:&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/router_5w.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Server 1 DHCP:&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/server_1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Server 2 WEB:&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/server_2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Server 3 DNS:&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/server_3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;h4 id=&#34;pinging-web-server-from-different-subnets&#34;&gt;Pinging web server from different subnets&lt;/h4&gt;
+&lt;p&gt;The web server is in N2 and it sits at ip: &lt;strong&gt;69.122.240.66&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;//localhost:1313/img/ping_1.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;img src=&#34;//localhost:1313/img/ping_2.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;img src=&#34;//localhost:1313/img/ping_3.png&#34; alt=&#34;gif&#34; style=&#34;display: block; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;I statically routed the routers in the network, R4 routing doesn`t work, dk why.&lt;br&gt;
+The ip calcs and PT source file can be found at &lt;a href=&#34;https://github.com/AlexD2003/SocketUBB/tree/main/PT&#34;&gt;PT&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

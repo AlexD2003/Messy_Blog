@@ -65,7 +65,7 @@ In order to import this data into Microsoft Fabric we could setup a pipeline. &l
 &lt;li&gt;Transformation : We should always think about transforming data when we are doing an import in order to further suit our needs, for example remove unnecessary columns or filter just what we need.&lt;/li&gt;
 &lt;li&gt;Destination : Finally, we set the pipeline to store the ingested data into our Data Warehouse, as explained earlier.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;sourcehttpswwwyoutubecomwatchvloescjpru8w&#34;&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=LoESCJpru8w&#34;&gt;Source.&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;source&#34;&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=LoESCJpru8w&#34;&gt;Source.&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;What can you do related to storage in order to improve the performance of the future data queries if the size of the dataset is expected to grow in time (hint: e.g. partition the data)?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Since the ingested data is stored in a &lt;strong&gt;Data Warehouse&lt;/strong&gt;, it is prone to efficient querying. In order to further improve the performance, from my work experience, I would suggest partitioning the data by &lt;strong&gt;TransactionDate&lt;/strong&gt; and possibly by &lt;strong&gt;ProductId&lt;/strong&gt;. Additionally, converting the data into Parquet format will improve storage efficiency. &lt;a href=&#34;https://www.macrometa.com/articles/what-is-data-partitioning&#34;&gt;Source.&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&#34;data-flow-diagram-&#34;&gt;Data flow diagram :&lt;/h4&gt;

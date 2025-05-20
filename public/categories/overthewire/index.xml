@@ -1120,7 +1120,7 @@ Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr&amp;lt;/pre&amp;gt;&amp;lt;div id=&am
 &lt;p&gt;&lt;em&gt;Username: natas17&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;Password: EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;URL:      &lt;a href=&#34;http://natas17.natas.labs.overthewire.org&#34;&gt;http://natas17.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;h4 id=&#34;solution-ideahttpsmediumcomsamarthkokil64overthewire-updated-natas-walkthrough-level-17-00dd519c7689&#34;&gt;&lt;a href=&#34;https://medium.com/@samarthkokil64/overthewire-updated-natas-walkthrough-level-17-00dd519c7689&#34;&gt;Solution idea&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;solution-idea&#34;&gt;&lt;a href=&#34;https://medium.com/@samarthkokil64/overthewire-updated-natas-walkthrough-level-17-00dd519c7689&#34;&gt;Solution idea&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Brute-force_attack&#34;&gt;What is brute-forcing?&lt;/a&gt;&lt;br&gt;
 In cryptography, a brute-force attack consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly. The attacker systematically checks all possible passwords and passphrases until the correct one is found.&lt;br&gt;
@@ -2003,7 +2003,7 @@ Trying to open this file should execute the payload from passthru and get us in.
 &lt;p&gt;&lt;em&gt;Username: natas11&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;Password: UJdqkK1pTu6VLt9UHWAgRZz6sVUZ3lEk&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;URL:      &lt;a href=&#34;http://natas11.natas.labs.overthewire.org&#34;&gt;http://natas11.natas.labs.overthewire.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;solution-ideahttpswwwyoutubecomchrisdale&#34;&gt;&lt;a href=&#34;https://www.youtube.com/@ChrisDale&#34;&gt;Solution Idea&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;solution-idea&#34;&gt;&lt;a href=&#34;https://www.youtube.com/@ChrisDale&#34;&gt;Solution Idea&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&#34;tools&#34;&gt;Tools&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://gchq.github.io/CyberChef/&#34;&gt;CyberChef&lt;/a&gt;&lt;br&gt;
 Very usefull site for encrypting and decrypting information.&lt;/p&gt;
@@ -2718,7 +2718,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
 &lt;em&gt;qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git (1)              - the stupid content tracker&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;git-documentationhttpsgit-scmcomdoc&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;git-documentation&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;For this level I`ll use the same initial process I`ve used until now.&lt;br&gt;
 Clone-&amp;gt;Check what`s in the repo-&amp;gt;try to find a password.
@@ -2820,7 +2820,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
 &lt;em&gt;qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git (1)              - the stupid content tracker&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;git-documentationhttpsgit-scmcomdoc&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;git-documentation&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;For this level I`ll use the same initial process I`ve used until now.&lt;br&gt;
 Clone-&amp;gt;Check what`s in the repo-&amp;gt;try to find a password.
@@ -2881,7 +2881,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git (1)              - the stupid content tracker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    clone     Clone a repository into a new directory
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    log       Show commit logs&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;git-documentationhttpsgit-scmcomdoc&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;git-documentation&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;For this level I`ll use the same initial process I`ve used until now.&lt;br&gt;
 Clone-&amp;gt;Check what`s in the repo-&amp;gt;try to find a password.
@@ -2968,7 +2968,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git (1)              - the stupid content tracker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    clone     Clone a repository into a new directory
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    log       Show commit logs&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;git-documentationhttpsgit-scmcomdoc&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;git-documentation&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;Here you`ll need to know how to use a version control system in order to get information that was available at one point in time but now isn`t. Firstly, clone the repo to see what we are working with.
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit28@bandit:~$ mktemp -d
@@ -3061,7 +3061,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
 &lt;h3 id=&#34;doc&#34;&gt;Doc&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git (1)              - the stupid content tracker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    clone     Clone a repository into a new directory&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;git-documentationhttpsgit-scmcomdoc&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;git-documentation&#34;&gt;&lt;a href=&#34;https://git-scm.com/doc&#34;&gt;GIT DOCUMENTATION&lt;/a&gt;&lt;/h4&gt;
 &lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
 &lt;p&gt;This section of bandit focuses souly on teaching you undestanding what a version control system is and how to use it. We are gonna clone the repository using the ssh connection listed above. Modify &lt;strong&gt;localhost&lt;/strong&gt; with &lt;strong&gt;localhost:2220&lt;/strong&gt; since you want to make the request on port 2220. When you are prompted for a password simply put the password of bandit27.
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit27@bandit:~$ ls
@@ -3136,7 +3136,7 @@ Clone the repository and find the password for the next level.&lt;/p&gt;
       <pubDate>Sun, 18 Aug 2024 20:54:51 +0300</pubDate>
       
       <guid>//localhost:1313/post/bandit25/</guid>
-      <description>&lt;h3 id=&#34;sollution-idea--mayadevbe-bloghttpsmayadevbemepostsoverthewirebanditlevel26&#34;&gt;Sollution idea : &lt;a href=&#34;https://mayadevbe.me/posts/overthewire/bandit/level26/&#34;&gt;MayADevBe Blog&lt;/a&gt;&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;sollution-idea--mayadevbe-blog&#34;&gt;Sollution idea : &lt;a href=&#34;https://mayadevbe.me/posts/overthewire/bandit/level26/&#34;&gt;MayADevBe Blog&lt;/a&gt;&lt;/h3&gt;
 &lt;h1 id=&#34;level-goal&#34;&gt;Level goal&lt;/h1&gt;
 &lt;p&gt;Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.
 NOTE: if you’re a Windows user and typically use Powershell to ssh into bandit: Powershell is known to cause issues with the intended solution to this level. You should use command prompt instead.&lt;/p&gt;

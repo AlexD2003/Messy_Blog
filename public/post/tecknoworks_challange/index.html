@@ -7,7 +7,7 @@
 	
 	<title>My messy collection  | Tecknoworks-Intenship challange</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
-	<meta name="generator" content="Hugo 0.140.1">
+	<meta name="generator" content="Hugo 0.147.1">
 	
 	
 	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -233,7 +233,7 @@ In order to import this data into Microsoft Fabric we could setup a pipeline. <s
 <li>Transformation : We should always think about transforming data when we are doing an import in order to further suit our needs, for example remove unnecessary columns or filter just what we need.</li>
 <li>Destination : Finally, we set the pipeline to store the ingested data into our Data Warehouse, as explained earlier.</li>
 </ol>
-<h4 id="sourcehttpswwwyoutubecomwatchvloescjpru8w"><a href="https://www.youtube.com/watch?v=LoESCJpru8w">Source.</a></h4>
+<h4 id="source"><a href="https://www.youtube.com/watch?v=LoESCJpru8w">Source.</a></h4>
 <p><strong>What can you do related to storage in order to improve the performance of the future data queries if the size of the dataset is expected to grow in time (hint: e.g. partition the data)?</strong></p>
 <p>Since the ingested data is stored in a <strong>Data Warehouse</strong>, it is prone to efficient querying. In order to further improve the performance, from my work experience, I would suggest partitioning the data by <strong>TransactionDate</strong> and possibly by <strong>ProductId</strong>. Additionally, converting the data into Parquet format will improve storage efficiency. <a href="https://www.macrometa.com/articles/what-is-data-partitioning">Source.</a></p>
 <h4 id="data-flow-diagram-">Data flow diagram :</h4>
