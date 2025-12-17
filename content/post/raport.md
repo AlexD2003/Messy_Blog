@@ -79,6 +79,10 @@ Creating an alert rule that should be referenced by an earlier alert doesn`t wor
 
 <img src="/img/Raport/imp1.png" alt="gif" style="display: block; margin-left: auto; margin-right: auto;">
 
+**The ability to silence only part of an alert**
+
+Maybe each condition or rule could have a checkbox that you can check or leave unchecked in order for you to be able to deactivate part of the conditions instead of creating a whole new alert.
+
 **Save button**
 
 A save button addition instead of only having a save and exit button might come in handy, in case you want to save some progress and not directly quit.
